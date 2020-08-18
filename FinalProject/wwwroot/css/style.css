@@ -3546,6 +3546,11 @@ header .menu #sandwich {
   height: auto;
 }
 
+#newBooks .filter-section .filter-wrapper .viewMore {
+  cursor: pointer;
+  color: dimgrey;
+}
+
 #newBooks .filter-section .filter-wrapper h6 {
   font-weight: bold;
 }
@@ -5109,19 +5114,15 @@ header .menu #sandwich {
   margin: 0px;
 }
 
-#OwlCarousel .title a {
+#OwlCarousel .title {
   text-decoration: none;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   color: #236bdf;
 }
 
-#OwlCarousel .title a h3 {
+#OwlCarousel .title h3 {
   font-weight: bold;
-}
-
-#OwlCarousel .title a:hover {
-  color: #229bff;
 }
 
 #OwlCarousel .owl-carousel .item {
@@ -5137,6 +5138,14 @@ header .menu #sandwich {
   padding-top: 3px;
   overflow: hidden;
   text-align: center;
+}
+
+#OwlCarousel .owl-carousel .item .name h6 {
+  font-weight: bold;
+}
+
+#OwlCarousel .owl-carousel .item .name p {
+  margin-bottom: 5px;
 }
 
 #EmptyCart {

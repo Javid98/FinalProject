@@ -89,29 +89,30 @@
 <!-- Book Detail End -->
 <!-- Owl Carousel Start -->
 
-<section id="OwlCarousel">
-	<div class="container">
-		<div class="title">
-			<a href="">
-				<h3>Bənzər Kitablar</h3>
-			</a>
-		</div>
-		<div class="owl-carousel owl-theme">
-			@foreach (BookCategory rBookCategory in Model.rBookCategories)
-			{
-				<div class="item">
-					<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@rBookCategory.Book.Slug"><img src="~/image/@rBookCategory.Book.ImagePath" alt=""></a>
-					<div class="name">
-						<h6>@rBookCategory.Book.Name</h6>
-						@*@foreach (BookAuthor bAuthor in rBookCategory.Book.BookAuthors)
-						{
-							<p>@bAuthor.Author.Fullname</p>
-						}*@
+@if (Model.rBookCategories.Count != 0)
+{
+	<section id="OwlCarousel">
+		<div class="container">
+			<div class="title">
+					<h3>Bənzər Kitablar</h3>
+			</div>
+			<div class="owl-carousel owl-theme">
+				@foreach (BookCategory rBookCategory in Model.rBookCategories.Take(12))
+				{
+					<div class="item">
+						<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@rBookCategory.Book.Slug"><img src="~/image/@rBookCategory.Book.ImagePath" alt=""></a>
+						<div class="name">
+							<h6>@rBookCategory.Book.Name</h6>
+							@foreach (BookAuthor bookAuthor in Model.rBookAuthors.Where(rb=>rb.BookId==rBookCategory.Book.Id))
+							{
+								<p>@bookAuthor.Author.Fullname</p>
+							}
+						</div>
 					</div>
-				</div>
-			}
+				}
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+}
 
 <!-- Owl Carousel Start -->
