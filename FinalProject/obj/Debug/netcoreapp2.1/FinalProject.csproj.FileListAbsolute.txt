@@ -36,3 +36,4 @@ C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Fi
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\FinalProject.csproj.CopyComplete
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\NewBooks\Index.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\NewBooks\Detail.cshtml.g.cs

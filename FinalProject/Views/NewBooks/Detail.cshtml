@@ -1,0 +1,117 @@
+﻿@model NewBooksVM
+@{
+	ViewData["Title"] = "Detail";
+}
+
+
+<!-- Book Detail Start -->
+
+<section id="bookDetail">
+	<div class="container">
+		<div class="row book justify-content-center">
+			<div class="col-lg-3 col-sm-4 col-4 image">
+				<a href=""><img src="~/image/@Model.Book.ImagePath" alt=""></a>
+			</div>
+			<div class="col-lg-8 col-sm-12 col-12 content">
+				<h3>
+					<a href="">@Model.Book.Name</a>
+				</h3>
+				<div class="author-publisher">
+					@foreach (BookAuthor bookAuthor in Model.BookAuthors)
+					{
+						<p>
+							<a href="">@bookAuthor.Author.Fullname</a>
+						</p>
+					}
+					<span>
+						<a href="">@Model.Publisher.Name</a>
+					</span>
+				</div>
+				<div class="mt-3 price">
+					<span>@Model.Book.Price ₼</span>
+					<div class="stock">
+						<p>318 adet stoklarımızda</p>
+					</div>
+				</div>
+				<div class="book-buttons">
+
+					<a href="" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+					<a href="" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+				</div>
+				<div class="book-details">
+					<div class="menu">
+						<div data-id="1" class="selected">Açıqlama</div>
+						<div data-id="2">Detallar</div>
+					</div>
+					<div class="details">
+						<div data-id="1" class="option opened">
+							<p>
+								@Model.Book.Description
+							</p>
+						</div>
+						<div data-id="2" class="option">
+							<div class="row">
+								<div class="col-sm-4 col-4">
+									<div class="properties">
+										<h6>Kitabın özəllikləri</h6>
+										<ul>
+											<li>Nəşriyyat tarixi : @Model.BookFeature.PublishingDate.ToString("dd/MM/yyyy")</li>
+											<li>Nəşriyyat yeri : @Model.BookFeature.PublishingPlace</li>
+											<li>Nəşriyyat dili : @Model.BookFeature.PublishingLanguage</li>
+											<li>Original dili : @Model.BookFeature.OriginalLanguage</li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-sm-4 col-4">
+									<div class="categories">
+										<h6>Kitabın kateqoriyaları</h6>
+										@foreach (BookCategory bookCategory in Model.BookCategories)
+										{
+											<span>@bookCategory.Category.Name</span><br />
+										}
+									</div>
+								</div>
+								<div class="col-sm-4 col-4">
+									<div class="support">
+										<p>Tərcüməçi</p>
+										<span>@Model.BookFeature.Translator</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Book Detail End -->
+<!-- Owl Carousel Start -->
+
+<section id="OwlCarousel">
+	<div class="container">
+		<div class="title">
+			<a href="">
+				<h3>Bənzər Kitablar</h3>
+			</a>
+		</div>
+		<div class="owl-carousel owl-theme">
+			@foreach (BookCategory rBookCategory in Model.rBookCategories)
+			{
+				<div class="item">
+					<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@rBookCategory.Book.Slug"><img src="~/image/@rBookCategory.Book.ImagePath" alt=""></a>
+					<div class="name">
+						<h6>@rBookCategory.Book.Name</h6>
+						@*@foreach (BookAuthor bAuthor in rBookCategory.Book.BookAuthors)
+						{
+							<p>@bAuthor.Author.Fullname</p>
+						}*@
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>
+
+<!-- Owl Carousel Start -->
