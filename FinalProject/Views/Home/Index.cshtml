@@ -19,7 +19,7 @@
 							</a>
 						</div>
 						<div class="content">
-							<span>@book.Name</span>
+							<h6>@book.Name</h6>
 							@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == book.Id))
 							{
 								<span>@bookAuthor.Author.Fullname</span>
@@ -39,132 +39,55 @@
 <section class="Books" style="padding-top: 60px;">
 	<div class="container">
 		<div class="title">
-			<a href="">
+			<a asp-controller="NewBooks" asp-action="Index">
 				<h3>Yenilər</h3>
 			</a>
 		</div>
 		<div class="cardSection">
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/american.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
+			@foreach (Book book in Model.Books.OrderByDescending(b => b.Id).Take(8))
+			{
+				<div class="bookCard">
+					<div class="box">
+						<div class="imgBox">
+							<img src="~/image/@book.ImagePath" alt="">
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/mazerunner.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/sacrament.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/lastcall.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/sacrament.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/lastcall.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/american.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/mazerunner.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
+						<div class="contentBox">
+							<div>
+								@if (book.Name.Length < 15)
+								{
+									<h2>
+										@book.Name
+									</h2>
+								}
+								else
+								{
+									<h2>
+										@book.Name.Substring(0, 15)...
+									</h2>
+								}
+								@if (@book.Description.Length < 200)
+								{
+									<p>
+										@book.Description
+										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@Model.Book.Slug">Kitaba keç</a>
+									</p>
+								}
+								else
+								{
+									<p>
+										@book.Description.Substring(0, 200)...
+										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">Ardını oxu</a>
+									</p>
+								}
 
+								<div class="price">
+									<span>@book.Price ₼</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			}
 		</div>
 	</div>
 </section>
@@ -195,132 +118,55 @@
 <section class="Books">
 	<div class="container">
 		<div class="title">
-			<a href="">
+			<a asp-controller="BestSellers" asp-action="Index">
 				<h3>Çox satılanlar</h3>
 			</a>
 		</div>
 		<div class="cardSection">
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/american.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
+			@foreach (Book book in Model.Books.OrderByDescending(b => b.SaleCount).Take(8))
+			{
+				<div class="bookCard">
+					<div class="box">
+						<div class="imgBox">
+							<img src="~/image/@book.ImagePath" alt="">
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/mazerunner.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/sacrament.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/lastcall.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/sacrament.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/lastcall.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/american.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bookCard">
-				<div class="box">
-					<div class="imgBox">
-						<img src="~/image/mazerunner.jpg" alt="">
-					</div>
-					<div class="contentBox">
-						<div>
-							<h2>
-								New
-							</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quidem iusto sit corporis rem velit, laborum ipsa eaque saepe eos molestiae fugit odio eveniet accusamus debitis. Ipsum dolorum quia vitae?<a href="">Read More</a></p>
+						<div class="contentBox">
+							<div>
+								@if (book.Name.Length < 15)
+								{
+									<h2>
+										@book.Name
+									</h2>
+								}
+								else
+								{
+									<h2>
+										@book.Name.Substring(0, 15)...
+									</h2>
+								}
+								@if (@book.Description.Length < 200)
+								{
+									<p>
+										@book.Description
+										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@Model.Book.Slug">Kitaba keç</a>
+									</p>
+								}
+								else
+								{
+									<p>
+										@book.Description.Substring(0, 200)...
+										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">Ardını oxu</a>
+									</p>
+								}
 
+								<div class="price">
+									<span>@book.Price ₼</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			}
 		</div>
 	</div>
 </section>
@@ -364,29 +210,34 @@
 
 		<div class="row">
 			<div class="book col-lg-2 col-sm-5 col-5">
-				<a href=""><img src="~/image/book.jpg" alt=""></a>
+				<a href=""><img src="~/image/@Model.Book.ImagePath" alt=""></a>
 			</div>
 			<div class="description mt-3 col-lg-3 col-sm-12 col-12">
-				<p>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque, quae. Repudiandae quasi adipisci distinctio maiores fugit unde commodi minima officia cumque. Temporibus, illo hic praesentium quidem repudiandae eaque alias quis!
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum minus quod dignissimos consectetur, quas quia facilis voluptatum magni? Possimus beatae, consequuntur provident quidem id quae ut placeat voluptas sapiente.
-				</p>
+				@if (@Model.Book.Description.Length < 500)
+				{
+					<p>
+						@Model.Book.Description
+						<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@Model.Book.Slug">Kitaba keç</a>
+					</p>
+				}
+				else
+				{
+					<p>
+						@Model.Book.Description.Substring(0, 500)...
+						<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@Model.Book.Slug">Ardını oxu</a>
+					</p>
+				}
 			</div>
 			<div class="books col-lg-4 col-sm-12 col-12">
 				<h6>Bənzər kitablar</h6>
 				<div class="similar">
-					<div class="cover cover-1">
-						<a href=""><img src="~/image/book.jpg" alt=""></a>
-						<span>Son</span>
-					</div>
-					<div class="cover cover-2">
-						<a href=""><img src="~/image/book.jpg" alt=""></a>
-						<span>Son</span>
-					</div>
-					<div class="cover cover-3">
-						<a href=""><img src="~/image/book.jpg" alt=""></a>
-						<span>Son</span>
-					</div>
+					@foreach (BookCategory bookCategory in Model.rBookCategories.Take(3))
+					{
+						<div class="cover">
+							<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@bookCategory.Book.Slug"><img src="~/image/@bookCategory.Book.ImagePath" alt=""></a>
+							<span>@bookCategory.Book.Name</span>
+						</div>
+					}
 				</div>
 			</div>
 			<div class="saleBook mt-3 col-lg-3 col-sm-12 col-12">

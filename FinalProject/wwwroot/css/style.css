@@ -3216,7 +3216,7 @@ header .menu #sandwich {
 #Slider .sliderCard .content {
   width: 250px;
   height: 130px;
-  padding-top: 20px;
+  padding-top: 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: -webkit-box;
@@ -3227,6 +3227,15 @@ header .menu #sandwich {
       -ms-flex-flow: column;
           flex-flow: column;
   text-align: center;
+}
+
+#Slider .sliderCard .content h6 {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+#Slider .sliderCard .content span {
+  font-size: 14px;
 }
 
 #Slider .sliderCard .sliderImage {
@@ -3374,8 +3383,10 @@ header .menu #sandwich {
 }
 
 .Books .cardSection .bookCard .box .contentBox div {
+  position: relative;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+  overflow: hidden;
   padding: 15px;
   height: 210px;
   background: linear-gradient(45deg, #fe0061, #ffeb3b);
@@ -3387,11 +3398,39 @@ header .menu #sandwich {
   color: #fff;
   font-size: 20px;
   letter-spacing: 1px;
+  height: 22px;
+  overflow: hidden;
 }
 
 .Books .cardSection .bookCard .box .contentBox div p {
   color: #fff;
   font-size: 13px;
+}
+
+.Books .cardSection .bookCard .box .contentBox div .price {
+  position: absolute;
+  right: -15px;
+  bottom: 9px;
+  height: 15px;
+  width: 60px;
+  padding: 0;
+  background: whitesmoke;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: rotateZ(-45deg);
+          transform: rotateZ(-45deg);
+}
+
+.Books .cardSection .bookCard .box .contentBox div .price span {
+  font-size: 12px;
+  font-weight: bold;
 }
 
 #Sale {
@@ -3468,6 +3507,8 @@ header .menu #sandwich {
 
 #BookOfMonth .books .similar .cover {
   width: 25%;
+  height: 150px;
+  text-align: center;
 }
 
 #BookOfMonth .books .similar .cover img {

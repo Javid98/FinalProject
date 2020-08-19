@@ -204,7 +204,7 @@ using FinalProject.ViewModels;
             WriteLiteral("orm animate__animated animate__fadeInRight\">\r\n                <h2>Mesaj Göndər</h2>\r\n                ");
             EndContext();
             BeginContext(5264, 1051, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee545a3a2e2a405eba443091ac214826", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "960715efd7e646a5bb9266eab8a171d1", async() => {
                 BeginContext(5296, 1012, true);
                 WriteLiteral(@"
                     <div class=""inputBox w50"">
