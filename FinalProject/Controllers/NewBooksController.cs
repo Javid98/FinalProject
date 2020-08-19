@@ -51,7 +51,7 @@ namespace FinalProject.Controllers
 
 			foreach (BookCategory bookCategory in bookCategories)
 			{
-				List<BookCategory> NewrBookCategories = _db.BookCategories.Include(bc => bc.Category).Include(bc => bc.Book).Where(bc => bc.CategoryId == bookCategory.CategoryId).ToList();
+				List<BookCategory> NewrBookCategories = _db.BookCategories.Include(bc => bc.Category).Include(bc => bc.Book).OrderByDescending(nrbc => nrbc.Id).Where(bc => bc.CategoryId == bookCategory.CategoryId).ToList();
 				foreach (BookCategory newR in NewrBookCategories)
 				{
 					if (rBookCategories.FirstOrDefault(bc => bc.BookId == newR.BookId) == null && newR.BookId != book.Id)

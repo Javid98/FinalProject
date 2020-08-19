@@ -13,6 +13,7 @@ namespace FinalProject.Models
 		[Required]
 		public string Name { get; set; }
 		public int BookCount { get; set; } = 0;
+		public int Discount { get; set; }
 		public ICollection<Book> Books { get; set; }
 	}
 }

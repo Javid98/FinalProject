@@ -20,6 +20,9 @@ namespace FinalProject.Models
 		public string Description { get; set; }
 		[Required]
 		public double Price { get; set; }
+		[Required]
+		public int Count { get; set; }
+		public int SaleCount { get; set; }
 		public int PublisherId { get; set; }
 		public Publisher Publisher { get; set; }
 		public virtual BookFeature BookFeature { get; set; }
