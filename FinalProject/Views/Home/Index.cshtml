@@ -209,7 +209,7 @@
 		</div>
 
 		<div class="row">
-			<div class="book col-lg-2 col-sm-5 col-5">
+			<div class="book col-lg-2 col-sm-4 col-4">
 				<a href=""><img src="~/image/@Model.Book.ImagePath" alt=""></a>
 			</div>
 			<div class="description mt-3 col-lg-3 col-sm-12 col-12">
@@ -233,14 +233,14 @@
 				<div class="similar">
 					@foreach (BookCategory bookCategory in Model.rBookCategories.Take(3))
 					{
-						<div class="cover">
+						<div class="cover col-3 col-lg-4 col-sm-3">
 							<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@bookCategory.Book.Slug"><img src="~/image/@bookCategory.Book.ImagePath" alt=""></a>
 							<span>@bookCategory.Book.Name</span>
 						</div>
 					}
 				</div>
 			</div>
-			<div class="saleBook mt-3 col-lg-3 col-sm-12 col-12">
+			<div class="saleBook mt-4 col-lg-3 col-sm-12 col-12">
 				<a href="">
 					<img src="~/image/salebook.jpg" alt="">
 				</a>

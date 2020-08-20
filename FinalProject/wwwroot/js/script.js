@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Click Menu
     $(".menu span").click(function() {
         $("body").css("overflow", "hidden")
@@ -147,9 +147,36 @@ $(document).ready(function() {
     // Filter Start
     let Z = 0;
     $("#newBooks .filter-section .filter-slide").click(function() {
-            $(".filter-wrapper").slideToggle()
-            $("#newBooks .filter-section .filter-slide i").css("transform", `rotateZ(${Z+=180}deg)`)
-        })
+        $(".filter-wrapper").slideToggle()
+        $("#newBooks .filter-section .filter-slide i").css("transform", `rotateZ(${Z+=180}deg)`)
+    })
+
+    $("#newBooks .filter-section .filter-wrapper .viewMore").click(function() {
+            if ($(this).prev().attr("style").includes("hidden")) {
+                $(this).prev().css("overflow-y", "scroll")
+                $(this).css("color", "tomato")
+            } else {
+                $(this).prev().css("overflow-y", "hidden")
+                $(this).css("color", "dimgrey")
+        }
+    })
+
+    if (window.location.href.includes("aslug=")) {
+        $("#newBooks .filter-section .filter-wrapper .author").addClass("d-none")
+        $("#newBooks .filter-section .filter-wrapper .author").prev().addClass("d-none")
+        $("#newBooks .filter-section .filter-wrapper .author").next().addClass("d-none")
+    }
+    if (window.location.href.includes("cslug=")) {
+        $("#newBooks .filter-section .filter-wrapper .category").addClass("d-none")
+        $("#newBooks .filter-section .filter-wrapper .category").prev().addClass("d-none")
+        $("#newBooks .filter-section .filter-wrapper .category").next().addClass("d-none")
+    }
+    if (window.location.href.includes("pslug=")) {
+        $("#newBooks .filter-section .filter-wrapper .publisher").addClass("d-none")
+        $("#newBooks .filter-section .filter-wrapper .publisher").prev().addClass("d-none")
+        $("#newBooks .filter-section .filter-wrapper .publisher").next().addClass("d-none")
+    }
+
         // Filter End
 
     // Contact Start
@@ -418,7 +445,7 @@ $(document).ready(function() {
             offset: '95%'
         })
 
-    $('#Category .category-1')
+    $('#Category .category:eq(0)')
         .css('opacity', 0)
         .waypoint(function(direction) {
             if (direction === 'down') {
@@ -431,7 +458,7 @@ $(document).ready(function() {
         })
 
 
-    $('#Category .category-2')
+    $('#Category .category:eq(1)')
         .css('opacity', 0)
         .waypoint(function(direction) {
             setTimeout(() => {
@@ -444,7 +471,7 @@ $(document).ready(function() {
         }, {
             offset: '95%'
         })
-    $('#Category .category-3')
+    $('#Category .category:eq(2)')
         .css('opacity', 0)
         .waypoint(function(direction) {
             setTimeout(() => {
@@ -457,7 +484,7 @@ $(document).ready(function() {
         }, {
             offset: '95%'
         })
-    $('#Category .category-4')
+    $('#Category .category:eq(3)')
         .css('opacity', 0)
         .waypoint(function(direction) {
             setTimeout(() => {
@@ -470,7 +497,7 @@ $(document).ready(function() {
         }, {
             offset: '95%'
         })
-    $('#Category .category-5')
+    $('#Category .category:eq(4)')
         .css('opacity', 0)
         .waypoint(function(direction) {
             setTimeout(() => {
@@ -483,7 +510,7 @@ $(document).ready(function() {
         }, {
             offset: '95%'
         })
-    $('#Category .category-6')
+    $('#Category .category:eq(5)')
         .css('opacity', 0)
         .waypoint(function(direction) {
             setTimeout(() => {
@@ -496,7 +523,7 @@ $(document).ready(function() {
         }, {
             offset: '95%'
         })
-    $('#Category .category-7')
+    $('#Category .category:eq(6)')
         .css('opacity', 0)
         .waypoint(function(direction) {
             setTimeout(() => {
@@ -510,7 +537,7 @@ $(document).ready(function() {
             offset: '95%'
         })
 
-    $('#BookOfMonth .book, #BookOfMonth .description, #BookOfMonth .saleBook, #BookOfMonth .books h6')
+    $('#BookOfMonth .book')
         .css('opacity', 0)
         .waypoint(function(direction) {
             if (direction === 'down') {
@@ -521,7 +548,7 @@ $(document).ready(function() {
         }, {
             offset: '95%'
         })
-    $('#BookOfMonth .cover')
+    $('#BookOfMonth .description')
         .css('opacity', 0)
         .waypoint(function(direction) {
             if (direction === 'down') {
@@ -529,6 +556,67 @@ $(document).ready(function() {
             } else {
                 $(this.element).animate({ opacity: 0 }).removeClass("animate__animated animate__fadeInUp")
             }
+        }, {
+            offset: '95%'
+        })
+    $('#BookOfMonth .saleBook')
+        .css('opacity', 0)
+        .waypoint(function(direction) {
+            if (direction === 'down') {
+                $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
+            } else {
+                $(this.element).animate({ opacity: 0 }).removeClass("animate__animated animate__fadeInUp")
+            }
+        }, {
+            offset: '95%'
+        })
+    $('#BookOfMonth .books h6')
+        .css('opacity', 0)
+        .waypoint(function(direction) {
+            if (direction === 'down') {
+                $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
+            } else {
+                $(this.element).animate({ opacity: 0 }).removeClass("animate__animated animate__fadeInUp")
+            }
+        }, {
+            offset: '95%'
+        })
+    $('#BookOfMonth .cover:eq(0)')
+        .css('opacity', 0)
+        .waypoint(function(direction) {
+            setTimeout(() => {
+                if (direction === 'down') {
+                    $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
+                } else {
+                    $(this.element).animate({ opacity: 0 }).removeClass("animate__animated animate__fadeInUp")
+                }
+            }, 150)
+        }, {
+            offset: '95%'
+        })
+    $('#BookOfMonth .cover:eq(1)')
+        .css('opacity', 0)
+        .waypoint(function(direction) {
+            setTimeout(() => {
+                if (direction === 'down') {
+                    $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
+                } else {
+                    $(this.element).animate({ opacity: 0 }).removeClass("animate__animated animate__fadeInUp")
+                }
+            }, 300)
+        }, {
+            offset: '95%'
+        })
+    $('#BookOfMonth .cover:eq(2)')
+        .css('opacity', 0)
+        .waypoint(function(direction) {
+            setTimeout(() => {
+                if (direction === 'down') {
+                    $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
+                } else {
+                    $(this.element).animate({ opacity: 0 }).removeClass("animate__animated animate__fadeInUp")
+                }
+            }, 450)
         }, {
             offset: '95%'
         })

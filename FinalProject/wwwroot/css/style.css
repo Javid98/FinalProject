@@ -1258,22 +1258,22 @@ header .menu #sandwich {
         -ms-flex: 3 1 0px;
             flex: 3 1 0;
   }
-  #Category .categories .category-1 {
+  #Category .categories .category:nth-child(1) {
     background-image: url(../image/klassika.jpg);
   }
-  #Category .categories .category-2 {
+  #Category .categories .category:nth-child(2) {
     background-image: url(../image/detektiv.jpg);
   }
-  #Category .categories .category-3 {
+  #Category .categories .category:nth-child(3) {
     background-image: url(../image/psixi.jpg);
   }
-  #Category .categories .category-4 {
+  #Category .categories .category:nth-child(4) {
     background-image: url(../image/elmi-kutlevi.jpg);
   }
-  #Category .categories .category-5 {
+  #Category .categories .category:nth-child(5) {
     background-image: url(../image/elmi-fantastika.jpg);
   }
-  #Category .categories .category-6 {
+  #Category .categories .category:nth-child(6) {
     background-image: url(../image/tarix.jpg);
   }
   #Footer {
@@ -2114,7 +2114,7 @@ header .menu #sandwich {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    height: 70vh;
+    height: 50vh;
   }
   #Category .categories .category {
     display: -webkit-box;
@@ -2151,22 +2151,22 @@ header .menu #sandwich {
         -ms-flex: 3.5 1 0px;
             flex: 3.5 1 0;
   }
-  #Category .categories .category-1 {
+  #Category .categories .category:nth-child(1) {
     background-image: url(../image/klassika.jpg);
   }
-  #Category .categories .category-2 {
+  #Category .categories .category:nth-child(2) {
     background-image: url(../image/detektiv.jpg);
   }
-  #Category .categories .category-3 {
+  #Category .categories .category:nth-child(3) {
     background-image: url(../image/psixi.jpg);
   }
-  #Category .categories .category-4 {
+  #Category .categories .category:nth-child(4) {
     background-image: url(../image/elmi-kutlevi.jpg);
   }
-  #Category .categories .category-5 {
+  #Category .categories .category:nth-child(5) {
     background-image: url(../image/elmi-fantastika.jpg);
   }
-  #Category .categories .category-6 {
+  #Category .categories .category:nth-child(6) {
     background-image: url(../image/tarix.jpg);
   }
   #newBooks .book-section .book {
@@ -3127,7 +3127,7 @@ header .menu #sandwich {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    height: 50vh;
+    height: 40vh;
   }
   #Category .categories .category {
     display: -webkit-box;
@@ -3163,22 +3163,22 @@ header .menu #sandwich {
         -ms-flex: 3.5 1 0px;
             flex: 3.5 1 0;
   }
-  #Category .categories .category-1 {
+  #Category .categories .category:nth-child(1) {
     background-image: url(../image/klassika.jpg);
   }
-  #Category .categories .category-2 {
+  #Category .categories .category:nth-child(2) {
     background-image: url(../image/detektiv.jpg);
   }
-  #Category .categories .category-3 {
+  #Category .categories .category:nth-child(3) {
     background-image: url(../image/psixi.jpg);
   }
-  #Category .categories .category-4 {
+  #Category .categories .category:nth-child(4) {
     background-image: url(../image/elmi-kutlevi.jpg);
   }
-  #Category .categories .category-5 {
+  #Category .categories .category:nth-child(5) {
     background-image: url(../image/elmi-fantastika.jpg);
   }
-  #Category .categories .category-6 {
+  #Category .categories .category:nth-child(6) {
     background-image: url(../image/tarix.jpg);
   }
   #bookDetail .book .content {
@@ -3362,7 +3362,7 @@ header .menu #sandwich {
   position: absolute;
   top: 0;
   left: 0;
-  width: 210px;
+  width: 208px;
   height: 100%;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -3494,26 +3494,32 @@ header .menu #sandwich {
   font-size: 14px;
 }
 
+#BookOfMonth .books h6 {
+  font-weight: bold;
+}
+
 #BookOfMonth .books .similar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  min-height: 150px;
 }
 
 #BookOfMonth .books .similar .cover {
   width: 25%;
-  height: 150px;
+  height: 100%;
   text-align: center;
 }
 
-#BookOfMonth .books .similar .cover img {
+#BookOfMonth .books .similar .cover a img {
   width: 100%;
-  height: 90%;
+  height: 130px;
+}
+
+#BookOfMonth .books .similar .cover span {
+  font-size: 14px;
 }
 
 #BookOfMonth .saleBook {
@@ -3582,9 +3588,21 @@ header .menu #sandwich {
   height: auto;
 }
 
+#newBooks .filter-section .filter-wrapper .activeFilters ul li {
+  font-weight: bold;
+  color: tomato;
+}
+
 #newBooks .filter-section .filter-wrapper .viewMore {
   cursor: pointer;
+  margin-top: 5px;
   color: dimgrey;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#newBooks .filter-section .filter-wrapper .viewMore:hover {
+  color: tomato;
 }
 
 #newBooks .filter-section .filter-wrapper h6 {
