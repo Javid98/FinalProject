@@ -1,6 +1,6 @@
 ﻿@model NewBooksVM
 @{
-	ViewData["Title"] = "Index";
+	ViewData["Title"] = "Yenilər";
 }
 
 
@@ -60,41 +60,53 @@
 								<li></li>
 							}
 							@if (Context.Request.QueryString.ToString().Contains("aslug=") &&
-						   Context.Request.QueryString.ToString().Contains("pslug=") == false &&
-						   Context.Request.QueryString.ToString().Contains("cslug=") == false)
+Context.Request.QueryString.ToString().Contains("pslug=") == false &&
+Context.Request.QueryString.ToString().Contains("cslug=") == false)
 							{
 								<li>
 									@ViewBag.Aslug
+								</li>
+								<li>
+									<a href="/NewBooks">Sıfırla</a>
 								</li>
 							}
 							@if (Context.Request.QueryString.ToString().Contains("pslug=") &&
-						   Context.Request.QueryString.ToString().Contains("aslug=") == false &&
-						   Context.Request.QueryString.ToString().Contains("cslug=") == false)
+Context.Request.QueryString.ToString().Contains("aslug=") == false &&
+Context.Request.QueryString.ToString().Contains("cslug=") == false)
 							{
 								<li>
 									@ViewBag.Pslug
+								</li>
+								<li>
+									<a href="/NewBooks">Sıfırla</a>
 								</li>
 							}
 							@if (Context.Request.QueryString.ToString().Contains("cslug=") &&
-						   Context.Request.QueryString.ToString().Contains("pslug=") == false &&
-						   Context.Request.QueryString.ToString().Contains("aslug=") == false)
+Context.Request.QueryString.ToString().Contains("pslug=") == false &&
+Context.Request.QueryString.ToString().Contains("aslug=") == false)
 							{
 								<li>
 									@ViewBag.Cslug
+								</li>
+								<li>
+									<a href="/NewBooks">Sıfırla</a>
 								</li>
 							}
 							@if (Context.Request.QueryString.ToString().Contains("aslug=") && Context.Request.QueryString.ToString().Contains("pslug=") &&
-							Context.Request.QueryString.ToString().Contains("cslug=") == false)
+Context.Request.QueryString.ToString().Contains("cslug=") == false)
 							{
 								<li>
 									@ViewBag.Aslug
 								</li>
 								<li>
 									@ViewBag.Pslug
+								</li>
+								<li>
+									<a href="/NewBooks">Sıfırla</a>
 								</li>
 							}
 							@if (Context.Request.QueryString.ToString().Contains("aslug=") && Context.Request.QueryString.ToString().Contains("cslug=") &&
-							Context.Request.QueryString.ToString().Contains("pslug=") == false)
+Context.Request.QueryString.ToString().Contains("pslug=") == false)
 							{
 								<li>
 									@ViewBag.Aslug
@@ -102,19 +114,26 @@
 								<li>
 									@ViewBag.Cslug
 								</li>
+								<li>
+									<a href="/NewBooks">Sıfırla</a>
+								</li>
+
 							}
 							@if (Context.Request.QueryString.ToString().Contains("cslug=") && Context.Request.QueryString.ToString().Contains("pslug=") &&
-							Context.Request.QueryString.ToString().Contains("aslug=") == false)
+Context.Request.QueryString.ToString().Contains("aslug=") == false)
 							{
 								<li>
-									@ViewBag.Aslug
+									@ViewBag.Cslug
 								</li>
 								<li>
 									@ViewBag.Pslug
 								</li>
+								<li>
+									<a href="/NewBooks">Sıfırla</a>
+								</li>
 							}
 							@if (Context.Request.QueryString.ToString().Contains("cslug=") && Context.Request.QueryString.ToString().Contains("pslug=") &&
-							Context.Request.QueryString.ToString().Contains("aslug="))
+Context.Request.QueryString.ToString().Contains("aslug="))
 							{
 								<li>
 									@ViewBag.Aslug
@@ -124,6 +143,9 @@
 								</li>
 								<li>
 									@ViewBag.Cslug
+								</li>
+								<li>
+									<a href="/NewBooks">Sıfırla</a>
 								</li>
 							}
 						</ul>
@@ -139,12 +161,14 @@
 									{
 										<li>
 											<a href="@Context.Request.Path@Context.Request.QueryString?pslug=@publisher.Slug">@publisher.Name</a>
+											<div class="mr-1 count">@publisher.BookCount</div>
 										</li>
 									}
 									else
 									{
 										<li>
 											<a href="@Context.Request.Path@Context.Request.QueryString&amp;pslug=@publisher.Slug">@publisher.Name</a>
+											<div class="mr-1 count">@publisher.BookCount</div>
 										</li>
 									}
 								}
@@ -162,12 +186,14 @@
 									{
 										<li>
 											<a href="@Context.Request.Path@Context.Request.QueryString?pslug=@publisher.Slug">@publisher.Name</a>
+											<div class="mr-1 count">@publisher.BookCount</div>
 										</li>
 									}
 									else
 									{
 										<li>
 											<a href="@Context.Request.Path@Context.Request.QueryString&amp;pslug=@publisher.Slug">@publisher.Name</a>
+											<div class="mr-1 count">@publisher.BookCount</div>
 										</li>
 									}
 								}
@@ -210,6 +236,12 @@
 									{
 										<li>
 											<a href="@Context.Request.Path@Context.Request.QueryString?aslug=@author.Slug">@author.Fullname</a>
+										</li>
+									}
+									else if (Context.Request.QueryString.ToString().Contains("page"))
+									{
+										<li>
+											<a href="@Context.Request.Path@Context.Request.QueryString&amp;aslug=@author.Slug">@author.Fullname</a>
 										</li>
 									}
 									else
@@ -272,28 +304,6 @@
 						</div>
 						<div class="viewMore">Hamısını gör</div>
 					}
-
-
-					<div class="mt-5 price">
-						<h6>Qiymət:</h6>
-						<ul>
-							<li>
-								<a href="">Platanus Publishing</a>
-							</li>
-							<li>
-								<a href="">Platanus Publishing</a>
-							</li>
-							<li>
-								<a href="">Platanus Publishing</a>
-							</li>
-							<li>
-								<a href="">Platanus Publishing</a>
-							</li>
-							<li>
-								<a href="">Platanus Publishing</a>
-							</li>
-						</ul>
-					</div>
 				</div>
 			</div>
 			<div class="col-lg-9 col-sm-12 book-section">
@@ -314,7 +324,7 @@
 							</div>
 						</div>
 
-						<p class="col-5">2930 kitabdan 1-16 arası göstərilir</p>
+						<p class="col-5">@Model.Books.Count() kitabdan 1-16 arası göstərilir</p>
 					</div>
 					<div class="books">
 						@foreach (Book book in Model.Books)
@@ -355,17 +365,75 @@
 		</div>
 		<nav class="pagination mt-4 row justify-content-center" aria-label="...">
 			<ul class="pagination">
-				<li class="page-item disabled">
-					<a class="page-link" href="#" tabindex="-1">Əvvəlki</a>
-				</li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item active">
-					<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item">
-					<a class="page-link" href="#">Sonrakı</a>
-				</li>
+				@for (int i = 1; i <= ViewBag.PageCount; i++)
+				{
+					if (Context.Request.QueryString.ToString().Trim() == "")
+					{
+						if (i == ViewBag.Page)
+						{
+							<li class="page-item" style="pointer-events:none">
+								<a class="page-link" style="background-color:#236bdf;color:white" href="/NewBooks/Index?page=@i">@i</a>
+							</li>
+						}
+						else
+						{
+							<li class="page-item">
+								<a class="page-link" href="/NewBooks/Index?page=@i">@i</a>
+							</li>
+						}
+
+					}
+					else if (Context.Request.QueryString.ToString().Contains("page"))
+					{
+						@if (Context.Request.QueryString.ToString().Contains("aslug=") || Context.Request.QueryString.ToString().Contains("cslug=") ||
+		  Context.Request.QueryString.ToString().Contains("pslug="))
+						{
+							if (i == ViewBag.Page)
+							{
+								<li class="page-item" style="pointer-events:none">
+									<a class="page-link" style="background-color:#236bdf;color:white" href="@Context.Request.Path@Context.Request.QueryString.ToString().Substring(0,Context.Request.QueryString.ToString().IndexOf("page")-1)&amp;page=@i">@i</a>
+								</li>
+							}
+							else
+							{
+								<li class="page-item">
+									<a class="page-link" href="@Context.Request.Path@Context.Request.QueryString.ToString().Substring(0,Context.Request.QueryString.ToString().IndexOf("page")-1)&amp;page=@i">@i</a>
+								</li>
+							}
+						}
+						else
+						{
+							if (i == ViewBag.Page)
+							{
+								<li class="page-item" style="pointer-events:none">
+									<a class="page-link" style="background-color:#236bdf;color:white" href="@Context.Request.Path@Context.Request.QueryString.ToString().Substring(0,Context.Request.QueryString.ToString().IndexOf("page")-1)?page=@i">@i</a>
+								</li>
+							}
+							else
+							{
+								<li class="page-item">
+									<a class="page-link" href="@Context.Request.Path@Context.Request.QueryString.ToString().Substring(0,Context.Request.QueryString.ToString().IndexOf("page")-1)?page=@i">@i</a>
+								</li>
+							}
+						}
+
+					}
+					else
+					{
+						if (i == ViewBag.Page)
+						{
+							<li class="page-item" style="pointer-events:none">
+								<a class="page-link" style="background-color:#236bdf;color:white" href="@Context.Request.Path@Context.Request.QueryString&amp;page=@i">@i</a>
+							</li>
+						}
+						else
+						{
+							<li class="page-item">
+								<a class="page-link" href="@Context.Request.Path@Context.Request.QueryString&amp;page=@i">@i</a>
+							</li>
+						}
+					}
+				}
 			</ul>
 		</nav>
 	</div>

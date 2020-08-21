@@ -17,9 +17,12 @@ namespace FinalProject.Controllers
 		{
 			_db = db;
 		}
-		public IActionResult Index(string pslug, string aslug, string cslug)
+		public IActionResult Index(string pslug, string aslug, string cslug,int page=1)
 		{
+			ViewBag.Page = page;
+			ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.Count() / 3);
 			List<Book> books = new List<Book>();
+			
 			List<BookCategory> bookCategories = new List<BookCategory>();
 			ViewBag.Aslug = "";
 			ViewBag.Pslug = "";
@@ -39,13 +42,10 @@ namespace FinalProject.Controllers
 					if (books.FirstOrDefault(b => b.Id == book.Id) == null)
 					{
 						books.Add(book);
-						//List<Book> removeBooks = books.Where(b => b.PublisherId != book.Id).ToList();
-						//foreach (Book removeBook in removeBooks)
-						//{
-						//	books.Remove(removeBook);
-						//}
 					}
 				}
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				books = books.Skip((page - 1) * 3).Take(3).ToList();
 			}
 			else if (pslug == null && aslug != null && cslug == null)
 			{
@@ -59,6 +59,8 @@ namespace FinalProject.Controllers
 						books.Add(newBook);
 					}
 				}
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				books = books.Skip((page - 1) * 3).Take(3).ToList();
 			}
 			else if (pslug == null && aslug == null && cslug != null)
 			{
@@ -72,6 +74,8 @@ namespace FinalProject.Controllers
 						books.Add(newBook);
 					}
 				}
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				books = books.Skip((page - 1) * 3).Take(3).ToList();
 			}
 			else if (pslug != null && aslug != null && cslug == null)
 			{
@@ -88,6 +92,8 @@ namespace FinalProject.Controllers
 						books.Add(newBook);
 					}
 				}
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				books = books.Skip((page - 1) * 3).Take(3).ToList();
 			}
 			else if (pslug != null && aslug == null && cslug != null)
 			{
@@ -95,7 +101,7 @@ namespace FinalProject.Controllers
 				bookCategories = _db.BookCategories.Include(bc => bc.Category).Include(bc => bc.Book).Where(bc => bc.Category.Slug == cslug).ToList();
 				List<BookCategory> pcBooks = bookCategories.Where(bc => bc.Book.PublisherId == publisher.Id).ToList();
 				ViewBag.Pslug = publisher.Name;
-				ViewBag.Cslug = bookCategories.FirstOrDefault(bc => bc.Book.PublisherId == publisher.Id).Category.Name;
+				ViewBag.Cslug = _db.BookCategories.Include(bc => bc.Book).FirstOrDefault(bc => bc.Book.PublisherId == publisher.Id).Category.Name;
 				foreach (BookCategory bc in pcBooks)
 				{
 					Book newBook = _db.Books.FirstOrDefault(b => b.Id == bc.BookId);
@@ -104,7 +110,8 @@ namespace FinalProject.Controllers
 						books.Add(newBook);
 					}
 				}
-
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				books = books.Skip((page - 1) * 3).Take(3).ToList();
 			}
 			else if (pslug == null && aslug != null && cslug != null)
 			{
@@ -131,6 +138,8 @@ namespace FinalProject.Controllers
 					}
 
 				}
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				books = books.Skip((page - 1) * 3).Take(3).ToList();
 			}
 			else if (pslug != null && aslug != null && cslug != null)
 			{
@@ -162,10 +171,12 @@ namespace FinalProject.Controllers
 					}
 
 				}
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				books = books.Skip((page - 1) * 3).Take(3).ToList();
 			}
 			else
 			{
-				books = _db.Books.ToList();
+				books = _db.Books.Skip((page - 1) * 3).Take(3).ToList();
 			}
 			NewBooksVM model = new NewBooksVM
 			{

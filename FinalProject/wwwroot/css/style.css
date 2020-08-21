@@ -1016,6 +1016,7 @@ header .menu #sandwich {
   .activeMenu .social .socialUl li span {
     position: absolute;
     top: 0;
+    border-radius: 5px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -1355,6 +1356,7 @@ header .menu #sandwich {
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: 5px;
     width: 100%;
     height: 100%;
     background: #000;
@@ -1475,6 +1477,7 @@ header .menu #sandwich {
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: 5px;
     width: 100%;
     height: 100%;
     background: #000;
@@ -1899,6 +1902,7 @@ header .menu #sandwich {
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: 5px;
     width: 100%;
     height: 100%;
     background: #000;
@@ -2270,6 +2274,7 @@ header .menu #sandwich {
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: 5px;
     width: 100%;
     height: 100%;
     background: #000;
@@ -2392,6 +2397,7 @@ header .menu #sandwich {
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: 5px;
     width: 100%;
     height: 100%;
     background: #000;
@@ -2912,6 +2918,7 @@ header .menu #sandwich {
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: 5px;
     width: 100%;
     height: 100%;
     background: #000;
@@ -3954,8 +3961,10 @@ header .menu #sandwich {
 
 #Contact .contactInfo .social .socialUl li span {
   position: absolute;
+  border-radius: 5px;
   top: 0;
   left: 0;
+  border-radius: 5px;
   width: 100%;
   height: 100%;
   background: #000;
@@ -4251,6 +4260,7 @@ header .menu #sandwich {
   position: absolute;
   top: 0;
   left: 0;
+  border-radius: 5px;
   width: 100%;
   height: 100%;
   background: #000;
