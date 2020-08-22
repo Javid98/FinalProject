@@ -9,6 +9,7 @@ namespace FinalProject.ViewModels
 	public class NewBooksVM
 	{
 		public ICollection<Book> Books { get; set; }
+		public ICollection<Book> AllBooks { get; set; }
 		public Book Book { get; set; }
 		public ICollection<BookAuthor> BookAuthors { get; set; }
 		public ICollection<BookAuthor> rBookAuthors { get; set; }

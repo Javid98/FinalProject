@@ -81,7 +81,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\t\t\t\t<div class=\"swiper-slide\">\r\n\t\t\t\t\t<div class=\"sliderCard\">\r\n\t\t\t\t\t\t<div class=\"sliderImage\">\r\n\t\t\t\t\t\t\t<a href=\"\">\r\n\t\t\t\t\t\t\t\t");
             EndContext();
             BeginContext(430, 42, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "638c582e944a4eaf9d04f6cf0e7f3d87", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "35797ba6b4f649ceb08a8b2c80e10eb2", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -162,7 +162,7 @@ AddHtmlAttributeValue("", 448, book.ImagePath, 448, 15, false);
             WriteLiteral("\t\t</div>\r\n\t</div>\r\n</section>\r\n\r\n<!-- Slider End -->\r\n<!-- Book Start -->\r\n\r\n<section class=\"Books\" style=\"padding-top: 60px;\">\r\n\t<div class=\"container\">\r\n\t\t<div class=\"title\">\r\n\t\t\t");
             EndContext();
             BeginContext(985, 79, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bac5de114d0f4269af1b26758c30222a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f41af9fdd29a485aac566f93b34f5934", async() => {
                 BeginContext(1033, 27, true);
                 WriteLiteral("\r\n\t\t\t\t<h3>Yenilər</h3>\r\n\t\t\t");
                 EndContext();
@@ -195,7 +195,7 @@ AddHtmlAttributeValue("", 448, book.ImagePath, 448, 15, false);
             WriteLiteral("\t\t\t\t<div class=\"bookCard\">\r\n\t\t\t\t\t<div class=\"box\">\r\n\t\t\t\t\t\t<div class=\"imgBox\">\r\n\t\t\t\t\t\t\t");
             EndContext();
             BeginContext(1275, 42, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "aeef717922614ecc87b794b375c4f8bc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6c5e6d50a7404b2083c2d337057e14ba", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -287,7 +287,7 @@ AddHtmlAttributeValue("", 1293, book.ImagePath, 1293, 15, false);
             WriteLiteral("\r\n\t\t\t\t\t\t\t\t\t\t");
             EndContext();
             BeginContext(1710, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9af28347cb964fb4bf88c5b3b47e1946", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "64540ea3a3b343f598eb382bb433f360", async() => {
                 BeginContext(1793, 10, true);
                 WriteLiteral("Kitaba keç");
                 EndContext();
@@ -344,7 +344,7 @@ AddHtmlAttributeValue("", 1293, book.ImagePath, 1293, 15, false);
             WriteLiteral("...\r\n\t\t\t\t\t\t\t\t\t\t");
             EndContext();
             BeginContext(1934, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1943f1dfc3c34050bbe25e3116d56b28", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b41edd9cb3341569548179dba6b0900", async() => {
                 BeginContext(2011, 10, true);
                 WriteLiteral("Ardını oxu");
                 EndContext();
@@ -407,7 +407,7 @@ AddHtmlAttributeValue("", 1293, book.ImagePath, 1293, 15, false);
             WriteLiteral("\t\t</div>\r\n\t</div>\r\n</section>\r\n\r\n<!-- Book End -->\r\n<!-- Sale Start -->\r\n\r\n<section id=\"Sale\">\r\n\t<div class=\"container\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"left mt-3 col-md-6 col-12\">\r\n\t\t\t\t<a href=\"\">\r\n\t\t\t\t\t");
             EndContext();
             BeginContext(2406, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "b76bf91b1f2c42e883415bb663ffe65b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "1cc149c9cd784d7a951e012f0865eea9", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -426,7 +426,7 @@ AddHtmlAttributeValue("", 1293, book.ImagePath, 1293, 15, false);
             WriteLiteral("\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"right mt-3 col-md-6 col-12\">\r\n\t\t\t\t<a href=\"\">\r\n\t\t\t\t\t");
             EndContext();
             BeginContext(2531, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "d0e14716984d4cb7a4542fc2ec016737", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "cc85d81539b54a48baedc428b8245a8d", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -445,7 +445,7 @@ AddHtmlAttributeValue("", 1293, book.ImagePath, 1293, 15, false);
             WriteLiteral("\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</section>\r\n\r\n<!-- Sale End -->\r\n<!-- Book Start -->\r\n\r\n<section class=\"Books\">\r\n\t<div class=\"container\">\r\n\t\t<div class=\"title\">\r\n\t\t\t");
             EndContext();
             BeginContext(2741, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1f3840c1d1104dfb96827eb2872731a8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ce5453281bbe4a6484af36fd24b5f308", async() => {
                 BeginContext(2792, 34, true);
                 WriteLiteral("\r\n\t\t\t\t<h3>Çox satılanlar</h3>\r\n\t\t\t");
                 EndContext();
@@ -478,7 +478,7 @@ AddHtmlAttributeValue("", 1293, book.ImagePath, 1293, 15, false);
             WriteLiteral("\t\t\t\t<div class=\"bookCard\">\r\n\t\t\t\t\t<div class=\"box\">\r\n\t\t\t\t\t\t<div class=\"imgBox\">\r\n\t\t\t\t\t\t\t");
             EndContext();
             BeginContext(3048, 42, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "341047a6e69d440286ca8ba3715ee345", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "199ac4c2db474bc69ee544f89c4b9e07", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -570,7 +570,7 @@ AddHtmlAttributeValue("", 3066, book.ImagePath, 3066, 15, false);
             WriteLiteral("\r\n\t\t\t\t\t\t\t\t\t\t");
             EndContext();
             BeginContext(3483, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3fd7eeba8a048239e1539660caaa378", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "30a0b1a0d6c141bb814be95934311143", async() => {
                 BeginContext(3566, 10, true);
                 WriteLiteral("Kitaba keç");
                 EndContext();
@@ -627,7 +627,7 @@ AddHtmlAttributeValue("", 3066, book.ImagePath, 3066, 15, false);
             WriteLiteral("...\r\n\t\t\t\t\t\t\t\t\t\t");
             EndContext();
             BeginContext(3707, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "040eb3a31e9649d4816359dd693061d6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1211b34893b41a1a2c1354f5042d581", async() => {
                 BeginContext(3784, 10, true);
                 WriteLiteral("Ardını oxu");
                 EndContext();
@@ -724,7 +724,7 @@ AddHtmlAttributeValue("", 3066, book.ImagePath, 3066, 15, false);
             WriteLiteral("on id=\"BookOfMonth\">\r\n\t<div class=\"mt-3 container\">\r\n\t\t<div class=\"title\">\r\n\t\t\t<a href=\"\">\r\n\t\t\t\t<h3>Ayın kitabı</h3>\r\n\t\t\t</a>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"book col-lg-2 col-sm-4 col-4\">\r\n\t\t\t\t<a href=\"\">");
             EndContext();
             BeginContext(5216, 48, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "c00521db966a4532b4db174070bf1371", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "922ea7711d4e4a3c85a6ad9de0ddf3d0", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -769,7 +769,7 @@ AddHtmlAttributeValue("", 5234, Model.Book.ImagePath, 5234, 21, false);
             WriteLiteral("\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(5444, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "385908dbcd3946f3a1c6f0036370fbdf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "352911148548401aad797bd026248324", async() => {
                 BeginContext(5527, 10, true);
                 WriteLiteral("Kitaba keç");
                 EndContext();
@@ -826,7 +826,7 @@ AddHtmlAttributeValue("", 5234, Model.Book.ImagePath, 5234, 21, false);
             WriteLiteral("...\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(5646, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4b76e01da9ce4374bb48d42fff4e0fe5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3603778bfc194ca0bd8e0876e055d30c", async() => {
                 BeginContext(5729, 10, true);
                 WriteLiteral("Ardını oxu");
                 EndContext();
@@ -880,9 +880,9 @@ AddHtmlAttributeValue("", 5234, Model.Book.ImagePath, 5234, 21, false);
             WriteLiteral("\t\t\t\t\t\t<div class=\"cover col-3 col-lg-4 col-sm-3\">\r\n\t\t\t\t\t\t\t");
             EndContext();
             BeginContext(6023, 149, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bbccd15d49964ff49b975de41c0461d1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "348b3c17d821439fb275e989ea22433d", async() => {
                 BeginContext(6113, 55, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "5d648b6c017140cc858d44f41460a90f", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "89b6efd19faa4f00814d3788e73d52bc", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -955,7 +955,7 @@ AddHtmlAttributeValue("", 6131, bookCategory.Book.ImagePath, 6131, 28, false);
             WriteLiteral("\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"saleBook mt-4 col-lg-3 col-sm-12 col-12\">\r\n\t\t\t\t<a href=\"\">\r\n\t\t\t\t\t");
             EndContext();
             BeginContext(6344, 39, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "46748ee4c94e4fb3b45c7eb531642c9e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "c2a33090dff34f8f95f7723c8da0c4be", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
