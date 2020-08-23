@@ -434,6 +434,9 @@ header .menu #sandwich {
     color: #aaa;
     font-weight: 500;
   }
+  #Register .forms-container .signin-signup form .input-field span {
+    width: 450px;
+  }
   #Register .forms-container .signin-signup form .bTn {
     width: 150px;
     height: 49px;
@@ -458,6 +461,8 @@ header .menu #sandwich {
   #Register .forms-container .signin-signup form.sign-up-form {
     z-index: 1;
     opacity: 0;
+    -webkit-transform: translateY(40px);
+            transform: translateY(40px);
   }
   #Register .panels-container {
     position: absolute;
@@ -701,6 +706,9 @@ header .menu #sandwich {
   #Register .forms-container .signin-signup form .input-field input::placeholder {
     color: #aaa;
     font-weight: 500;
+  }
+  #Register .forms-container .signin-signup form .input-field span {
+    width: 450px;
   }
   #Register .forms-container .signin-signup form .bTn {
     width: 150px;

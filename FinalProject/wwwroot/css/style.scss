@@ -340,6 +340,9 @@ header {
                                 font-weight: 500;
                             }
                         }
+                        span {
+                            width: 450px;
+                        }
                     }
                     .bTn {
                         width: 150px;
@@ -365,6 +368,7 @@ header {
                 form.sign-up-form {
                     z-index: 1;
                     opacity: 0;
+                    transform: translateY(40px);
                 }
             }
         }
@@ -601,6 +605,9 @@ header {
                                 color: #aaa;
                                 font-weight: 500;
                             }
+                        }
+                        span {
+                            width: 450px;
                         }
                     }
                     .bTn {
