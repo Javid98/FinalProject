@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using FinalProject.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using FinalProject.Models;
 
 namespace FinalProject
 {
@@ -37,8 +38,15 @@ namespace FinalProject
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
-			services.AddDefaultIdentity<IdentityUser>()
-				.AddEntityFrameworkStores<ApplicationDbContext>();
+
+			services.AddIdentity<AppUser, IdentityRole>(identityOptions => {
+				identityOptions.Password.RequireDigit = true;
+				identityOptions.Password.RequiredLength = 8;
+
+				identityOptions.Lockout.MaxFailedAccessAttempts = 3;
+				identityOptions.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+				identityOptions.Lockout.AllowedForNewUsers = true;
+			}).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}

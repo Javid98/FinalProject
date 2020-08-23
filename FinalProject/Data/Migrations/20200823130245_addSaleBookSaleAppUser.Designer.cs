@@ -4,14 +4,16 @@ using FinalProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200823130245_addSaleBookSaleAppUser")]
+    partial class addSaleBookSaleAppUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,9 +36,7 @@ namespace FinalProject.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("FullName");
 
                     b.Property<bool>("IsBlocked");
 
@@ -273,31 +273,6 @@ namespace FinalProject.Data.Migrations
                     b.ToTable("SaleBooks");
                 });
 
-            modelBuilder.Entity("FinalProject.Models.UserDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Age");
-
-                    b.Property<string>("AppUserId");
-
-                    b.Property<string>("FacebookLink");
-
-                    b.Property<string>("InstagramLink");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId")
-                        .IsUnique()
-                        .HasFilter("[AppUserId] IS NOT NULL");
-
-                    b.ToTable("UserDetail");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -472,13 +447,6 @@ namespace FinalProject.Data.Migrations
                         .WithMany()
                         .HasForeignKey("SaleId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("FinalProject.Models.UserDetail", b =>
-                {
-                    b.HasOne("FinalProject.Models.AppUser", "AppUser")
-                        .WithOne("UserDetail")
-                        .HasForeignKey("FinalProject.Models.UserDetail", "AppUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

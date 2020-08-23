@@ -376,19 +376,19 @@ Context.Request.QueryString.ToString().Contains("aslug="))
 				<div class="container">
 					<div class="col-12 col-sm-12 books-count">
 						@*<span class="col-md-1 col-sm-2 col-2">Sırala:</span>
-						<div class="dropdown show">
-							<a class="btn btn-outline-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Çox satılana görə<i class="ml-2 fas fa-angle-down"></i>
-							</a>
+							<div class="dropdown show">
+								<a class="btn btn-outline-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Çox satılana görə<i class="ml-2 fas fa-angle-down"></i>
+								</a>
 
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="z-index:200">
-								<a class="dropdown-item" href="#">Çox satılana görə</a>
-								<a class="dropdown-item" href="#">Bahalıdan ucuza</a>
-								<a class="dropdown-item" href="#">Ucuzdan bahalıya</a>
-								<a class="dropdown-item" href="#">Kitab adına görə(A-dan Z-yə)</a>
-								<a class="dropdown-item" href="#">Kitab adına görə(Z-dən A-ya)</a>
-							</div>
-						</div>*@
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="z-index:200">
+									<a class="dropdown-item" href="#">Çox satılana görə</a>
+									<a class="dropdown-item" href="#">Bahalıdan ucuza</a>
+									<a class="dropdown-item" href="#">Ucuzdan bahalıya</a>
+									<a class="dropdown-item" href="#">Kitab adına görə(A-dan Z-yə)</a>
+									<a class="dropdown-item" href="#">Kitab adına görə(Z-dən A-ya)</a>
+								</div>
+							</div>*@
 						<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan 1-16 arası göstərilir</p>
 					</div>
 					<div class="books">
@@ -451,7 +451,7 @@ Context.Request.QueryString.ToString().Contains("aslug="))
 					else if (Context.Request.QueryString.ToString().Contains("page"))
 					{
 						@if (Context.Request.QueryString.ToString().Contains("aslug=") || Context.Request.QueryString.ToString().Contains("cslug=") ||
-		  Context.Request.QueryString.ToString().Contains("pslug="))
+		Context.Request.QueryString.ToString().Contains("pslug="))
 						{
 							if (i == ViewBag.Page)
 							{
@@ -478,6 +478,25 @@ Context.Request.QueryString.ToString().Contains("aslug="))
 							{
 								<li class="page-item">
 									<a class="page-link" href="@Context.Request.Path@Context.Request.QueryString.ToString().Substring(0,Context.Request.QueryString.ToString().IndexOf("page")-1)?page=@i">@i</a>
+								</li>
+							}
+						}
+					}
+					else if (Context.Request.QueryString.ToString().Contains("page") == false)
+					{
+						if (Context.Request.QueryString.ToString().Contains("aslug=") || Context.Request.QueryString.ToString().Contains("cslug=") ||
+			   Context.Request.QueryString.ToString().Contains("pslug="))
+						{
+							if (i == ViewBag.Page)
+							{
+								<li class="page-item" style="pointer-events:none">
+									<a class="page-link" style="background-color:#236bdf;color:white" href="@Context.Request.Path@Context.Request.QueryString&amp;page=@i">@i</a>
+								</li>
+							}
+							else
+							{
+								<li class="page-item">
+									<a class="page-link" href="@Context.Request.Path@Context.Request.QueryString&amp;page=@i">@i</a>
 								</li>
 							}
 						}

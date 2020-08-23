@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Data
 {
-	public class ApplicationDbContext : IdentityDbContext
+	public class ApplicationDbContext : IdentityDbContext<AppUser>
 	{
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 			: base(options)
@@ -20,5 +20,7 @@ namespace FinalProject.Data
 		public DbSet<Category> Categories { get; set; }
 		public DbSet<BookCategory> BookCategories { get; set; }
 		public DbSet<BookAuthor> BookAuthors { get; set; }
+		public DbSet<Sale> Sales { get; set; }
+		public DbSet<SaleBook> SaleBooks { get; set; }
 	}
 }

@@ -831,7 +831,7 @@ header .menu #sandwich {
     -webkit-transform: translate(-50%, 100%);
             transform: translate(-50%, 100%);
     right: initial;
-    bottom: 32%;
+    bottom: 27%;
   }
   #Register.sign-up-mode .left-panel {
     pointer-events: none;
@@ -2736,7 +2736,7 @@ header .menu #sandwich {
     -webkit-transform: translate(-50%, 100%);
             transform: translate(-50%, 100%);
     right: initial;
-    bottom: 32%;
+    bottom: 27%;
   }
   #Register.sign-up-mode .left-panel {
     pointer-events: none;
