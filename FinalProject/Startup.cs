@@ -42,6 +42,9 @@ namespace FinalProject
 			services.AddIdentity<AppUser, IdentityRole>(identityOptions => {
 				identityOptions.Password.RequireDigit = true;
 				identityOptions.Password.RequiredLength = 8;
+				identityOptions.Password.RequireLowercase = false;
+				identityOptions.Password.RequireUppercase = false;
+				identityOptions.Password.RequireNonAlphanumeric = false;
 
 				identityOptions.Lockout.MaxFailedAccessAttempts = 3;
 				identityOptions.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);

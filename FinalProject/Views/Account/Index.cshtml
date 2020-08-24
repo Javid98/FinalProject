@@ -4,14 +4,14 @@
 }
 
 <!-- Register Start -->
-
 <section id="Register">
 	<div class="forms-container">
 		<div class="signin-signup">
-			<form action="/Login" method="post" class="sign-in-form">
+			<form method="post" asp-action="Login" class="sign-in-form">
 				<h2 class="title">
 					Giriş
 				</h2>
+				<div asp-validation-summary="ModelOnly" class="errors alert alert-danger"></div>
 				<div class="input-field">
 					<i class="fas fa-user"></i>
 					<input asp-for="LoginUsername" placeholder="Username">
@@ -29,7 +29,7 @@
 				<button type="submit" class="bTn solid">Daxil ol</button>
 			</form>
 
-			<form action="/Account/Register" method="post" class="sign-up-form">
+			<form asp-action="Register" method="post" class="sign-up-form">
 				<h2 class="title">
 					Qeydiyyat
 				</h2>
@@ -89,10 +89,4 @@
 @section Scripts{
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
-	@*<script>
-			if ($(".errors").text() == "") {
-				console.log($(".errors"))
-			}
-		</script>*@
-
 }

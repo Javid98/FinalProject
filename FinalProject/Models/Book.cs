@@ -28,6 +28,8 @@ namespace FinalProject.Models
 		public virtual BookFeature BookFeature { get; set; }
 		public ICollection<BookAuthor> BookAuthors { get; set; }
 		public ICollection<BookCategory> BookCategories { get; set; }
+		public ICollection<SaleBook> SaleBooks { get; set; }
+		public ICollection<FavoriteBook> FavoriteBooks { get; set; }
 		[NotMapped]
 		public IFormFile Photo { get; set; }
 	}

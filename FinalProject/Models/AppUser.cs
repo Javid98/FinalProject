@@ -14,7 +14,9 @@ namespace FinalProject.Models
         [Required,StringLength(50)]
 		public string FullName { get; set; }
 		public bool IsBlocked { get; set; } = false;
-		public ICollection<SaleBook> Purchases { get; set; }
+		public ICollection<Sale> Purchases { get; set; }
+		public ICollection<SaleBook> SoldBook { get; set; }
 		public virtual UserDetail UserDetail { get; set; }
+		public ICollection<FavoriteBook> FavoriteBooks { get; set; }
 	}
 }

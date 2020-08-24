@@ -22,5 +22,7 @@ namespace FinalProject.Data
 		public DbSet<BookAuthor> BookAuthors { get; set; }
 		public DbSet<Sale> Sales { get; set; }
 		public DbSet<SaleBook> SaleBooks { get; set; }
+		public DbSet<UserDetail> UserDetails { get; set; }
+		public DbSet<FavoriteBook> FavoriteBooks { get; set; }
 	}
 }

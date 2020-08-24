@@ -4,14 +4,16 @@ using FinalProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200824120339_addUserDetailvol2")]
+    partial class addUserDetailvol2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -207,25 +209,6 @@ namespace FinalProject.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("FinalProject.Models.FavoriteBook", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AppUserId");
-
-                    b.Property<int>("BookId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.HasIndex("BookId");
-
-                    b.ToTable("FavoriteBooks");
-                });
-
             modelBuilder.Entity("FinalProject.Models.Publisher", b =>
                 {
                     b.Property<int>("Id")
@@ -255,8 +238,6 @@ namespace FinalProject.Data.Migrations
                     b.Property<string>("AppUserId");
 
                     b.Property<DateTime>("Date");
-
-                    b.Property<string>("DeliveryLocation");
 
                     b.Property<double>("Total");
 
@@ -305,10 +286,6 @@ namespace FinalProject.Data.Migrations
                     b.Property<string>("AppUserId");
 
                     b.Property<string>("FacebookLink");
-
-                    b.Property<string>("Gender");
-
-                    b.Property<string>("ImagePath");
 
                     b.Property<string>("InstagramLink");
 
@@ -475,38 +452,26 @@ namespace FinalProject.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("FinalProject.Models.FavoriteBook", b =>
-                {
-                    b.HasOne("FinalProject.Models.AppUser", "AppUser")
-                        .WithMany("FavoriteBooks")
-                        .HasForeignKey("AppUserId");
-
-                    b.HasOne("FinalProject.Models.Book", "Book")
-                        .WithMany("FavoriteBooks")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("FinalProject.Models.Sale", b =>
                 {
                     b.HasOne("FinalProject.Models.AppUser", "AppUser")
-                        .WithMany("Purchases")
+                        .WithMany()
                         .HasForeignKey("AppUserId");
                 });
 
             modelBuilder.Entity("FinalProject.Models.SaleBook", b =>
                 {
                     b.HasOne("FinalProject.Models.AppUser", "AppUser")
-                        .WithMany("SoldBook")
+                        .WithMany("Purchases")
                         .HasForeignKey("AppUserId");
 
                     b.HasOne("FinalProject.Models.Book", "Book")
-                        .WithMany("SaleBooks")
+                        .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FinalProject.Models.Sale", "Sale")
-                        .WithMany("SaleBooks")
+                        .WithMany()
                         .HasForeignKey("SaleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

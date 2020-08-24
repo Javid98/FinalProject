@@ -1,0 +1,392 @@
+﻿@model ProfileVM
+@{
+	ViewData["Title"] = "Profil";
+}
+
+
+<!-- Modal Photo -->
+<div class="modal fade" id="ModalPhoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="currentPhoto">
+					<h4>Current Photo:</h4>
+					<img src="" alt="">
+				</div>
+				<form method="post">
+					<h4>New Photo:</h4>
+					<input asp-for="UserDetail.Photo" class="form-control" accept="image/*">
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+						<button type="submit" class="btn btn-primary">Yadda saxla</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Settings -->
+<div class="modal fade" id="ModalSettings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Profil Məlumatları</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form asp-action="SaveChanges" method="post">
+					<span>Ad və Soyad</span>
+					<input asp-for="AppUser.FullName" class="form-control">
+					<span>Cinsiyyət</span>
+					<select class="form-control" name="Gender">
+						<option value="Kişi">Kişi</option>
+						<option value="Qadın">Qadın</option>
+						<option value="Digər">Digər</option>
+					</select>
+					<span>Doğum tarixi</span>
+					<input asp-for="BirthDay" asp-format="{0:dd/MM/yyyy}" class="form-control">
+					<span>Mobil nömrə</span>
+					<input asp-for="UserDetail.PhoneNumber" class="form-control">
+					<span>Facebook(Link)</span>
+					<input asp-for="UserDetail.FacebookLink" class="form-control">
+					<span>Instagram(Link)</span>
+					<input asp-for="UserDetail.InstagramLink" class="form-control">
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+						<button type="submit" class="btn btn-primary">Yadda saxla</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Favorite -->
+<div class="modal fade" id="ModalFavorite" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Seçilmiş kitablar</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="books">
+					<div class="book">
+						<div class="image">
+							<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+						</div>
+						<div class="title">
+							<h6>Maze Runner Maze Runner Maze Runner</h6>
+							<p><a href="">Stephen King</a></p>
+							<span><a href="">Platanus Publishing</a></span>
+						</div>
+						<div class="delete">
+							<i class="fas fa-minus-circle"></i>
+						</div>
+					</div>
+					<div class="book">
+						<div class="image">
+							<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+						</div>
+						<div class="title">
+							<h6>Maze Runner Maze Runner Maze Runner</h6>
+							<p><a href="">Stephen King</a></p>
+							<span><a href="">Platanus Publishing</a></span>
+						</div>
+						<div class="delete">
+							<i class="fas fa-minus-circle"></i>
+						</div>
+					</div>
+					<div class="book">
+						<div class="image">
+							<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+						</div>
+						<div class="title">
+							<h6>Maze Runner Maze Runner Maze Runner</h6>
+							<p><a href="">Stephen King</a></p>
+							<span><a href="">Platanus Publishing</a></span>
+						</div>
+						<div class="delete">
+							<i class="fas fa-minus-circle"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Sales -->
+<div class="modal fade" id="ModalSales" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Alışlar</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<ul>
+					<li class="saleDate">
+						<h6>20/09/2020</h6>
+						<i class="fas fa-angle-down"></i>
+					</li>
+					<li class="books">
+						<div class="book">
+							<div class="image">
+								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+							</div>
+							<div class="title">
+								<h6>Maze Runner Maze Runner Maze Runner</h6>
+								<p><a href="">Stephen King</a></p>
+								<span><a href="">Platanus Publishing</a></span>
+							</div>
+						</div>
+						<div class="book">
+							<div class="image">
+								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+							</div>
+							<div class="title">
+								<h6>Maze Runner Maze Runner Maze Runner</h6>
+								<p><a href="">Stephen King</a></p>
+								<span><a href="">Platanus Publishing</a></span>
+							</div>
+						</div>
+						<div class="book">
+							<div class="image">
+								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+							</div>
+							<div class="title">
+								<h6>Maze Runner Maze Runner Maze Runner</h6>
+								<p><a href="">Stephen King</a></p>
+								<span><a href="">Platanus Publishing</a></span>
+							</div>
+						</div>
+						<h6 class="total">Total: </h6>
+					</li>
+					<li class="saleDate">
+						<h6>20/09/2020</h6>
+						<i class="fas fa-angle-down"></i>
+					</li>
+					<li class="books">
+						<div class="book">
+							<div class="image">
+								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+							</div>
+							<div class="title">
+								<h6>Maze Runner Maze Runner Maze Runner</h6>
+								<p><a href="">Stephen King</a></p>
+								<span><a href="">Platanus Publishing</a></span>
+							</div>
+						</div>
+						<div class="book">
+							<div class="image">
+								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+							</div>
+							<div class="title">
+								<h6>Maze Runner Maze Runner Maze Runner</h6>
+								<p><a href="">Stephen King</a></p>
+								<span><a href="">Platanus Publishing</a></span>
+							</div>
+						</div>
+						<div class="book">
+							<div class="image">
+								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+							</div>
+							<div class="title">
+								<h6>Maze Runner Maze Runner Maze Runner</h6>
+								<p><a href="">Stephen King</a></p>
+								<span><a href="">Platanus Publishing</a></span>
+							</div>
+						</div>
+						<h6 class="total">Total: </h6>
+					</li>
+					<li class="saleDate">
+						<h6>20/09/2020</h6>
+						<i class="fas fa-angle-down"></i>
+					</li>
+					<li class="books">
+						<div class="book">
+							<div class="image">
+								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+							</div>
+							<div class="title">
+								<h6>Maze Runner Maze Runner Maze Runner</h6>
+								<p><a href="">Stephen King</a></p>
+								<span><a href="">Platanus Publishing</a></span>
+							</div>
+						</div>
+						<div class="book">
+							<div class="image">
+								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+							</div>
+							<div class="title">
+								<h6>Maze Runner Maze Runner Maze Runner</h6>
+								<p><a href="">Stephen King</a></p>
+								<span><a href="">Platanus Publishing</a></span>
+							</div>
+						</div>
+						<div class="book">
+							<div class="image">
+								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+							</div>
+							<div class="title">
+								<h6>Maze Runner Maze Runner Maze Runner</h6>
+								<p><a href="">Stephen King</a></p>
+								<span><a href="">Platanus Publishing</a></span>
+							</div>
+						</div>
+						<h6 class="total">Total: </h6>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Profile Start -->
+
+<section id="ProfilePhoto">
+	<div class="container">
+		<div class="photo-options">
+			<img class="image" src="~/image/book-cover.jpg" alt="">
+			<div class="photo">
+				<img src="~/image/pp.jpg" alt="">
+				<i class="edit fas fa-edit"></i>
+			</div>
+			<div class="options">
+				<div class="ppChange">
+					<i class="fas fa-camera" data-toggle="modal" data-target="#ModalPhoto"></i>
+				</div>
+				<div class="pp">
+					<img src="~/image/pp.jpg" alt="">
+				</div>
+				<div class="settings">
+					<i class="fas fa-user-cog" data-toggle="modal" data-target="#ModalSettings"></i>
+				</div>
+				<i class="close fas fa-times"></i>
+			</div>
+			<div class="name">
+				<h5>Javid Asadullayev</h5>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="ProfileAbout">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-4 col-sm-8 col-8">
+				<div class="card-sale mt-5">
+					<div class="face saleFace1">
+						<div class="content1">
+							<i class="fas fa-archive"></i>
+							<h3>Alışlar</h3>
+						</div>
+					</div>
+
+				</div>
+				<div class="face saleFace2">
+					<div class="content2">
+						<div class="sale">
+							<ul>
+								<li>
+									<h6>20/09/2020</h6>
+								</li>
+								<li>
+									<h6>20/09/2020</h6>
+								</li>
+								<li>
+									<h6>20/09/2020</h6>
+								</li>
+								<li>
+									<h6>20/09/2020</h6>
+								</li>
+								<li>
+									<h6>20/09/2020</h6>
+								</li>
+							</ul>
+							<button type="button" class="mt-2 btn btn-outline-primary" data-toggle="modal" data-target="#ModalSales">Detallar</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-favorite mt-5">
+					<div class="face favoriteFace1">
+						<div class="content1">
+							<i class="fas fa-star"></i>
+							<h3>Seçilmiş kitablar</h3>
+						</div>
+					</div>
+				</div>
+				<div class="face favoriteFace2">
+					<div class="content2">
+						<div class="books">
+							<div class="book">
+								<div class="image">
+									<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+								</div>
+								<div class="title">
+									<h6>Maze Runner Maze Runner </h6>
+									<p><a href="">Stephen King</a></p>
+									<span><a href="">Platanus Publishing</a></span>
+								</div>
+							</div>
+							<div class="book">
+								<div class="image">
+									<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+								</div>
+								<div class="title">
+									<h6>Maze Runner Maze Runner </h6>
+									<p><a href="">Stephen King</a></p>
+									<span><a href="">Platanus Publishing</a></span>
+								</div>
+							</div>
+							<div class="book">
+								<div class="image">
+									<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+								</div>
+								<div class="title">
+									<h6>Maze Runner Maze Runner </h6>
+									<p><a href="">Stephen King</a></p>
+									<span><a href="">Platanus Publishing</a></span>
+								</div>
+							</div>
+							<button type="button" class="mt-2 btn btn-outline-primary" data-toggle="modal" data-target="#ModalFavorite">Detallar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-8 col-sm-12 col-12">
+				<div class="about mt-5">
+					<h2>Haqqında</h2>
+					<p><strong>Ad, Soyad:</strong> </p>
+					<p><strong>Cinsiyyət: </strong></p>
+					<p><strong>Yaş: </strong></p>
+					<p><strong>Mobil nömrə: </strong></p>
+					<p><strong>Facebook: </strong></p>
+					<p><strong>Instagram: </strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Profile End -->
+
+@section Scripts{
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+}

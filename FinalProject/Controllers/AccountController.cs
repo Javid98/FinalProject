@@ -27,14 +27,16 @@ namespace FinalProject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[ActionName("Index")]
         public async Task<IActionResult> Register(AccountVM register)
         {
-            //if (!ModelState.IsValid) return RedirectToAction("Index","Account");
+            if (ModelState["Fullname"].ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ||
+                ModelState["RegisterUsername"].ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid || ModelState["Email"].ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ||
+                ModelState["RegisterPassword"].ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ||
+                ModelState["ConfirmPassword"].ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid) return PartialView("_RegisterPartialView", register);
             AppUser user = new AppUser
             {
                 FullName = register.Fullname,
-                UserName = register.RegisterPassword
+                UserName = register.RegisterUsername
             };
             IdentityResult identityResult = await _userManager.CreateAsync(user, register.RegisterPassword);
             if (!identityResult.Succeeded)
@@ -43,10 +45,55 @@ namespace FinalProject.Controllers
                 {
                     ModelState.AddModelError("", error.Description);
                 }
-                return Content("error");
+                return PartialView("_RegisterPartialView");
             }
             await _userManager.AddToRoleAsync(user, Helper.Roles.Admin.ToString());
             await _signInManager.SignInAsync(user, false);
+            return RedirectToAction("Index", "Home");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(AccountVM login)
+        {
+            if (ModelState["LoginUsername"].ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ||
+                ModelState["LoginPassword"].ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid
+                ) return PartialView("_LoginPartialView", login);
+            AppUser logUser = await _userManager.FindByNameAsync(login.LoginUsername);
+            if (logUser == null)
+            {
+                ModelState.AddModelError("", "Username və ya şifrə yanlışdır");
+                return PartialView("_LoginPartialView",login);
+            }
+            if (logUser.IsBlocked == true)
+            {
+                ModelState.AddModelError("", "Bu profil bloklanıb");
+                return PartialView("_LoginPartialView");
+            }
+            if (login.IsChecked == true)
+            {
+                Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(logUser, login.LoginPassword, true, true);
+                if (!signInResult.Succeeded)
+                {
+                    ModelState.AddModelError("", "Username və ya şifrə yanlışdır");
+                    return PartialView("_LoginPartialView", login);
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(logUser, login.LoginPassword, false, true);
+                if (!signInResult.Succeeded)
+                {
+                    ModelState.AddModelError("", "Username və ya şifrə yanlışdır");
+                    return PartialView("_LoginPartialView", login);
+                }
+                return RedirectToAction("Index", "Home");
+            }
+
+        }
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
 

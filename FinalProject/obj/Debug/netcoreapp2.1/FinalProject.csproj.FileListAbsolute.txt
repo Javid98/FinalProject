@@ -8,7 +8,6 @@ C:\Users\nijat\source\repos\FinalProject\FinalProject\bin\Debug\netcoreapp2.1\Fi
 C:\Users\nijat\source\repos\FinalProject\FinalProject\bin\Debug\netcoreapp2.1\FinalProject.pdb
 C:\Users\nijat\source\repos\FinalProject\FinalProject\bin\Debug\netcoreapp2.1\FinalProject.Views.dll
 C:\Users\nijat\source\repos\FinalProject\FinalProject\bin\Debug\netcoreapp2.1\FinalProject.Views.pdb
-C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\FinalProject.csprojAssemblyReference.cache
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\FinalProject.RazorAssemblyInfo.cache
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\FinalProject.RazorAssemblyInfo.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\FinalProject.AssemblyInfoInputs.cache
@@ -39,3 +38,7 @@ C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Ra
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\BestSellers\Index.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Contact\Index.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Account\Index.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Profile\Index.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\FinalProject.csprojAssemblyReference.cache
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginPartialView.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_RegisterPartialView.cshtml.g.cs

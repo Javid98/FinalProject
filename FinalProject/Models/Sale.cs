@@ -9,8 +9,10 @@ namespace FinalProject.Models
 	{
         public int Id { get; set; }
         public DateTime Date { get; set; }
+        public string DeliveryLocation { get; set; }
         public double Total { get; set; }
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
+		public ICollection<SaleBook> SaleBooks { get; set; }
     }
 }

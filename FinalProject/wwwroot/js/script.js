@@ -294,7 +294,7 @@ $(document).ready(function () {
         $("#ProfileAbout .favoriteFace2").css("display", "flex")
     })
 
-    $("#ModalSales .modal-body li").click(function() {
+    $("#ModalSales .modal-body li.saleDate").click(function() {
         $(this).next().slideToggle()
         $("#ModalSales .modal-body .books").not($(this).next()).slideUp()
         if ($("i", this).attr('class') == 'fas fa-angle-down') {
