@@ -98,8 +98,15 @@ header {
     left: 0;
     z-index: 100;
     background: transparentize($color: white, $amount: 0.3);
+    padding: 10px 0;
     // background-color: white;
     // box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+    .logo {
+        img {
+            width: 90px;
+            height: 60px;
+        }
+    }
     .menu {
         display: flex;
         align-items: center;
@@ -1387,12 +1394,12 @@ header {
                 }
                 .footerBorder {
                     width: 100%;
-                    height: 50%;
+                    height: 33%;
                     display: flex;
                     .first {
                         margin-top: 15px;
                         width: 50%;
-                        height: 90%;
+                        height: 100%;
                         border-right: 1px solid black;
                     }
                 }
@@ -1477,12 +1484,12 @@ header {
                 }
                 .footerBorder {
                     width: 100%;
-                    height: 50%;
+                    height: 33%;
                     display: flex;
                     .first {
                         margin-top: 15px;
                         width: 50%;
-                        height: 90%;
+                        height: 100%;
                         border-right: 1px solid black;
                     }
                 }
@@ -1491,8 +1498,8 @@ header {
                 display: flex;
                 justify-content: center;
                 img {
-                    width: 110px;
-                    height: 100px;
+                    width: 90px;
+                    height: 60px;
                 }
             }
             .since {
@@ -2059,12 +2066,12 @@ header {
                 }
                 .footerBorder {
                     width: 100%;
-                    height: 50%;
+                    height: 33%;
                     display: flex;
                     .first {
                         margin-top: 15px;
                         width: 50%;
-                        height: 90%;
+                        height: 100%;
                         border-right: 1px solid black;
                     }
                 }
@@ -2151,12 +2158,12 @@ header {
                 }
                 .footerBorder {
                     width: 100%;
-                    height: 50%;
+                    height: 33%;
                     display: flex;
                     .first {
                         margin-top: 15px;
                         width: 50%;
-                        height: 90%;
+                        height: 100%;
                         border-right: 1px solid black;
                     }
                 }
@@ -2165,8 +2172,8 @@ header {
                 display: flex;
                 justify-content: center;
                 img {
-                    width: 110px;
-                    height: 100px;
+                    width: 90px;
+                    height: 60px;
                 }
             }
             .since {
@@ -4341,9 +4348,8 @@ header {
 
 #EmptyCart {
     display: flex;
-    padding: 200px 0;
+    padding: 250px 0;
     justify-content: center;
-    align-items: center;
     h1 {
         font-weight: bold;
         color: $primary_color;
@@ -4364,7 +4370,7 @@ header {
                 display: flex;
                 align-items: center;
                 input {
-                    width: 50px !important;
+                    width: 65px !important;
                 }
                 i {
                     margin: 0 5px;

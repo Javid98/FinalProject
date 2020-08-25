@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using FinalProject.Data;
 using FinalProject.Models;
 using FinalProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,9 +15,11 @@ namespace FinalProject.Controllers
 	public class NewBooksController : Controller
 	{
 		private readonly ApplicationDbContext _db;
-		public NewBooksController(ApplicationDbContext db)
+		private readonly UserManager<AppUser> _userManager;
+		public NewBooksController(ApplicationDbContext db, UserManager<AppUser> userManager)
 		{
 			_db = db;
+			_userManager = userManager;
 		}
 		public IActionResult Index(string pslug, string aslug, string cslug,int page=1)
 		{
@@ -236,6 +240,33 @@ namespace FinalProject.Controllers
 				rBookAuthors = rBookAuthors
 			};
 			return View(model);
+		}
+
+		[Authorize]
+		public async Task<IActionResult> AddCart(int? id)
+		{
+			if (id == null) return NotFound();
+			Book book = await _db.Books.FindAsync(id);
+			if (book == null) return NotFound();
+			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+			BookInCart bookInCart = _db.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id);
+			if (bookInCart == null)
+			{
+				BookInCart newBook = new BookInCart
+				{
+					BookId = book.Id,
+					AppUserId = user.Id,
+					Count = 1
+				};
+				_db.BookInCarts.Add(newBook);
+			}
+			else
+			{
+				bookInCart.Count++;
+			}
+			await _db.SaveChangesAsync();
+			return RedirectToAction("Index");
 		}
 	}
 }

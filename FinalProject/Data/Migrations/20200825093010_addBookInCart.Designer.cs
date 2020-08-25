@@ -4,14 +4,16 @@ using FinalProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200825093010_addBookInCart")]
+    partial class addBookInCart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,8 +200,6 @@ namespace FinalProject.Data.Migrations
 
                     b.Property<int>("BookId");
 
-                    b.Property<int>("Count");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
@@ -278,8 +278,6 @@ namespace FinalProject.Data.Migrations
                     b.Property<DateTime>("Date");
 
                     b.Property<string>("DeliveryLocation");
-
-                    b.Property<string>("DeliveryType");
 
                     b.Property<double>("Total");
 

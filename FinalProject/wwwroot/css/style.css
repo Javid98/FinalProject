@@ -122,6 +122,12 @@ header {
   left: 0;
   z-index: 100;
   background: rgba(255, 255, 255, 0.7);
+  padding: 10px 0;
+}
+
+header .logo img {
+  width: 90px;
+  height: 60px;
 }
 
 header .menu {
@@ -1658,7 +1664,7 @@ header .menu #sandwich {
   }
   #Footer .footerNav .middle .footerBorder {
     width: 100%;
-    height: 50%;
+    height: 33%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1666,7 +1672,7 @@ header .menu #sandwich {
   #Footer .footerNav .middle .footerBorder .first {
     margin-top: 15px;
     width: 50%;
-    height: 90%;
+    height: 100%;
     border-right: 1px solid black;
   }
   #Footer .footerNav .right {
@@ -1779,7 +1785,7 @@ header .menu #sandwich {
   }
   #Footer .footerLogo .middle .footerBorder {
     width: 100%;
-    height: 50%;
+    height: 33%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1787,7 +1793,7 @@ header .menu #sandwich {
   #Footer .footerLogo .middle .footerBorder .first {
     margin-top: 15px;
     width: 50%;
-    height: 90%;
+    height: 100%;
     border-right: 1px solid black;
   }
   #Footer .footerLogo .logo {
@@ -1799,8 +1805,8 @@ header .menu #sandwich {
             justify-content: center;
   }
   #Footer .footerLogo .logo img {
-    width: 110px;
-    height: 100px;
+    width: 90px;
+    height: 60px;
   }
   #Footer .footerLogo .since {
     display: -webkit-box;
@@ -2576,7 +2582,7 @@ header .menu #sandwich {
   }
   #Footer .footerNav .middle .footerBorder {
     width: 100%;
-    height: 50%;
+    height: 33%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2584,7 +2590,7 @@ header .menu #sandwich {
   #Footer .footerNav .middle .footerBorder .first {
     margin-top: 15px;
     width: 50%;
-    height: 90%;
+    height: 100%;
     border-right: 1px solid black;
   }
   #Footer .footerNav .right {
@@ -2699,7 +2705,7 @@ header .menu #sandwich {
   }
   #Footer .footerLogo .middle .footerBorder {
     width: 100%;
-    height: 50%;
+    height: 33%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2707,7 +2713,7 @@ header .menu #sandwich {
   #Footer .footerLogo .middle .footerBorder .first {
     margin-top: 15px;
     width: 50%;
-    height: 90%;
+    height: 100%;
     border-right: 1px solid black;
   }
   #Footer .footerLogo .logo {
@@ -2719,8 +2725,8 @@ header .menu #sandwich {
             justify-content: center;
   }
   #Footer .footerLogo .logo img {
-    width: 110px;
-    height: 100px;
+    width: 90px;
+    height: 60px;
   }
   #Footer .footerLogo .since {
     display: -webkit-box;
@@ -5476,13 +5482,10 @@ header .menu #sandwich {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 200px 0;
+  padding: 250px 0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 #EmptyCart h1 {
@@ -5512,7 +5515,7 @@ header .menu #sandwich {
 }
 
 #Cart form .table .count input {
-  width: 50px !important;
+  width: 65px !important;
 }
 
 #Cart form .table .count i {

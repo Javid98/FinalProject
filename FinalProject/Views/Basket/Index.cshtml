@@ -1,0 +1,96 @@
+﻿@model BasketVM
+@{
+	ViewData["Title"] = "Səbət";
+}
+
+
+<!-- Cart Start -->
+@if (Model.BookInCarts.Count() == 0)
+{
+	<section id="EmptyCart">
+		<h1>Səbət Boşdur</h1>
+	</section>
+}
+else
+{
+	<section id="Cart">
+		<div class="container">
+
+			<form method="post">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col" class="bookImg">Kitabın şəkli</th>
+							<th scope="col">Adı</th>
+							<th scope="col">Sayı</th>
+							<th scope="col" class="author">Yazar</th>
+							<th scope="col">Qiymət</th>
+							<th scope="col">Silmək</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (BookInCart book in Model.BookInCarts)
+						{
+							<tr>
+								<td class="bookImg">
+									<div class="image">
+										<img src="~/image/@book.Book.ImagePath" alt="">
+									</div>
+								</td>
+								<td>@book.Book.Name</td>
+								<td>
+									<div class="count">
+										<input type="number" name="Count" value="@book.Count" class="form-control" />
+									</div>
+								</td>
+								<td class="author">
+									@foreach (BookAuthor author in Model.BookAuthors.Where(ba => ba.BookId == book.BookId))
+									{
+										<p style="margin:0">
+											@author.Author.Fullname
+										</p>
+									}
+								</td>
+								<td>@book.Book.Price</td>
+								<td>
+									<a asp-controller="Basket" asp-action="DeleteBook" asp-route-id="@book.BookId" class="delete">
+										<i class="fas fa-minus-circle"></i>
+									</a>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+				<span class="dtype mt-3"><strong>Çatdırılma növü:</strong></span>
+				<select name="Type" id="delivery" class="form-control">
+					<option value="Metro">Metro</option>
+					<option value="Şəhər daxili">Şəhər daxili</option>
+					<option value="Rayon">Rayon</option>
+				</select>
+				<div class="metros mt-3">
+					<span><strong>Metrolar:</strong></span>
+					<select name="Metro" id="metro" class="form-control ">
+						<option value="20 Yanvar">20 Yanvar</option>
+						<option value="28 May">28 May</option>
+						<option value="Xətai">Xətai</option>
+					</select>
+				</div>
+				<div class="city mt-3 d-none">
+					<span><Strong>Şəhər daxili adres:</Strong></span>
+					<input name="City" type="text" class="form-control">
+				</div>
+				<div class="region mt-3 d-none">
+					<span><strong>Rayon və adres (3-5 gün ərzində):</strong></span>
+					<input name="Region" type="text" class="form-control">
+				</div>
+				<div class="bTn mt-3">
+					<button type="submit" class="btn btn-outline-primary">Sifariş et</button>
+				</div>
+			</form>
+		</div>
+	</section>
+}
+
+
+
+<!-- Cart End -->

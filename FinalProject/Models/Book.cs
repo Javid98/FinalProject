@@ -30,6 +30,7 @@ namespace FinalProject.Models
 		public ICollection<BookCategory> BookCategories { get; set; }
 		public ICollection<SaleBook> SaleBooks { get; set; }
 		public ICollection<FavoriteBook> FavoriteBooks { get; set; }
+		public ICollection<BookInCart> BookInCarts { get; set; }
 		[NotMapped]
 		public IFormFile Photo { get; set; }
 	}

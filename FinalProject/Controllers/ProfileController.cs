@@ -30,6 +30,14 @@ namespace FinalProject.Controllers
             AppUser user = await _userManager.FindByNameAsync(username);
             if (user == null) return NotFound();
             UserDetail userDetail = _db.UserDetails.FirstOrDefault(u => u.AppUserId == user.Id);
+            ViewBag.Age = "";
+            if (userDetail.Birthday.Year != 1)
+            {
+                DateTime day = DateTime.Now.Date;
+                TimeSpan span = day - userDetail.Birthday;
+                ViewBag.Age = (int)(Math.Ceiling(span.TotalDays / 365)) - 1;
+                int age = ViewBag.Age;
+            }
             ProfileVM model = new ProfileVM
             {
                 UserDetail = userDetail,
@@ -43,16 +51,14 @@ namespace FinalProject.Controllers
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
             if (user == null) return NotFound();
             UserDetail userD = _db.UserDetails.FirstOrDefault(u => u.AppUserId == user.Id);
+            ViewBag.Age = "";
             if (userD == null)
             {
                 UserDetail userDetail = new UserDetail();
                 userDetail.AppUserId = user.Id;
                 user.FullName = settings.AppUser.FullName;
-                if (settings.BirthDay != null)
+                if (settings.UserDetail.Birthday != null && settings.UserDetail.Birthday.Year != 1)
                 {
-                    //DateTime day = DateTime.Now.Date;
-                    //TimeSpan span = day - settings.BirthDay;
-                    //int age = (int)(Math.Ceiling(span.TotalDays / 365)) - 1;
                     userDetail.Birthday = settings.UserDetail.Birthday;
                 }
                 string gender = Request.Form["Gender"];
@@ -75,14 +81,11 @@ namespace FinalProject.Controllers
             }
             else
             {
-                userD.AppUserId = user.Id;
                 user.FullName = settings.AppUser.FullName;
-                if (settings.BirthDay != null)
+                if (settings.UserDetail.Birthday != null && settings.UserDetail.Birthday.Year != 1)
                 {
-                    //DateTime day = DateTime.Now.Date;
-                    //TimeSpan span = day - settings.BirthDay;
-                    //int age = (int)(Math.Ceiling(span.TotalDays / 365)) - 1;
                     userD.Birthday = settings.UserDetail.Birthday;
+
                 }
                 string gender = Request.Form["Gender"];
                 userD.Gender = gender;

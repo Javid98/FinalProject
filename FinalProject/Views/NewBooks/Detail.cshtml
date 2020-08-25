@@ -35,7 +35,7 @@
 				</div>
 				<div class="book-buttons">
 
-					<a href="" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+					<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@Model.Book.Id" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
 					<a href="" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
 				</div>
 				<div class="book-details">

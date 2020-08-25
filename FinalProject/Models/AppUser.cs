@@ -18,5 +18,6 @@ namespace FinalProject.Models
 		public ICollection<SaleBook> SoldBook { get; set; }
 		public virtual UserDetail UserDetail { get; set; }
 		public ICollection<FavoriteBook> FavoriteBooks { get; set; }
+		public ICollection<BookInCart> BookInCarts { get; set; }
 	}
 }

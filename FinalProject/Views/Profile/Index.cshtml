@@ -326,87 +326,90 @@
 <section id="ProfileAbout">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-lg-4 col-sm-8 col-8">
-				<div class="card-sale mt-5">
-					<div class="face saleFace1">
-						<div class="content1">
-							<i class="fas fa-archive"></i>
-							<h3>Alışlar</h3>
+			@if (Model.AppUser.UserName == User.Identity.Name)
+			{
+				<div class="col-lg-4 col-sm-8 col-8">
+					<div class="card-sale mt-5">
+						<div class="face saleFace1">
+							<div class="content1">
+								<i class="fas fa-archive"></i>
+								<h3>Alışlar</h3>
+							</div>
+						</div>
+
+					</div>
+					<div class="face saleFace2">
+						<div class="content2">
+							<div class="sale">
+								<ul>
+									<li>
+										<h6>20/09/2020</h6>
+									</li>
+									<li>
+										<h6>20/09/2020</h6>
+									</li>
+									<li>
+										<h6>20/09/2020</h6>
+									</li>
+									<li>
+										<h6>20/09/2020</h6>
+									</li>
+									<li>
+										<h6>20/09/2020</h6>
+									</li>
+								</ul>
+								<button type="button" class="mt-2 btn btn-outline-primary" data-toggle="modal" data-target="#ModalSales">Detallar</button>
+							</div>
 						</div>
 					</div>
 
-				</div>
-				<div class="face saleFace2">
-					<div class="content2">
-						<div class="sale">
-							<ul>
-								<li>
-									<h6>20/09/2020</h6>
-								</li>
-								<li>
-									<h6>20/09/2020</h6>
-								</li>
-								<li>
-									<h6>20/09/2020</h6>
-								</li>
-								<li>
-									<h6>20/09/2020</h6>
-								</li>
-								<li>
-									<h6>20/09/2020</h6>
-								</li>
-							</ul>
-							<button type="button" class="mt-2 btn btn-outline-primary" data-toggle="modal" data-target="#ModalSales">Detallar</button>
+					<div class="card-favorite mt-5">
+						<div class="face favoriteFace1">
+							<div class="content1">
+								<i class="fas fa-star"></i>
+								<h3>Seçilmiş kitablar</h3>
+							</div>
+						</div>
+					</div>
+					<div class="face favoriteFace2">
+						<div class="content2">
+							<div class="books">
+								<div class="book">
+									<div class="image">
+										<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+									</div>
+									<div class="title">
+										<h6>Maze Runner Maze Runner </h6>
+										<p><a href="">Stephen King</a></p>
+										<span><a href="">Platanus Publishing</a></span>
+									</div>
+								</div>
+								<div class="book">
+									<div class="image">
+										<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+									</div>
+									<div class="title">
+										<h6>Maze Runner Maze Runner </h6>
+										<p><a href="">Stephen King</a></p>
+										<span><a href="">Platanus Publishing</a></span>
+									</div>
+								</div>
+								<div class="book">
+									<div class="image">
+										<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+									</div>
+									<div class="title">
+										<h6>Maze Runner Maze Runner </h6>
+										<p><a href="">Stephen King</a></p>
+										<span><a href="">Platanus Publishing</a></span>
+									</div>
+								</div>
+								<button type="button" class="mt-2 btn btn-outline-primary" data-toggle="modal" data-target="#ModalFavorite">Detallar</button>
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="card-favorite mt-5">
-					<div class="face favoriteFace1">
-						<div class="content1">
-							<i class="fas fa-star"></i>
-							<h3>Seçilmiş kitablar</h3>
-						</div>
-					</div>
-				</div>
-				<div class="face favoriteFace2">
-					<div class="content2">
-						<div class="books">
-							<div class="book">
-								<div class="image">
-									<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-								</div>
-								<div class="title">
-									<h6>Maze Runner Maze Runner </h6>
-									<p><a href="">Stephen King</a></p>
-									<span><a href="">Platanus Publishing</a></span>
-								</div>
-							</div>
-							<div class="book">
-								<div class="image">
-									<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-								</div>
-								<div class="title">
-									<h6>Maze Runner Maze Runner </h6>
-									<p><a href="">Stephen King</a></p>
-									<span><a href="">Platanus Publishing</a></span>
-								</div>
-							</div>
-							<div class="book">
-								<div class="image">
-									<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-								</div>
-								<div class="title">
-									<h6>Maze Runner Maze Runner </h6>
-									<p><a href="">Stephen King</a></p>
-									<span><a href="">Platanus Publishing</a></span>
-								</div>
-							</div>
-							<button type="button" class="mt-2 btn btn-outline-primary" data-toggle="modal" data-target="#ModalFavorite">Detallar</button>
-						</div>
-					</div>
-				</div>
-			</div>
+			}
 			<div class="col-lg-8 col-sm-12 col-12">
 				@if (Model.UserDetail != null)
 				{
@@ -414,7 +417,7 @@
 						<h2>Haqqında</h2>
 						<p><strong>Ad, Soyad: &nbsp;&nbsp;@Model.AppUser.FullName</strong> </p>
 						<p><strong>Cinsiyyət: &nbsp;&nbsp;@Model.UserDetail.Gender</strong></p>
-						<p><strong>Yaş: &nbsp;&nbsp;@Model.UserDetail.Birthday.ToString("dd/MM/yyyy")</strong></p>
+						<p><strong>Yaş: &nbsp;&nbsp;@ViewBag.Age</strong></p>
 						<p><strong>Mobil nömrə: &nbsp;&nbsp;@Model.UserDetail.PhoneNumber</strong></p>
 						<p><strong>Facebook: &nbsp;&nbsp;@Model.UserDetail.FacebookLink</strong></p>
 						<p><strong>Instagram: &nbsp;&nbsp;@Model.UserDetail.InstagramLink</strong></p>

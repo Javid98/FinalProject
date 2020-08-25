@@ -24,5 +24,6 @@ namespace FinalProject.Data
 		public DbSet<SaleBook> SaleBooks { get; set; }
 		public DbSet<UserDetail> UserDetails { get; set; }
 		public DbSet<FavoriteBook> FavoriteBooks { get; set; }
+		public DbSet<BookInCart> BookInCarts { get; set; }
 	}
 }
