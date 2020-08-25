@@ -19,9 +19,9 @@
 					<h4>Current Photo:</h4>
 					<img src="" alt="">
 				</div>
-				<form method="post">
+				<form method="post" asp-action="ChangePhoto" enctype="multipart/form-data">
 					<h4>New Photo:</h4>
-					<input asp-for="UserDetail.Photo" class="form-control" accept="image/*">
+					<input asp-for="Photo" class="form-control" accept="image/*">
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
 						<button type="submit" class="btn btn-primary">Yadda saxla</button>
@@ -53,7 +53,7 @@
 						<option value="Digər">Digər</option>
 					</select>
 					<span>Doğum tarixi</span>
-					<input asp-for="BirthDay" asp-format="{0:dd/MM/yyyy}" class="form-control">
+					<input asp-for="UserDetail.Birthday" class="form-control">
 					<span>Mobil nömrə</span>
 					<input asp-for="UserDetail.PhoneNumber" class="form-control">
 					<span>Facebook(Link)</span>
@@ -262,22 +262,60 @@
 	<div class="container">
 		<div class="photo-options">
 			<img class="image" src="~/image/book-cover.jpg" alt="">
-			<div class="photo">
-				<img src="~/image/pp.jpg" alt="">
-				<i class="edit fas fa-edit"></i>
-			</div>
-			<div class="options">
-				<div class="ppChange">
-					<i class="fas fa-camera" data-toggle="modal" data-target="#ModalPhoto"></i>
+			@if (Model.UserDetail != null)
+			{
+				@if (Model.UserDetail.ImagePath != null)
+				{
+					<div class="photo">
+						<img src="~/image/usersphotos/@Model.UserDetail.ImagePath" alt="">
+						<i class="edit fas fa-edit"></i>
+					</div>
+				}
+				else
+				{
+					<div class="photo">
+						<img src="~/image/pp.jpg" alt="">
+						<i class="edit fas fa-edit"></i>
+					</div>
+				}
+			}
+			else
+			{
+				<div class="photo">
+					<img src="~/image/pp.jpg" alt="">
+					<i class="edit fas fa-edit"></i>
 				</div>
+			}
+		<div class="options">
+			<div class="ppChange">
+				<i class="fas fa-camera" data-toggle="modal" data-target="#ModalPhoto"></i>
+			</div>
+			@if (Model.UserDetail != null)
+			{
+				@if (Model.UserDetail.ImagePath != null)
+				{
+					<div class="pp">
+						<img src="~/image/usersphotos/@Model.UserDetail.ImagePath" alt="">
+					</div>
+				}
+				else
+				{
+					<div class="pp">
+						<img src="~/image/pp.jpg" alt="">
+					</div>
+				}
+			}
+			else
+			{
 				<div class="pp">
 					<img src="~/image/pp.jpg" alt="">
 				</div>
-				<div class="settings">
-					<i class="fas fa-user-cog" data-toggle="modal" data-target="#ModalSettings"></i>
-				</div>
-				<i class="close fas fa-times"></i>
+			}
+			<div class="settings">
+				<i class="fas fa-user-cog" data-toggle="modal" data-target="#ModalSettings"></i>
 			</div>
+			<i class="close fas fa-times"></i>
+		</div>
 			<div class="name">
 				<h5>Javid Asadullayev</h5>
 			</div>
@@ -370,15 +408,30 @@
 				</div>
 			</div>
 			<div class="col-lg-8 col-sm-12 col-12">
-				<div class="about mt-5">
-					<h2>Haqqında</h2>
-					<p><strong>Ad, Soyad:</strong> </p>
-					<p><strong>Cinsiyyət: </strong></p>
-					<p><strong>Yaş: </strong></p>
-					<p><strong>Mobil nömrə: </strong></p>
-					<p><strong>Facebook: </strong></p>
-					<p><strong>Instagram: </strong></p>
-				</div>
+				@if (Model.UserDetail != null)
+				{
+					<div class="about mt-5">
+						<h2>Haqqında</h2>
+						<p><strong>Ad, Soyad: &nbsp;&nbsp;@Model.AppUser.FullName</strong> </p>
+						<p><strong>Cinsiyyət: &nbsp;&nbsp;@Model.UserDetail.Gender</strong></p>
+						<p><strong>Yaş: &nbsp;&nbsp;@Model.UserDetail.Birthday.ToString("dd/MM/yyyy")</strong></p>
+						<p><strong>Mobil nömrə: &nbsp;&nbsp;@Model.UserDetail.PhoneNumber</strong></p>
+						<p><strong>Facebook: &nbsp;&nbsp;@Model.UserDetail.FacebookLink</strong></p>
+						<p><strong>Instagram: &nbsp;&nbsp;@Model.UserDetail.InstagramLink</strong></p>
+					</div>
+				}
+				else
+				{
+					<div class="about mt-5">
+						<h2>Haqqında</h2>
+						<p><strong>Ad, Soyad: &nbsp;&nbsp;@Model.AppUser.FullName</strong> </p>
+						<p><strong>Cinsiyyət:</strong></p>
+						<p><strong>Yaş:</strong></p>
+						<p><strong>Mobil nömrə:</strong></p>
+						<p><strong>Facebook:</strong></p>
+						<p><strong>Instagram:</strong></p>
+					</div>
+				}
 			</div>
 		</div>
 	</div>

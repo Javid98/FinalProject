@@ -1,4 +1,5 @@
 ﻿using FinalProject.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,8 @@ namespace FinalProject.ViewModels
 		public AppUser AppUser { get; set; }
 		public ICollection<FavoriteBook> FavoriteBooks { get; set; }
 		[DataType(DataType.Date)]
+		[DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime BirthDay { get; set; }
+		public IFormFile Photo { get; set; }
 	}
 }

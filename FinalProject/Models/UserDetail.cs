@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,7 +12,9 @@ namespace FinalProject.Models
 	{
 		public int Id { get; set; }
 		public string ImagePath { get; set; }
-		public int Age { get; set; }
+		[DataType(DataType.Date)]
+		[DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
+		public DateTime Birthday { get; set; }
 		public string Gender { get; set; }
 		public string PhoneNumber { get; set; }
 		public string InstagramLink { get; set; }
