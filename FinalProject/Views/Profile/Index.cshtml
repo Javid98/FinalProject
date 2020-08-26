@@ -82,45 +82,28 @@
 			</div>
 			<div class="modal-body">
 				<div class="books">
-					<div class="book">
-						<div class="image">
-							<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+					<form id="favoritesForm" asp-controller="Profile" asp-action="DeleteFavorites">
+						<button class="btn btn-danger" type="submit">Bütün kitabları sil</button>
+					</form>
+					@foreach (FavoriteBook favoriteBook in Model.FavoriteBooks.OrderByDescending(fb => fb.Id))
+					{
+						<div class="book">
+							<div class="image">
+								<a href=""><img src="~/image/@favoriteBook.Book.ImagePath" alt=""></a>
+							</div>
+							<div class="title">
+								<h6>@favoriteBook.Book.Name</h6>
+								@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == favoriteBook.BookId))
+								{
+									<p><a href="">@bookAuthor.Author.Fullname</a></p>
+								}
+								<span><a href="">@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Name</a></span>
+							</div>
+							<form id="favoriteForm" class="delete" asp-controller="Profile" asp-action="DeleteFavorite" asp-route-id="@favoriteBook.BookId">
+								<button type="submit"><i class="fas fa-minus-circle"></i></button>
+							</form>
 						</div>
-						<div class="title">
-							<h6>Maze Runner Maze Runner Maze Runner</h6>
-							<p><a href="">Stephen King</a></p>
-							<span><a href="">Platanus Publishing</a></span>
-						</div>
-						<div class="delete">
-							<i class="fas fa-minus-circle"></i>
-						</div>
-					</div>
-					<div class="book">
-						<div class="image">
-							<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-						</div>
-						<div class="title">
-							<h6>Maze Runner Maze Runner Maze Runner</h6>
-							<p><a href="">Stephen King</a></p>
-							<span><a href="">Platanus Publishing</a></span>
-						</div>
-						<div class="delete">
-							<i class="fas fa-minus-circle"></i>
-						</div>
-					</div>
-					<div class="book">
-						<div class="image">
-							<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-						</div>
-						<div class="title">
-							<h6>Maze Runner Maze Runner Maze Runner</h6>
-							<p><a href="">Stephen King</a></p>
-							<span><a href="">Platanus Publishing</a></span>
-						</div>
-						<div class="delete">
-							<i class="fas fa-minus-circle"></i>
-						</div>
-					</div>
+					}
 				</div>
 			</div>
 		</div>
@@ -386,7 +369,7 @@
 											{
 												<p><a href="">@bookAuthor.Author.Fullname</a></p>
 											}
-											<span><a href="">@Model.Publishers.FirstOrDefault(p=>p.Id==favoriteBook.Book.PublisherId).Name</a></span>
+											<span><a href="">@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Name</a></span>
 										</div>
 									</div>
 								}
@@ -431,4 +414,28 @@
 @section Scripts{
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		$("#ModalFavorite .books .book .delete").submit(function (e) {
+			e.preventDefault();
+			swal({
+				title: "Favoritlər",
+				text: "Bu kitabı silmək istədiyinizdən əminsiniz?",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			})
+				.then((willDelete) => {
+					if (willDelete) {
+						swal("Kitab favoritlərdən silindi", {
+							icon: "success",
+						}).then(function () {
+							setTimeout(() => document.querySelector("#favoriteForm").submit(), 100);
+						})
+					} else {
+						swal("Kitab silinmədi");
+					}
+				});
+		});
+	</script>
 }

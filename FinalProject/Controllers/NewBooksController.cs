@@ -21,12 +21,12 @@ namespace FinalProject.Controllers
 			_db = db;
 			_userManager = userManager;
 		}
-		public IActionResult Index(string pslug, string aslug, string cslug,int page=1)
+		public IActionResult Index(string pslug, string aslug, string cslug, int page = 1)
 		{
 			ViewBag.Page = page;
 			ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.Count() / 3);
 			List<Book> books = new List<Book>();
-			
+
 			List<BookCategory> bookCategories = new List<BookCategory>();
 			ViewBag.Aslug = "";
 			ViewBag.Pslug = "";
@@ -164,7 +164,7 @@ namespace FinalProject.Controllers
 				foreach (BookAuthor abook in aBooks)
 				{
 					BookCategory newBc = bookCategories.FirstOrDefault(bc => bc.BookId == abook.BookId);
-					if (newBc!=null && newBc.Book.PublisherId == publisher.Id)
+					if (newBc != null && newBc.Book.PublisherId == publisher.Id)
 					{
 						acBooks.Add(newBc);
 					}
@@ -194,7 +194,7 @@ namespace FinalProject.Controllers
 			NewBooksVM model = new NewBooksVM
 			{
 				Books = books,
-				AllBooks=allBooks,
+				AllBooks = allBooks,
 				BookAuthors = bookAuthors,
 				Authors = authors,
 				Publishers = publishers,
@@ -277,13 +277,15 @@ namespace FinalProject.Controllers
 			if (book == null) return NotFound();
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 			if (user == null) return NotFound();
-			FavoriteBook favoriteBook = new FavoriteBook
+			FavoriteBook fbook = _db.FavoriteBooks.FirstOrDefault(fb => fb.AppUserId == user.Id && fb.BookId == book.Id);
+			FavoriteBook favoriteBook = new FavoriteBook();
+			if (fbook == null)
 			{
-				BookId = book.Id,
-				AppUserId = user.Id
-			};
-			await _db.FavoriteBooks.AddAsync(favoriteBook);
-			await _db.SaveChangesAsync();
+				favoriteBook.BookId = book.Id;
+				favoriteBook.AppUserId = user.Id;
+				await _db.FavoriteBooks.AddAsync(favoriteBook);
+				await _db.SaveChangesAsync();
+			}
 			return RedirectToAction("Index");
 		}
 	}

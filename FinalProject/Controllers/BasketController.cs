@@ -23,7 +23,7 @@ namespace FinalProject.Controllers
 		}
 
 		[Authorize]
-		//[Route("Basket/Index/{username}")]
+		[Route("Basket/{username}")]
 		public async Task<IActionResult> Index(string username)
 		{
 			if (username == null) return NotFound();
@@ -32,6 +32,11 @@ namespace FinalProject.Controllers
 			if (username != User.Identity.Name) return NotFound();
 			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
 			List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Book).Include(ba => ba.Author).ToList();
+			ViewBag.Total = 0;
+			foreach (BookInCart bookInCart in bookInCarts)
+			{
+
+			}
 			BasketVM model = new BasketVM
 			{
 				BookInCarts = bookInCarts,
@@ -48,6 +53,7 @@ namespace FinalProject.Controllers
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc=>bc.Book).Include(bc=>bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
 			Sale sale = new Sale();
+			double total = 0;
 			if (Request.Form["Type"].ToString().ToLower() == "metro")
 			{
 				sale.Date = DateTime.Now;
@@ -61,6 +67,7 @@ namespace FinalProject.Controllers
 				sale.AppUserId = user.Id;
 				sale.DeliveryType = Request.Form["Type"];
 				sale.DeliveryLocation = Request.Form["City"];
+				total = 2;
 			}
 			else if (Request.Form["Type"].ToString().ToLower() == "rayon")
 			{
@@ -68,9 +75,9 @@ namespace FinalProject.Controllers
 				sale.AppUserId = user.Id;
 				sale.DeliveryType = Request.Form["Type"];
 				sale.DeliveryLocation = Request.Form["Region"];
+				total = 2;
 			}
 			List<SaleBook> saleBooks = new List<SaleBook>();
-			double total = 0;
 			int i = 0;
 			int a;
 			foreach (BookInCart bookInCart in bookInCarts)
@@ -104,7 +111,7 @@ namespace FinalProject.Controllers
 			BookInCart bookInCart = _db.BookInCarts.FirstOrDefault(bc => bc.BookId == id);
 			_db.BookInCarts.Remove(bookInCart);
 			await _db.SaveChangesAsync();
-			return RedirectToAction(User.Identity.Name, "basket");
+			return RedirectToAction(User.Identity.Name);
 		}
 	}
 }

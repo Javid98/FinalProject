@@ -16,7 +16,7 @@ else
 	<section id="Cart">
 		<div class="container">
 
-			<form method="post">
+			<form id="Sale" method="post">
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -40,7 +40,7 @@ else
 								<td>@book.Book.Name</td>
 								<td>
 									<div class="count">
-										<input type="number" name="Count" value="@book.Count" class="form-control" />
+										<input type="number" min="1" name="Count" value="@book.Count" class="bookCount form-control" />
 									</div>
 								</td>
 								<td class="author">
@@ -51,7 +51,10 @@ else
 										</p>
 									}
 								</td>
-								<td>@book.Book.Price</td>
+								<td>
+									<input style="width:60px" type="number" value="@book.Book.Price" class="d-none bPrice" />
+									<input style="width:60px" disabled type="number" name="Price" value="@book.Book.Price" class="bookPrice form-control" />
+								</td>
 								<td>
 									<a asp-controller="Basket" asp-action="DeleteBook" asp-route-id="@book.BookId" class="delete">
 										<i class="fas fa-minus-circle"></i>
@@ -61,6 +64,7 @@ else
 						}
 					</tbody>
 				</table>
+				<h5 class="text-end">Total: </h5>
 				<span class="dtype mt-3"><strong>Çatdırılma növü:</strong></span>
 				<select name="Type" id="delivery" class="form-control">
 					<option value="Metro">Metro</option>
@@ -68,7 +72,8 @@ else
 					<option value="Rayon">Rayon</option>
 				</select>
 				<div class="metros mt-3">
-					<span><strong>Metrolar:</strong></span>
+					<span><strong>Metrolar (Metrodaxili):</strong></span><br />
+					<span>Çatdırılma ödənişsizdir</span>
 					<select name="Metro" id="metro" class="form-control ">
 						<option value="20 Yanvar">20 Yanvar</option>
 						<option value="28 May">28 May</option>
@@ -76,11 +81,13 @@ else
 					</select>
 				</div>
 				<div class="city mt-3 d-none">
-					<span><Strong>Şəhər daxili adres:</Strong></span>
+					<span><Strong>Şəhər daxili adres:</Strong></span><br />
+					<span>Çatdırılma: 2 AZN</span>
 					<input name="City" type="text" class="form-control">
 				</div>
 				<div class="region mt-3 d-none">
-					<span><strong>Rayon və adres (3-5 gün ərzində):</strong></span>
+					<span><strong>Rayon və adres (3-5 gün ərzində):</strong></span><br />
+					<span>Çatdırılma: 2 AZN</span>
 					<input name="Region" type="text" class="form-control">
 				</div>
 				<div class="bTn mt-3">
@@ -94,3 +101,41 @@ else
 
 
 <!-- Cart End -->
+
+@section Scripts{
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		$("#Cart #Sale .bookCount").change(function () {
+			let count = $(this).val();
+			let price = $(this).parent().parent().next().next().find(".bPrice").val()
+			price = count * price;
+			$(this).parent().parent().next().next().find(".bookPrice").val(price)
+		})
+		$("#Cart #Sale").submit(function (e) {
+			e.preventDefault();
+			let total = 0;
+			let prices = document.querySelectorAll(".bookPrice");
+			for (price of prices) {
+				total += price.value * 1;
+			}
+			swal({
+				title: "Sifariş",
+				text: `Cəmi məbləğ ${total}`,
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			})
+				.then((willDelete) => {
+					if (willDelete) {
+						swal("Sifarişiniz uğurla həyata keçirildi", {
+							icon: "success",
+						}).then(function () {
+							//setTimeout(() => document.querySelector("#Sale").submit(), 100);
+						})
+					} else {
+						swal("Sifariş ləğv olundu");
+					}
+				});
+		});
+	</script>
+}

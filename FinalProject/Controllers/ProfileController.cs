@@ -161,5 +161,29 @@ namespace FinalProject.Controllers
                 }
             }
         }
+        public async Task<IActionResult> DeleteFavorite(int? id)
+        {
+            if (id == null) return NotFound();
+            Book book = await _db.Books.FindAsync(id);
+            if (book == null) return NotFound();
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null) return NotFound();
+            FavoriteBook favoriteBook = _db.FavoriteBooks.FirstOrDefault(fb => fb.AppUserId == user.Id && fb.BookId == book.Id);
+            _db.FavoriteBooks.Remove(favoriteBook);
+            await _db.SaveChangesAsync();
+            return RedirectToAction(User.Identity.Name,"profil");
+        }
+        public async Task<IActionResult> DeleteFavorites()
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null) return NotFound();
+            List<FavoriteBook> favoriteBooks = _db.FavoriteBooks.Where(fb => fb.AppUserId == user.Id).ToList();
+            foreach (FavoriteBook favoriteBook in favoriteBooks)
+            {
+                _db.FavoriteBooks.Remove(favoriteBook);
+            }
+            await _db.SaveChangesAsync();
+            return RedirectToAction(User.Identity.Name, "profil");
+        }
     }
 }
