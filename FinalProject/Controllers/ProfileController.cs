@@ -9,6 +9,7 @@ using FinalProject.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Controllers
 {
@@ -38,10 +39,24 @@ namespace FinalProject.Controllers
                 ViewBag.Age = (int)(Math.Ceiling(span.TotalDays / 365)) - 1;
                 int age = ViewBag.Age;
             }
+            List<FavoriteBook> favoriteBooks = _db.FavoriteBooks.Include(fb=>fb.Book).Include(fb=>fb.AppUser).Where(fb => fb.AppUserId == user.Id).ToList();
+            List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Author).Include(ba => ba.Book).ToList();
+            List<Publisher> publishers = _db.Publishers.ToList();
+            //foreach (FavoriteBook favorite in favoriteBooks)
+            //{
+            //    List<BookAuthor> baBooks = _db.BookAuthors.Include(ba => ba.Author).Include(ba => ba.Book).Where(ba => ba.BookId == favorite.BookId).ToList();
+            //    foreach (BookAuthor baBook in baBooks)
+            //    {
+            //        bookAuthors.Add(baBook);
+            //    }
+            //}
             ProfileVM model = new ProfileVM
             {
                 UserDetail = userDetail,
-                AppUser = user
+                AppUser = user,
+                FavoriteBooks = favoriteBooks,
+                BookAuthors = bookAuthors,
+                Publishers = publishers,
             };
             return View(model);
         }

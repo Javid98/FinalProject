@@ -15,6 +15,8 @@ namespace FinalProject.ViewModels
 		public UserDetail UserDetail { get; set; }
 		public AppUser AppUser { get; set; }
 		public ICollection<FavoriteBook> FavoriteBooks { get; set; }
+		public ICollection<BookAuthor> BookAuthors { get; set; }
+		public ICollection<Publisher> Publishers { get; set; }
 		[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime BirthDay { get; set; }

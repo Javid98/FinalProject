@@ -286,17 +286,24 @@
 					<i class="edit fas fa-edit"></i>
 				</div>
 			}
-		<div class="options">
-			<div class="ppChange">
-				<i class="fas fa-camera" data-toggle="modal" data-target="#ModalPhoto"></i>
-			</div>
-			@if (Model.UserDetail != null)
-			{
-				@if (Model.UserDetail.ImagePath != null)
+			<div class="options">
+				<div class="ppChange">
+					<i class="fas fa-camera" data-toggle="modal" data-target="#ModalPhoto"></i>
+				</div>
+				@if (Model.UserDetail != null)
 				{
-					<div class="pp">
-						<img src="~/image/usersphotos/@Model.UserDetail.ImagePath" alt="">
-					</div>
+					@if (Model.UserDetail.ImagePath != null)
+					{
+						<div class="pp">
+							<img src="~/image/usersphotos/@Model.UserDetail.ImagePath" alt="">
+						</div>
+					}
+					else
+					{
+						<div class="pp">
+							<img src="~/image/pp.jpg" alt="">
+						</div>
+					}
 				}
 				else
 				{
@@ -304,18 +311,11 @@
 						<img src="~/image/pp.jpg" alt="">
 					</div>
 				}
-			}
-			else
-			{
-				<div class="pp">
-					<img src="~/image/pp.jpg" alt="">
+				<div class="settings">
+					<i class="fas fa-user-cog" data-toggle="modal" data-target="#ModalSettings"></i>
 				</div>
-			}
-			<div class="settings">
-				<i class="fas fa-user-cog" data-toggle="modal" data-target="#ModalSettings"></i>
+				<i class="close fas fa-times"></i>
 			</div>
-			<i class="close fas fa-times"></i>
-		</div>
 			<div class="name">
 				<h5>Javid Asadullayev</h5>
 			</div>
@@ -374,36 +374,22 @@
 					<div class="face favoriteFace2">
 						<div class="content2">
 							<div class="books">
-								<div class="book">
-									<div class="image">
-										<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
+								@foreach (FavoriteBook favoriteBook in Model.FavoriteBooks.OrderByDescending(fb => fb.Id).Take(3))
+								{
+									<div class="book">
+										<div class="image">
+											<a href=""><img src="~/image/@favoriteBook.Book.ImagePath" alt=""></a>
+										</div>
+										<div class="title">
+											<h6>@favoriteBook.Book.Name</h6>
+											@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == favoriteBook.BookId))
+											{
+												<p><a href="">@bookAuthor.Author.Fullname</a></p>
+											}
+											<span><a href="">@Model.Publishers.FirstOrDefault(p=>p.Id==favoriteBook.Book.PublisherId).Name</a></span>
+										</div>
 									</div>
-									<div class="title">
-										<h6>Maze Runner Maze Runner </h6>
-										<p><a href="">Stephen King</a></p>
-										<span><a href="">Platanus Publishing</a></span>
-									</div>
-								</div>
-								<div class="book">
-									<div class="image">
-										<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-									</div>
-									<div class="title">
-										<h6>Maze Runner Maze Runner </h6>
-										<p><a href="">Stephen King</a></p>
-										<span><a href="">Platanus Publishing</a></span>
-									</div>
-								</div>
-								<div class="book">
-									<div class="image">
-										<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-									</div>
-									<div class="title">
-										<h6>Maze Runner Maze Runner </h6>
-										<p><a href="">Stephen King</a></p>
-										<span><a href="">Platanus Publishing</a></span>
-									</div>
-								</div>
+								}
 								<button type="button" class="mt-2 btn btn-outline-primary" data-toggle="modal" data-target="#ModalFavorite">Detallar</button>
 							</div>
 						</div>

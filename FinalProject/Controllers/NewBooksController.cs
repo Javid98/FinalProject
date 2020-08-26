@@ -268,5 +268,23 @@ namespace FinalProject.Controllers
 			await _db.SaveChangesAsync();
 			return RedirectToAction("Index");
 		}
+
+		[Authorize]
+		public async Task<IActionResult> AddFavorite(int? id)
+		{
+			if (id == null) return NotFound();
+			Book book = await _db.Books.FindAsync(id);
+			if (book == null) return NotFound();
+			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+			if (user == null) return NotFound();
+			FavoriteBook favoriteBook = new FavoriteBook
+			{
+				BookId = book.Id,
+				AppUserId = user.Id
+			};
+			await _db.FavoriteBooks.AddAsync(favoriteBook);
+			await _db.SaveChangesAsync();
+			return RedirectToAction("Index");
+		}
 	}
 }
