@@ -37,10 +37,10 @@ C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Ra
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Publishers\Index.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\BestSellers\Index.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Contact\Index.cshtml.g.cs
-C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Account\Index.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Profile\Index.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginPartialView.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_RegisterPartialView.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Header\Default.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Basket\Index.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\FinalProject.csprojAssemblyReference.cache
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.cshtml.g.cs

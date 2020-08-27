@@ -15,7 +15,6 @@ else
 {
 	<section id="Cart">
 		<div class="container">
-
 			<form id="Sale" method="post">
 				<table class="table table-striped">
 					<thead>
@@ -40,7 +39,7 @@ else
 								<td>@book.Book.Name</td>
 								<td>
 									<div class="count">
-										<input type="number" min="1" name="Count" value="@book.Count" class="bookCount form-control" />
+										<input type="number" min="1" name="Count" required value="@book.Count" class="bookCount form-control" />
 									</div>
 								</td>
 								<td class="author">
@@ -53,7 +52,7 @@ else
 								</td>
 								<td>
 									<input style="width:60px" type="number" value="@book.Book.Price" class="d-none bPrice" />
-									<input style="width:60px" disabled type="number" name="Price" value="@book.Book.Price" class="bookPrice form-control" />
+									<input style="width:60px" disabled type="text" name="Price" value="@book.Book.Price" class="bookPrice form-control" />
 								</td>
 								<td>
 									<a asp-controller="Basket" asp-action="DeleteBook" asp-route-id="@book.BookId" class="delete">
@@ -64,7 +63,7 @@ else
 						}
 					</tbody>
 				</table>
-				<h5 class="text-end">Total: </h5>
+				<h5 class="total" style="text-align:end;font-weight:bold">Total: </h5>
 				<span class="dtype mt-3"><strong>Çatdırılma növü:</strong></span>
 				<select name="Type" id="delivery" class="form-control">
 					<option value="Metro">Metro</option>
@@ -105,35 +104,79 @@ else
 @section Scripts{
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
-		$("#Cart #Sale .bookCount").change(function () {
-			let count = $(this).val();
-			let price = $(this).parent().parent().next().next().find(".bPrice").val()
-			price = count * price;
-			$(this).parent().parent().next().next().find(".bookPrice").val(price)
+		let prevTotal = 0;
+		let i = 0;
+		let prevPrices = document.querySelectorAll(".bookPrice");
+		let prevCounts = document.querySelectorAll(".bookCount");
+		for (price of prevPrices) {
+			prevTotal += price.value * prevCounts[i].value;
+			i++
+		}
+		let prevTotalText = `Total: ${prevTotal} ₼`
+		$("#Cart #Sale h5.total").text(prevTotalText);
+
+		$("#Cart tbody .bookCount").keyup(function () {
+			//let count = $(this).val();
+			//let price = $(this).parent().parent().next().next().find(".bPrice").val()
+			//price = count * price;
+			//$(this).parent().parent().next().next().find(".bookPrice").val(price);
+			let total = 0;
+			let prices = document.querySelectorAll(".bookPrice");
+			let j = 0;
+			let counts = document.querySelectorAll(".bookCount");
+			for (price of prices) {
+				total += price.value * counts[j].value;
+				j++
+			}
+			let totalText = `Total: ${total} ₼`
+			$("#Cart #Sale h5.total").text(totalText);
+		})
+		$("#Cart tbody .bookCount").change(function () {
+			//let count = $(this).val();
+			//let price = $(this).parent().parent().next().next().find(".bPrice").val()
+			//price = count * price;
+			//$(this).parent().parent().next().next().find(".bookPrice").val(price)
+			let total = 0;
+			let prices = document.querySelectorAll(".bookPrice");
+			let j = 0;
+			let counts = document.querySelectorAll(".bookCount");
+			for (price of prices) {
+				total += price.value * counts[j].value;
+				j++
+			}
+			let totalText = `Total: ${total} ₼`
+			$("#Cart #Sale h5.total").text(totalText);
 		})
 		$("#Cart #Sale").submit(function (e) {
 			e.preventDefault();
 			let total = 0;
 			let prices = document.querySelectorAll(".bookPrice");
+			let j = 0;
+			let counts = document.querySelectorAll(".bookCount");
 			for (price of prices) {
-				total += price.value * 1;
+				total += price.value * counts[j].value;
+				j++
 			}
 			swal({
 				title: "Sifariş",
-				text: `Cəmi məbləğ ${total}`,
-				icon: "warning",
-				buttons: true,
-				dangerMode: true,
+				text: `Cəmi məbləğ ${total} ₼ (Çatdırılma nəzərə alınmır)`,
+				icon: "info",
+				buttons: ["Ləğv et", "Sifarişi ver"],
+				//dangerMode: true,
 			})
 				.then((willDelete) => {
 					if (willDelete) {
 						swal("Sifarişiniz uğurla həyata keçirildi", {
 							icon: "success",
+							button: "Bağla"
 						}).then(function () {
-							//setTimeout(() => document.querySelector("#Sale").submit(), 100);
+							setTimeout(() => document.querySelector("#Sale").submit(), 100);
 						})
 					} else {
-						swal("Sifariş ləğv olundu");
+						swal({
+							text: "Sifariş ləğv olundu",
+							button: "Bağla"
+						});
 					}
 				});
 		});

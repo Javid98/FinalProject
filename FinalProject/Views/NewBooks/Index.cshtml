@@ -418,8 +418,8 @@ Context.Request.QueryString.ToString().Contains("aslug="))
 									</div>
 									<div class="book-buttons">
 
-										<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
-										<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+										<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+										<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id"  asp-route-actionName="@Context.Request.Path" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
 									</div>
 								</div>
 							</div>

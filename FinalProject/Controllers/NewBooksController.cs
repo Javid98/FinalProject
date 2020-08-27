@@ -243,7 +243,7 @@ namespace FinalProject.Controllers
 		}
 
 		[Authorize]
-		public async Task<IActionResult> AddCart(int? id)
+		public async Task<IActionResult> AddCart(int? id,string actionName)
 		{
 			if (id == null) return NotFound();
 			Book book = await _db.Books.FindAsync(id);
@@ -266,11 +266,23 @@ namespace FinalProject.Controllers
 				bookInCart.Count++;
 			}
 			await _db.SaveChangesAsync();
-			return RedirectToAction("Index");
+			if (actionName.Contains("/kitab/"))
+			{
+				return RedirectToRoute(new
+				{
+					controller = "kitab",
+					action=book.Slug
+				});
+			}
+			else
+			{
+				return RedirectToAction("Index");
+
+			}
 		}
 
 		[Authorize]
-		public async Task<IActionResult> AddFavorite(int? id)
+		public async Task<IActionResult> AddFavorite(int? id,string actionName)
 		{
 			if (id == null) return NotFound();
 			Book book = await _db.Books.FindAsync(id);
@@ -286,7 +298,19 @@ namespace FinalProject.Controllers
 				await _db.FavoriteBooks.AddAsync(favoriteBook);
 				await _db.SaveChangesAsync();
 			}
-			return RedirectToAction("Index");
+			if (actionName.Contains("/kitab/"))
+			{
+				return RedirectToRoute(new
+				{
+					controller = "kitab",
+					action = book.Slug
+				});
+			}
+			else
+			{
+				return RedirectToAction("Index");
+
+			}
 		}
 	}
 }

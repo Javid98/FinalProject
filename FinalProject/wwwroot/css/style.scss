@@ -4358,44 +4358,42 @@ header {
 
 #Cart {
     padding: 100px 0 50px 0;
-    form {
-        .table {
-            .image {
-                width: 80px;
-                img {
-                    width: 100%;
-                }
-            }
-            .count {
-                display: flex;
-                align-items: center;
-                input {
-                    width: 65px !important;
-                }
-                i {
-                    margin: 0 5px;
-                    font-size: 20px;
-                    cursor: pointer;
-                    color: $primary_color;
-                }
-            }
-            .delete {
-                i {
-                    font-size: 20px;
-                    color: red;
-                    cursor: pointer;
-                }
-            }
-            tr {
-                td,
-                th {
-                    vertical-align: baseline;
-                }
+    .table {
+        .image {
+            width: 80px;
+            img {
+                width: 100%;
             }
         }
-        .bTn {
+        .count {
             display: flex;
-            justify-content: flex-end;
+            align-items: center;
+            input {
+                width: 65px !important;
+            }
+            i {
+                margin: 0 5px;
+                font-size: 20px;
+                cursor: pointer;
+                color: $primary_color;
+            }
         }
+        .delete {
+            i {
+                font-size: 20px;
+                color: red;
+                cursor: pointer;
+            }
+        }
+        tr {
+            td,
+            th {
+                vertical-align: baseline;
+            }
+        }
+    }
+    .bTn {
+        display: flex;
+        justify-content: flex-end;
     }
 }

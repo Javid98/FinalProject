@@ -21,7 +21,7 @@ namespace FinalProject.Controllers
             _roleManager = roleManager;
             _signInManager = signInManager;
         }
-        public IActionResult Index()
+        public IActionResult Login()
         {
             return View();
         }
@@ -53,7 +53,7 @@ namespace FinalProject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(AccountVM login)
+        public async Task<IActionResult> LoginP(AccountVM login)
         {
             if (ModelState["LoginUsername"].ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid ||
                 ModelState["LoginPassword"].ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid

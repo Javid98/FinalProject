@@ -5497,15 +5497,15 @@ header .menu #sandwich {
   padding: 100px 0 50px 0;
 }
 
-#Cart form .table .image {
+#Cart .table .image {
   width: 80px;
 }
 
-#Cart form .table .image img {
+#Cart .table .image img {
   width: 100%;
 }
 
-#Cart form .table .count {
+#Cart .table .count {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5514,29 +5514,29 @@ header .menu #sandwich {
           align-items: center;
 }
 
-#Cart form .table .count input {
+#Cart .table .count input {
   width: 65px !important;
 }
 
-#Cart form .table .count i {
+#Cart .table .count i {
   margin: 0 5px;
   font-size: 20px;
   cursor: pointer;
   color: #236bdf;
 }
 
-#Cart form .table .delete i {
+#Cart .table .delete i {
   font-size: 20px;
   color: red;
   cursor: pointer;
 }
 
-#Cart form .table tr td,
-#Cart form .table tr th {
+#Cart .table tr td,
+#Cart .table tr th {
   vertical-align: baseline;
 }
 
-#Cart form .bTn {
+#Cart .bTn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

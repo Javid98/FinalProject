@@ -21,15 +21,20 @@ namespace FinalProject.ViewComponents
 
 		public async Task<IViewComponentResult> InvokeAsync()
 		{
-			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-			List<BookInCart> bookInCarts = _db.BookInCarts.Where(bc => bc.AppUserId == user.Id).ToList();
-			int count = 0;
-			foreach (BookInCart book in bookInCarts)
+			if (User.Identity.IsAuthenticated)
 			{
-				count += book.Count;
+				AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+				List<BookInCart> bookInCarts = _db.BookInCarts.Where(bc => bc.AppUserId == user.Id).ToList();
+				int count = 0;
+				foreach (BookInCart book in bookInCarts)
+				{
+					count += book.Count;
+				}
+				ViewBag.BookCount = count;
 			}
-			ViewBag.BookCount = count;
-			return View(await Task.FromResult(bookInCarts));
+			Book b = _db.Books.FirstOrDefault();
+			
+			return View(await Task.FromResult(b));
 		}
 	}
 }

@@ -21,15 +21,12 @@ namespace FinalProject.Controllers
 			_db = db;
 			_userManager = userManager;
 		}
-
 		[Authorize]
-		[Route("Basket/{username}")]
 		public async Task<IActionResult> Index(string username)
 		{
 			if (username == null) return NotFound();
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 			if (user == null) return NotFound();
-			if (username != User.Identity.Name) return NotFound();
 			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
 			List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Book).Include(ba => ba.Author).ToList();
 			ViewBag.Total = 0;
@@ -102,7 +99,7 @@ namespace FinalProject.Controllers
 			sale.SaleBooks = saleBooks;
 			await _db.Sales.AddAsync(sale);
 			await _db.SaveChangesAsync();
-			return RedirectToAction("Index","Home");
+			return RedirectToAction("Index", "Home");
 
 		}
 		public async Task<IActionResult> DeleteBook(int? id)
@@ -111,7 +108,11 @@ namespace FinalProject.Controllers
 			BookInCart bookInCart = _db.BookInCarts.FirstOrDefault(bc => bc.BookId == id);
 			_db.BookInCarts.Remove(bookInCart);
 			await _db.SaveChangesAsync();
-			return RedirectToAction(User.Identity.Name);
+			return RedirectToRoute(new {
+				controller = "Basket",
+				action = "Index",
+				username=User.Identity.Name
+			});
 		}
 	}
 }

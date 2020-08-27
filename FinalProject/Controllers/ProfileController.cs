@@ -6,6 +6,7 @@ using FinalProject.Data;
 using FinalProject.Extentions;
 using FinalProject.Models;
 using FinalProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,7 @@ namespace FinalProject.Controllers
             _env = env;
         }
         [Route("profil/{username}")]
+        [Authorize]
         public async Task<IActionResult> Index(string username)
         {
             if (username == null) return NotFound();
@@ -42,14 +44,6 @@ namespace FinalProject.Controllers
             List<FavoriteBook> favoriteBooks = _db.FavoriteBooks.Include(fb=>fb.Book).Include(fb=>fb.AppUser).Where(fb => fb.AppUserId == user.Id).ToList();
             List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Author).Include(ba => ba.Book).ToList();
             List<Publisher> publishers = _db.Publishers.ToList();
-            //foreach (FavoriteBook favorite in favoriteBooks)
-            //{
-            //    List<BookAuthor> baBooks = _db.BookAuthors.Include(ba => ba.Author).Include(ba => ba.Book).Where(ba => ba.BookId == favorite.BookId).ToList();
-            //    foreach (BookAuthor baBook in baBooks)
-            //    {
-            //        bookAuthors.Add(baBook);
-            //    }
-            //}
             ProfileVM model = new ProfileVM
             {
                 UserDetail = userDetail,
