@@ -14,6 +14,7 @@ namespace FinalProject.Data
 		{
 		}
 		public DbSet<Book> Books { get; set; }
+		public DbSet<Bio> Bios { get; set; }
 		public DbSet<Author> Authors { get; set; }
 		public DbSet<Publisher> Publishers { get; set; }
 		public DbSet<BookFeature> BookFeatures { get; set; }

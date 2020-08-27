@@ -45,7 +45,7 @@ namespace FinalProject.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		[ActionName("Index")]
-		public async Task<IActionResult> Sale()
+		public async Task<IActionResult> Sale(BasketVM info)
 		{
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc=>bc.Book).Include(bc=>bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
@@ -55,6 +55,7 @@ namespace FinalProject.Controllers
 			{
 				sale.Date = DateTime.Now;
 				sale.AppUserId = user.Id;
+				sale.PhoneNumber = info.PhoneNumber;
 				sale.DeliveryType = Request.Form["Type"];
 				sale.DeliveryLocation = Request.Form["Metro"];
 			}
@@ -62,6 +63,7 @@ namespace FinalProject.Controllers
 			{
 				sale.Date = DateTime.Now;
 				sale.AppUserId = user.Id;
+				sale.PhoneNumber = info.PhoneNumber;
 				sale.DeliveryType = Request.Form["Type"];
 				sale.DeliveryLocation = Request.Form["City"];
 				total = 2;
@@ -70,6 +72,7 @@ namespace FinalProject.Controllers
 			{
 				sale.Date = DateTime.Now;
 				sale.AppUserId = user.Id;
+				sale.PhoneNumber = info.PhoneNumber;
 				sale.DeliveryType = Request.Form["Type"];
 				sale.DeliveryLocation = Request.Form["Region"];
 				total = 2;
@@ -91,6 +94,12 @@ namespace FinalProject.Controllers
 						AppUserId=user.Id
 					});
 					total += bookInCart.Book.Price * int.Parse(Request.Form["Count"][i]);
+					Book bookCount = _db.Books.FirstOrDefault(b => b.Id == bookInCart.BookId);
+					if(bookCount.Count != 0)
+					{
+						bookCount.Count -= int.Parse(Request.Form["Count"][i]);
+					}
+					bookCount.SaleCount += int.Parse(Request.Form["Count"][i]);
 					i++;
 					_db.BookInCarts.Remove(bookInCart);
 				}

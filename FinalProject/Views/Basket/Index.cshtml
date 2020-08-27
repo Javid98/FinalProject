@@ -63,7 +63,10 @@ else
 						}
 					</tbody>
 				</table>
-				<h5 class="total" style="text-align:end;font-weight:bold">Total: </h5>
+				<h5 class="mb-2 total" style="text-align:end;font-weight:bold">Total: </h5>
+				<span><strong>Telefon nömrəsi:</strong></span>
+				<input type="text" asp-for="PhoneNumber" class="phoneInput form-control" />
+				<span class="phoneError text-danger" asp-validation-for="PhoneNumber"></span><br />
 				<span class="dtype mt-3"><strong>Çatdırılma növü:</strong></span>
 				<select name="Type" id="delivery" class="form-control">
 					<option value="Metro">Metro</option>
@@ -102,6 +105,8 @@ else
 <!-- Cart End -->
 
 @section Scripts{
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
 		let prevTotal = 0;
@@ -149,6 +154,8 @@ else
 		})
 		$("#Cart #Sale").submit(function (e) {
 			e.preventDefault();
+			let text = $("#Cart #Sale .phoneInput").val()
+			let error = $("#Cart #Sale .phoneError").text()
 			let total = 0;
 			let prices = document.querySelectorAll(".bookPrice");
 			let j = 0;
@@ -157,7 +164,8 @@ else
 				total += price.value * counts[j].value;
 				j++
 			}
-			swal({
+			if (text.toString().trim() != "" && error.toString().trim() == "") {
+				swal({
 				title: "Sifariş",
 				text: `Cəmi məbləğ ${total} ₼ (Çatdırılma nəzərə alınmır)`,
 				icon: "info",
@@ -179,6 +187,7 @@ else
 						});
 					}
 				});
+			}
 		});
 	</script>
 }

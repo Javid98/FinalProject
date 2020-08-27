@@ -1585,6 +1585,27 @@ header {
     }
 }
 
+@media screen and(max-width:767px) {
+    #newBooks {
+        .book-section {
+            .book {
+                justify-content: center;
+                .content {
+                    margin-top: 15px;
+                }
+                .image {
+                    img {
+                        height: 100%;
+                    }
+                }
+                .content {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
 @media screen and(max-width:768px) {
     header {
         .menu {
@@ -1938,24 +1959,6 @@ header {
                 }
                 &:nth-child(6) {
                     background-image: url(../image/tarix.jpg);
-                }
-            }
-        }
-    }
-    #newBooks {
-        .book-section {
-            .book {
-                justify-content: center;
-                .content {
-                    margin-top: 15px;
-                }
-                .image {
-                    img {
-                        height: 100%;
-                    }
-                }
-                .content {
-                    text-align: center;
                 }
             }
         }
@@ -4395,5 +4398,69 @@ header {
     .bTn {
         display: flex;
         justify-content: flex-end;
+    }
+}
+
+#ProfileAbout {
+    .about {
+        .social {
+            .socialUl {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                .facebook {
+                    span {
+                        background: #3b5999;
+                    }
+                }
+                .instagram {
+                    span {
+                        background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+                    }
+                }
+                li {
+                    list-style: none;
+                    width: 25px;
+                    height: 25px;
+                    margin: 0 20px;
+                    transform: rotate(-30deg) skew(25deg);
+                    span {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border-radius: 5px;
+                        width: 100%;
+                        height: 100%;
+                        background: #000;
+                        transition: 0.5s;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #fff;
+                        font-size: 18px;
+                    }
+                    &:hover span:nth-child(5) {
+                        transform: translate(24px, -24px);
+                        opacity: 1;
+                    }
+                    &:hover span:nth-child(4) {
+                        transform: translate(18px, -18px);
+                        opacity: 0.8;
+                    }
+                    &:hover span:nth-child(3) {
+                        transform: translate(12px, -12px);
+                        opacity: 0.6;
+                    }
+                    &:hover span:nth-child(2) {
+                        transform: translate(6px, -6px);
+                        opacity: 0.4;
+                    }
+                    &:hover span:nth-child(1) {
+                        transform: translate(0, 0);
+                        opacity: 0.2;
+                    }
+                }
+            }
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace FinalProject.ViewModels
 	public class ProfileVM
 	{
 		public ICollection<SaleBook> SaleBooks { get; set; }
+		public ICollection<Sale> Sales { get; set; }
 		public UserDetail UserDetail { get; set; }
 		public AppUser AppUser { get; set; }
 		public ICollection<FavoriteBook> FavoriteBooks { get; set; }

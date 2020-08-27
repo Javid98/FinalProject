@@ -32,9 +32,8 @@ namespace FinalProject.ViewComponents
 				}
 				ViewBag.BookCount = count;
 			}
-			Book b = _db.Books.FirstOrDefault();
-			
-			return View(await Task.FromResult(b));
+			Bio bio = _db.Bios.FirstOrDefault();
+			return View(await Task.FromResult(bio));
 		}
 	}
 }

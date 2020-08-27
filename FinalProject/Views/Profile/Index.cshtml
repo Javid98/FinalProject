@@ -82,25 +82,28 @@
 			</div>
 			<div class="modal-body">
 				<div class="books">
-					<form id="favoritesForm" asp-controller="Profile" asp-action="DeleteFavorites">
-						<button class="btn btn-danger" type="submit">Bütün kitabları sil</button>
-					</form>
+					@if (Model.FavoriteBooks.Count() != 0)
+					{
+						<form id="favoritesForm" asp-controller="Profile" asp-action="DeleteFavorites">
+							<button class="btn btn-danger" type="submit">Bütün kitabları sil</button>
+						</form>
+					}
 					@foreach (FavoriteBook favoriteBook in Model.FavoriteBooks.OrderByDescending(fb => fb.Id))
 					{
 						<div class="book">
 							<div class="image">
-								<a href=""><img src="~/image/@favoriteBook.Book.ImagePath" alt=""></a>
+								<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@favoriteBook.Book.Slug"><img src="~/image/@favoriteBook.Book.ImagePath" alt=""></a>
 							</div>
 							<div class="title">
 								<h6>@favoriteBook.Book.Name</h6>
 								@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == favoriteBook.BookId))
 								{
-									<p><a href="">@bookAuthor.Author.Fullname</a></p>
+									<p><a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a></p>
 								}
-								<span><a href="">@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Name</a></span>
+								<span><a href="/NewBooks/?pslug=@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Slug">@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Name</a></span>
 							</div>
 							<form id="favoriteForm" class="delete" asp-controller="Profile" asp-action="DeleteFavorite" asp-route-id="@favoriteBook.BookId">
-								<button type="submit"><i class="fas fa-minus-circle"></i></button>
+								<button style="background:none;border:none" type="submit"><i class="fas fa-minus-circle"></i></button>
 							</form>
 						</div>
 					}
@@ -122,117 +125,38 @@
 			</div>
 			<div class="modal-body">
 				<ul>
-					<li class="saleDate">
-						<h6>20/09/2020</h6>
-						<i class="fas fa-angle-down"></i>
-					</li>
-					<li class="books">
-						<div class="book">
-							<div class="image">
-								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-							</div>
-							<div class="title">
-								<h6>Maze Runner Maze Runner Maze Runner</h6>
-								<p><a href="">Stephen King</a></p>
-								<span><a href="">Platanus Publishing</a></span>
-							</div>
-						</div>
-						<div class="book">
-							<div class="image">
-								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-							</div>
-							<div class="title">
-								<h6>Maze Runner Maze Runner Maze Runner</h6>
-								<p><a href="">Stephen King</a></p>
-								<span><a href="">Platanus Publishing</a></span>
-							</div>
-						</div>
-						<div class="book">
-							<div class="image">
-								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-							</div>
-							<div class="title">
-								<h6>Maze Runner Maze Runner Maze Runner</h6>
-								<p><a href="">Stephen King</a></p>
-								<span><a href="">Platanus Publishing</a></span>
-							</div>
-						</div>
-						<h6 class="total">Total: </h6>
-					</li>
-					<li class="saleDate">
-						<h6>20/09/2020</h6>
-						<i class="fas fa-angle-down"></i>
-					</li>
-					<li class="books">
-						<div class="book">
-							<div class="image">
-								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-							</div>
-							<div class="title">
-								<h6>Maze Runner Maze Runner Maze Runner</h6>
-								<p><a href="">Stephen King</a></p>
-								<span><a href="">Platanus Publishing</a></span>
-							</div>
-						</div>
-						<div class="book">
-							<div class="image">
-								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-							</div>
-							<div class="title">
-								<h6>Maze Runner Maze Runner Maze Runner</h6>
-								<p><a href="">Stephen King</a></p>
-								<span><a href="">Platanus Publishing</a></span>
-							</div>
-						</div>
-						<div class="book">
-							<div class="image">
-								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-							</div>
-							<div class="title">
-								<h6>Maze Runner Maze Runner Maze Runner</h6>
-								<p><a href="">Stephen King</a></p>
-								<span><a href="">Platanus Publishing</a></span>
-							</div>
-						</div>
-						<h6 class="total">Total: </h6>
-					</li>
-					<li class="saleDate">
-						<h6>20/09/2020</h6>
-						<i class="fas fa-angle-down"></i>
-					</li>
-					<li class="books">
-						<div class="book">
-							<div class="image">
-								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-							</div>
-							<div class="title">
-								<h6>Maze Runner Maze Runner Maze Runner</h6>
-								<p><a href="">Stephen King</a></p>
-								<span><a href="">Platanus Publishing</a></span>
-							</div>
-						</div>
-						<div class="book">
-							<div class="image">
-								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-							</div>
-							<div class="title">
-								<h6>Maze Runner Maze Runner Maze Runner</h6>
-								<p><a href="">Stephen King</a></p>
-								<span><a href="">Platanus Publishing</a></span>
-							</div>
-						</div>
-						<div class="book">
-							<div class="image">
-								<a href=""><img src="~/image/mazerunner.jpg" alt=""></a>
-							</div>
-							<div class="title">
-								<h6>Maze Runner Maze Runner Maze Runner</h6>
-								<p><a href="">Stephen King</a></p>
-								<span><a href="">Platanus Publishing</a></span>
-							</div>
-						</div>
-						<h6 class="total">Total: </h6>
-					</li>
+					@foreach (Sale sale in Model.Sales.OrderByDescending(s=>s.Id))
+					{
+						<li class="saleDate">
+							<h6>@sale.Date.ToString("dd/MM/yyyy")</h6>
+							<i class="fas fa-angle-down"></i>
+						</li>
+						<li class="books">
+							@foreach (SaleBook saleBook in sale.SaleBooks)
+							{
+								<div class="book">
+									<div class="image">
+										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@saleBook.Book.Slug"><img src="~/image/@saleBook.Book.ImagePath" alt=""></a>
+									</div>
+									<div class="title">
+										<h6>@saleBook.Book.Name</h6>
+										@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == saleBook.BookId))
+										{
+											<p><a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a></p>
+										}
+										<span><a href="/NewBooks/?pslug=@saleBook.Book.Publisher.Slug">@saleBook.Book.Publisher.Name</a></span><br />
+																																			   <p style="margin:10px 0 0 0">@saleBook.Price ₼</p>
+									</div>
+									<div style="display:flex;align-items:center;justify-content:center;text-align:center">
+										<span>
+											<strong>@saleBook.Count ədəd</strong>
+										</span>
+									</div>
+								</div>
+							}
+						<h6 class="total">Total: @sale.Total ₼</h6>
+						</li>
+					}
 				</ul>
 			</div>
 		</div>
@@ -251,14 +175,20 @@
 				{
 					<div class="photo">
 						<img src="~/image/usersphotos/@Model.UserDetail.ImagePath" alt="">
-						<i class="edit fas fa-edit"></i>
+						@if (User.Identity.Name == Model.AppUser.UserName)
+						{
+							<i class="edit fas fa-edit"></i>
+						}
 					</div>
 				}
 				else
 				{
 					<div class="photo">
 						<img src="~/image/pp.jpg" alt="">
-						<i class="edit fas fa-edit"></i>
+						@if (User.Identity.Name == Model.AppUser.UserName)
+						{
+							<i class="edit fas fa-edit"></i>
+						}
 					</div>
 				}
 			}
@@ -266,20 +196,32 @@
 			{
 				<div class="photo">
 					<img src="~/image/pp.jpg" alt="">
-					<i class="edit fas fa-edit"></i>
+					@if (User.Identity.Name == Model.AppUser.UserName)
+					{
+						<i class="edit fas fa-edit"></i>
+					}
 				</div>
 			}
-			<div class="options">
-				<div class="ppChange">
-					<i class="fas fa-camera" data-toggle="modal" data-target="#ModalPhoto"></i>
-				</div>
-				@if (Model.UserDetail != null)
-				{
-					@if (Model.UserDetail.ImagePath != null)
+			@if (User.Identity.Name == Model.AppUser.UserName)
+			{
+				<div class="options">
+					<div class="ppChange">
+						<i class="fas fa-camera" data-toggle="modal" data-target="#ModalPhoto"></i>
+					</div>
+					@if (Model.UserDetail != null)
 					{
-						<div class="pp">
-							<img src="~/image/usersphotos/@Model.UserDetail.ImagePath" alt="">
-						</div>
+						@if (Model.UserDetail.ImagePath != null)
+						{
+							<div class="pp">
+								<img src="~/image/usersphotos/@Model.UserDetail.ImagePath" alt="">
+							</div>
+						}
+						else
+						{
+							<div class="pp">
+								<img src="~/image/pp.jpg" alt="">
+							</div>
+						}
 					}
 					else
 					{
@@ -287,18 +229,12 @@
 							<img src="~/image/pp.jpg" alt="">
 						</div>
 					}
-				}
-				else
-				{
-					<div class="pp">
-						<img src="~/image/pp.jpg" alt="">
+					<div class="settings">
+						<i class="fas fa-user-cog" data-toggle="modal" data-target="#ModalSettings"></i>
 					</div>
-				}
-				<div class="settings">
-					<i class="fas fa-user-cog" data-toggle="modal" data-target="#ModalSettings"></i>
+					<i class="close fas fa-times"></i>
 				</div>
-				<i class="close fas fa-times"></i>
-			</div>
+			}
 			<div class="name">
 				<h5>Javid Asadullayev</h5>
 			</div>
@@ -325,21 +261,12 @@
 						<div class="content2">
 							<div class="sale">
 								<ul>
-									<li>
-										<h6>20/09/2020</h6>
-									</li>
-									<li>
-										<h6>20/09/2020</h6>
-									</li>
-									<li>
-										<h6>20/09/2020</h6>
-									</li>
-									<li>
-										<h6>20/09/2020</h6>
-									</li>
-									<li>
-										<h6>20/09/2020</h6>
-									</li>
+									@foreach (Sale sale in Model.Sales.OrderByDescending(s => s.Id).Take(5))
+									{
+										<li>
+											<h6>@sale.Date.ToString("dd/MM/yyyy")</h6>
+										</li>
+									}
 								</ul>
 								<button type="button" class="mt-2 btn btn-outline-primary" data-toggle="modal" data-target="#ModalSales">Detallar</button>
 							</div>
@@ -361,15 +288,15 @@
 								{
 									<div class="book">
 										<div class="image">
-											<a href=""><img src="~/image/@favoriteBook.Book.ImagePath" alt=""></a>
+											<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@favoriteBook.Book.Slug"><img src="~/image/@favoriteBook.Book.ImagePath" alt=""></a>
 										</div>
 										<div class="title">
 											<h6>@favoriteBook.Book.Name</h6>
 											@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == favoriteBook.BookId))
 											{
-												<p><a href="">@bookAuthor.Author.Fullname</a></p>
+												<p><a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a></p>
 											}
-											<span><a href="">@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Name</a></span>
+											<span><a href="/NewBooks/?pslug=@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Slug">@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Name</a></span>
 										</div>
 									</div>
 								}
@@ -388,8 +315,34 @@
 						<p><strong>Cinsiyyət: &nbsp;&nbsp;@Model.UserDetail.Gender</strong></p>
 						<p><strong>Yaş: &nbsp;&nbsp;@ViewBag.Age</strong></p>
 						<p><strong>Mobil nömrə: &nbsp;&nbsp;@Model.UserDetail.PhoneNumber</strong></p>
-						<p><strong>Facebook: &nbsp;&nbsp;@Model.UserDetail.FacebookLink</strong></p>
-						<p><strong>Instagram: &nbsp;&nbsp;@Model.UserDetail.InstagramLink</strong></p>
+						<div class="social mt-4">
+							<ul class="socialUl">
+								@if (Model.UserDetail.FacebookLink != null)
+								{
+									<li class="facebook">
+										<a href="@Model.UserDetail.FacebookLink" style="background:none">
+											<span></span>
+											<span></span>
+											<span></span>
+											<span></span>
+											<span><i class="fab fa-facebook-f"></i></span>
+										</a>
+									</li>
+								}
+								@if (Model.UserDetail.InstagramLink != null)
+								{
+									<li class="instagram">
+										<a href="@Model.UserDetail.InstagramLink" style="background:none">
+											<span></span>
+											<span></span>
+											<span></span>
+											<span></span>
+											<span><i class="fab fa-instagram"></i></span>
+										</a>
+									</li>
+								}
+							</ul>
+						</div>
 					</div>
 				}
 				else
@@ -416,13 +369,13 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
-		$("#ModalFavorite .books .book .delete").submit(function (e) {
+		$("#ModalFavorite .books .book #favoriteForm").submit(function (e) {
 			e.preventDefault();
 			swal({
 				title: "Favoritlər",
 				text: "Bu kitabı silmək istədiyinizdən əminsiniz?",
 				icon: "warning",
-				buttons: true,
+				buttons: ["Bağla","Sil"],
 				dangerMode: true,
 			})
 				.then((willDelete) => {
@@ -434,6 +387,29 @@
 						})
 					} else {
 						swal("Kitab silinmədi");
+						button: "Bağla"
+					}
+				});
+		});
+		$("#ModalFavorite .books #favoritesForm").submit(function (e) {
+			e.preventDefault();
+			swal({
+				title: "Favoritlər",
+				text: "Favoritlərdə bütün kitabları silmək istədiyinizdən əminsiniz?",
+				icon: "warning",
+				buttons: ["Bağla","Sil"],
+				dangerMode: true,
+			})
+				.then((willDelete) => {
+					if (willDelete) {
+						swal("Favorit kitablar silindi", {
+							icon: "success",
+						}).then(function () {
+							setTimeout(() => document.querySelector("#favoritesForm").submit(), 100);
+						})
+					} else {
+						swal("Kitablar silinmədi");
+						button: "Bağla"
 					}
 				});
 		});

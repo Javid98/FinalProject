@@ -19,6 +19,8 @@ namespace FinalProject.ViewModels
 		public Publisher Publisher { get; set; }
 		public ICollection<Category> Categories { get; set; }
 		public ICollection<BookCategory> BookCategories { get; set; }
+		public ICollection<BookInCart> BookInCarts { get; set; }
+		public ICollection<FavoriteBook> FavoriteBooks { get; set; }
 		public BookFeature BookFeature { get; set; }
 	}
 }

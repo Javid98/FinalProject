@@ -21,11 +21,24 @@ namespace FinalProject.Controllers
 			_db = db;
 			_userManager = userManager;
 		}
-		public IActionResult Index(string pslug, string aslug, string cslug, int page = 1)
+		public async Task<IActionResult> Index(string pslug, string aslug, string cslug, int page = 1)
 		{
 			ViewBag.Page = page;
 			ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.Count() / 3);
 			List<Book> books = new List<Book>();
+
+			AppUser user = new AppUser();
+			if (User.Identity.IsAuthenticated)
+			{
+				user = await _userManager.FindByNameAsync(User.Identity.Name);
+			}
+			List<BookInCart> bookInCarts = new List<BookInCart>();
+			List<FavoriteBook> favoriteBooks = new List<FavoriteBook>();
+			if (user != null)
+			{
+				bookInCarts = _db.BookInCarts.Include(bc => bc.Book).Include(bc => bc.AppUser).Where(bc => bc.AppUserId == user.Id).ToList();
+				favoriteBooks = _db.FavoriteBooks.Include(bc => bc.Book).Include(bc => bc.AppUser).Where(bc => bc.AppUserId == user.Id).ToList();
+			}
 
 			List<BookCategory> bookCategories = new List<BookCategory>();
 			ViewBag.Aslug = "";
@@ -198,7 +211,9 @@ namespace FinalProject.Controllers
 				BookAuthors = bookAuthors,
 				Authors = authors,
 				Publishers = publishers,
-				Categories = categories
+				Categories = categories,
+				BookInCarts = bookInCarts,
+				FavoriteBooks = favoriteBooks
 			};
 			return View(model);
 		}
@@ -243,7 +258,7 @@ namespace FinalProject.Controllers
 		}
 
 		[Authorize]
-		public async Task<IActionResult> AddCart(int? id,string actionName)
+		public async Task<IActionResult> AddCart(int? id, string actionName,string queryString)
 		{
 			if (id == null) return NotFound();
 			Book book = await _db.Books.FindAsync(id);
@@ -271,18 +286,18 @@ namespace FinalProject.Controllers
 				return RedirectToRoute(new
 				{
 					controller = "kitab",
-					action=book.Slug
+					action = book.Slug
 				});
 			}
 			else
 			{
-				return RedirectToAction("Index");
+				return Redirect(@"https://localhost:44343/NewBooks/Index" + queryString);
 
 			}
 		}
 
 		[Authorize]
-		public async Task<IActionResult> AddFavorite(int? id,string actionName)
+		public async Task<IActionResult> AddFavorite(int? id, string actionName, string queryString)
 		{
 			if (id == null) return NotFound();
 			Book book = await _db.Books.FindAsync(id);
@@ -308,7 +323,7 @@ namespace FinalProject.Controllers
 			}
 			else
 			{
-				return RedirectToAction("Index");
+				return Redirect(@"https://localhost:44343/NewBooks/Index"+queryString);
 
 			}
 		}

@@ -1,11 +1,16 @@
-﻿@if (@ViewContext.RouteData.Values["controller"].ToString().ToLower() == "account" || @ViewContext.RouteData.Values["controller"].ToString().ToLower() == "contact")
+﻿@model Bio
+@{
+	Layout = null;
+}
+
+@if (@ViewContext.RouteData.Values["controller"].ToString().ToLower() == "account" || @ViewContext.RouteData.Values["controller"].ToString().ToLower() == "contact")
 {
 	<header style="background:none">
 		<div class="container">
 			<nav class="col row justify-content-between ">
 				<div class="logo row col ">
 					<a asp-controller="Home" asp-action="Index">
-						<img style="width: 90px; height: 60px; " src="~/image/bakumoz.png"
+						<img style="width: 90px; height: 60px; " src="~/image/@Model.Logo"
 							 alt=" ">
 					</a>
 				</div>
@@ -53,7 +58,7 @@
 				<div class="social">
 					<ul class="socialUl">
 						<li>
-							<a href="">
+							<a href="@Model.FacebookLink" target="_blank">
 								<span></span>
 								<span></span>
 								<span></span>
@@ -62,21 +67,12 @@
 							</a>
 						</li>
 						<li>
-							<a href="">
+							<a href="@Model.InstagramLink" target="_blank">
 								<span></span>
 								<span></span>
 								<span></span>
 								<span></span>
 								<span><i class="fab fa-instagram"></i></span>
-							</a>
-						</li>
-						<li>
-							<a href="">
-								<span></span>
-								<span></span>
-								<span></span>
-								<span></span>
-								<span><i class="fab fa-google-plus-g"></i></span>
 							</a>
 						</li>
 					</ul>
@@ -103,10 +99,10 @@
 					}
 				</div>
 				<div class="about">
-					<p>Bakı</p>
-					<p>+33(0) 1 55 28 81 40 95,</p>
-					<p>Bd. Voltaire 75011 Bakı,</p>
-					<p>Azərbaycan</p>
+					<p>@Model.City</p>
+					<p>@Model.PhoneNumber,</p>
+					<p>@Model.Street,</p>
+					<p>@Model.Country</p>
 				</div>
 			</div>
 			<i id="close" class="fas fa-times"></i>
@@ -142,7 +138,7 @@ else
 			<nav class="col row justify-content-between ">
 				<div class="logo row col ">
 					<a asp-controller="Home" asp-action="Index">
-						<img style="width: 90px; height: 60px; " src="~/image/bakumoz.png"
+						<img style="width: 90px; height: 60px; " src="~/image/@Model.Logo"
 							 alt=" ">
 					</a>
 				</div>
@@ -190,7 +186,7 @@ else
 				<div class="social">
 					<ul class="socialUl">
 						<li>
-							<a href="">
+							<a href="@Model.FacebookLink" target="_blank">
 								<span></span>
 								<span></span>
 								<span></span>
@@ -199,21 +195,12 @@ else
 							</a>
 						</li>
 						<li>
-							<a href="">
+							<a href="@Model.InstagramLink" target="_blank">
 								<span></span>
 								<span></span>
 								<span></span>
 								<span></span>
 								<span><i class="fab fa-instagram"></i></span>
-							</a>
-						</li>
-						<li>
-							<a href="">
-								<span></span>
-								<span></span>
-								<span></span>
-								<span></span>
-								<span><i class="fab fa-google-plus-g"></i></span>
 							</a>
 						</li>
 					</ul>
@@ -239,10 +226,10 @@ else
 					}
 				</div>
 				<div class="about">
-					<p>Bakı</p>
-					<p>+33(0) 1 55 28 81 40 95,</p>
-					<p>Bd. Voltaire 75011 Bakı,</p>
-					<p>Azərbaycan</p>
+					<p>@Model.City</p>
+					<p>@Model.PhoneNumber,</p>
+					<p>@Model.Street,</p>
+					<p>@Model.Country</p>
 				</div>
 			</div>
 			<i id="close" class="fas fa-times"></i>

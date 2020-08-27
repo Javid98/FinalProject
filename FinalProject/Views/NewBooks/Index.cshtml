@@ -374,55 +374,105 @@ Context.Request.QueryString.ToString().Contains("aslug="))
 			</div>
 			<div class="col-lg-9 col-sm-12 book-section">
 				<div class="container">
-					<div class="col-12 col-sm-12 books-count">
-						@*<span class="col-md-1 col-sm-2 col-2">Sırala:</span>
-							<div class="dropdown show">
-								<a class="btn btn-outline-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Çox satılana görə<i class="ml-2 fas fa-angle-down"></i>
-								</a>
+					@if (Model.Books.Count() != 0)
+					{
+						<div class="col-12 col-sm-12 books-count">
+							@*<span class="col-md-1 col-sm-2 col-2">Sırala:</span>
+								<div class="dropdown show">
+									<a class="btn btn-outline-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Çox satılana görə<i class="ml-2 fas fa-angle-down"></i>
+									</a>
 
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="z-index:200">
-									<a class="dropdown-item" href="#">Çox satılana görə</a>
-									<a class="dropdown-item" href="#">Bahalıdan ucuza</a>
-									<a class="dropdown-item" href="#">Ucuzdan bahalıya</a>
-									<a class="dropdown-item" href="#">Kitab adına görə(A-dan Z-yə)</a>
-									<a class="dropdown-item" href="#">Kitab adına görə(Z-dən A-ya)</a>
-								</div>
-							</div>*@
-						<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan 1-16 arası göstərilir</p>
-					</div>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="z-index:200">
+										<a class="dropdown-item" href="#">Çox satılana görə</a>
+										<a class="dropdown-item" href="#">Bahalıdan ucuza</a>
+										<a class="dropdown-item" href="#">Ucuzdan bahalıya</a>
+										<a class="dropdown-item" href="#">Kitab adına görə(A-dan Z-yə)</a>
+										<a class="dropdown-item" href="#">Kitab adına görə(Z-dən A-ya)</a>
+									</div>
+								</div>*@
+							<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan 1-16 arası göstərilir</p>
+						</div>
+					}
 					<div class="books">
-						@foreach (Book book in Model.Books)
+						@if (Model.Books.Count() == 0)
 						{
-							<div class="row book">
-								<div class="col-md-2 col-sm-4 col-4 image">
-									<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug"><img src="~/image/@book.ImagePath" alt=""></a>
-								</div>
-								<div class="col-md-10 col-sm-12 col-12 content">
-									<h4>
-										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
-									</h4>
-									<div class="author-publisher">
-										@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == book.Id))
-										{
-											<p>
-												<a href="">@bookAuthor.Author.Fullname</a>
-											</p>
-										}
-										<span>
-											<a href="">@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Name</a>
-										</span>
-									</div>
-									<div class="mt-3 price">
-										<span>@book.Price ₼</span>
-									</div>
-									<div class="book-buttons">
-
-										<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
-										<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id"  asp-route-actionName="@Context.Request.Path" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
-									</div>
-								</div>
+							<div style="padding:100px 0">
+								<h3 style="text-align:center;font-weight:bold;color:#236bdf">
+									Nəticə yoxdur
+								</h3>
 							</div>
+						}
+						else
+						{
+							@foreach (Book book in Model.Books)
+							{
+								<div class="row book">
+									<div class="col-md-2 col-sm-4 col-4 image">
+										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug"><img src="~/image/@book.ImagePath" alt=""></a>
+									</div>
+									<div class="col-md-10 col-sm-12 col-12 content">
+										<h4>
+											<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
+										</h4>
+										<div class="author-publisher">
+											@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == book.Id))
+											{
+												<p>
+													<a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a>
+												</p>
+											}
+											<span>
+												<a href="/NewBooks/?pslug=@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Slug">@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Name</a>
+											</span>
+										</div>
+										<div class="mt-3 price">
+											<span>@book.Price ₼</span>
+										</div>
+										@if (book.Count != 0)
+										{
+											<div style="display:flex;justify-content:flex-end; flex-wrap:wrap">
+												<h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda @book.Count ədəd qalıb</h6>
+											</div>
+										}
+										else
+										{
+											<div style="display:flex;justify-content:space-around; flex-wrap:wrap">
+												<h6 style="color:#569a4d;font-weight:bold;margin:0">7-10 iş günü ərzində çatdırılma</h6>
+												<h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda qalmayıb</h6>
+											</div>
+										}
+										@if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) == null)
+										{
+											<div class="book-buttons">
+												<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+												<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+											</div>
+										}
+										else if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) != null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) == null)
+										{
+											<div class="book-buttons">
+												<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info" style="background:#5900ff;border-color:#5900ff"><i class="mr-1 fas fa-shopping-basket"></i>Səbətdə mövcuddur</a>
+												<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+											</div>
+										}
+										else if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) != null)
+										{
+											<div class="book-buttons">
+												<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+												<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary" style="background:#5900ff;border-color:#5900ff;pointer-events:none"><i style="color:tomato" class="mr-1 fas fa-heart"></i>Favoritlərdə mövcuddur</a>
+											</div>
+										}
+										else
+										{
+											<div class="book-buttons">
+												<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info" style="background:#5900ff;border-color:#5900ff"><i class="mr-1 fas fa-shopping-basket"></i>Səbətdə mövcuddur</a>
+												<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary" style="background:#5900ff;border-color:#5900ff;pointer-events:none"><i style="color:tomato" class="mr-1 fas fa-heart"></i>Favoritlərdə mövcuddur</a>
+											</div>
+										}
+									</div>
+								</div>
+							}
 						}
 					</div>
 				</div>
@@ -451,7 +501,7 @@ Context.Request.QueryString.ToString().Contains("aslug="))
 					else if (Context.Request.QueryString.ToString().Contains("page"))
 					{
 						@if (Context.Request.QueryString.ToString().Contains("aslug=") || Context.Request.QueryString.ToString().Contains("cslug=") ||
-		Context.Request.QueryString.ToString().Contains("pslug="))
+Context.Request.QueryString.ToString().Contains("pslug="))
 						{
 							if (i == ViewBag.Page)
 							{

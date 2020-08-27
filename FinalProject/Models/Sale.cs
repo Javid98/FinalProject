@@ -14,6 +14,7 @@ namespace FinalProject.Models
         public string DeliveryType { get; set; }
         public string DeliveryLocation { get; set; }
         public double Total { get; set; }
+        public string PhoneNumber { get; set; }
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
 		public ICollection<SaleBook> SaleBooks { get; set; }
