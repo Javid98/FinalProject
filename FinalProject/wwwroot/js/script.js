@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Click Menu
+    // Click Menu Start
     $(".menu span").click(function() {
         $("body").css("overflow", "hidden")
         $(".activeMenu").show()
@@ -22,6 +22,8 @@ $(document).ready(function () {
             $(".activeMenu .socialUl").css("display", "flex").addClass("animate__animated animate__fadeInUpBig")
         }, 200)
     })
+    // Click Menu End
+
 
     // Click Sandwich
     $("#sandwich").click(function() {
@@ -64,8 +66,9 @@ $(document).ready(function () {
         }, 300)
         $(".activeMenu").fadeOut()
     })
+    // Click Sandwich End
 
-    // Search
+    // Search Start
     $("#searchBtn").click(function() {
         $(".search-box").css("transition", "0.6s ease-in")
         $(".search-box").css("border-radius", "40px")
@@ -124,6 +127,22 @@ $(document).ready(function () {
             $(".search-box").css("background", "#236bdf")
         }, 700)
     })
+    $("#Search #form .search-txt").keyup(function () {
+        let search = $(this).val();
+        $("#Search #form ul li").not($("#Search #form ul li").first()).remove();
+        if (search.length > 0 && search.trim() != "") {
+            $.ajax({
+                url: "/Home/Search?search=" + search,
+                type: "Get",
+                success: function (res) {
+                    $("#Search #form ul").append(res);
+                }
+            })
+        }
+
+    })
+    // Search End
+
 
     // Slider start
     var swiper = new Swiper('.swiper-container', {

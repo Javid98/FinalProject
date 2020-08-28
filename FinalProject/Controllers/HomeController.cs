@@ -51,7 +51,19 @@ namespace FinalProject.Controllers
 			};
 			return View(model);
 		}
-
+		public IActionResult Search(string search)
+		{
+			List<Book> books = _db.Books.Where(b => b.Name.Contains(search)).ToList();
+			List<Author> authors = _db.Authors.Where(b => b.Fullname.Contains(search)).ToList();
+			List<Publisher> publishers = _db.Publishers.Where(b => b.Name.Contains(search)).ToList();
+			HomeVM model = new HomeVM
+			{
+				Books = books,
+				Authors = authors,
+				Publishers = publishers
+			};
+			return PartialView("_SearchPartialView", model);
+		}
 
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

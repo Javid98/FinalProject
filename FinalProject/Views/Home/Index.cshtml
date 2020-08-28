@@ -182,18 +182,10 @@
 			</a>
 		</div>
 		<div class="categories">
-			<!-- <div class="category category-1"><a href="">Klassika</a></div>
-			<div class="category category-2"><a href="">Detektiv</a></div>
-			<div class="category category-3"><a href="">Psixologiya</a></div>
-			<div class="category category-4"><a href="">Elmi-kütləvi</a></div>
-			<div class="category category-5"><a href="">Elmi-fantastika</a></div>
-			<div class="category category-6"><a href="">Tarixi</a></div> -->
-			<a class="category category-1" href=""></a>
-			<a class="category category-2" href=""></a>
-			<a class="category category-3" href=""></a>
-			<a class="category category-4" href=""></a>
-			<a class="category category-5" href=""></a>
-			<a class="category category-6" href=""></a>
+			@foreach (Category category in Model.Categories.OrderBy(c => c.Id).Where(c => c.Id > 11).Take(6))
+			{
+				<a class="category" href="/NewBooks/?cslug=@category.Slug" style="background:url(../image/@category.ImagePath)"></a>
+			}
 		</div>
 	</div>
 </section>

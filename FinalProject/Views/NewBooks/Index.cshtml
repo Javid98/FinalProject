@@ -377,20 +377,6 @@ Context.Request.QueryString.ToString().Contains("aslug="))
 					@if (Model.Books.Count() != 0)
 					{
 						<div class="col-12 col-sm-12 books-count">
-							@*<span class="col-md-1 col-sm-2 col-2">Sırala:</span>
-								<div class="dropdown show">
-									<a class="btn btn-outline-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Çox satılana görə<i class="ml-2 fas fa-angle-down"></i>
-									</a>
-
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="z-index:200">
-										<a class="dropdown-item" href="#">Çox satılana görə</a>
-										<a class="dropdown-item" href="#">Bahalıdan ucuza</a>
-										<a class="dropdown-item" href="#">Ucuzdan bahalıya</a>
-										<a class="dropdown-item" href="#">Kitab adına görə(A-dan Z-yə)</a>
-										<a class="dropdown-item" href="#">Kitab adına görə(Z-dən A-ya)</a>
-									</div>
-								</div>*@
 							<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan 1-16 arası göstərilir</p>
 						</div>
 					}
@@ -437,10 +423,11 @@ Context.Request.QueryString.ToString().Contains("aslug="))
 										}
 										else
 										{
-											<div style="display:flex;justify-content:space-around; flex-wrap:wrap">
-												<h6 style="color:#569a4d;font-weight:bold;margin:0">7-10 iş günü ərzində çatdırılma</h6>
-												<h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda qalmayıb</h6>
-											</div>
+									<div style="display:flex;justify-content:space-around; flex-wrap:wrap">
+										<h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda qalmayıb</h6>
+										<h6 style="color:#569a4d;font-weight:bold;margin:0">7-10 iş günü ərzində çatdırılma</h6>
+
+									</div>
 										}
 										@if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) == null)
 										{

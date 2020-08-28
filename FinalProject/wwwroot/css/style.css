@@ -1358,9 +1358,9 @@ header .menu #sandwich {
         -ms-flex: 1 1 0px;
             flex: 1 1 0;
     height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
     -webkit-transition: 0.8s ease;
     transition: 0.8s ease;
   }
@@ -1496,17 +1496,13 @@ header .menu #sandwich {
         -ms-flex: 1 1 0px;
             flex: 1 1 0;
     height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
     -webkit-transition: -webkit-box-flex 0.8s ease;
     transition: -webkit-box-flex 0.8s ease;
     transition: flex 0.8s ease;
     transition: flex 0.8s ease, -webkit-box-flex 0.8s ease, -ms-flex 0.8s ease;
-  }
-  #Category .categories .category img {
-    width: 100%;
-    height: 100%;
   }
   #Category .categories .category:hover {
     -webkit-box-flex: 3;
@@ -2263,26 +2259,20 @@ header .menu #sandwich {
     height: 100%;
   }
   .CategoriesPage .categories .category {
-    -webkit-box-flex: 0.5;
-        -ms-flex: 0.5 1 0px;
-            flex: 0.5 1 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 0px;
+            flex: 1 1 0;
     height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
     -webkit-transition: 0.8s ease;
     transition: 0.8s ease;
   }
-  .CategoriesPage .categories .category a {
-    text-decoration: none;
-    color: white;
-    -webkit-transform: rotateZ(90deg);
-            transform: rotateZ(90deg);
-  }
   .CategoriesPage .categories .category:hover {
-    -webkit-box-flex: 4;
-        -ms-flex: 4 1 0px;
-            flex: 4 1 0;
+    -webkit-box-flex: 3;
+        -ms-flex: 3 1 0px;
+            flex: 3 1 0;
     opacity: 1;
   }
   .CategoriesPage .categories .category-1 {
@@ -2407,9 +2397,9 @@ header .menu #sandwich {
         -ms-flex: 0.7 1 0px;
             flex: 0.7 1 0;
     height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
     -webkit-transition: -webkit-box-flex 0.8s ease;
     transition: -webkit-box-flex 0.8s ease;
     transition: flex 0.8s ease;
@@ -3273,13 +3263,13 @@ header .menu #sandwich {
     height: 100%;
   }
   .CategoriesPage .categories .category {
-    -webkit-box-flex: 0.3;
-        -ms-flex: 0.3 1 0px;
-            flex: 0.3 1 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 0px;
+            flex: 1 1 0;
     height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
     -webkit-transition: 0.8s ease;
     transition: 0.8s ease;
   }
@@ -3290,9 +3280,9 @@ header .menu #sandwich {
             transform: rotateZ(90deg);
   }
   .CategoriesPage .categories .category:hover {
-    -webkit-box-flex: 5;
-        -ms-flex: 5 1 0px;
-            flex: 5 1 0;
+    -webkit-box-flex: 3;
+        -ms-flex: 3 1 0px;
+            flex: 3 1 0;
     opacity: 1;
   }
   .CategoriesPage .categories .category-1 {
@@ -3416,9 +3406,9 @@ header .menu #sandwich {
         -ms-flex: 0.6 1 0px;
             flex: 0.6 1 0;
     height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
     -webkit-transition: -webkit-box-flex 0.8s ease;
     transition: -webkit-box-flex 0.8s ease;
     transition: flex 0.8s ease;

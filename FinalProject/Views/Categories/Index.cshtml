@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Category>
 @{
     ViewData["Title"] = "Kateqoriyalar";
 }
@@ -40,46 +40,50 @@
 
 <!-- Category Start -->
 
-<section class="CategoriesPage parallax-window" data-parallax="scroll" data-image-src="image/elmi.jpg">
+<section class="CategoriesPage" data-parallax="scroll" data-image-src="image/elmi.jpg">
     <div class="mt-3 container">
         <div class="row justify-content-center">
             <div class="categories">
-                <a href="" class="category category-1"></a>
-                <a href="" class="category category-2"></a>
-                <a href="" class="category category-3"></a>
+                @foreach (Category category in Model.OrderBy(c => c.Id).Where(c => c.Id > 11).Take(3))
+                {
+                    <a class="category" href="/NewBooks/?cslug=@category.Slug" style="background:url(../image/@category.ImagePath)"></a>
+                }
             </div>
         </div>
     </div>
 </section>
-<section class="CategoriesPage parallax-window" data-parallax="scroll" data-image-src="image/history.jpg">
+<section class="CategoriesPage" data-parallax="scroll" data-image-src="image/history.jpg">
     <div class="mt-3 container">
         <div class="row justify-content-center">
             <div class="categories">
-                <a href="" class="category category-4"></a>
-                <a href="" class="category category-5"></a>
-                <a href="" class="category category-6"></a>
+                @foreach (Category category in Model.OrderBy(c => c.Id).Where(c => c.Id > 11).Skip(3).Take(3))
+                {
+                    <a class="category" href="/NewBooks/?cslug=@category.Slug" style="background:url(../image/@category.ImagePath)"></a>
+                }
             </div>
         </div>
     </div>
 </section>
-<section class="CategoriesPage parallax-window" data-parallax="scroll" data-image-src="image/classic.jpg">
+<section class="CategoriesPage" data-parallax="scroll" data-image-src="image/classic.jpg">
     <div class="mt-3 container">
         <div class="row justify-content-center">
             <div class="categories">
-                <a href="" class="category category-7"></a>
-                <a href="" class="category category-8"></a>
-                <a href="" class="category category-9"></a>
+                @foreach (Category category in Model.OrderBy(c => c.Id).Where(c => c.Id > 11).Skip(6).Take(3))
+                {
+                    <a class="category" href="/NewBooks/?cslug=@category.Slug" style="background:url(../image/@category.ImagePath)"></a>
+                }
             </div>
         </div>
     </div>
 </section>
-<section class="CategoriesPage parallax-window" data-parallax="scroll" data-image-src="image/journal.jpg">
+<section class="CategoriesPage" data-parallax="scroll" data-image-src="image/journal.jpg">
     <div class="mt-3 container">
         <div class="row justify-content-center">
             <div class="categories">
-                <a href="" class="category category-10"></a>
-                <a href="" class="category category-11"></a>
-                <a href="" class="category category-12"></a>
+                @foreach (Category category in Model.OrderBy(c => c.Id).Where(c => c.Id > 11).Skip(9).Take(3))
+                {
+                    <a class="category" href="/NewBooks/?cslug=@category.Slug" style="background:url(../image/@category.ImagePath)"></a>
+                }
             </div>
         </div>
     </div>

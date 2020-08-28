@@ -20,24 +20,60 @@
 					@foreach (BookAuthor bookAuthor in Model.BookAuthors)
 					{
 						<p>
-							<a href="">@bookAuthor.Author.Fullname</a>
+							<a href="/NewBooks?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a>
 						</p>
 					}
 					<span>
-						<a href="">@Model.Publisher.Name</a>
+						<a href="/NewBooks?pslug=@Model.Publisher.Slug">@Model.Publisher.Name</a>
 					</span>
 				</div>
 				<div class="mt-3 price">
 					<span>@Model.Book.Price ₼</span>
-					<div class="stock">
-						<p>Stokda @Model.Book.Count ədəd qalıb</p>
+					@*<div class="stock">
+				<p>Stokda @Model.Book.Count ədəd qalıb</p>
+			</div>*@
+				</div>
+				@if (Model.Book.Count != 0)
+				{
+					<div style="display:flex;justify-content:flex-end; flex-wrap:wrap">
+						<h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda @Model.Book.Count ədəd qalıb</h6>
 					</div>
-				</div>
-				<div class="book-buttons">
-
-					<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@Model.Book.Id" asp-route-actionName="@Context.Request.Path" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
-					<a asp-controller="NewBooks" asp-action="AddFavorite"  asp-route-actionName="@Context.Request.Path" asp-route-id="@Model.Book.Id" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
-				</div>
+				}
+				else
+				{
+			<div style="display:flex;justify-content:space-around; flex-wrap:wrap">
+				<h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda qalmayıb</h6>
+				<h6 style="color:#569a4d;font-weight:bold;margin:0">7-10 iş günü ərzində çatdırılma</h6>
+			</div>
+				}
+				@if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == Model.Book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == Model.Book.Id) == null)
+				{
+					<div class="book-buttons">
+						<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@Model.Book.Id" asp-route-actionName="@Context.Request.Path" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+						<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-actionName="@Context.Request.Path" asp-route-id="@Model.Book.Id" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+					</div>
+				}
+				else if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == Model.Book.Id) != null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == Model.Book.Id) == null)
+				{
+					<div class="book-buttons">
+						<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@Model.Book.Id" asp-route-actionName="@Context.Request.Path" class="btn mt-2 shopBtn btn-info" style="background:#5900ff;border-color:#5900ff"><i class="mr-1 fas fa-shopping-basket"></i>Səbətdə mövcuddur</a>
+						<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-actionName="@Context.Request.Path" asp-route-id="@Model.Book.Id" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+					</div>
+				}
+				else if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == Model.Book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == Model.Book.Id) != null)
+				{
+					<div class="book-buttons">
+						<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@Model.Book.Id" asp-route-actionName="@Context.Request.Path" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+						<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-actionName="@Context.Request.Path" asp-route-id="@Model.Book.Id" class="mt-2 fBtn btn btn-secondary" style="background:#5900ff;border-color:#5900ff;pointer-events:none"><i style="color:tomato" class="mr-1 fas fa-heart"></i>Favoritlərdə mövcuddur</a>
+					</div>
+				}
+				else
+				{
+					<div class="book-buttons">
+						<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@Model.Book.Id" asp-route-actionName="@Context.Request.Path" class="btn mt-2 shopBtn btn-info" style="background:#5900ff;border-color:#5900ff"><i class="mr-1 fas fa-shopping-basket"></i>Səbətdə mövcuddur</a>
+						<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-actionName="@Context.Request.Path" asp-route-id="@Model.Book.Id" class="mt-2 fBtn btn btn-secondary" style="background:#5900ff;border-color:#5900ff;pointer-events:none"><i style="color:tomato" class="mr-1 fas fa-heart"></i>Favoritlərdə mövcuddur</a>
+					</div>
+				}
 				<div class="book-details">
 					<div class="menu">
 						<div data-id="1" class="selected">Açıqlama</div>

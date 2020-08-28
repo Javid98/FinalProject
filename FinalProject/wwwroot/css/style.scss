@@ -1148,9 +1148,9 @@ header {
             .category {
                 flex: 1 1 0;
                 height: 100%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
                 transition: 0.8s ease;
                 a {
                     text-decoration: none;
@@ -1266,14 +1266,10 @@ header {
                 font-family: 'Kanit', sans-serif;
                 flex: 1 1 0;
                 height: 100%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
                 transition: flex 0.8s ease;
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
                 &:hover {
                     flex: 3 1 0;
                 }
@@ -1808,19 +1804,14 @@ header {
                 height: 100%;
             }
             .category {
-                flex: 0.5 1 0;
+                flex: 1 1 0;
                 height: 100%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
                 transition: 0.8s ease;
-                a {
-                    text-decoration: none;
-                    color: white;
-                    transform: rotateZ(90deg);
-                }
                 &:hover {
-                    flex: 4 1 0;
+                    flex: 3 1 0;
                     opacity: 1;
                 }
             }
@@ -1930,9 +1921,9 @@ header {
                 font-weight: bold;
                 flex: 0.7 1 0;
                 height: 100%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
                 transition: flex 0.8s ease;
                 a {
                     text-decoration: none;
@@ -2625,11 +2616,11 @@ header {
                 height: 100%;
             }
             .category {
-                flex: 0.3 1 0;
+                flex: 1 1 0;
                 height: 100%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
                 transition: 0.8s ease;
                 a {
                     text-decoration: none;
@@ -2637,7 +2628,7 @@ header {
                     transform: rotateZ(90deg);
                 }
                 &:hover {
-                    flex: 5 1 0;
+                    flex: 3 1 0;
                     opacity: 1;
                 }
             }
@@ -2746,9 +2737,9 @@ header {
                 font-size: 10px;
                 flex: 0.6 1 0;
                 height: 100%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
                 transition: flex 0.8s ease;
                 a {
                     text-decoration: none;

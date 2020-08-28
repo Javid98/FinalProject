@@ -3,7 +3,7 @@
 	Layout = null;
 }
 
-@if (@ViewContext.RouteData.Values["controller"].ToString().ToLower() == "account" || @ViewContext.RouteData.Values["controller"].ToString().ToLower() == "contact")
+@if (@ViewContext.RouteData.Values["controller"].ToString().ToLower() == "account" || @ViewContext.RouteData.Values["controller"].ToString().ToLower() == "contact" || @ViewContext.RouteData.Values["controller"].ToString().ToLower() == "basket")
 {
 	<header style="background:none">
 		<div class="container">
@@ -120,13 +120,7 @@ else
 				<form id="form" method="post">
 					<ul>
 						<li><input class="search-txt" type="search" placeholder="Axtarış..."></li>
-						<!-- <li class="searchLi"><a href="">Kitab</a></li>
-						<li class="searchLi"><a href="">Kitab</a></li>
-						<li class="searchLi"><a href="">Kitab</a></li>
-						<li class="searchLi"><a href="">Kitab</a></li>
-						<li class="searchLi"><a href="">Kitab</a></li> -->
 					</ul>
-					<button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
 				</form>
 			</div>
 		</div>
