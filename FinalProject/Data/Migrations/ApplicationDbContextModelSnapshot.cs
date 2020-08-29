@@ -304,6 +304,8 @@ namespace FinalProject.Data.Migrations
 
                     b.Property<string>("AppUserId");
 
+                    b.Property<bool>("Completed");
+
                     b.Property<DateTime>("Date");
 
                     b.Property<string>("DeliveryLocation");

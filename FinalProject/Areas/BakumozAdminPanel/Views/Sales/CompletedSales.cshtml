@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Sale>
+@{
+	ViewData["Title"] = "Tamamlanmışlar";
+}
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">Müştəri</th>
+			<th scope="col">Satışın tarixi</th>
+			<th scope="col">Məbləğ</th>
+			<th scope="col">Detallar</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (Sale sale in Model)
+		{
+			<tr>
+				<td>@sale.AppUser.FullName</td>
+				<td>@sale.Date</td>
+				<td>@sale.Total ₼</td>
+				<td>
+					<a class="btn btn-info" asp-controller="Sales" asp-action="Detail" asp-route-id="@sale.Id">
+						<i style="color:white; font-size:22px" class="mdi mdi-clipboard"></i>
+					</a>
+					<a class="btn btn-success" asp-controller="Sales" asp-action="Completed" asp-route-id="@sale.Id">
+						<i style="color:white; font-size:22px" class="mdi mdi-clipboard-check"></i>
+					</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+<div>
+	<nav aria-label="..." class="d-flex justify-content-center">
+		<ul id="pagination-container" class="pagination">
+			@*@for (int i = 1; i <= 30; i++)
+				{
+
+					if (i == ViewBag.Page)
+					{
+						<li class="page-item" style="pointer-events:none;"><a class="page-link" style="background-color:#236bdf;color:white" href="/BakumozAdminPanel/Sales/CompletedSales?page=@i">@i </a></li>
+					}
+					else
+					{
+						<li class="page-item">
+							<a class="page-link" href="/BakumozAdminPanel/Sales/CompletedSales?page=@i">@i</a>
+						</li>
+					}
+				}*@
+		</ul>
+	</nav>
+</div>
+
+
+@section Scripts{
+	<script>
+		if (window.location.href.includes("?page=")) {
+			$("#pagination-container").pagination({
+				items: @Model.Count(),
+				itemsOnPage: 16,
+				hrefTextPrefix: "/BakumozAdminPanel/Sales/CompletedSales?page=",
+				cssStyle: 'dark-theme',
+				currentPage: window.location.href.toString().substring(window.location.href.toString().length-1),
+				ellipsePageSet: true
+			});
+		} else {
+			$("#pagination-container").pagination({
+				items: @Model.Count(),
+				itemsOnPage: 16,
+				hrefTextPrefix: "/BakumozAdminPanel/Sales/CompletedSales?page=",
+				cssStyle: 'dark-theme',
+				ellipsePageSet: true
+			});
+		}
+
+	</script>
+}
+
+

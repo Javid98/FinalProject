@@ -39,7 +39,8 @@ namespace FinalProject
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
 
-			services.AddIdentity<AppUser, IdentityRole>(identityOptions => {
+			services.AddIdentity<AppUser, IdentityRole>(identityOptions =>
+			{
 				identityOptions.Password.RequireDigit = true;
 				identityOptions.Password.RequiredLength = 8;
 				identityOptions.Password.RequireLowercase = false;
@@ -77,9 +78,14 @@ namespace FinalProject
 			app.UseMvc(routes =>
 			{
 				routes.MapRoute(
+				name: "areas",
+				template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+			);
+				routes.MapRoute(
 					name: "default",
 					template: "{controller=Home}/{action=Index}/{id?}");
 			});
+
 		}
 	}
 }
