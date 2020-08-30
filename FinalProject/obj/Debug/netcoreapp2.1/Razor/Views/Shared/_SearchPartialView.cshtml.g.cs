@@ -73,7 +73,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\t\t<li class=\"searchLi\">\r\n\t\t\t");
             EndContext();
             BeginContext(197, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efc4072bdfb946328ea954bb77bb2a86", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9f584a3bd9f144b8b7cdadfc271d7063", async() => {
                 BeginContext(275, 9, false);
 #line 7 "C:\Users\nijat\source\repos\FinalProject\FinalProject\Views\Shared\_SearchPartialView.cshtml"
                                                                                     Write(book.Name);
@@ -405,7 +405,7 @@ else if (Model.Authors.Count() < Model.Books.Count() && Model.Authors.Count() > 
             WriteLiteral("\t\t<li class=\"searchLi\">\r\n\t\t\t");
             EndContext();
             BeginContext(2127, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0d84dbaec0584b5d92f1f58d76aa6946", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7da0773028664f868d310c622a4f3c5a", async() => {
                 BeginContext(2205, 9, false);
 #line 74 "C:\Users\nijat\source\repos\FinalProject\FinalProject\Views\Shared\_SearchPartialView.cshtml"
                                                                                     Write(book.Name);
@@ -471,7 +471,7 @@ else if (Model.Authors.Count() < Model.Books.Count() && Model.Authors.Count() < 
             WriteLiteral("\t\t\t<li class=\"searchLi\">\r\n\t\t\t\t");
             EndContext();
             BeginContext(2486, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d553290b8b6417796642b53dbf56abe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4812740ccc00477a9f6856b73f1e39da", async() => {
                 BeginContext(2564, 9, false);
 #line 85 "C:\Users\nijat\source\repos\FinalProject\FinalProject\Views\Shared\_SearchPartialView.cshtml"
                                                                                         Write(book.Name);
@@ -668,7 +668,7 @@ else if (Model.Publishers.Count() < Model.Books.Count() && Model.Publishers.Coun
             WriteLiteral("\t\t<li class=\"searchLi\">\r\n\t\t\t");
             EndContext();
             BeginContext(3541, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "112b259428164c28aae66e668033430c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e29b345cca494476bbc2aec1b80741a2", async() => {
                 BeginContext(3619, 9, false);
 #line 122 "C:\Users\nijat\source\repos\FinalProject\FinalProject\Views\Shared\_SearchPartialView.cshtml"
                                                                                     Write(book.Name);
@@ -734,7 +734,7 @@ else if (Model.Publishers.Count() < Model.Books.Count() && Model.Publishers.Coun
             WriteLiteral("\t\t\t<li class=\"searchLi\">\r\n\t\t\t\t");
             EndContext();
             BeginContext(3900, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7568b040842f40e6970b5082ce67e53f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "59c60dd18baa4678b075bfa0e920dabd", async() => {
                 BeginContext(3978, 9, false);
 #line 133 "C:\Users\nijat\source\repos\FinalProject\FinalProject\Views\Shared\_SearchPartialView.cshtml"
                                                                                         Write(book.Name);
@@ -843,7 +843,7 @@ else
             WriteLiteral("\t\t<li class=\"searchLi\">\r\n\t\t\t");
             EndContext();
             BeginContext(4281, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d5bacb75f984f248d7f07eb7ba29b86", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2127fc0e9f884cfdbee8483ab69887a6", async() => {
                 BeginContext(4359, 9, false);
 #line 152 "C:\Users\nijat\source\repos\FinalProject\FinalProject\Views\Shared\_SearchPartialView.cshtml"
                                                                                     Write(book.Name);

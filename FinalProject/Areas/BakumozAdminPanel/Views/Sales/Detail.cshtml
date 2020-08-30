@@ -2,69 +2,69 @@
 @{
 	ViewData["Title"] = "Satışın detalları";
 }
-	<div class="container">
+<div class="container">
 
-		<h2 style="font-weight:bold;text-align:center">Satışın detalları</h2>
+	<h2 style="font-weight:bold;text-align:center">Satışın detalları</h2>
 
-		<div class="client-details">
-			<h4>
-				Müştərinin məlumatları:
-			</h4>
-			@if (Model.AppUser.UserDetail.ImagePath != null)
-			{
-				<img style="width:100px;height:120px" src="~/image/usersphotos/@Model.AppUser.UserDetail.ImagePath" />
-			}
-			<a>
-				<p>
-					<strong>Adı: </strong> @Model.AppUser.FullName
-				</p>
-			</a>
+	<div class="client-details">
+		<h4>
+			Müştərinin məlumatları:
+		</h4>
+		@if (Model.AppUser.UserDetail.ImagePath != null)
+		{
+			<img style="width:100px;height:120px" src="~/image/usersphotos/@Model.AppUser.UserDetail.ImagePath" />
+		}
+		<a>
 			<p>
-				<strong>Mobil nömrəsi:</strong> @Model.PhoneNumber
+				<strong>Adı: </strong> @Model.AppUser.FullName
+			</p>
+		</a>
+		<p>
+			<strong>Mobil nömrəsi:</strong> @Model.PhoneNumber
+		</p>
+	</div>
+
+	<div class="mt-5 sale d-flex justify-content-between">
+		<div class="sale-details">
+			<h4>
+				Satışın detalları:
+			</h4>
+			<p>
+				<strong>Tarix: </strong> @Model.Date
+			</p>
+			<p>
+				<strong>Çatdırılma növü: </strong>@Model.DeliveryType
+			</p>
+			<p>
+				<strong>Adres: </strong>@Model.DeliveryLocation
+			</p>
+			<p>
+				<strong>Məbləğ: </strong>@Model.Total ₼
 			</p>
 		</div>
-
-		<div class="mt-5 sale d-flex justify-content-between">
-			<div class="sale-details">
-				<h4>
-					Satışın detalları:
-				</h4>
-				<p>
-					<strong>Tarix: </strong> @Model.Date
-				</p>
-				<p>
-					<strong>Çatdırılma növü: </strong>@Model.DeliveryType
-				</p>
-				<p>
-					<strong>Adres: </strong>@Model.DeliveryLocation
-				</p>
-				<p>
-					<strong>Məbləğ: </strong>@Model.Total ₼
-				</p>
+		@if (Model.Completed)
+		{
+			<div class="completed">
+				<i style="color:lightgreen;font-size:22px" class="mdi mdi-check">
+				</i>
+				<span style="color:lightgreen;font-size:18px;font-weight:bold">Tamamlandı</span>
 			</div>
-			@if (Model.Completed)
-			{
-				<div class="completed">
-					<i style="color:lightgreen;font-size:22px" class="mdi mdi-check">
-					</i>
-					<span style="color:lightgreen;font-size:18px;font-weight:bold">Tamamlandı</span>
-				</div>
-			}
-		</div>
+		}
+	</div>
 
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th  class="image">Kitab</th>
-					<th >Adı</th>
-					<th  class="author">Yazar</th>
-					<th >Say</th>
-					<th >Qiymət</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach (SaleBook saleBook in Model.SaleBooks)
-				{
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th class="image">Kitab</th>
+				<th>Adı</th>
+				<th class="author">Yazar</th>
+				<th>Say</th>
+				<th>Qiymət</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (SaleBook saleBook in Model.SaleBooks)
+			{
 				<tr>
 					<td class="image">
 						<img style="width:60px;height:100px" src="~/image/@saleBook.Book.ImagePath" />
@@ -86,12 +86,44 @@
 						}
 					</td>
 					<td>@saleBook.Count</td>
-					<td>@saleBook.Price</td>
+					<td>@saleBook.Price ₼</td>
 				</tr>
-				}
-			</tbody>
-		</table>
+			}
+		</tbody>
+	</table>
 
-	</div>
+	<form class="deleteForm mb-3" asp-controller="Sales" asp-action="Delete" asp-route-id="@Model.Id">
+		<button type="submit" class="ml-1 btn btn-danger"><i class="mdi mdi-delete-forever"></i> Sifarişi sil</button>
+	</form>
+
+</div>
+
+@section Scripts{
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		$(".deleteForm").submit(function (e) {
+			e.preventDefault();
+			swal({
+				title: "Sifariş",
+				text: "Bu sifarişi silmək istədiyinizdən əminsiniz?",
+				icon: "warning",
+				buttons: ["Bağla", "Sil"],
+				dangerMode: true,
+			})
+				.then((willDelete) => {
+					if (willDelete) {
+						swal("Sifariş silindi", {
+							icon: "success",
+						}).then(function () {
+							setTimeout(() => document.querySelector(".deleteForm").submit(), 100);
+						})
+					} else {
+						swal("Sifariş silinmədi");
+						button: "Bağla"
+					}
+				});
+		});
+	</script>
+}
 
 

@@ -51,3 +51,7 @@ C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Ra
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\_ViewStart.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Sales\Index.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Sales\Detail.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Sales\CompletedSales.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Author\Index.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Author\Create.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Author\Edit.cshtml.g.cs

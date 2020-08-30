@@ -3,32 +3,35 @@
     ViewData["Title"] = "Satışlar";
 }
 
-    <table class="table table-striped">
-        <thead>
+<h2 style="text-align:center;font-weight:bold" class="mt-3">Yenilər</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Müştəri</th>
+            <th scope="col" class="saledate">Satışın tarixi</th>
+            <th scope="col">Məbləğ</th>
+            <th scope="col">Detallar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Sale sale in Model)
+        {
             <tr>
-                <th scope="col">Müştəri</th>
-                <th scope="col">Satışın tarixi</th>
-                <th scope="col">Məbləğ</th>
-                <th scope="col">Detallar</th>
+                <td>@sale.AppUser.FullName</td>
+                <td class="saledate">@sale.Date</td>
+                <td>@sale.Total ₼</td>
+                <td class="d-flex">
+                    <a class="btn btn-info" asp-controller="Sales" asp-action="Detail" asp-route-id="@sale.Id">
+                        <i class="mdi mdi-clipboard"></i>
+                    </a>
+                    <a class="ml-1 btn btn-success" asp-controller="Sales" asp-action="CompleteSale" asp-route-id="@sale.Id">
+                        <i class="mdi mdi-clipboard-check"></i>
+                    </a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (Sale sale in Model)
-            {
-                <tr>
-                    <td>@sale.AppUser.FullName</td>
-                    <td>@sale.Date</td>
-                    <td>@sale.Total ₼</td>
-                    <td>
-                        <a class="btn btn-info" asp-controller="Sales" asp-action="Detail" asp-route-id="@sale.Id">
-                            <i style="color:white; font-size:22px" class="mdi mdi-clipboard"></i>
-                        </a>
-                        <a class="btn btn-success" asp-controller="Sales" asp-action="Completed" asp-route-id="@sale.Id">
-                            <i style="color:white; font-size:22px" class="mdi mdi-clipboard-check"></i>
-                        </a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        }
+    </tbody>
+</table>
+
+
 

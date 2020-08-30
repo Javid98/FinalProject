@@ -10,7 +10,7 @@ namespace FinalProject.Models
 	{
 		public int Id { get; set; }
 		public string Slug { get; set; }
-		[Required]
+		[Required(ErrorMessage ="Zəhmət olmasa ad və soyad daxil edin")]
 		public string Fullname { get; set; }
 		public ICollection<BookAuthor> BookAuthors { get; set; }
 
