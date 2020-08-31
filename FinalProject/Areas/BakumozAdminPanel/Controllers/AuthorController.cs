@@ -32,6 +32,12 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
         public async Task<IActionResult> Create(Author author)
         {
             if (author.Slug == null) return View();
+            Author existAuthor = _db.Authors.FirstOrDefault(c => c.Fullname.ToLower().Trim() == author.Fullname.ToLower().Trim());
+            if (existAuthor != null)
+            {
+                ModelState.AddModelError("", "Bu yazar mövcuddur");
+                return View();
+            }
             Author newAuthor = new Author
             {
                 Fullname = author.Fullname,
@@ -55,6 +61,15 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
             if (id == null) return NotFound();
             Author author = _db.Authors.FirstOrDefault(a => a.Id == id);
             if (author == null) return NotFound();
+            Author existAuthor = _db.Authors.FirstOrDefault(c => c.Fullname.ToLower().Trim() == editedAuthor.Fullname.ToLower().Trim());
+            if (existAuthor != null)
+            {
+                if(author.Fullname.ToLower().Trim() != existAuthor.Fullname.ToLower().Trim())
+                {
+                    ModelState.AddModelError("", "Bu yazar mövcuddur");
+                    return View();
+                }
+            }
             if (editedAuthor.Slug == null) return View();
             author.Fullname = editedAuthor.Fullname;
             author.Slug = editedAuthor.Slug;

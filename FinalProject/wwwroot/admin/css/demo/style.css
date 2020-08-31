@@ -23983,6 +23983,9 @@ footer {
 	.table tbody tr i {
 		font-size: 16px
 	}
+	.table .imageAll{
+		display:none;
+	}
 }
 
 /*# sourceMappingURL=../maps/demo/style.css.map */

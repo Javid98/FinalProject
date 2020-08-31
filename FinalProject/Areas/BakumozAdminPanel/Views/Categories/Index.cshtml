@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Category>
+@{
+	ViewData["Title"] = "Kateqoriyalar";
+}
+
+<h2 style="text-align:center;font-weight:bold" class="mt-3">Kateqoriyalar</h2>
+<a class="mt-2 mb-2 btn btn-success" asp-controller="Categories" asp-action="Create">
+	<i class="mr-1 mdi mdi-table-large"></i>Yeni kateqoriya əlavə et
+</a>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col" class="imageAll">Kateqoriyanın şəkli</th>
+			<th scope="col">Adı</th>
+			<th scope="col">Detallar</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (Category category in Model)
+		{
+			<tr>
+				<td class="imageAll">
+					@if (category.ImagePath != "")
+					{
+						<img style="width:70px;height:100px" src="~/image/@category.ImagePath" />
+					}
+				</td>
+				<td>@category.Name</td>
+				<td>
+					<a class="btn btn-primary" asp-controller="Categories" asp-action="Edit" asp-route-id="@category.Id">
+						<i class="mdi mdi-pencil"></i>
+					</a>
+					<a class="ml-1 btn btn-danger" asp-controller="Categories" asp-action="Delete" asp-route-id="@category.Id">
+						<i class="mdi mdi-delete-forever"></i>
+					</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

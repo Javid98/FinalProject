@@ -10,7 +10,7 @@ namespace FinalProject.Models
 	{
 		public int Id { get; set; }
 		public string Slug { get; set; }
-		[Required]
+		[Required(ErrorMessage ="Zəhmət olmasa yayın evinin adını daxil edin")]
 		public string Name { get; set; }
 		public int BookCount { get; set; } = 0;
 		public int Discount { get; set; }

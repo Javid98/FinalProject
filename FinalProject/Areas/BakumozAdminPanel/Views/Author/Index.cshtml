@@ -6,7 +6,7 @@
 
 	<h2 style="text-align:center;font-weight:bold" class="mt-3">Yazıçılar</h2>
 	<a class="mt-2 mb-2 btn btn-success" asp-controller="Author" asp-action="Create">
-		<i class="mdi mdi-new-box"></i>Yeni yazıçı daxil et
+		<i class="mr-1 mdi mdi-new-box"></i>Yeni yazıçı daxil et
 	</a>
 	<table class="table table-striped">
 		<thead>
@@ -20,7 +20,7 @@
 			{
 				<tr>
 					<td>@author.Fullname</td>
-					<td class="d-flex">
+					<td>
 						<a class="btn btn-info" asp-controller="Author" asp-action="Edit" asp-route-id="@author.Id">
 							<i class="mdi mdi-pencil"></i>
 						</a>

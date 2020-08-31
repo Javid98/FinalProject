@@ -55,3 +55,12 @@ C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Ra
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Author\Index.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Author\Create.cshtml.g.cs
 C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Author\Edit.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Author\Delete.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Categories\Index.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Categories\Create.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Categories\Edit.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Categories\Delete.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Publishers\Index.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Publishers\Create.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Publishers\Edit.cshtml.g.cs
+C:\Users\nijat\source\repos\FinalProject\FinalProject\obj\Debug\netcoreapp2.1\Razor\Areas\BakumozAdminPanel\Views\Publishers\Delete.cshtml.g.cs

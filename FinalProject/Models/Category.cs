@@ -14,7 +14,7 @@ namespace FinalProject.Models
 		public string Slug { get; set; }
 		[Required]
 		public string ImagePath { get; set; }
-		[Required]
+		[Required(ErrorMessage = "Zəhmət olmasa kateqoriyanın adını daxil edin")]
 		public string Name { get; set; }
 		public ICollection<BookCategory> BookCategories { get; set; }
 		[NotMapped]

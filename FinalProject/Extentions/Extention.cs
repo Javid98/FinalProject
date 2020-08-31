@@ -30,5 +30,16 @@ namespace FinalProject.Extentions
             }
             return fileName;
         }
+        public async static Task<string> SaveImg(this IFormFile file, string root, string folder)
+        {
+            string path = Path.Combine(root, folder);
+            string fileName = Guid.NewGuid().ToString() + file.FileName;
+            string resultPath = Path.Combine(path, fileName);
+            using (FileStream fileStream = new FileStream(resultPath, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+            return fileName;
+        }
     }
 }
