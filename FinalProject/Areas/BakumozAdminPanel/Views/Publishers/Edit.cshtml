@@ -9,7 +9,10 @@
 		<form method="post" class="mt-2">
 			<span><strong>Adı və soyadı</strong></span>
 			<input asp-for="Name" autocomplete="off" data-type='slug-source' class="form-control" />
-			<span asp-validation-for="Name" class="text-danger"></span>
+			<span asp-validation-for="Name" class="text-danger"></span><br />
+			<span><strong>Endirim faizi</strong></span>
+			<input asp-for="Discount" min="0" max="100" class="form-control" />
+			<span asp-validation-for="Discount" class="text-danger"></span><br />
 			<input asp-for="Slug" data-type='slug-input' class="d-none mt-2 form-control" />
 			<button type="submit" class="mt-2 btn btn-primary">Dəyiş</button>
 		</form>

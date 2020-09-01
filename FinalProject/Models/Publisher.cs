@@ -13,6 +13,7 @@ namespace FinalProject.Models
 		[Required(ErrorMessage ="Zəhmət olmasa yayın evinin adını daxil edin")]
 		public string Name { get; set; }
 		public int BookCount { get; set; } = 0;
+		[Required(ErrorMessage ="Zəhmət olmasa endirim faizi təyin edin")]
 		public int Discount { get; set; }
 		public ICollection<Book> Books { get; set; }
 	}

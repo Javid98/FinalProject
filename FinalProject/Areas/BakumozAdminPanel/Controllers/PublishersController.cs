@@ -42,6 +42,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
             {
                 Name = publisher.Name,
                 BookCount=0,
+                Discount=publisher.Discount,
                 Slug = publisher.Slug
             };
             _db.Publishers.Add(newPublisher);
@@ -74,6 +75,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
             if (editedPublisher.Slug == null) return View();
             publisher.Name = editedPublisher.Name;
             publisher.Slug = editedPublisher.Slug;
+            publisher.Discount = editedPublisher.Discount;
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

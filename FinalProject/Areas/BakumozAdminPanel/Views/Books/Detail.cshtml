@@ -1,0 +1,74 @@
+﻿@model Book
+@{
+	ViewData["Title"] = "Kitab detalları";
+}
+
+<div class="container">
+	<img class="mt-3" style="width:140px;height:200px" src="~/image/@Model.ImagePath" />
+	<div class="mt-3">
+		<span><strong>Kitabın adı:</strong></span><br />
+		<span>
+			@Model.Name
+		</span>
+	</div>
+	<div class="mt-3">
+		<span><strong>Kitabın yazarı:</strong></span><br />
+		@foreach (BookAuthor bookAuthor in Model.BookAuthors)
+		{
+			<span>
+				@bookAuthor.Author.Fullname
+			</span><br />
+		}
+	</div>
+	<div class="mt-3">
+		<span><strong>Kateqoriya:</strong></span><br />
+		@foreach (BookCategory bookCategory in Model.BookCategories)
+		{
+			<span>
+				@bookCategory.Category.Name
+			</span><br />
+		}
+	</div>
+	<div style="text-align:center" class="mt-3 d-flex justify-content-between">
+		<div>
+			<span><strong>Kitabın qiyməti:</strong></span><br />
+			<span>@Model.Price ₼</span>
+		</div>
+		<div>
+			<span><strong>Yayın evi:</strong></span><br />
+			<span>@Model.Publisher.Name</span>
+		</div>
+		<div>
+			<span><strong>Kitabın sayı:</strong></span><br />
+			<span>@Model.Count</span>
+		</div>
+		<div>
+			<span><strong>Kitabın satılma sayı:</strong></span><br />
+			<span>@Model.SaleCount</span>
+		</div>
+	</div>
+	<div class="mt-3">
+		<span><strong>Haqqında:</strong></span><br />
+		<p>
+			@Model.Description
+		</p>
+	</div>
+	<div style="text-align:center" class="mt-4 mb-3 d-flex justify-content-between">
+		<div>
+			<span><strong>Yayınlanma tarixi:</strong></span><br />
+			<span>@Model.BookFeature.PublishingDate.ToString("dd/MM/yyyy")</span>
+		</div>
+		<div>
+			<span><strong>Yayınlandığı dil:</strong></span><br />
+			<span>@Model.BookFeature.PublishingLanguage</span>
+		</div>
+		<div>
+			<span><strong>Orijinal dili:</strong></span><br />
+			<span>@Model.BookFeature.OriginalLanguage</span>
+		</div>
+		<div>
+			<span><strong>Tərcüməçi:</strong></span><br />
+			<span>@Model.BookFeature.Translator</span>
+		</div>
+	</div>
+</div>
