@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,8 +11,6 @@ namespace FinalProject.ViewModels
 {
 	public class BookVM
 	{
-		[Required(ErrorMessage = "Zəhmət olmasa şəkil seçin")]
-		public IFormFile Photo { get; set; }
 		[Required]
 		public string ImagePath { get; set; }
 		[Required]
@@ -32,8 +31,11 @@ namespace FinalProject.ViewModels
 		public string Translator { get; set; }
 
 
+		public Book Book { get; set; }
 		public ICollection<Author> Authors { get; set; }
 		public ICollection<Category> Categories { get; set; }
 		public ICollection<Publisher> Publishers { get; set; }
+		[NotMapped]
+		public IFormFile Photo { get; set; }
 	}
 }

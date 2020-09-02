@@ -32,7 +32,6 @@ namespace FinalProject.Models
 		public ICollection<FavoriteBook> FavoriteBooks { get; set; }
 		public ICollection<BookInCart> BookInCarts { get; set; }
 		[NotMapped]
-		[Required(ErrorMessage ="Zəhmət olmasa şəkil seçin")]
 		public IFormFile Photo { get; set; }
 	}
 }

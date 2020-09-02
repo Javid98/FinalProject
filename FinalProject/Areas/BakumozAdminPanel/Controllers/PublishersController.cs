@@ -20,7 +20,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
         {
             ViewBag.Page = page;
             ViewBag.PageCount = Math.Ceiling((decimal)_db.Publishers.Count() / 20);
-            List<Publisher> publishers = _db.Publishers.Skip((page - 1) * 20).Take(20).ToList();
+            List<Publisher> publishers = _db.Publishers.OrderByDescending(p=>p.BookCount).Skip((page - 1) * 20).Take(20).ToList();
             return View(publishers);
         }
         public IActionResult Create()

@@ -86,7 +86,7 @@ using FinalProject.ViewModels;
             WriteLiteral("    <footer id=\"Footer\" style=\"background-color: whitesmoke;\">\r\n        <div class=\"container\">\r\n            <div class=\"footerNav\">\r\n                <div class=\"col-3 left\">\r\n                    <ul class=\"navUl\">\r\n                        <li>");
             EndContext();
             BeginContext(644, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8ac19f8f27094c71924981aff234299a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86852750567b4df8826888b0cc48a970", async() => {
                 BeginContext(688, 11, true);
                 WriteLiteral("Əsas səhifə");
                 EndContext();
@@ -110,7 +110,7 @@ using FinalProject.ViewModels;
             WriteLiteral("</li>\r\n                        <li>");
             EndContext();
             BeginContext(738, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c691ccc9cca34f4ebedfbc0a665eacaa", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3036e68de8224cf69ed32c90e1b584fd", async() => {
                 BeginContext(786, 7, true);
                 WriteLiteral("Yenilər");
                 EndContext();
@@ -134,7 +134,7 @@ using FinalProject.ViewModels;
             WriteLiteral("</li>\r\n                        <li>");
             EndContext();
             BeginContext(832, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "79793f3e733b41f78b2d10228afc3ade", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "07b4f17082234a2d933554bbdb97f3b3", async() => {
                 BeginContext(883, 14, true);
                 WriteLiteral("Çox satılanlar");
                 EndContext();
@@ -221,7 +221,7 @@ WriteAttributeValue("", 1755, Model.InstagramLink, 1755, 20, false);
             WriteLiteral("                        <ul class=\"navUl\">\r\n                            <li>");
             EndContext();
             BeginContext(2564, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f166a71f503d41589de5338234528a7e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a1016868adfd45be9dc0ad832cad6426", async() => {
                 BeginContext(2614, 13, true);
                 WriteLiteral("Kategoriyalar");
                 EndContext();
@@ -245,7 +245,7 @@ WriteAttributeValue("", 1755, Model.InstagramLink, 1755, 20, false);
             WriteLiteral("</li>\r\n                            <li>");
             EndContext();
             BeginContext(2670, 56, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5908b9675ca24b08a29035b5822973dc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e2489decd5940848f98d6a1b859cf46", async() => {
                 BeginContext(2717, 5, true);
                 WriteLiteral("Əlaqə");
                 EndContext();
@@ -279,7 +279,7 @@ WriteAttributeValue("", 1755, Model.InstagramLink, 1755, 20, false);
             WriteLiteral("                        <ul class=\"navUl\">\r\n                            <li>");
             EndContext();
             BeginContext(2912, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efd1bfe5015c41888cb36e41209f4b2f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ad0bed6c309743058a667256f7088bcc", async() => {
                 BeginContext(2962, 13, true);
                 WriteLiteral("Kategoriyalar");
                 EndContext();
@@ -303,7 +303,7 @@ WriteAttributeValue("", 1755, Model.InstagramLink, 1755, 20, false);
             WriteLiteral("</li>\r\n                            <li>");
             EndContext();
             BeginContext(3018, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1963903b170d4786ab11f48703820236", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4254161c0f8847cfa0ce71c26f5ebf28", async() => {
                 BeginContext(3065, 15, true);
                 WriteLiteral("Qeydiyyat/Giriş");
                 EndContext();
@@ -327,7 +327,7 @@ WriteAttributeValue("", 1755, Model.InstagramLink, 1755, 20, false);
             WriteLiteral("</li>\r\n                            <li>");
             EndContext();
             BeginContext(3123, 56, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a8a659c372449cfa59db013de5b50fe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1fc6f9a1ce3b4a409e1cd734749001e2", async() => {
                 BeginContext(3170, 5, true);
                 WriteLiteral("Əlaqə");
                 EndContext();
@@ -413,12 +413,12 @@ WriteAttributeValue("", 4112, Model.InstagramLink, 4112, 20, false);
                     ");
             EndContext();
             BeginContext(4778, 134, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e080336dd57944968dc36c783873e3ad", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "afa6433a582b40d397e77a9eb3dc0249", async() => {
                 BeginContext(4822, 26, true);
                 WriteLiteral("\r\n                        ");
                 EndContext();
                 BeginContext(4848, 38, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "771510109de24b88841a7c2f1e7c0e71", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "1231845bf1ca461db3a44f33a87f2ecd", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
