@@ -1,0 +1,52 @@
+﻿@model Bio
+@{
+	ViewData["Title"] = "Bio";
+}
+
+	<div class="container">
+		<div class="logo-edit mt-3 d-flex justify-content-between align-items-center">
+			<div class="logo">
+				<img style="width:120px;height:80px" src="~/image/@Model.Logo" />
+			</div>
+			<div class="edit">
+				<a class="btn btn-primary" asp-controller="Bio" asp-action="Edit">
+					<i class="mdi mdi-pencil"></i> Dəyiş
+				</a>
+			</div>
+		</div>
+		<h6 class="mt-5">
+			Telefon nömrəsi
+		</h6>
+		<p>@Model.PhoneNumber</p>
+		<hr />
+		<h6>
+			Facebook adres
+		</h6>
+		<p>@Model.FacebookLink</p>
+		<hr />
+		<h6>
+			Instagram adres
+		</h6>
+		<p>@Model.InstagramLink</p>
+		<hr />
+		<h6>
+			Ölkə
+		</h6>
+		<p>@Model.Country</p>
+		<hr />
+		<h6>
+			Şəhər
+		</h6>
+		<p>@Model.City</p>
+		<hr />
+		<h6>
+			Küçə
+		</h6>
+		<p>@Model.Street</p>
+		<hr />
+		<h6>
+			Məzənnə
+		</h6>
+		<p class="mb-4">@Model.Currency</p>
+	</div>
+

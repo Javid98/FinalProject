@@ -1,6 +1,6 @@
 ﻿@model BookVM
 @{
-	ViewData["Title"] = "Edit";
+	ViewData["Title"] = "Kitabda düzəliş et";
 }
 
 @section Css{
@@ -16,7 +16,6 @@
 			<span><strong>Şəkil</strong></span>
 			<input asp-for="Photo" accept="image/*" class="form-control" />
 		</div>
-
 		<div class="mt-2">
 			<span><strong>Adı</strong></span>
 			<input asp-for="Book.Name" autocomplete="off" data-type='slug-source' class="form-control" />
@@ -104,7 +103,7 @@
 			<input asp-for="Book.BookFeature.Translator" class="form-control" />
 		</div>
 
-		<button type="submit" class="mt-3 btn btn-success">Əlavə et</button>
+		<button type="submit" class="mt-3 btn btn-success">Düzəliş et</button>
 	</form>
 </div>
 

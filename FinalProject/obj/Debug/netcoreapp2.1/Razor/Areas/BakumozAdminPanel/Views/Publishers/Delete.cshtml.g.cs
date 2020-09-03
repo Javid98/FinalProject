@@ -100,7 +100,7 @@ using FinalProject.ViewModels;
             WriteLiteral("</td>\r\n                <td>\r\n                    ");
             EndContext();
             BeginContext(589, 191, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "354a0d02e30b4df998ec3ee3fba3477f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ab2063333a243b7a5e30601d935fa6b", async() => {
                 BeginContext(630, 143, true);
                 WriteLiteral("\r\n                        <button type=\"submit\" class=\"btn btn-danger\"><i class=\"mdi mdi-delete-forever\"></i>Sil</button>\r\n                    ");
                 EndContext();

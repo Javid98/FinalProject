@@ -120,7 +120,7 @@ using FinalProject.ViewModels;
             WriteLiteral(" ₼</td>\r\n                <td>\r\n                    ");
             EndContext();
             BeginContext(697, 176, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0f11c85e2caa485d83220a2d9b3dcda8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c1bea9b55c534bf7907756b599761e02", async() => {
                 BeginContext(788, 81, true);
                 WriteLiteral("\r\n                        <i class=\"mdi mdi-clipboard\"></i>\r\n                    ");
                 EndContext();
@@ -158,7 +158,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\r\n                    ");
             EndContext();
             BeginContext(895, 196, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dd8e7b3f6b3f409298bc839db52c20a5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b317061300b432586fe94153798e17e", async() => {
                 BeginContext(1000, 87, true);
                 WriteLiteral("\r\n                        <i class=\"mdi mdi-clipboard-check\"></i>\r\n                    ");
                 EndContext();
