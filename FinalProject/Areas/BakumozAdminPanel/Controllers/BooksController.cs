@@ -98,6 +98,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 			Book newBook = new Book
 			{
 				Name = book.Name,
+				Slug=book.Slug,
 				Description = book.Description,
 				Price = book.Price,
 				Count = book.Count
@@ -185,6 +186,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 			}
 			BookFeature bookFeature = new BookFeature
 			{
+				PublishingPlace=book.PublishingPlace,
 				PublishingDate = book.PublishingDate,
 				PublishingLanguage = book.PublishingLanguage,
 				OriginalLanguage = book.OriginalLanguage,
@@ -261,6 +263,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 					}
 				}
 				book.Name = editedBook.Book.Name;
+				book.Slug = editedBook.Book.Slug;
 				book.Count = editedBook.Book.Count;
 				book.Price = editedBook.Book.Price;
 				book.Description = editedBook.Book.Description;
@@ -333,6 +336,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 				}
 				BookFeature bookFeature = new BookFeature
 				{
+					PublishingPlace=editedBook.Book.BookFeature.PublishingPlace,
 					PublishingDate = editedBook.Book.BookFeature.PublishingDate,
 					PublishingLanguage = editedBook.Book.BookFeature.PublishingLanguage,
 					OriginalLanguage = editedBook.Book.BookFeature.OriginalLanguage,
@@ -409,6 +413,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 				Helpers.Helper.DeleteImg(_env.WebRootPath,"image",book.ImagePath);
 				book.ImagePath = await editedBook.Photo.SaveImg(_env.WebRootPath,"image");
 				book.Name = editedBook.Book.Name;
+				book.Slug = editedBook.Book.Slug;
 				book.Count = editedBook.Book.Count;
 				book.Price = editedBook.Book.Price;
 				book.Description = editedBook.Book.Description;
@@ -481,6 +486,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 				}
 				BookFeature bookFeature = new BookFeature
 				{
+					PublishingPlace=editedBook.Book.BookFeature.PublishingPlace,
 					PublishingDate = editedBook.Book.BookFeature.PublishingDate,
 					PublishingLanguage = editedBook.Book.BookFeature.PublishingLanguage,
 					OriginalLanguage = editedBook.Book.BookFeature.OriginalLanguage,

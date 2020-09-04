@@ -21,6 +21,7 @@
 			<input asp-for="Book.Name" autocomplete="off" data-type='slug-source' class="form-control" />
 			<span asp-validation-for="Book.Name" class="text-danger"></span>
 		</div>
+		<input asp-for="Book.Slug" data-type='slug-input' class="d-none mt-2 form-control" />
 
 		<label style="font-size:15px;font-weight:bold">Yazar seç:</label><br />
 		<select class="js-example-basic-multiple" style="width:100%" id="selectAuthor" name="authors" multiple="multiple">
@@ -84,6 +85,11 @@
 			<span><strong>Qiymət (TL)</strong></span>
 			<input asp-for="Book.Price" class="form-control" />
 			<span asp-validation-for="Book.Price" class="text-danger"></span>
+		</div>
+		<div class="mt-2">
+			<span><strong>Çıxış yeri (Ölkə)</strong></span>
+			<input asp-for="Book.BookFeature.PublishingPlace" class="form-control" />
+			<span asp-validation-for="Book.BookFeature.PublishingPlace" class="text-danger"></span>
 		</div>
 		<div class="mt-2">
 			<span><strong>Çıxış tarixi</strong></span>

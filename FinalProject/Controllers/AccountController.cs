@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FinalProject.Data;
 using FinalProject.Helpers;
 using FinalProject.Models;
 using FinalProject.ViewModels;
@@ -15,11 +16,13 @@ namespace FinalProject.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<AppUser> _signInManager;
-        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppUser> signInManager)
+        private readonly ApplicationDbContext _db;
+        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppUser> signInManager, ApplicationDbContext db)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
+            _db = db;
         }
         public IActionResult Login()
         {
@@ -47,8 +50,14 @@ namespace FinalProject.Controllers
                 }
                 return PartialView("_RegisterPartialView");
             }
-            await _userManager.AddToRoleAsync(user, Helper.Roles.Admin.ToString());
+            UserDetail userDetail = new UserDetail
+            {
+                AppUserId = user.Id
+            };
+            _db.UserDetails.Add(userDetail);
+            await _userManager.AddToRoleAsync(user, Helper.Roles.Member.ToString());
             await _signInManager.SignInAsync(user, false);
+            await _db.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
         [HttpPost]

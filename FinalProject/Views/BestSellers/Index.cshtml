@@ -61,26 +61,66 @@
                                 </div>
                                 <div class="col-md-10 col-sm-12 col-12 content">
                                     <h4>
-                                        <a href="">@book.Name</a>
+                                        <a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
                                     </h4>
                                     <div class="author-publisher">
                                         @foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == book.Id))
                                         {
                                             <p>
-                                                <a href="">@bookAuthor.Author.Fullname</a>
+                                                <a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a>
                                             </p>
                                         }
-                                    <span>
-                                        <a href="">@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Name</a>
-                                    </span>
+                                        <span>
+                                            <a href="/NewBooks/?pslug=@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Slug">@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Name</a>
+                                        </span>
                                     </div>
                                     <div class="mt-3 price">
                                         <span>@book.Price ₼</span>
                                     </div>
+                                    @if (book.Count != 0)
+                                    {
+                                        <div style="display:flex;justify-content:flex-end; flex-wrap:wrap">
+                                            <h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda @book.Count ədəd qalıb</h6>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div style="display:flex;justify-content:space-around; flex-wrap:wrap">
+                                            <h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda qalmayıb</h6>
+                                            <h6 style="color:#569a4d;font-weight:bold;margin:0">7-10 iş günü ərzində çatdırılma</h6>
+
+                                        </div>
+                                    }
                                     <div class="book-buttons">
 
-                                        <a href="" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
-                                        <a href="" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+                                        @if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) == null)
+                                        {
+                                            <div class="book-buttons">
+                                                <a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+                                                <a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+                                            </div>
+                                        }
+                                        else if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) != null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) == null)
+                                        {
+                                            <div class="book-buttons">
+                                                <a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info" style="background:#5900ff;border-color:#5900ff"><i class="mr-1 fas fa-shopping-basket"></i>Səbətdə mövcuddur</a>
+                                                <a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+                                            </div>
+                                        }
+                                        else if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) != null)
+                                        {
+                                            <div class="book-buttons">
+                                                <a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+                                                <a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary" style="background:#5900ff;border-color:#5900ff;pointer-events:none"><i style="color:tomato" class="mr-1 fas fa-heart"></i>Favoritlərdə mövcuddur</a>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="book-buttons">
+                                                <a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info" style="background:#5900ff;border-color:#5900ff"><i class="mr-1 fas fa-shopping-basket"></i>Səbətdə mövcuddur</a>
+                                                <a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary" style="background:#5900ff;border-color:#5900ff;pointer-events:none"><i style="color:tomato" class="mr-1 fas fa-heart"></i>Favoritlərdə mövcuddur</a>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -89,22 +129,55 @@
                 </div>
             </div>
         </div>
-        <nav class="pagination mt-4 row justify-content-center" aria-label="...">
+        <nav aria-label="..." class="mt-3 d-flex justify-content-center">
             <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Əvvəlki</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Sonrakı</a>
-                </li>
+                @if (ViewBag.Page == 1 && ViewBag.PageCount > 1)
+                {
+                    <li class="page-item" style="pointer-events:none;">
+                        <a style="background-color:#236bdf;color:white" class="page-link" href="/BestSellers?page=1">Birinci</a>
+                    </li>
+                }
+                else if (ViewBag.PageCount > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="/BestSellers?page=1">Birinci</a>
+                    </li>
+                }
+                @for (int i = 1; i <= ViewBag.PageCount; i++)
+                {
+
+                    if (i == ViewBag.Page)
+                    {
+                        <li class="page-item current" style="pointer-events:none;"><a class="page-link" style="background-color:#236bdf;color:white" href="/BestSellers?page=@i">@i </a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="/BestSellers?page=@i">@i</a>
+                        </li>
+                    }
+                }
+                @if (ViewBag.Page == ViewBag.PageCount && ViewBag.PageCount > 1)
+                {
+                    <li class="page-item" style="pointer-events:none;">
+                        <a style="background-color:#236bdf;color:white" class="page-link" href="/BestSellers?page=@ViewBag.PageCount">Sonuncu</a>
+                    </li>
+                }
+                else if (ViewBag.PageCount > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="/BestSellers?page=@ViewBag.PageCount">Sonuncu</a>
+                    </li>
+                }
             </ul>
         </nav>
     </div>
 </section>
 
 <!-- Best Seller End -->
+
+@section Scripts{
+    <script>
+		$(".pagination li").not($(".pagination li.current")).not($(".pagination li.current").prev()).not($(".pagination li.current").prev().prev()).not($(".pagination li.current").prev().prev().prev()).not($(".pagination li.current").next()).not($(".pagination li.current").next().next()).not($(".pagination li.current").next().next().next()).not($(".pagination li").first()).not($(".pagination li").last()).addClass("d-none")
+    </script>
+}

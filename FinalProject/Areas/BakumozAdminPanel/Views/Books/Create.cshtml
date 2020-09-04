@@ -16,12 +16,12 @@
 			<span><strong>Şəkil</strong></span>
 			<input asp-for="Photo" accept="image/*" class="form-control" />
 		</div>
-
 		<div class="mt-2">
 			<span><strong>Adı</strong></span>
 			<input asp-for="Name" autocomplete="off" data-type='slug-source' class="form-control" />
 			<span asp-validation-for="Name" class="text-danger"></span>
 		</div>
+		<input asp-for="Slug" data-type='slug-input' class="d-none mt-2 form-control" />
 
 		<label style="font-size:15px;font-weight:bold">Yazar seç:</label><br />
 		<select class="js-example-basic-multiple" style="width:100%" id="selectAuthor" name="authors" multiple="multiple">
@@ -64,10 +64,15 @@
 			<input asp-for="Price" class="form-control" />
 		</div>
 		<div class="mt-2">
+			<span><strong>Çıxış yeri (Ölkə)</strong></span>
+			<input asp-for="PublishingPlace" class="form-control" />
+			<span asp-validation-for="PublishingPlace" class="text-danger"></span>
+		</div>
+		<div class="mt-2">
 			<span><strong>Çıxış tarixi</strong></span>
 			<input asp-for="PublishingDate" class="form-control" />
-			<span asp-validation-for="PublishingDate" class="text-danger"></span><br />
-	</div>
+			<span asp-validation-for="PublishingDate" class="text-danger"></span>
+		</div>
 		<div class="mt-2">
 			<span><strong>Dil</strong></span>
 			<input asp-for="PublishingLanguage" class="form-control" />

@@ -1,164 +1,198 @@
-﻿
+﻿@model ContactVM
 @{
-    ViewData["Title"] = "Əlaqə";
+	ViewData["Title"] = "Əlaqə";
 }
 
 
 <!-- Contact Start -->
 
 <section id="Contact">
-    <div class="contact-info animate__animated animate__fadeInLeft">
-        <i class="right fas fa-angle-right"></i>
-        <i class="left fas fa-angle-left"></i>
-        <div>
-            <h2>Contact Info</h2>
-            <ul class="info">
-                <li>
-                    <span>
-                        <i class="fas fa-map-marker-alt"></i>
-                    </span>
-                    <span>
-                        Meadowbrook Road <br>
-                        Los Angeles, CA <br>
-                        90017
-                    </span>
-                </li>
-                <li>
-                    <span>
-                        <i class="fas fa-envelope-open-text"></i>
-                        <span>test@gmail.com</span>
-                    </span>
-                </li>
-                <li>
-                    <span>
-                        <i class="fas fa-phone"></i>
-                        <span>+994509999999</span>
-                    </span>
-                </li>
-            </ul>
-            <div class="social">
-                <ul class="socialUl">
-                    <li>
-                        <a href="">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span><i class="fab fa-facebook-f"></i></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span><i class="fab fa-instagram"></i></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span><i class="fab fa-google-plus-g"></i></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="info-message">
-            <div class="contactInfo animate__animated animate__fadeInLeft">
-                <div>
-                    <h2>Contact Info</h2>
-                    <ul class="info">
-                        <li>
-                            <span>
-                                <i class="fas fa-map-marker-alt"></i>
-                            </span>
-                            <span>
-                                Meadowbrook Road <br>
-                                Los Angeles, CA <br>
-                                90017
-                            </span>
-                        </li>
-                        <li>
-                            <span>
-                                <i class="fas fa-envelope-open-text"></i>
-                                <span>test@gmail.com</span>
-                            </span>
-                        </li>
-                        <li>
-                            <span>
-                                <i class="fas fa-phone"></i>
-                                <span>+994509999999</span>
-                            </span>
-                        </li>
-                    </ul>
-                    <div class="social">
-                        <ul class="socialUl">
-                            <li>
-                                <a href="">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span><i class="fab fa-facebook-f"></i></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span><i class="fab fa-instagram"></i></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span><i class="fab fa-google-plus-g"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="contactForm animate__animated animate__fadeInRight">
-                <h2>Mesaj Göndər</h2>
-                <form action="" class="formBox">
-                    <div class="inputBox w50">
-                        <input type="text" required>
-                        <span>Ad</span>
-                    </div>
-                    <div class="inputBox w50">
-                        <input type="text" required>
-                        <span>Soyad</span>
-                    </div>
-                    <div class="inputBox w50">
-                        <input type="text" required>
-                        <span>Email</span>
-                    </div>
-                    <div class="inputBox w50">
-                        <input type="text" required>
-                        <span>Mobil nömrə</span>
-                    </div>
-                    <div class="inputBox w100">
-                        <textarea name="" required></textarea>
-                        <span>Mesajınızı yazın...</span>
-                    </div>
-                    <button type="submit" class="mt-3 btn btn-outline-primary">Göndər</button>
-                </form>
-            </div>
-        </div>
-    </div>
+	<div class="contact-info animate__animated animate__fadeInLeft">
+		<i class="right fas fa-angle-right"></i>
+		<i class="left fas fa-angle-left"></i>
+		<div>
+			<h2>Əlaqə</h2>
+			<ul class="info">
+				<li>
+					<span>
+						<i class="fas fa-map-marker-alt"></i>
+					</span>
+					<span>
+						@Model.Bio.Country <br>
+						@Model.Bio.City <br>
+						@Model.Bio.Street
+					</span>
+				</li>
+				<li>
+					<span>
+						<i class="fas fa-envelope-open-text"></i>
+						<span>@Model.Bio.Gmail</span>
+					</span>
+				</li>
+				<li>
+					<span>
+						<i class="fas fa-phone"></i>
+						<span>@Model.Bio.PhoneNumber</span>
+					</span>
+				</li>
+			</ul>
+			<div class="social">
+				<ul class="socialUl">
+					<li>
+						<a href="@Model.Bio.FacebookLink">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+							<span><i class="fab fa-facebook-f"></i></span>
+						</a>
+					</li>
+					<li>
+						<a href="@Model.Bio.InstagramLink">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+							<span><i class="fab fa-instagram"></i></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="info-message">
+			<div class="contactInfo animate__animated animate__fadeInLeft">
+				<div>
+					<h2>Əlaqə</h2>
+					<ul class="info">
+						<li>
+							<span>
+								<i class="fas fa-map-marker-alt"></i>
+							</span>
+							<span>
+								@Model.Bio.Country <br>
+								@Model.Bio.City <br>
+								@Model.Bio.Street
+							</span>
+						</li>
+						<li>
+							<span>
+								<i class="fas fa-envelope-open-text"></i>
+								<span>@Model.Bio.Gmail</span>
+							</span>
+						</li>
+						<li>
+							<span>
+								<i class="fas fa-phone"></i>
+								<span>@Model.Bio.PhoneNumber</span>
+							</span>
+						</li>
+					</ul>
+					<div class="social">
+						<ul class="socialUl">
+							<li>
+								<a href="@Model.Bio.FacebookLink">
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+									<span><i class="fab fa-facebook-f"></i></span>
+								</a>
+							</li>
+							<li>
+								<a href="@Model.Bio.InstagramLink">
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+									<span><i class="fab fa-instagram"></i></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="contactForm animate__animated animate__fadeInRight">
+				<h2>Mesaj Göndər</h2>
+				<form method="post" id="formContact" class="formBox">
+					<div class="inputBox w50">
+						<div>
+							<input asp-for="Name" required>
+							<span class="span">Ad</span>
+						</div>
+						<span asp-validation-for="Name" class="text-danger"></span>
+					</div>
+					<div class="inputBox w50">
+						<div>
+							<input asp-for="Surname" required>
+							<span class="span">Soyad</span>
+						</div>
+						<span asp-validation-for="Surname" class="text-danger"></span>
+					</div>
+					<div class="inputBox w50">
+						<div>
+							<input asp-for="Email" required>
+							<span class="span">Email</span>
+						</div>
+						<span asp-validation-for="Email" class="text-danger"></span>
+					</div>
+					<div class="inputBox w50">
+						<div>
+							<input asp-for="PhoneNumber" required>
+							<span class="span">Mobil nömrə</span>
+						</div>
+						<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+					</div>
+					<div class="inputBox w100">
+						<div>
+							<textarea asp-for="Message" required></textarea>
+							<span class="span">Mesajınızı yazın...</span>
+						</div>
+						<span asp-validation-for="Message" class="text-danger"></span>
+					</div>
+					<button type="submit" class="mt-3 btn btn-outline-primary">Göndər</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </section>
 
 <!-- Contact End -->
+
+@section Scripts{
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		$("#formContact").submit(function (e) {
+			e.preventDefault();
+			let name = $("#Name").val();
+			let surname = $("#Surname").val();
+			let email = $("#Email").val();
+			let phonenumber = $("#PhoneNumber").val();
+			let message = $("#Message").val();
+			let nameError = "";
+			let surnameError = "";
+			let emailError = "";
+			let phonenumberError = "";
+			let messageError = "";
+			setTimeout(() => {
+				nameError = $("#Name").parent().next().text()
+				surnameError = $("#Surname").parent().next().text()
+				emailError = $("#Email").parent().next().text()
+				phonenumberError = $("#PhoneNumber").parent().next().text()
+				messageError = $("#Message").parent().next().text()
+			}, 1)
+			setTimeout(() => {
+				if (name.trim() != "" && surname.trim() != "" && email.trim() != "" && phonenumber.trim() != "" && message.trim() != "" && nameError.trim() == "" && surnameError.trim() == "" && emailError.trim() == "" && phonenumberError.trim() == "" && messageError.trim() == "") {
+					swal("Mesaj", "Mesaj uğurla göndərildi", "success")
+						.then(function () {
+							setTimeout(() => document.querySelector("#formContact").submit(), 100);
+						})
+				}
+			}, 50)
+		});
+	</script>
+}
+

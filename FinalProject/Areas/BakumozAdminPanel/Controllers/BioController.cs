@@ -43,13 +43,15 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
                 bio.PhoneNumber = editedBio.PhoneNumber;
                 bio.FacebookLink = editedBio.FacebookLink;
                 bio.InstagramLink = editedBio.InstagramLink;
+                bio.Gmail = editedBio.Gmail;
                 bio.Country = editedBio.Country;
                 bio.City = editedBio.City;
                 bio.Street = editedBio.Street;
-                bio.Currency = editedBio.Currency;
-                return Json(Convert.ToDecimal(editedBio.Currency));
-                //await _db.SaveChangesAsync();
-                //return RedirectToAction("Index");
+                string currency = Request.Form["Currency"];
+                currency = currency.Replace('.', ',');
+                bio.Currency = Convert.ToDecimal(currency);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
             else
             {
@@ -68,10 +70,13 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
                 bio.PhoneNumber = editedBio.PhoneNumber;
                 bio.FacebookLink = editedBio.FacebookLink;
                 bio.InstagramLink = editedBio.InstagramLink;
+                bio.Gmail = editedBio.Gmail;
                 bio.Country = editedBio.Country;
                 bio.City = editedBio.City;
                 bio.Street = editedBio.Street;
-                bio.Currency = editedBio.Currency;
+                string currency = Request.Form["Currency"];
+                currency = currency.Replace('.', ',');
+                bio.Currency = Convert.ToDecimal(currency);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

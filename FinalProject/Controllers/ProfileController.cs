@@ -43,8 +43,8 @@ namespace FinalProject.Controllers
 			List<FavoriteBook> favoriteBooks = _db.FavoriteBooks.Include(fb => fb.Book).Include(fb => fb.AppUser).Where(fb => fb.AppUserId == user.Id).ToList();
 			List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Author).Include(ba => ba.Book).ToList();
 			List<Publisher> publishers = _db.Publishers.ToList();
-			List<Sale> sales = _db.Sales.Include(s=>s.SaleBooks).Where(s => s.AppUserId == user.Id).ToList();
-			List<SaleBook> saleBooks = _db.SaleBooks.Include(sb=>sb.Book).Where(s => s.AppUserId == user.Id).ToList();
+			List<Sale> sales = _db.Sales.Include(s => s.SaleBooks).Where(s => s.AppUserId == user.Id).ToList();
+			List<SaleBook> saleBooks = _db.SaleBooks.Include(sb => sb.Book).Where(s => s.AppUserId == user.Id).ToList();
 			ProfileVM model = new ProfileVM
 			{
 				UserDetail = userDetail,
@@ -52,8 +52,8 @@ namespace FinalProject.Controllers
 				FavoriteBooks = favoriteBooks,
 				BookAuthors = bookAuthors,
 				Publishers = publishers,
-				Sales=sales,
-				SaleBooks=saleBooks
+				Sales = sales,
+				SaleBooks = saleBooks
 			};
 			return View(model);
 		}
@@ -64,47 +64,23 @@ namespace FinalProject.Controllers
 			if (user == null) return NotFound();
 			UserDetail userD = _db.UserDetails.FirstOrDefault(u => u.AppUserId == user.Id);
 			ViewBag.Age = "";
-			if (userD == null)
+			user.FullName = settings.AppUser.FullName;
+			if (settings.UserDetail.Birthday != null && settings.UserDetail.Birthday.Year != 1)
 			{
-				UserDetail userDetail = new UserDetail();
-				userDetail.AppUserId = user.Id;
-				user.FullName = settings.AppUser.FullName;
-				if (settings.UserDetail.Birthday != null && settings.UserDetail.Birthday.Year != 1)
-				{
-					userDetail.Birthday = settings.UserDetail.Birthday;
-				}
-				string gender = Request.Form["Gender"];
-				userDetail.Gender = gender;
-				if (settings.UserDetail.PhoneNumber != null)
-				{
-					userDetail.PhoneNumber = settings.UserDetail.PhoneNumber;
-				}
-				userDetail.InstagramLink = settings.UserDetail.InstagramLink;
-				userDetail.FacebookLink = settings.UserDetail.FacebookLink;
-				_db.UserDetails.Add(userDetail);
-				await _db.SaveChangesAsync();
-				return RedirectToAction(User.Identity.Name, "profil");
+				userD.Birthday = settings.UserDetail.Birthday;
+
 			}
-			else
+			string gender = Request.Form["Gender"];
+			userD.Gender = gender;
+			if (settings.UserDetail.PhoneNumber != null)
 			{
-				user.FullName = settings.AppUser.FullName;
-				if (settings.UserDetail.Birthday != null && settings.UserDetail.Birthday.Year != 1)
-				{
-					userD.Birthday = settings.UserDetail.Birthday;
-
-				}
-				string gender = Request.Form["Gender"];
-				userD.Gender = gender;
-				if (settings.UserDetail.PhoneNumber != null)
-				{
-					userD.PhoneNumber = settings.UserDetail.PhoneNumber;
-				}
-				userD.InstagramLink = settings.UserDetail.InstagramLink;
-				userD.FacebookLink = settings.UserDetail.FacebookLink;
-
-				await _db.SaveChangesAsync();
-				return RedirectToAction(User.Identity.Name, "profil");
+				userD.PhoneNumber = settings.UserDetail.PhoneNumber;
 			}
+			userD.InstagramLink = settings.UserDetail.InstagramLink;
+			userD.FacebookLink = settings.UserDetail.FacebookLink;
+
+			await _db.SaveChangesAsync();
+			return RedirectToAction(User.Identity.Name, "profil");
 		}
 		[HttpPost]
 		public async Task<IActionResult> ChangePhoto(ProfileVM change)

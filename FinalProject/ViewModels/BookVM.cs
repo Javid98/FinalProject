@@ -11,6 +11,7 @@ namespace FinalProject.ViewModels
 {
 	public class BookVM
 	{
+		public string Slug { get; set; }
 		[Required]
 		public string ImagePath { get; set; }
 		[Required]

@@ -324,6 +324,9 @@ namespace FinalProject.Controllers
 					controller = "kitab",
 					action = book.Slug
 				});
+			}else if (actionName.Contains("BestSellers"))
+			{
+				return Redirect(@"https://localhost:44343/BestSellers" + queryString);
 			}
 			else
 			{

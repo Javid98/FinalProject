@@ -15,11 +15,10 @@ namespace FinalProject.Models
 		public string Logo { get; set; }
 		public string InstagramLink { get; set; }
 		public string FacebookLink { get; set; }
+		public string Gmail { get; set; }
 		public string Country { get; set; }
 		public string City { get; set; }
 		public string Street { get; set; }
-		[DataType(DataType.Currency)]
-		[DisplayFormat(ApplyFormatInEditMode = true)]
 		public decimal Currency { get; set; }
 		[NotMapped]
 		public IFormFile Photo { get; set; }
