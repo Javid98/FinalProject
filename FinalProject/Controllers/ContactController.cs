@@ -37,7 +37,8 @@ namespace FinalProject.Controllers
                 Surname = contact.Surname,
                 Email = contact.Email,
                 PhoneNumber = contact.PhoneNumber,
-                Message = contact.Message
+                Message = contact.Message,
+                Date=DateTime.Now
             };
             _db.Contacts.Add(newContact);
             await _db.SaveChangesAsync();

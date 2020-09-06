@@ -74,7 +74,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\r\n\r\n<h2 style=\"text-align:center;font-weight:bold\" class=\"mt-3\">Kitablar</h2>\r\n");
             EndContext();
             BeginContext(146, 148, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "70cfcbf925244044b2bab6eb28577238", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "74298e3581d0461f8ba4fa627df2fcb3", async() => {
                 BeginContext(226, 64, true);
                 WriteLiteral("\r\n\t<i class=\"mr-1 mdi mdi-table-large\"></i>Yeni kitab əlavə et\r\n");
                 EndContext();
@@ -108,7 +108,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\t\t\t<tr>\r\n\t\t\t\t<td>\r\n\t\t\t\t\t");
             EndContext();
             BeginContext(568, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "77336e22fb284f008540698e21628190", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d81750df0e964da29aaab075363edaf7", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -231,7 +231,7 @@ AddHtmlAttributeValue("", 618, book.ImagePath, 618, 15, false);
             WriteLiteral("\t\t\t</td>\r\n\t\t\t\t<td>\r\n\t\t\t\t\t");
             EndContext();
             BeginContext(1133, 143, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "779008a0135c4e668deddbaf76643b3a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4f5a6ca452a40c2bbd8d88b58dda41d", async() => {
                 BeginContext(1224, 48, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t<i class=\"mdi mdi-clipboard\"></i>\r\n\t\t\t\t\t");
                 EndContext();
@@ -269,7 +269,7 @@ AddHtmlAttributeValue("", 618, book.ImagePath, 618, 15, false);
             WriteLiteral("\r\n\t\t\t\t\t");
             EndContext();
             BeginContext(1283, 138, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "237e2317fff9450284f59e12202aa306", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cc780aa0306e41989d3d70067ff069f0", async() => {
                 BeginContext(1372, 45, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t<i class=\"mdi mdi-pencil\"></i>\r\n\t\t\t\t\t");
                 EndContext();
@@ -307,7 +307,7 @@ AddHtmlAttributeValue("", 618, book.ImagePath, 618, 15, false);
             WriteLiteral("\r\n\t\t\t\t\t");
             EndContext();
             BeginContext(1428, 150, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e67e9d8738224401b4729a1d13f71286", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b8d7c203b8fe40ed8940f9c1d1380e4a", async() => {
                 BeginContext(1521, 53, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t<i class=\"mdi mdi-delete-forever\"></i>\r\n\t\t\t\t\t");
                 EndContext();

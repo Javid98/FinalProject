@@ -25,6 +25,7 @@ namespace FinalProject.Controllers
 		public async Task<IActionResult> Index(string username)
 		{
 			if (username == null) return NotFound();
+			if (username.ToLower().Trim() != User.Identity.Name.ToLower().Trim()) return NotFound();
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 			if (user == null) return NotFound();
 			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
@@ -48,7 +49,7 @@ namespace FinalProject.Controllers
 		public async Task<IActionResult> Sale(BasketVM info)
 		{
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc=>bc.Book).Include(bc=>bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
+			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
 			Sale sale = new Sale();
 			double total = 0;
 			if (Request.Form["Type"].ToString().ToLower() == "metro")
@@ -89,15 +90,22 @@ namespace FinalProject.Controllers
 					{
 						SaleId = sale.Id,
 						Count = int.Parse(Request.Form["Count"][i]),
-						Price= bookInCart.Book.Price,
-						BookId=bookInCart.Book.Id,
-						AppUserId=user.Id
+						Price = bookInCart.Book.Price,
+						BookId = bookInCart.Book.Id,
+						AppUserId = user.Id
 					});
 					total += bookInCart.Book.Price * int.Parse(Request.Form["Count"][i]);
 					Book bookCount = _db.Books.FirstOrDefault(b => b.Id == bookInCart.BookId);
-					if(bookCount.Count != 0)
+					if (bookCount.Count != 0)
 					{
-						bookCount.Count -= int.Parse(Request.Form["Count"][i]);
+						if (bookCount.Count > int.Parse(Request.Form["Count"][i]))
+						{
+							bookCount.Count -= int.Parse(Request.Form["Count"][i]);
+						}
+						else
+						{
+							bookCount.Count = 0;
+						}
 					}
 					bookCount.SaleCount += int.Parse(Request.Form["Count"][i]);
 					i++;
@@ -117,10 +125,11 @@ namespace FinalProject.Controllers
 			BookInCart bookInCart = _db.BookInCarts.FirstOrDefault(bc => bc.BookId == id);
 			_db.BookInCarts.Remove(bookInCart);
 			await _db.SaveChangesAsync();
-			return RedirectToRoute(new {
+			return RedirectToRoute(new
+			{
 				controller = "Basket",
 				action = "Index",
-				username=User.Identity.Name
+				username = User.Identity.Name
 			});
 		}
 	}

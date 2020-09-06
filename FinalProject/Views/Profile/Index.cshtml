@@ -105,7 +105,7 @@
 								}
 								<span><a href="/NewBooks/?pslug=@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Slug">@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Name</a></span>
 							</div>
-							<form id="favoriteForm" class="delete" asp-controller="Profile" asp-action="DeleteFavorite" asp-route-id="@favoriteBook.BookId">
+							<form class="favoriteForm delete" asp-controller="Profile" asp-action="DeleteFavorite" asp-route-id="@favoriteBook.BookId">
 								<button style="background:none;border:none" type="submit"><i class="fas fa-minus-circle"></i></button>
 							</form>
 						</div>
@@ -372,8 +372,9 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
-		$("#ModalFavorite .books .book #favoriteForm").submit(function (e) {
+		$("#ModalFavorite .books .book .favoriteForm i").click(function (e) {
 			e.preventDefault();
+			var element = $(this).parent().parent();
 			swal({
 				title: "Favoritlər",
 				text: "Bu kitabı silmək istədiyinizdən əminsiniz?",
@@ -386,7 +387,7 @@
 						swal("Kitab favoritlərdən silindi", {
 							icon: "success",
 						}).then(function () {
-							setTimeout(() => document.querySelector("#favoriteForm").submit(), 100);
+							setTimeout(() => element.submit(), 100);
 						})
 					} else {
 						swal("Kitab silinmədi");

@@ -33,7 +33,7 @@
 	<ul class="pagination">
 		@if (ViewBag.Page == 1 && ViewBag.PageCount > 1)
 		{
-			<li class="page-item" style="pointer-events:none;">
+			<li class="page-item current" style="pointer-events:none;">
 				<a style="background-color:#236bdf;color:white" class="page-link" href="/BakumozAdminPanel/Sales/CompletedSales?page=1">Birinci</a>
 			</li>
 		}
@@ -59,7 +59,7 @@
 		}
 		@if (ViewBag.Page == ViewBag.PageCount && ViewBag.PageCount > 1)
 		{
-			<li class="page-item" style="pointer-events:none;">
+			<li class="page-item current" style="pointer-events:none;">
 				<a style="background-color:#236bdf;color:white" class="page-link" href="/BakumozAdminPanel/Sales/CompletedSales?page=@ViewBag.PageCount">Sonuncu</a>
 			</li>
 		}

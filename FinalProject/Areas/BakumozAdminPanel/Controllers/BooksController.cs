@@ -525,6 +525,8 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 			if (id == null) return NotFound();
 			Book book = _db.Books.Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).Include(b => b.Publisher).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookFeature).FirstOrDefault(b => b.Id == id);
 			if (book == null) return NotFound();
+			Publisher publisher = _db.Publishers.FirstOrDefault(p => p.Id == book.PublisherId);
+			publisher.BookCount--;
 			_db.Books.Remove(book);
 			await _db.SaveChangesAsync();
 			return RedirectToAction("Index");

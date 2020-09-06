@@ -19,5 +19,7 @@ namespace FinalProject.Models
 		public string PhoneNumber { get; set; }
 		[Required]
 		public string Message { get; set; }
+		public DateTime Date { get; set; }
+		public bool Read { get; set; } = false;
 	}
 }

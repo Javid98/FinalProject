@@ -24,7 +24,7 @@ namespace FinalProject.Controllers
 		public async Task<IActionResult> Index(string pslug, string aslug, string cslug, int page = 1)
 		{
 			ViewBag.Page = page;
-			ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.Count() / 3);
+			ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.Count() / 1);
 			List<Book> books = new List<Book>();
 
 			AppUser user = new AppUser();
@@ -65,9 +65,9 @@ namespace FinalProject.Controllers
 						books.Add(book);
 					}
 				}
-				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 1);
 				allBooks = books;
-				books = books.Skip((page - 1) * 3).Take(3).ToList();
+				books = books.Skip((page - 1) * 1).Take(1).ToList();
 			}
 			else if (pslug == null && aslug != null && cslug == null)
 			{
@@ -84,9 +84,9 @@ namespace FinalProject.Controllers
 						books.Add(newBook);
 					}
 				}
-				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 1);
 				allBooks = books;
-				books = books.Skip((page - 1) * 3).Take(3).ToList();
+				books = books.Skip((page - 1) * 1).Take(1).ToList();
 			}
 			else if (pslug == null && aslug == null && cslug != null)
 			{
@@ -103,9 +103,9 @@ namespace FinalProject.Controllers
 						books.Add(newBook);
 					}
 				}
-				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 1);
 				allBooks = books;
-				books = books.Skip((page - 1) * 3).Take(3).ToList();
+				books = books.Skip((page - 1) * 1).Take(1).ToList();
 			}
 			else if (pslug != null && aslug != null && cslug == null)
 			{
@@ -125,9 +125,9 @@ namespace FinalProject.Controllers
 						books.Add(newBook);
 					}
 				}
-				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 1);
 				allBooks = books;
-				books = books.Skip((page - 1) * 3).Take(3).ToList();
+				books = books.Skip((page - 1) * 1).Take(1).ToList();
 			}
 			else if (pslug != null && aslug == null && cslug != null)
 			{
@@ -147,9 +147,9 @@ namespace FinalProject.Controllers
 						books.Add(newBook);
 					}
 				}
-				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 1);
 				allBooks = books;
-				books = books.Skip((page - 1) * 3).Take(3).ToList();
+				books = books.Skip((page - 1) * 1).Take(1).ToList();
 			}
 			else if (pslug == null && aslug != null && cslug != null)
 			{
@@ -179,9 +179,9 @@ namespace FinalProject.Controllers
 					}
 
 				}
-				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 1);
 				allBooks = books;
-				books = books.Skip((page - 1) * 3).Take(3).ToList();
+				books = books.Skip((page - 1) * 1).Take(1).ToList();
 			}
 			else if (pslug != null && aslug != null && cslug != null)
 			{
@@ -216,14 +216,14 @@ namespace FinalProject.Controllers
 					}
 
 				}
-				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 3);
+				ViewBag.PageCount = Math.Ceiling((decimal)books.Count() / 1);
 				allBooks = books;
-				books = books.Skip((page - 1) * 3).Take(3).ToList();
+				books = books.Skip((page - 1) * 1).Take(1).ToList();
 			}
 			else
 			{
 				allBooks = _db.Books.ToList();
-				books = _db.Books.Skip((page - 1) * 3).Take(3).ToList();
+				books = _db.Books.Skip((page - 1) * 1).Take(1).ToList();
 			}
 			NewBooksVM model = new NewBooksVM
 			{
@@ -359,6 +359,9 @@ namespace FinalProject.Controllers
 					controller = "kitab",
 					action = book.Slug
 				});
+			}else if (actionName.Contains("BestSellers"))
+			{
+				return Redirect(@"https://localhost:44343/BestSellers" + queryString);
 			}
 			else
 			{
