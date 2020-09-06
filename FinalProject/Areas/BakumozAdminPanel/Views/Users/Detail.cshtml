@@ -1,0 +1,53 @@
+﻿@model UserDetail
+@{
+	ViewData["Title"] = "İstifadəçi";
+}
+
+<div class="container">
+	<h3 style="text-align:center" class="mt-3">İstifadəçi</h3>
+	<div class="mt-3 d-flex justify-content-between align-items-center">
+		<div>
+			@if (Model.ImagePath != null)
+			{
+				<img width="85" height="120" src="~/image/usersphotos/@Model.ImagePath" />
+			}
+			<p class="mt-2">
+				<strong>Adı,Soyadı: </strong>@Model.AppUser.FullName
+			</p>
+			<p>
+				<strong>Mobil nömrəsi: </strong>@Model.PhoneNumber
+			</p>
+			<p>
+				<strong>Emaili: </strong>@Model.AppUser.Email
+			</p>
+			<p>
+				<strong>Cinsiyyəti: </strong>@Model.Gender
+			</p>
+			<p>
+				<strong>Instagram: </strong>@Model.InstagramLink
+			</p>
+			<p>
+				<strong>Facebook: </strong>@Model.FacebookLink
+			</p>
+			<p>
+				<strong>Doğum tarixi: </strong>@Model.Birthday.ToString("dd/MM/yyyy")
+			</p>
+		</div>
+		@if (Model.AppUser.IsBlocked)
+		{
+			<div>
+				<div style="font-weight:bold;color:red">
+					<i class="mdi mdi-block-helper"></i>
+					<span class="text-danger">Bloklanıb</span>
+				</div>
+				<a class="mt-2 mr-2 btn btn-primary" asp-controller="Users" asp-action="RemoveBlock">
+					Blokdan çıxar
+				</a>
+			</div>
+		}
+	</div>
+	<a class="btn btn-secondary mt-3" asp-controller="Users" asp-action="Index">
+		Geriyə
+	</a>
+</div>
+

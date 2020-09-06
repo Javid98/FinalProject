@@ -9,15 +9,15 @@ namespace FinalProject.ViewModels
 {
 	public class ContactVM
 	{
-        [Required]
+        [Required(ErrorMessage ="Ad daxil edin")]
 		public string Name { get; set; }
-		[Required]
+		[Required(ErrorMessage = "Soyad daxil edin")]
 		public string Surname { get; set; }
-		[Required, EmailAddress, DataType(DataType.EmailAddress)]
+		[Required(ErrorMessage = "Email daxil edin"), EmailAddress, DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
-		[Required]
+		[Required(ErrorMessage = "Nömrə daxil edin")]
 		public string PhoneNumber { get; set; }
-		[Required]
+		[Required(ErrorMessage = "Mesaj daxil edin")]
 		public string Message { get; set; }
 		public Bio Bio { get; set; }
 	}

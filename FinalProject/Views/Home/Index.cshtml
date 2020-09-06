@@ -177,7 +177,7 @@
 <section id="Category">
 	<div class="mt-3 container">
 		<div class="title">
-			<a href="">
+			<a asp-controller="Categories" asp-action="Index">
 				<h3>Kateqoriyalar</h3>
 			</a>
 		</div>
@@ -195,14 +195,14 @@
 <section id="BookOfMonth">
 	<div class="mt-3 container">
 		<div class="title">
-			<a href="">
-				<h3>Ayın kitabı</h3>
+			<a>
+				<h3>Ən çox satılan kitabı</h3>
 			</a>
 		</div>
 
 		<div class="row">
 			<div class="book col-lg-2 col-sm-4 col-4">
-				<a href=""><img src="~/image/@Model.Book.ImagePath" alt=""></a>
+				<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@Model.Book.Slug"><img src="~/image/@Model.Book.ImagePath" alt=""></a>
 			</div>
 			<div class="description mt-3 col-lg-3 col-sm-12 col-12">
 				@if (@Model.Book.Description.Length < 500)
@@ -233,7 +233,7 @@
 				</div>
 			</div>
 			<div class="saleBook mt-4 col-lg-3 col-sm-12 col-12">
-				<a href="">
+				<a>
 					<img src="~/image/salebook.jpg" alt="">
 				</a>
 			</div>

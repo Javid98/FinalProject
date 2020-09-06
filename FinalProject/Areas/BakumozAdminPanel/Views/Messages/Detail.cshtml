@@ -1,0 +1,40 @@
+﻿@model Contact
+@{
+	ViewData["Title"] = "Mesaj";
+}
+
+<div class="container">
+	<div class="mt-3 d-flex justify-content-between align-items-center">
+		<div>
+			<h4>Müştəri</h4>
+			<p>
+				<strong>Adı: </strong>@Model.Name @Model.Surname
+			</p>
+			<p>
+				<strong>Mobil nömrəsi: </strong>@Model.PhoneNumber
+			</p>
+			<p>
+				<strong>Emaili: </strong>@Model.Email
+			</p>
+			<p>
+				<strong>Mesajın tarixi: </strong>@Model.Date
+			</p>
+		</div>
+		<div>
+			<a class="btn btn-danger" asp-controller="Messages" asp-action="Delete" asp-route-id="@Model.Id">
+				<i class="mdi mdi-delete-forever"></i>
+				Mesajı sil
+			</a>
+		</div>
+	</div>
+	<div class="mt-3">
+		<h4 style="text-align:center">Mesaj</h4>
+		<p>
+			@Model.Message
+		</p>
+	</div>
+	<a class="btn btn-secondary mt-3" asp-controller="Messages" asp-action="Index">
+		Geriyə
+	</a>
+</div>
+

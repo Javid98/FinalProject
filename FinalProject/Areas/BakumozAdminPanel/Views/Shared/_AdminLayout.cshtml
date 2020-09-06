@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@ViewData["Title"]</title>
+    @await Component.InvokeAsync("AdminHeadTag")
     <!-- plugins:css -->
     <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
@@ -13,140 +14,15 @@
     <!-- End plugin css for this page -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    @RenderSection("Css",false)
+    @RenderSection("Css", false)
     <link rel="stylesheet" href="~/admin/css/demo/style.css">
-
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="~/image/bakumoz.png" />
 </head>
 <body style="background-color:white">
     <script src="~/admin/js/preloader.js"></script>
     <div class="body-wrapper">
         <!-- partial:../../partials/_sidebar.html -->
-        <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
-            <div class="mdc-drawer__header">
-                <a href="../../index.html" class="brand-logo">
-                    <img src="~/admin/images/logo.svg" alt="logo">
-                </a>
-            </div>
-            <div class="mdc-drawer__content">
-                <div class="user-info">
-                    <p class="name">Clyde Miles</p>
-                </div>
-                <div class="mdc-list-group">
-                    <nav class="mdc-list mdc-drawer-menu">
-                        <div class="mdc-list-item mdc-drawer-item">
-                            <a class="mdc-expansion-panel-link" data-toggle="expansionPanel" data-target="ui-sub-menu">
-                                <i style="font-size:20px" class="mr-1 mdi mdi-file-document-box"></i>
-                                Sifarişlər
-                                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
-                            </a>
-                            <div class="mdc-expansion-panel" id="ui-sub-menu">
-                                <nav class="mdc-list mdc-drawer-submenu">
-                                    <div class="mdc-list-item mdc-drawer-item">
-                                        <a class="dropDown mdc-drawer-link" asp-controller="Sales" asp-action="Index">
-                                            Yenilər
-                                        </a>
-                                    </div>
-                                    <div class="mdc-list-item mdc-drawer-item">
-                                        <a class="dropDown mdc-drawer-link" asp-controller="Sales" asp-action="CompletedSales">
-                                            Tamamlanmışlar
-                                        </a>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="mdc-list-item mdc-drawer-item">
-                            <a class="mdc-drawer-link" asp-controller="Books" asp-action="Index">
-                                <i style="font-size:20px" class="mr-1 mdi mdi-library" aria-hidden="true"></i>
-                                Kitablar
-                            </a>
-                        </div>
-                        <div class="mdc-list-item mdc-drawer-item">
-                            <a class="mdc-drawer-link" asp-controller="Author" asp-action="Index">
-                                <i style="font-size:20px" class="mr-1 mdi mdi-ticket-account" aria-hidden="true"></i>
-                                Yazarlar
-                            </a>
-                        </div>
-                        <div class="mdc-list-item mdc-drawer-item">
-                            <a class="mdc-drawer-link" asp-controller="Categories" asp-action="Index">
-                                <i style="font-size:20px" class="mr-1 mdi mdi-table-large" aria-hidden="true"></i>
-                                Kateqoriyalar
-                            </a>
-                        </div>
-                        <div class="mdc-list-item mdc-drawer-item">
-                            <a class="mdc-drawer-link" asp-controller="Publishers" asp-action="Index">
-                                <i style="font-size:20px" class="mr-1 mdi mdi-sitemap" aria-hidden="true"></i>
-                                Yayın evləri
-                            </a>
-                        </div>
-                        <div class="mdc-list-item mdc-drawer-item">
-                            <a class="mdc-drawer-link" asp-controller="Bio" asp-action="Index">
-                                <i style="font-size:20px" class="mr-1 mdi mdi-bio" aria-hidden="true"></i>
-                                Bio
-                            </a>
-                        </div>
-                        <div class="mdc-list-item mdc-drawer-item">
-                            <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="sample-page-submenu">
-                                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pages</i>
-                                Sample Pages
-                                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
-                            </a>
-                            <div class="mdc-expansion-panel" id="sample-page-submenu">
-                                <nav class="mdc-list mdc-drawer-submenu">
-                                    <div class="mdc-list-item mdc-drawer-item">
-                                        <a class="mdc-drawer-link" href="../../pages/samples/blank-page.html">
-                                            Blank Page
-                                        </a>
-                                    </div>
-                                    <div class="mdc-list-item mdc-drawer-item">
-                                        <a class="mdc-drawer-link" href="../../pages/samples/403.html">
-                                            403
-                                        </a>
-                                    </div>
-                                    <div class="mdc-list-item mdc-drawer-item">
-                                        <a class="mdc-drawer-link" href="../../pages/samples/404.html">
-                                            404
-                                        </a>
-                                    </div>
-                                    <div class="mdc-list-item mdc-drawer-item">
-                                        <a class="mdc-drawer-link" href="../../pages/samples/500.html">
-                                            500
-                                        </a>
-                                    </div>
-                                    <div class="mdc-list-item mdc-drawer-item">
-                                        <a class="mdc-drawer-link" href="../../pages/samples/505.html">
-                                            505
-                                        </a>
-                                    </div>
-                                    <div class="mdc-list-item mdc-drawer-item">
-                                        <a class="mdc-drawer-link" href="../../pages/samples/login.html">
-                                            Login
-                                        </a>
-                                    </div>
-                                    <div class="mdc-list-item mdc-drawer-item">
-                                        <a class="mdc-drawer-link" href="../../pages/samples/register.html">
-                                            Register
-                                        </a>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="mdc-list-item mdc-drawer-item">
-                            <a class="mdc-drawer-link" href="https://www.bootstrapdash.com/demo/material-admin-free/jquery/documentation/documentation.html" target="_blank">
-                                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i>
-                                Documentation
-                            </a>
-                        </div>
-                    </nav>
-                </div>
-                <div class="profile-actions">
-                    <a href="javascript:;">Settings</a>
-                    <span class="divider"></span>
-                    <a href="javascript:;">Logout</a>
-                </div>
-            </div>
-        </aside>
+        @await  Component.InvokeAsync("Aside")
         <!-- partial -->
         <div class="main-wrapper mdc-drawer-app-content">
             <!-- partial:../../partials/_navbar.html -->

@@ -1,0 +1,97 @@
+﻿@model Bio
+	<aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
+		<div class="mdc-drawer__header d-flex justify-content-center">
+			<a asp-area="" asp-controller="Home" asp-action="Index" class="brand-logo">
+				<img width="120" height="80" src="~/image/@Model.Logo" alt="logo">
+			</a>
+		</div>
+		<div class="mdc-drawer__content">
+			<div class="user-info d-flex justify-content-center">
+				<p style="font-size:25px" class="name">@User.Identity.Name</p>
+			</div>
+			<div class="mdc-list-group">
+				<nav class="mdc-list mdc-drawer-menu">
+					<div class="mdc-list-item mdc-drawer-item">
+						<a class="mdc-expansion-panel-link" data-toggle="expansionPanel" data-target="ui-sub-menu">
+							<i style="font-size:20px" class="mr-1 mdi mdi-file-document-box"></i>
+							Sifarişlər
+							<i class="mdc-drawer-arrow material-icons">chevron_right</i>
+						</a>
+						<div class="mdc-expansion-panel" id="ui-sub-menu">
+							<nav class="mdc-list mdc-drawer-submenu">
+								<div class="mdc-list-item mdc-drawer-item">
+									<a class="dropDown mdc-drawer-link" asp-controller="Sales" asp-action="Index">
+										Yenilər
+									</a>
+								</div>
+								<div class="mdc-list-item mdc-drawer-item">
+									<a class="dropDown mdc-drawer-link" asp-controller="Sales" asp-action="CompletedSales">
+										Tamamlanmışlar
+									</a>
+								</div>
+							</nav>
+						</div>
+					</div>
+					<div class="mdc-list-item mdc-drawer-item">
+						<a class="mdc-drawer-link" asp-controller="Books" asp-action="Index">
+							<i style="font-size:20px" class="mr-1 mdi mdi-library" aria-hidden="true"></i>
+							Kitablar
+						</a>
+					</div>
+					<div class="mdc-list-item mdc-drawer-item">
+						<a class="mdc-drawer-link" asp-controller="Author" asp-action="Index">
+							<i style="font-size:20px" class="mr-1 mdi mdi-ticket-account" aria-hidden="true"></i>
+							Yazarlar
+						</a>
+					</div>
+					<div class="mdc-list-item mdc-drawer-item">
+						<a class="mdc-drawer-link" asp-controller="Categories" asp-action="Index">
+							<i style="font-size:20px" class="mr-1 mdi mdi-table-large" aria-hidden="true"></i>
+							Kateqoriyalar
+						</a>
+					</div>
+					<div class="mdc-list-item mdc-drawer-item">
+						<a class="mdc-drawer-link" asp-controller="Publishers" asp-action="Index">
+							<i style="font-size:20px" class="mr-1 mdi mdi-sitemap" aria-hidden="true"></i>
+							Yayın evləri
+						</a>
+					</div>
+					<div class="mdc-list-item mdc-drawer-item">
+						<a class="mdc-drawer-link" asp-controller="Bio" asp-action="Index">
+							<i style="font-size:20px" class="mr-1 mdi mdi-bio" aria-hidden="true"></i>
+							Bio
+						</a>
+					</div>
+					<div class="mdc-list-item mdc-drawer-item">
+						<a class="mdc-drawer-link" asp-controller="Messages" asp-action="Index">
+							<i style="font-size:20px" class="mr-1 mdi mdi-message" aria-hidden="true"></i>
+							Messages
+						</a>
+					</div>
+					<div class="mdc-list-item mdc-drawer-item">
+						<a class="mdc-expansion-panel-link" data-toggle="expansionPanel" data-target="sample-page-submenu">
+							<i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pages</i>
+							Müştəri hissəsi
+							<i class="mdc-drawer-arrow material-icons">chevron_right</i>
+						</a>
+						<div class="mdc-expansion-panel" id="sample-page-submenu">
+							<nav class="mdc-list mdc-drawer-submenu">
+								<div class="mdc-list-item mdc-drawer-item">
+									<a class="mdc-drawer-link" asp-controller="Users" asp-action="Index">
+										Müştərilər
+									</a>
+								</div>
+								<div class="mdc-list-item mdc-drawer-item">
+									<a class="mdc-drawer-link" href="../../pages/samples/403.html">
+										Bloklananlar
+									</a>
+								</div>
+							</nav>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div class="profile-actions">
+			</div>
+		</div>
+	</aside>

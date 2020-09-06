@@ -39,7 +39,8 @@ namespace FinalProject.Controllers
             AppUser user = new AppUser
             {
                 FullName = register.Fullname,
-                UserName = register.RegisterUsername
+                UserName = register.RegisterUsername,
+                Email=register.Email
             };
             IdentityResult identityResult = await _userManager.CreateAsync(user, register.RegisterPassword);
             if (!identityResult.Succeeded)

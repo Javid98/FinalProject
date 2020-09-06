@@ -74,7 +74,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\r\n\r\n<!-- Book Detail Start -->\r\n\r\n<section id=\"bookDetail\">\r\n\t<div class=\"container\">\r\n\t\t<div class=\"row book justify-content-center\">\r\n\t\t\t<div class=\"col-lg-3 col-sm-4 col-4 image\">\r\n\t\t\t\t<a href=\"\">");
             EndContext();
             BeginContext(265, 48, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "1cc003e360344fcf86e33605a0ca9d45", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "5ca130a3a33946fb8c79e9c42e91457d", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -232,7 +232,7 @@ WriteAttributeValue("", 710, Model.Publisher.Slug, 710, 21, false);
             WriteLiteral("\t\t\t\t\t<div class=\"book-buttons\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(1685, 221, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7e25edb980594ddb86a147c851b43880", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "85a46a5a5e5f44dc995409cf11ea6c29", async() => {
                 BeginContext(1844, 58, true);
                 WriteLiteral("<i class=\"mr-1 fas fa-shopping-basket\"></i>Səbətə əlavə et");
                 EndContext();
@@ -279,7 +279,7 @@ WriteAttributeValue("", 710, Model.Publisher.Slug, 710, 21, false);
             WriteLiteral("\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(1914, 221, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dd4725a3e5df43bd97d625210fcc6200", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9125ea31be88442889bdcfe146a8a232", async() => {
                 BeginContext(2079, 52, true);
                 WriteLiteral("<i class=\"mr-1 fas fa-plus\"></i>Favoritlərə əlavə et");
                 EndContext();
@@ -336,7 +336,7 @@ WriteAttributeValue("", 710, Model.Publisher.Slug, 710, 21, false);
             WriteLiteral("\t\t\t\t\t<div class=\"book-buttons\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(2373, 271, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1ecd766ce95b4a92bbe23b7855d729a3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d6903d0c326451a994d196b9520e0f1", async() => {
                 BeginContext(2580, 60, true);
                 WriteLiteral("<i class=\"mr-1 fas fa-shopping-basket\"></i>Səbətdə mövcuddur");
                 EndContext();
@@ -384,7 +384,7 @@ WriteAttributeValue("", 710, Model.Publisher.Slug, 710, 21, false);
             WriteLiteral("\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(2652, 221, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1e7db47c67f446d5a4046f3d8b266201", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e87c9d8c8ef476e9a0889c20f411294", async() => {
                 BeginContext(2817, 52, true);
                 WriteLiteral("<i class=\"mr-1 fas fa-plus\"></i>Favoritlərə əlavə et");
                 EndContext();
@@ -441,7 +441,7 @@ WriteAttributeValue("", 710, Model.Publisher.Slug, 710, 21, false);
             WriteLiteral("\t\t\t\t\t<div class=\"book-buttons\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(3111, 221, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d1e15e33123245699d2c15b0cd6af354", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b4a1c61a37b94961bab5c4b7d17fe813", async() => {
                 BeginContext(3270, 58, true);
                 WriteLiteral("<i class=\"mr-1 fas fa-shopping-basket\"></i>Səbətə əlavə et");
                 EndContext();
@@ -488,7 +488,7 @@ WriteAttributeValue("", 710, Model.Publisher.Slug, 710, 21, false);
             WriteLiteral("\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(3340, 313, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cb3d6a70841c452e97bd180655e098a0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fb7130f12a084c839df10ef504de0d40", async() => {
                 BeginContext(3573, 76, true);
                 WriteLiteral("<i style=\"color:tomato\" class=\"mr-1 fas fa-heart\"></i>Favoritlərdə mövcuddur");
                 EndContext();
@@ -546,7 +546,7 @@ WriteAttributeValue("", 710, Model.Publisher.Slug, 710, 21, false);
             WriteLiteral("\t\t\t\t\t<div class=\"book-buttons\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(3731, 271, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "26e70c3da949468484e0323a9afd67fd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c1e280d29422442199e24ba5e53966c1", async() => {
                 BeginContext(3938, 60, true);
                 WriteLiteral("<i class=\"mr-1 fas fa-shopping-basket\"></i>Səbətdə mövcuddur");
                 EndContext();
@@ -594,7 +594,7 @@ WriteAttributeValue("", 710, Model.Publisher.Slug, 710, 21, false);
             WriteLiteral("\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(4010, 313, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1016670a50b14208bd4152bef8f14a18", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ba02edc62e94e4bb98935bf2fdd9289", async() => {
                 BeginContext(4243, 76, true);
                 WriteLiteral("<i style=\"color:tomato\" class=\"mr-1 fas fa-heart\"></i>Favoritlərdə mövcuddur");
                 EndContext();
@@ -772,9 +772,9 @@ WriteAttributeValue("", 710, Model.Publisher.Slug, 710, 21, false);
             WriteLiteral("\t\t\t\t\t<div class=\"item\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(6188, 151, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19706c62bdcb4930a442ad54298d651a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "48226445f13748fca67818f0a3506b5a", async() => {
                 BeginContext(6279, 56, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "1c4cc4b54c284bd99e836040f54d93aa", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "b04ffbb1e23943ffb09ecd3555ac527d", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

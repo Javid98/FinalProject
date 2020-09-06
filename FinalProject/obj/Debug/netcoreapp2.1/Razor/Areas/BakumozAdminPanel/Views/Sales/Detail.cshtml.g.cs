@@ -80,7 +80,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\t\t\t");
             EndContext();
             BeginContext(300, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ac11d48aa31f4a2da57f3fd33c11a40a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a39cc0a7f3e1465c8b5591954f292b2d", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -200,7 +200,7 @@ AddHtmlAttributeValue("", 363, Model.AppUser.UserDetail.ImagePath, 363, 35, fals
             WriteLiteral("\t\t\t\t<tr>\r\n\t\t\t\t\t<td class=\"image\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(1549, 78, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1820d07f96ba44b7a3e3596b54b74cf1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "5753b907fbeb442d922f4bd419aa1edd", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -328,7 +328,7 @@ AddHtmlAttributeValue("", 1599, saleBook.Book.ImagePath, 1599, 24, false);
             WriteLiteral("\t\t</tbody>\r\n\t</table>\r\n\r\n\t");
             EndContext();
             BeginContext(2131, 222, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67d53679e9cc4d01a5e4e2fa44d3fb48", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3eb229e1d26446f288f84fa1f40e59d8", async() => {
                 BeginContext(2229, 117, true);
                 WriteLiteral("\r\n\t\t<button type=\"submit\" class=\"ml-1 btn btn-danger\"><i class=\"mdi mdi-delete-forever\"></i> Sifarişi sil</button>\r\n\t");
                 EndContext();

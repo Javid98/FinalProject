@@ -21,10 +21,12 @@ namespace FinalProject.Areas.BakumozAdminPanel.ViewComponents
 		{
 			List<Contact> contacts = _db.Contacts.Where(c=>c.Read==false).OrderByDescending(c => c.Date).ToList();
 			List<Sale> sales = _db.Sales.Include(s=>s.AppUser).Where(s => s.Completed == false).OrderByDescending(s => s.Date).ToList();
+			Bio bio = _db.Bios.FirstOrDefault();
 			AdminVM model = new AdminVM
 			{
 				Contacts = contacts,
-				Sales = sales
+				Sales = sales,
+				Bio = bio
 			};
 			return View(await Task.FromResult(model));
 		}
