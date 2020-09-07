@@ -138,7 +138,7 @@ namespace FinalProject.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<double>("Price");
+                    b.Property<decimal>("Price");
 
                     b.Property<int>("PublisherId");
 
@@ -344,7 +344,7 @@ namespace FinalProject.Data.Migrations
 
                     b.Property<string>("PhoneNumber");
 
-                    b.Property<double>("Total");
+                    b.Property<decimal>("Total");
 
                     b.HasKey("Id");
 
@@ -365,7 +365,7 @@ namespace FinalProject.Data.Migrations
 
                     b.Property<int>("Count");
 
-                    b.Property<double>("Price");
+                    b.Property<decimal>("Price");
 
                     b.Property<int>("SaleId");
 

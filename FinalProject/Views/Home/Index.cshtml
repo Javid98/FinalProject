@@ -9,7 +9,7 @@
 <section id="Slider">
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
-			@foreach (Book book in Model.Books.OrderByDescending(b => b.Id).Where(b => b.Price >= 8 && b.Price <= 10).Take(12))
+			@foreach (Book book in Model.Books.OrderByDescending(b => b.Id).Where(b => b.Price * ViewBag.Currency >= 2 && b.Price * ViewBag.Currency <= 4).Take(12))
 			{
 				<div class="swiper-slide">
 					<div class="sliderCard">
@@ -19,12 +19,36 @@
 							</a>
 						</div>
 						<div class="content">
-							<h6>@book.Name</h6>
+							@if (book.Name.Length < 20)
+							{
+								<h6>@book.Name</h6>
+							}
+							else
+							{
+								<h6>@book.Name.Substring(0, 20)...</h6>
+							}
 							@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == book.Id))
 							{
-								<span>@bookAuthor.Author.Fullname</span>
+								@if (bookAuthor.Author.Fullname.Length < 20)
+								{
+									<span>@bookAuthor.Author.Fullname</span>
+								}
+								else
+								{
+									<span>@bookAuthor.Author.Fullname.Substring(0, 20)...</span>
+								}
 							}
-							<span>@book.Price ₼</span>
+							@if (book.Publisher.Discount == 0)
+							{
+								<span>@((book.Price * ViewBag.Currency).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
+							}
+							else
+							{
+								<div>
+									<span style="text-decoration-line:line-through">@((book.Price * ViewBag.Currency).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>&nbsp;
+									<span>@((book.Price * ViewBag.Currency * ((decimal)(100 - book.Publisher.Discount) / 100)).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
+								</div>
+							}
 						</div>
 					</div>
 				</div>
@@ -50,6 +74,12 @@
 					<div class="box">
 						<div class="imgBox">
 							<img src="~/image/@book.ImagePath" alt="">
+							@if (book.Publisher.Discount != 0)
+							{
+								<div class="discount">
+									<span>@book.Publisher.Discount%</span>
+								</div>
+							}
 						</div>
 						<div class="contentBox">
 							<div>
@@ -80,9 +110,18 @@
 									</p>
 								}
 
-								<div class="price">
-									<span>@book.Price ₼</span>
-								</div>
+								@if (book.Publisher.Discount == 0)
+								{
+									<div class="price">
+										<span>@((book.Price * ViewBag.Currency).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
+									</div>
+								}
+								else
+								{
+									<div class="price">
+										<span>@((book.Price * ViewBag.Currency * ((decimal)(100 - book.Publisher.Discount) / 100)).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
+									</div>
+								}
 							</div>
 						</div>
 					</div>
@@ -160,7 +199,7 @@
 								}
 
 								<div class="price">
-									<span>@book.Price ₼</span>
+									<span>@((book.Price * ViewBag.Currency).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
 								</div>
 							</div>
 						</div>

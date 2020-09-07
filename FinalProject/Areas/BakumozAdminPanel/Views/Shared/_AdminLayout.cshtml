@@ -1,51 +1,92 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@ViewData["Title"]</title>
-    @await Component.InvokeAsync("AdminHeadTag")
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    @RenderSection("Css", false)
-    <link rel="stylesheet" href="~/admin/css/demo/style.css">
-    <!-- End layout styles -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>@ViewData["Title"]</title>
+	@await Component.InvokeAsync("AdminHeadTag")
+	<!-- plugins:css -->
+	<link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
+	<!-- endinject -->
+	<!-- Plugin css for this page -->
+	<!-- End plugin css for this page -->
+	<!-- Layout styles -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	@RenderSection("Css", false)
+	<link rel="stylesheet" href="~/admin/css/demo/style.css">
+	<!-- End layout styles -->
 </head>
 <body style="background-color:white">
-    <script src="~/admin/js/preloader.js"></script>
-    <div class="body-wrapper">
-        <!-- partial:../../partials/_sidebar.html -->
-        @await  Component.InvokeAsync("Aside")
-        <!-- partial -->
-        <div class="main-wrapper mdc-drawer-app-content">
-            <!-- partial:../../partials/_navbar.html -->
-            @await  Component.InvokeAsync("AdminHeader")
-            @RenderBody()
-        </div>
+	<script src="~/admin/js/preloader.js"></script>
+	<!-- Search Start -->
 
-        <!-- partial -->
-    </div>
-    <!-- plugins:js -->
-    <script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <!-- Plugin js for this page-->
-    <script src="~/admin/vendors/chartjs/Chart.min.js"></script>
-    <!-- End plugin js for this page-->
-    <!-- inject:js -->
-    <script src="~/admin/js/material.js"></script>
-    <script src="~/admin/js/misc.js"></script>
-    <!-- endinject -->
-    @RenderSection("Scripts", false)
-    <!-- Custom js for this page-->
-    <script src="~/admin/js/chartjs.js"></script>
-    <!-- End custom js for this page-->
+
+	@if (ViewContext.RouteData.Values["controller"].ToString().ToLower() == "books")
+	{
+		<section id="Search">
+			<div class="search">
+				<div class="search-box">
+					<i id="searchBtn" class="fas fa-search"></i>
+					<i id="closeBtn" class="fas fa-arrow-right"></i>
+					<form id="form" method="post">
+						<ul>
+							<li><input class="search-txt books" type="search" placeholder="Axtarış..."></li>
+						</ul>
+						<button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+					</form>
+				</div>
+			</div>
+		</section>
+	}
+	else if (ViewContext.RouteData.Values["controller"].ToString().ToLower() == "publishers")
+	{
+		<section id="Search">
+			<div class="search">
+				<div class="search-box">
+					<i id="searchBtn" class="fas fa-search"></i>
+					<i id="closeBtn" class="fas fa-arrow-right"></i>
+					<form id="form" method="post">
+						<ul>
+							<li><input class="search-txt publishers" type="search" placeholder="Axtarış..."></li>
+						</ul>
+						<button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+					</form>
+				</div>
+			</div>
+		</section>
+	}
+
+
+	<!-- Search End -->
+	<div class="body-wrapper">
+		<!-- partial:../../partials/_sidebar.html -->
+		@await Component.InvokeAsync("Aside")
+		<!-- partial -->
+		<div class="main-wrapper mdc-drawer-app-content">
+			<!-- partial:../../partials/_navbar.html -->
+			@await Component.InvokeAsync("AdminHeader")
+			@RenderBody()
+		</div>
+
+		<!-- partial -->
+	</div>
+	<!-- plugins:js -->
+	<script src="~/admin/vendors/js/vendor.bundle.base.js"></script>
+	<!-- endinject -->
+	<script src="https://kit.fontawesome.com/9a2a6d18cc.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+	<!-- Plugin js for this page-->
+	<script src="~/admin/vendors/chartjs/Chart.min.js"></script>
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+	<script src="~/admin/js/material.js"></script>
+	<script src="~/admin/js/misc.js"></script>
+	<!-- endinject -->
+	@RenderSection("Scripts", false)
+	<!-- Custom js for this page-->
+	<script src="~/admin/js/chartjs.js"></script>
+	<!-- End custom js for this page-->
 </body>
 </html>

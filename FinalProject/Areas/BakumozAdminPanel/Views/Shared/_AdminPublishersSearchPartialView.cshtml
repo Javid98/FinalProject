@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Publisher>
+
+@foreach (Publisher publisher in Model.Take(5))
+{
+	<li class="searchLi">
+		<a asp-area="BakumozAdminPanel" asp-controller="Publishers" asp-action="Edit" asp-route-id="@publisher.Id">@publisher.Name</a>
+	</li>
+}

@@ -30,6 +30,7 @@ namespace FinalProject.Controllers
 			List<Author> authors = _db.Authors.OrderBy(n => n.Fullname).ToList();
 			List<Publisher> publishers = _db.Publishers.OrderByDescending(n => n.BookCount).ToList();
 			List<Category> categories = _db.Categories.OrderBy(n => n.Name).ToList();
+			ViewBag.Currency = _db.Bios.FirstOrDefault().Currency;
 			AppUser user = new AppUser();
 			if (User.Identity.IsAuthenticated)
 			{

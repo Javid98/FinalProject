@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalProject.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,5 +24,6 @@ namespace FinalProject.ViewModels
         [Required, Compare(nameof(RegisterPassword)), DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
         public bool IsChecked { get; set; }
+        public Bio Bio { get; set; }
     }
 }

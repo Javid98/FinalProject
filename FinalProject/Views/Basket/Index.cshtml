@@ -164,29 +164,36 @@ else
 				total += price.value * counts[j].value;
 				j++
 			}
-			if (text.toString().trim() != "" && error.toString().trim() == "") {
-				swal({
-				title: "Sifariş",
-				text: `Cəmi məbləğ ${total} ₼ (Çatdırılma nəzərə alınmır)`,
-				icon: "info",
-				buttons: ["Ləğv et", "Sifarişi ver"],
-				//dangerMode: true,
+
+			let bookCount = false;
+			counts.forEach(function (count) {
+				if (count.value < 1 == true) {
+					bookCount = true;
+					return;
+				}
 			})
-				.then((willDelete) => {
-					if (willDelete) {
-						swal("Sifarişiniz uğurla həyata keçirildi", {
-							icon: "success",
-							button: "Bağla"
-						}).then(function () {
-							setTimeout(() => document.querySelector("#Sale").submit(), 100);
-						})
-					} else {
-						swal({
-							text: "Sifariş ləğv olundu",
-							button: "Bağla"
-						});
-					}
-				});
+			if (text.toString().trim() != "" && error.toString().trim() == "" && bookCount == false) {
+				swal({
+					title: "Sifariş",
+					text: `Cəmi məbləğ ${total} ₼ (Çatdırılma nəzərə alınmır)`,
+					icon: "info",
+					buttons: ["Ləğv et", "Sifarişi ver"],
+				})
+					.then((willDelete) => {
+						if (willDelete) {
+							swal("Sifarişiniz uğurla həyata keçirildi", {
+								icon: "success",
+								button: "Bağla"
+							}).then(function () {
+								setTimeout(() => document.querySelector("#Sale").submit(), 100);
+							})
+						} else {
+							swal({
+								text: "Sifariş ləğv olundu",
+								button: "Bağla"
+							});
+						}
+					});
 			}
 		});
 	</script>

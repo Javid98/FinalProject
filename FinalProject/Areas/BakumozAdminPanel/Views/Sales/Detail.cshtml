@@ -50,6 +50,15 @@
 				<span style="color:lightgreen;font-size:18px;font-weight:bold">Tamamlandı</span>
 			</div>
 		}
+		else
+		{
+			<div>
+				<a class="ml-1 btn btn-success" asp-controller="Sales" asp-action="CompleteSale" asp-route-id="@Model.Id">
+					<i class="mdi mdi-clipboard-check"></i> Satışı tamamla
+				</a>
+			</div>
+		}
+
 	</div>
 
 	<table class="table table-striped">

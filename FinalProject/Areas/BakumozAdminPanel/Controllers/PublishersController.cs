@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinalProject.Data;
 using FinalProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 {
 	[Area("BakumozAdminPanel")]
+    [Authorize(Roles ="Admin")]
     public class PublishersController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -98,5 +100,12 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        
+            public IActionResult Search(string search)
+		{
+			List<Publisher> publishers = _db.Publishers.Where(b => b.Name.Contains(search)).ToList();
+
+			return PartialView("_AdminPublishersSearchPartialView", publishers);
+		}
     }
 }

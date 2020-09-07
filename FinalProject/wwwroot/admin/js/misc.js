@@ -78,6 +78,93 @@
         const chatsScroll = new PerfectScrollbar('.mdc-drawer .mdc-drawer__content');
       }
     }
+      // Search Start
+      $("#searchBtn").click(function () {
+          $(".search-box").css("transition", "0.6s ease-in")
+          $(".search-box").css("border-radius", "40px")
+          $(".search-box").css("background", "turquoise")
+          $("#searchBtn").css("opacity", "0")
 
+          setTimeout(function Width() {
+              $(".search-box").css("width", "320px")
+          }, 600)
+          setTimeout(function CloseBtn() {
+              $("#closeBtn").css("display", "block")
+          }, 600)
+          setTimeout(function CloseBtn() {
+              $("#closeBtn").css("opacity", "1")
+          }, 1200)
+          setTimeout(function SearchBtn() {
+              $("#searchBtn").css("display", "none")
+          }, 600)
+          setTimeout(function Form() {
+              $("#Search #form").css("display", "flex")
+          }, 600)
+          setTimeout(function Form() {
+              $("#Search #form").css("opacity", "1")
+          }, 1200)
+          $(".search-box").css("transform", "rotateZ(360deg)")
+      })
+      $("#closeBtn").click(function () {
+          // $(".search-box").css("transition", "0.6s ease-in")
+          // $(".search-box").css("border-radius", "50px")
+          // $(".search-box").css("background", "#236bdf")
+          $("#closeBtn").css("opacity", "0")
+          $("#Search #form").css("opacity", "0")
+          // $("#searchBtn").css("opacity", "1")
+
+
+          setTimeout(function Width() {
+              $(".search-box").css("width", "50px")
+          }, 100)
+          setTimeout(function CloseBtn() {
+              $("#closeBtn").css("display", "none")
+              $("#Search .search-txt").val("")
+
+          }, 600)
+          setTimeout(function SearchBtn() {
+              $("#searchBtn").css("display", "block")
+          }, 600)
+          setTimeout(function SearchBtn() {
+              $("#searchBtn").css("opacity", "1")
+          }, 700)
+          setTimeout(function Form() {
+              $("#Search #form").css("display", "none")
+          }, 800)
+          setTimeout(function SearchBtn() {
+              $(".search-box").css("transform", "rotateZ(-360deg)")
+              $(".search-box").css("border-radius", "0px")
+              $(".search-box").css("background", "#236bdf")
+          }, 700)
+      })
+      $("#Search #form .search-txt.books").keyup(function () {
+          let search = $(this).val();
+          $("#Search #form ul li").not($("#Search #form ul li").first()).remove();
+          if (search.length > 0 && search.trim() != "") {
+              $.ajax({
+                  url: "/BakumozAdminPanel/Books/Search?search=" + search,
+                  type: "Get",
+                  success: function (res) {
+                      $("#Search #form ul").append(res);
+                  }
+              })
+          }
+
+      })
+      $("#Search #form .search-txt.publishers").keyup(function () {
+          let search = $(this).val();
+          $("#Search #form ul li").not($("#Search #form ul li").first()).remove();
+          if (search.length > 0 && search.trim() != "") {
+              $.ajax({
+                  url: "/BakumozAdminPanel/Publishers/Search?search=" + search,
+                  type: "Get",
+                  success: function (res) {
+                      $("#Search #form ul").append(res);
+                  }
+              })
+          }
+
+      })
+    // Search End
   });
 })(jQuery);

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinalProject.Data;
 using FinalProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 {
     [Area("BakumozAdminPanel")]
+    [Authorize(Roles ="Admin")]
     public class AuthorController : Controller
     {
         private readonly ApplicationDbContext _db;

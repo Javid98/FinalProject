@@ -19,7 +19,8 @@ namespace FinalProject.ViewModels
 		[Required]
 		public string Description { get; set; }
 		[Required]
-		public double Price { get; set; }
+		[Range(0, 9999.99)]
+		public decimal Price { get; set; }
 		[Required]
 		public int Count { get; set; }
 

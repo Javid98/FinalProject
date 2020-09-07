@@ -23980,12 +23980,114 @@ footer {
 	.table .saledate {
 		display: none
 	}
+
 	.table tbody tr i {
 		font-size: 16px
 	}
-	.table .imageAll{
-		display:none;
+
+	.table .imageAll {
+		display: none;
+	}
+
+	.table .role {
+		display: none;
 	}
 }
 
+#Search .search {
+	position: fixed;
+	top: 50%;
+	right: 0;
+	z-index: 5;
+}
+
+	#Search .search .search-box {
+		background: #236bdf;
+		min-height: 50px;
+		padding: 0 10px;
+		width: 50px;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+
+		#Search .search .search-box #searchBtn {
+			-webkit-transition: 1s;
+			transition: 1s;
+			color: white;
+			cursor: pointer;
+			opacity: 1;
+		}
+
+		#Search .search .search-box #closeBtn {
+			position: absolute;
+			top: 17px;
+			left: 8px;
+			-webkit-transition: 1.1s;
+			transition: 1.1s;
+			opacity: 0;
+			color: white;
+			display: none;
+			cursor: pointer;
+		}
+
+		#Search .search .search-box #form {
+			-webkit-transition: 0.35s ease-in;
+			transition: 0.35s ease-in;
+			opacity: 0;
+			display: none;
+			height: 100%;
+		}
+
+			#Search .search .search-box #form ul {
+				margin-top: 13px;
+				list-style: none;
+			}
+
+				#Search .search .search-box #form ul .searchLi {
+					padding: 10px 0;
+					border-bottom: 1px ridge white;
+				}
+
+					#Search .search .search-box #form ul .searchLi a {
+						text-decoration: none;
+						color: white;
+					}
+
+		#Search .search .search-box .search-btn {
+			color: #236bdf;
+			background: white;
+			border: none;
+			width: 30px;
+			height: 30px;
+			margin-top: 11px;
+			border-radius: 50%;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+		}
+
+		#Search .search .search-box .search-txt {
+			border: none;
+			background: none;
+			width: 240px;
+			padding-left: 10px;
+			color: white;
+			-webkit-transition: .4s;
+			transition: .4s;
+			font-size: 16px;
+			outline: none;
+		}
 /*# sourceMappingURL=../maps/demo/style.css.map */

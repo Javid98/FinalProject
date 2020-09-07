@@ -26,6 +26,7 @@ namespace FinalProject.Controllers
 			ViewBag.Page = page;
 			ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.Count() / 1);
 			List<Book> books = new List<Book>();
+			ViewBag.Currency = _db.Bios.FirstOrDefault().Currency;
 
 			AppUser user = new AppUser();
 			if (User.Identity.IsAuthenticated)
@@ -57,7 +58,7 @@ namespace FinalProject.Controllers
 				{
 					ViewBag.Pslug = publisher.Name;
 				}
-				List<Book> pBooks = _db.Books.Where(b => b.PublisherId == publisher.Id).ToList();
+				List<Book> pBooks = _db.Books.Include(b=>b.Publisher).Where(b => b.PublisherId == publisher.Id).ToList();
 				foreach (Book book in pBooks)
 				{
 					if (books.FirstOrDefault(b => b.Id == book.Id) == null)
@@ -78,7 +79,7 @@ namespace FinalProject.Controllers
 				}
 				foreach (BookAuthor ba in aBooks)
 				{
-					Book newBook = _db.Books.FirstOrDefault(b => b.Id == ba.BookId);
+					Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == ba.BookId);
 					if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 					{
 						books.Add(newBook);
@@ -97,7 +98,7 @@ namespace FinalProject.Controllers
 				}
 				foreach (BookCategory bc in bookCategories)
 				{
-					Book newBook = _db.Books.FirstOrDefault(b => b.Id == bc.BookId);
+					Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == bc.BookId);
 					if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 					{
 						books.Add(newBook);
@@ -119,7 +120,7 @@ namespace FinalProject.Controllers
 				List<BookAuthor> paBooks = aBooks.Where(ba => ba.Book.PublisherId == publisher.Id).ToList();
 				foreach (BookAuthor ba in paBooks)
 				{
-					Book newBook = _db.Books.FirstOrDefault(b => b.Id == ba.BookId);
+					Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == ba.BookId);
 					if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 					{
 						books.Add(newBook);
@@ -141,7 +142,7 @@ namespace FinalProject.Controllers
 				}
 				foreach (BookCategory bc in pcBooks)
 				{
-					Book newBook = _db.Books.FirstOrDefault(b => b.Id == bc.BookId);
+					Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == bc.BookId);
 					if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 					{
 						books.Add(newBook);
@@ -171,7 +172,7 @@ namespace FinalProject.Controllers
 
 					if (acBook != null)
 					{
-						Book newBook = _db.Books.FirstOrDefault(b => b.Id == acBook.BookId);
+						Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == acBook.BookId);
 						if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 						{
 							books.Add(newBook);
@@ -208,7 +209,7 @@ namespace FinalProject.Controllers
 
 					if (acBook != null)
 					{
-						Book newBook = _db.Books.FirstOrDefault(b => b.Id == acBook.BookId);
+						Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == acBook.BookId);
 						if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 						{
 							books.Add(newBook);
@@ -222,8 +223,8 @@ namespace FinalProject.Controllers
 			}
 			else
 			{
-				allBooks = _db.Books.ToList();
-				books = _db.Books.Skip((page - 1) * 1).Take(1).ToList();
+				allBooks = _db.Books.Include(b => b.Publisher).ToList();
+				books = _db.Books.Include(b => b.Publisher).Skip((page - 1) * 1).Take(1).ToList();
 			}
 			NewBooksVM model = new NewBooksVM
 			{

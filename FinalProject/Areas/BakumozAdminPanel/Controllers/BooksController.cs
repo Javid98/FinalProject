@@ -6,6 +6,7 @@ using FinalProject.Data;
 using FinalProject.Extentions;
 using FinalProject.Models;
 using FinalProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 {
 	[Area("BakumozAdminPanel")]
+    [Authorize(Roles ="Admin")]
 	public class BooksController : Controller
 	{
 		private readonly ApplicationDbContext _db;
@@ -95,12 +97,14 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 				};
 				return View(model);
 			}
+			string price = Request.Form["Price"];
+			price = price.Replace('.', ',');
 			Book newBook = new Book
 			{
 				Name = book.Name,
 				Slug=book.Slug,
 				Description = book.Description,
-				Price = book.Price,
+				Price = Convert.ToDecimal(price),
 				Count = book.Count
 			};
 			Book existBook = _db.Books.FirstOrDefault(b => b.Name.ToLower().Trim() == book.Name.ToLower().Trim());
@@ -262,10 +266,12 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 						return View(model);
 					}
 				}
+				string price = Request.Form["Book.Price"];
+				price = price.Replace('.', ',');
 				book.Name = editedBook.Book.Name;
 				book.Slug = editedBook.Book.Slug;
 				book.Count = editedBook.Book.Count;
-				book.Price = editedBook.Book.Price;
+				book.Price = Convert.ToDecimal(price);
 				book.Description = editedBook.Book.Description;
 				string authorsList = Request.Form["authors"];
 				if (authorsList == null)
@@ -412,10 +418,12 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 				}
 				Helpers.Helper.DeleteImg(_env.WebRootPath,"image",book.ImagePath);
 				book.ImagePath = await editedBook.Photo.SaveImg(_env.WebRootPath,"image");
+				string price = Request.Form["Book.Price"];
+				price = price.Replace('.', ',');
 				book.Name = editedBook.Book.Name;
 				book.Slug = editedBook.Book.Slug;
 				book.Count = editedBook.Book.Count;
-				book.Price = editedBook.Book.Price;
+				book.Price = Convert.ToDecimal(price);
 				book.Description = editedBook.Book.Description;
 				string authorsList = Request.Form["authors"];
 				if (authorsList == null)
@@ -530,6 +538,12 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 			_db.Books.Remove(book);
 			await _db.SaveChangesAsync();
 			return RedirectToAction("Index");
+		}
+		public IActionResult Search(string search)
+		{
+			List<Book> books = _db.Books.Where(b => b.Name.Contains(search)).ToList();
+
+			return PartialView("_AdminSearchPartialView", books);
 		}
 	}
 }

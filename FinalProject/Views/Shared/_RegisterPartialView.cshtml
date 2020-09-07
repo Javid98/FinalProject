@@ -3,264 +3,276 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="~/css/style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewData["Title"]</title>
+	@await  Component.InvokeAsync("HeadTag")
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="~/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="~/css/style.css">
 </head>
 
 
 <body style="background-color:azure">
 
-    <!-- Menu Start -->
+	<!-- Menu Start -->
 
-    @if (@ViewContext.RouteData.Values["controller"].ToString().ToLower() == "account" || @ViewContext.RouteData.Values["controller"].ToString().ToLower() == "contact")
-    {
-        <header style="background:none">
-            <div class="container">
-                <nav class="col row justify-content-between ">
-                    <div class="logo row col ">
-                        <img style="width: 110px; height: 100px; " src="https://instagram.fgyd6-1.fna.fbcdn.net/v/t51.2885-19/s320x320/69421995_376737176356298_5022837868964347904_n.jpg?_nc_ht=instagram.fgyd6-1.fna.fbcdn.net&_nc_ohc=Wup20gIDwHQAX-BsiWa&oh=4b5691c03b305513c7fc9a920847c18a&oe=5F44C1BF "
-                             alt=" ">
-                    </div>
-                    <div class="menu col">
-                        @if (!User.Identity.IsAuthenticated)
-                        {
-                            <div class="login">
-                                <a asp-controller="Account" asp-action="Index">
-                                    <i class="fas fa-sign-in-alt"></i>
-                                    <h6>Login</h6>
-                                </a>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="login">
-                                <a asp-controller="Profile" asp-action="Index" asp-route-username="@User.Identity.Name">
-                                    <i class="fas fa-user"></i>
-                                    <h6>@User.Identity.Name</h6>
-                                </a>
-                            </div>
-                        }
-                        <span>Menu</span>
-                        <i id="sandwich" class="fas fa-bars"></i>
-                    </div>
-                </nav>
-            </div>
-            <div class="col-12 activeMenu">
-                <div class="mainLeft col-md-12 d-flex">
-                    <div class="leftSide">
-                        <ul class="navLeftUl ">
-                            <li><a asp-controller="Home" asp-action="Index">Əsas səhifə</a></li>
-                            <li><a asp-controller="NewBooks" asp-action="Index">Yenilər</a></li>
-                            <li><a asp-controller="BestSellers" asp-action="Index">Çox satılanlar</a></li>
-                            <li><a asp-controller="Categories" asp-action="Index">Kategoriyalar</a></li>
-                        </ul>
+	@if (@ViewContext.RouteData.Values["controller"].ToString().ToLower() == "account" || @ViewContext.RouteData.Values["controller"].ToString().ToLower() == "contact" || @ViewContext.RouteData.Values["controller"].ToString().ToLower() == "basket")
+	{
+		<header style="background:none">
+			<div class="container">
+				<nav class="col row justify-content-between ">
+					<div class="logo row col ">
+						<a asp-controller="Home" asp-action="Index">
+							<img style="width: 90px; height: 60px; " src="~/image/@Model.Bio.Logo"
+								 alt=" ">
+						</a>
+					</div>
+					<div class="menu col">
+						@if (!User.Identity.IsAuthenticated)
+						{
+							<div class="login">
+								<a asp-controller="Account" asp-action="Login">
+									<i class="fas fa-sign-in-alt"></i>
+									<h6>Login</h6>
+								</a>
+							</div>
+						}
+						else
+						{
+							<div class="login">
+								<a asp-controller="Profile" asp-action="Index" asp-route-username="@User.Identity.Name">
+									<i class="fas fa-user"></i>
+									<h6>@User.Identity.Name</h6>
+								</a>
+							</div>
+						}
+						<div class="cart">
+							<a asp-controller="Basket" asp-action="Index" asp-route-username="@User.Identity.Name">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<sup>@ViewBag.BookCount</sup>
+						</div>
+						<span>Menu</span>
+						<i id="sandwich" class="fas fa-bars"></i>
+					</div>
+				</nav>
+			</div>
+			<div class="col-12 activeMenu">
+				<div class="mainLeft col-md-12 d-flex">
+					<div class="leftSide">
+						<ul class="navLeftUl ">
+							<li><a asp-controller="Home" asp-action="Index">Əsas səhifə</a></li>
+							<li><a asp-controller="NewBooks" asp-action="Index">Yenilər</a></li>
+							<li><a asp-controller="BestSellers" asp-action="Index">Çox satılanlar</a></li>
+							<li><a asp-controller="Categories" asp-action="Index">Kategoriyalar</a></li>
+						</ul>
 
-                    </div>
-                    <div class="social">
-                        <ul class="socialUl">
-                            <li>
-                                <a href="">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span><i class="fab fa-facebook-f"></i></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span><i class="fab fa-instagram"></i></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span><i class="fab fa-google-plus-g"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+					</div>
+					<div class="social">
+						<ul class="socialUl">
+							<li>
+								<a href="@Model.Bio.FacebookLink" target="_blank">
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+									<span><i class="fab fa-facebook-f"></i></span>
+								</a>
+							</li>
+							<li>
+								<a href="@Model.Bio.InstagramLink" target="_blank">
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+									<span><i class="fab fa-instagram"></i></span>
+								</a>
+							</li>
+						</ul>
+					</div>
 
-                </div>
-                <div class="mainRight col-md-12 d-flex justify-content-end ">
-                    <div class="rightSide">
-                        <ul class="navRightUl">
-                            <li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
-                            <li><a asp-controller="Account" asp-action="Index">Qeydiyyat/Giriş</a></li>
-                            <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
-                        </ul>
-                    </div>
-                    <div class="about">
-                        <p>Bakı</p>
-                        <p>+33(0) 1 55 28 81 40 95,</p>
-                        <p>Bd. Voltaire 75011 Bakı,</p>
-                        <p>Azərbaycan</p>
-                    </div>
-                </div>
-                <i id="close" class="fas fa-times"></i>
-            </div>
-        </header>
-    }
-    else
-    {
-        <!-- Search Start -->
-        <section id="Search">
-            <div class="search">
-                <div class="search-box">
-                    <i id="searchBtn" class="fas fa-search"></i>
-                    <i id="closeBtn" class="fas fa-arrow-right"></i>
-                    <form id="form" method="post">
-                        <ul>
-                            <li><input class="search-txt" type="search" placeholder="Axtarış..."></li>
-                            <!-- <li class="searchLi"><a href="">Kitab</a></li>
-                            <li class="searchLi"><a href="">Kitab</a></li>
-                            <li class="searchLi"><a href="">Kitab</a></li>
-                            <li class="searchLi"><a href="">Kitab</a></li>
-                            <li class="searchLi"><a href="">Kitab</a></li> -->
-                        </ul>
-                        <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-            </div>
-        </section>
+				</div>
+				<div class="mainRight col-md-12 d-flex justify-content-end ">
+					<div class="rightSide">
+						@if (User.Identity.IsAuthenticated)
+						{
+							<ul class="navRightUl">
+								<li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
+								@if (User.IsInRole(FinalProject.Helpers.Helper.Roles.Admin.ToString()))
+								{
+									<li><a asp-area="BakumozAdminPanel" asp-controller="Sales" asp-action="Index">Admin Panel</a></li>
+								}
+								<li><a asp-controller="Account" asp-action="LogOut">Çıxış</a></li>
+								<li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
+							</ul>
+						}
+						else
+						{
+							<ul class="navRightUl">
+								<li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
+								<li><a asp-controller="Account" asp-action="Login">Qeydiyyat/Giriş</a></li>
+								<li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
+							</ul>
+						}
+					</div>
+					<div class="about">
+						<p>@Model.Bio.City</p>
+						<p>@Model.Bio.PhoneNumber,</p>
+						<p>@Model.Bio.Street,</p>
+						<p>@Model.Bio.Country</p>
+					</div>
+				</div>
+				<i id="close" class="fas fa-times"></i>
+			</div>
+		</header>
+	}
+	else
+	{
+		<!-- Search Start -->
+		<section id="Search">
+			<div class="search">
+				<div class="search-box">
+					<i id="searchBtn" class="fas fa-search"></i>
+					<i id="closeBtn" class="fas fa-arrow-right"></i>
+					<form id="form" method="post">
+						<ul>
+							<li><input class="search-txt" type="search" placeholder="Axtarış..."></li>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</section>
 
-        <!-- Search End -->
-        <header>
-            <div class="container">
-                <nav class="col row justify-content-between ">
-                    <div class="logo row col ">
-                        <img style="width: 110px; height: 100px; " src="https://instagram.fgyd6-1.fna.fbcdn.net/v/t51.2885-19/s320x320/69421995_376737176356298_5022837868964347904_n.jpg?_nc_ht=instagram.fgyd6-1.fna.fbcdn.net&_nc_ohc=Wup20gIDwHQAX-BsiWa&oh=4b5691c03b305513c7fc9a920847c18a&oe=5F44C1BF "
-                             alt=" ">
-                    </div>
-                    <div class="menu col">
-                        @if (!User.Identity.IsAuthenticated)
-                        {
-                            <div class="login">
-                                <a asp-controller="Account" asp-action="Index">
-                                    <i class="fas fa-sign-in-alt"></i>
-                                    <h6>Login</h6>
-                                </a>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="login">
-                                <a asp-controller="Profile" asp-action="Index" asp-route-username="@User.Identity.Name">
-                                    <i class="fas fa-user"></i>
-                                    <h6>@User.Identity.Name</h6>
-                                </a>
-                            </div>
-                        }
-                        <span>Menu</span>
-                        <i id="sandwich" class="fas fa-bars"></i>
-                    </div>
-                </nav>
-            </div>
-            <div class="col-12 activeMenu">
-                <div class="mainLeft col-md-12 d-flex">
-                    <div class="leftSide">
-                        <ul class="navLeftUl ">
-                            <li><a asp-controller="Home" asp-action="Index">Əsas səhifə</a></li>
-                            <li><a asp-controller="NewBooks" asp-action="Index">Yenilər</a></li>
-                            <li><a asp-controller="BestSellers" asp-action="Index">Çox satılanlar</a></li>
-                            <li><a asp-controller="Categories" asp-action="Index">Kategoriyalar</a></li>
-                        </ul>
+		<!-- Search End -->
+		<header>
+			<div class="container">
+				<nav class="col row justify-content-between ">
+					<div class="logo row col ">
+						<a asp-controller="Home" asp-action="Index">
+							<img style="width: 90px; height: 60px; " src="~/image/@Model.Bio.Logo"
+								 alt=" ">
+						</a>
+					</div>
+					<div class="menu col">
+						@if (!User.Identity.IsAuthenticated)
+						{
+							<div class="login">
+								<a asp-controller="Account" asp-action="Login">
+									<i class="fas fa-sign-in-alt"></i>
+									<h6>Login</h6>
+								</a>
+							</div>
+						}
+						else
+						{
+							<div class="login">
+								<a asp-controller="Profile" asp-action="Index" asp-route-username="@User.Identity.Name">
+									<i class="fas fa-user"></i>
+									<h6>@User.Identity.Name</h6>
+								</a>
+							</div>
+						}
+						<div class="cart">
+							<a asp-controller="Basket" asp-action="Index" asp-route-username="@User.Identity.Name">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<sup>@ViewBag.BookCount</sup>
+						</div>
+						<span>Menu</span>
+						<i id="sandwich" class="fas fa-bars"></i>
+					</div>
+				</nav>
+			</div>
+			<div class="col-12 activeMenu">
+				<div class="mainLeft col-md-12 d-flex">
+					<div class="leftSide">
+						<ul class="navLeftUl ">
+							<li><a asp-controller="Home" asp-action="Index">Əsas səhifə</a></li>
+							<li><a asp-controller="NewBooks" asp-action="Index">Yenilər</a></li>
+							<li><a asp-controller="BestSellers" asp-action="Index">Çox satılanlar</a></li>
+							<li><a asp-controller="Categories" asp-action="Index">Kategoriyalar</a></li>
+						</ul>
 
-                    </div>
-                    <div class="social">
-                        <ul class="socialUl">
-                            <li>
-                                <a href="">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span><i class="fab fa-facebook-f"></i></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span><i class="fab fa-instagram"></i></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span><i class="fab fa-google-plus-g"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="mainRight col-md-12 d-flex justify-content-end ">
-                    <div class="rightSide">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <ul class="navRightUl">
-                                <li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
-                                <li><a asp-controller="Account" asp-action="LogOut">Çıxış</a></li>
-                                <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
-                            </ul>
-                        }
-                        else
-                        {
-                            <ul class="navRightUl">
-                                <li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
-                                <li><a asp-controller="Account" asp-action="Index">Qeydiyyat/Giriş</a></li>
-                                <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
-                            </ul>
-                        }
-                    </div>
-                    <div class="about">
-                        <p>Bakı</p>
-                        <p>+33(0) 1 55 28 81 40 95,</p>
-                        <p>Bd. Voltaire 75011 Bakı,</p>
-                        <p>Azərbaycan</p>
-                    </div>
-                </div>
-                <i id="close" class="fas fa-times"></i>
-            </div>
-        </header>
-    }
-    <div class="errors" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
-        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
-        <span class="text text-danger" asp-validation-for="Fullname"></span>
-        <span class="text text-danger" asp-validation-for="RegisterUsername"></span>
-        <span class="text text-danger" asp-validation-for="Email"></span>
-        <span class="text text-danger" asp-validation-for="RegisterPassword"></span>
-        <span class="text text-danger" asp-validation-for="ConfirmPassword"></span>
-    </div>
+					</div>
+					<div class="social">
+						<ul class="socialUl">
+							<li>
+								<a href="@Model.Bio.FacebookLink" target="_blank">
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+									<span><i class="fab fa-facebook-f"></i></span>
+								</a>
+							</li>
+							<li>
+								<a href="@Model.Bio.InstagramLink" target="_blank">
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+									<span><i class="fab fa-instagram"></i></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="mainRight col-md-12 d-flex justify-content-end ">
+					<div class="rightSide">
+						@if (User.Identity.IsAuthenticated)
+						{
+							<ul class="navRightUl">
+								<li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
+								@if (User.IsInRole(FinalProject.Helpers.Helper.Roles.Admin.ToString()))
+								{
+									<li><a asp-area="BakumozAdminPanel" asp-controller="Sales" asp-action="Index">Admin Panel</a></li>
+								}
+								<li><a asp-controller="Account" asp-action="LogOut">Çıxış</a></li>
+								<li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
+							</ul>
+						}
+						else
+						{
+							<ul class="navRightUl">
+								<li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
+								<li><a asp-controller="Account" asp-action="Login">Qeydiyyat/Giriş</a></li>
+								<li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
+							</ul>
+						}
+					</div>
+					<div class="about">
+						<p>@Model.Bio.City</p>
+						<p>@Model.Bio.PhoneNumber,</p>
+						<p>@Model.Bio.Street,</p>
+						<p>@Model.Bio.Country</p>
+					</div>
+				</div>
+				<i id="close" class="fas fa-times"></i>
+			</div>
+		</header>
+	}
+	<div class="errors" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
+		<div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+		<span class="text text-danger" asp-validation-for="Fullname"></span>
+		<span class="text text-danger" asp-validation-for="RegisterUsername"></span>
+		<span class="text text-danger" asp-validation-for="Email"></span>
+		<span class="text text-danger" asp-validation-for="RegisterPassword"></span>
+		<span class="text text-danger" asp-validation-for="ConfirmPassword"></span>
+	</div>
 
-    <script src="https://kit.fontawesome.com/9a2a6d18cc.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="~/js/owl.carousel.min.js"></script>
-    <script src="~/js/parallax.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
-    <script src="~/js/script.js"></script>
+	<script src="https://kit.fontawesome.com/9a2a6d18cc.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script src="~/js/owl.carousel.min.js"></script>
+	<script src="~/js/parallax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+	<script src="~/js/script.js"></script>
 </body>
 
 </html>

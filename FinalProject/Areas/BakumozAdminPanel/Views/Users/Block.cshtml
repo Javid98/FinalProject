@@ -40,14 +40,50 @@
 					<i class="mdi mdi-block-helper"></i>
 					<span class="text-danger">Bloklanıb</span>
 				</div>
-				<a class="mt-2 mr-2 btn btn-primary" asp-controller="Users" asp-action="RemoveBlock">
+				<a class="mt-2 mr-2 btn btn-primary" asp-controller="Users" asp-action="RemoveBlock" asp-route-username="@Model.AppUser.UserName">
 					Blokdan çıxar
 				</a>
 			</div>
 		}
+		else
+		{
+			<div>
+				<form method="post" id="deleteUser" asp-action="BlockUser" asp-route-username="@Model.AppUser.UserName">
+					<button type="submit" class="btn btn-danger">
+						<i class="mdi mdi-block-helper"></i>
+						Blokla
+					</button>
+				</form>
+			</div>
+		}
 	</div>
-	<a class="btn btn-secondary mt-3" asp-controller="Users" asp-action="Index">
-		Geriyə
-	</a>
 </div>
+
+@section Scripts{
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		$("#deleteUser").submit(function (e) {
+			e.preventDefault();
+			swal({
+				title: "İstifadəçi",
+				text: "Bu istifadəçini bloklamaq istədiyinizdən əminsiniz?",
+				icon: "warning",
+				buttons: ["Bağla", "Blokla"],
+				dangerMode: true,
+			})
+				.then((willDelete) => {
+					if (willDelete) {
+						swal("İstifadəçi bloklandı", {
+							icon: "success",
+						}).then(function () {
+							setTimeout(() => document.querySelector("#deleteUser").submit(), 100);
+						})
+					} else {
+						swal("İstifadəçi bloklanmadı");
+						button: "Bağla"
+					}
+				});
+		});
+	</script>
+}
 

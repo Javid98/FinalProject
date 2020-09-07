@@ -51,7 +51,7 @@ namespace FinalProject.Controllers
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
 			Sale sale = new Sale();
-			double total = 0;
+			decimal total = 0;
 			if (Request.Form["Type"].ToString().ToLower() == "metro")
 			{
 				sale.Date = DateTime.Now;

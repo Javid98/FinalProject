@@ -1,203 +1,219 @@
 ﻿@model NewBooksVM
 @{
-    ViewData["Title"] = "Çox satanlar";
+	ViewData["Title"] = "Çox satanlar";
 }
 
 
 <section id="saleBooks">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="content animate__animated animate__fadeInLeft col-lg-7 col-xs-12 col-12">
-                <div class="title">
-                    <h3>Endless Possibilities in a Single Theme!</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos esse, ex, natus nesciunt reiciendis fugit numquam velit quod </p>
-                </div>
-                <div class="options">
-                    <div class="option">
-                        <ul>
-                            <li>Easy and fun to work with</li>
-                            <li>Very customizable</li>
-                            <li>Clean and secure code</li>
-                            <li> New features added all the time</li>
-                        </ul>
-                    </div>
-                    <div class="option">
-                        <ul>
-                            <li>Always up to date</li>
-                            <li>Amazing demo templates</li>
-                            <li>Responsive and mobile ready</li>
-                            <li>Parallax support</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="image col-lg-5 col-xs-7 col-7">
-                <img class="animate__animated animate__fadeInRight" src="~/image/kampanya.png" alt="">
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="content animate__animated animate__fadeInLeft col-lg-7 col-xs-12 col-12">
+				<div class="title">
+					<h3>Endless Possibilities in a Single Theme!</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos esse, ex, natus nesciunt reiciendis fugit numquam velit quod </p>
+				</div>
+				<div class="options">
+					<div class="option">
+						<ul>
+							<li>Easy and fun to work with</li>
+							<li>Very customizable</li>
+							<li>Clean and secure code</li>
+							<li> New features added all the time</li>
+						</ul>
+					</div>
+					<div class="option">
+						<ul>
+							<li>Always up to date</li>
+							<li>Amazing demo templates</li>
+							<li>Responsive and mobile ready</li>
+							<li>Parallax support</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="image col-lg-5 col-xs-7 col-7">
+				<img class="animate__animated animate__fadeInRight" src="~/image/kampanya.png" alt="">
+			</div>
+		</div>
+	</div>
 </section>
 
 <!-- Best Sellers Start -->
 
 <section id="newBooks">
-    <div class="container">
-        <div class="col title">
-            <h2>Çox satılanlar</h2>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-9 col-sm-12 book-section">
-                <div class="container">
-                    <div class="col-12 col-sm-12 row bScount books-count">
+	<div class="container">
+		<div class="col title">
+			<h2>Çox satılanlar</h2>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-lg-9 col-sm-12 book-section">
+				<div class="container">
+					<div class="col-12 col-sm-12 row bScount books-count">
 
-                        @if (Model.Books.Count() != 0)
-                        {
-                            if (ViewBag.Page == 1)
-                            {
-                                <div class="col-12 col-sm-12">
-                                    <p class="col-12 text-center">@Model.AllBooks.Count() kitabdan 1-16 arası göstərilir</p>
-                                </div>
-                            }
-                            else if (ViewBag.Page != 1 && ViewBag.Page != ViewBag.PageCount)
-                            {
-                                <div class="col-12 col-sm-12">
-                                    <p class="col-12 text-center">@Model.AllBooks.Count() kitabdan @((ViewBag.Page - 1) * 16 + 1) -@(ViewBag.Page * 16) arası göstərilir</p>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="col-12 col-sm-12">
-                                    <p class="col-12 text-center">@Model.AllBooks.Count() kitabdan @((ViewBag.Page - 1) * 16 + 1) - @Model.AllBooks.Count() arası göstərilir</p>
-                                </div>
-                            }
-                        }
-                    </div>
-                    <div class="books">
-                        @foreach (Book book in Model.Books)
-                        {
-                            <div class="row bestSellers book">
-                                <div class="col-md-2 col-sm-4 col-4 image">
-                                    <a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug"><img src="~/image/@book.ImagePath" alt=""></a>
-                                </div>
-                                <div class="col-md-10 col-sm-12 col-12 content">
-                                    <h4>
-                                        <a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
-                                    </h4>
-                                    <div class="author-publisher">
-                                        @foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == book.Id))
-                                        {
-                                            <p>
-                                                <a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a>
-                                            </p>
-                                        }
-                                        <span>
-                                            <a href="/NewBooks/?pslug=@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Slug">@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Name</a>
-                                        </span>
-                                    </div>
-                                    <div class="mt-3 price">
-                                        <span>@book.Price ₼</span>
-                                    </div>
-                                    @if (book.Count != 0)
-                                    {
-                                        <div style="display:flex;justify-content:flex-end; flex-wrap:wrap">
-                                            <h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda @book.Count ədəd qalıb</h6>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div style="display:flex;justify-content:space-around; flex-wrap:wrap">
-                                            <h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda qalmayıb</h6>
-                                            <h6 style="color:#569a4d;font-weight:bold;margin:0">7-10 iş günü ərzində çatdırılma</h6>
+						@if (Model.Books.Count() != 0)
+						{
+							if (ViewBag.Page == 1)
+							{
+								<div class="col-12 col-sm-12">
+									<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan 1-16 arası göstərilir</p>
+								</div>
+							}
+							else if (ViewBag.Page != 1 && ViewBag.Page != ViewBag.PageCount)
+							{
+								<div class="col-12 col-sm-12">
+									<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan @((ViewBag.Page - 1) * 16 + 1) -@(ViewBag.Page * 16) arası göstərilir</p>
+								</div>
+							}
+							else
+							{
+								<div class="col-12 col-sm-12">
+									<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan @((ViewBag.Page - 1) * 16 + 1) - @Model.AllBooks.Count() arası göstərilir</p>
+								</div>
+							}
+						}
+					</div>
+					<div class="books">
+						@foreach (Book book in Model.Books)
+						{
+							<div class="row bestSellers book">
+								<div class="col-md-2 col-sm-4 col-4 image">
+									<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug"><img src="~/image/@book.ImagePath" alt=""></a>
+									@if (book.Publisher.Discount != 0)
+									{
+										<div class="discount">
+											<span>@book.Publisher.Discount%</span>
+										</div>
+									}
+								</div>
+								<div class="col-md-10 col-sm-12 col-12 content">
+									<h4>
+										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
+									</h4>
+									<div class="author-publisher">
+										@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == book.Id))
+										{
+											<p>
+												<a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a>
+											</p>
+										}
+										<span>
+											<a href="/NewBooks/?pslug=@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Slug">@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Name</a>
+										</span>
+									</div>
+									@if (book.Publisher.Discount == 0)
+									{
+										<div class="mt-3 price">
+											<span>@((book.Price * ViewBag.Currency).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
+										</div>
+									}
+									else
+									{
+										<div class="mt-3 price">
+											<span style="text-decoration-line:line-through">@((book.Price * ViewBag.Currency).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>&nbsp;
+											<span>@((book.Price * ViewBag.Currency * ((decimal)(100 - book.Publisher.Discount) / 100)).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
+										</div>
+									}
+									@if (book.Count != 0)
+									{
+										<div style="display:flex;justify-content:flex-end; flex-wrap:wrap">
+											<h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda @book.Count ədəd qalıb</h6>
+										</div>
+									}
+									else
+									{
+										<div style="display:flex;justify-content:space-around; flex-wrap:wrap">
+											<h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda qalmayıb</h6>
+											<h6 style="color:#569a4d;font-weight:bold;margin:0">7-10 iş günü ərzində çatdırılma</h6>
 
-                                        </div>
-                                    }
-                                    <div class="book-buttons">
+										</div>
+									}
+									<div class="book-buttons">
 
-                                        @if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) == null)
-                                        {
-                                            <div class="book-buttons">
-                                                <a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
-                                                <a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
-                                            </div>
-                                        }
-                                        else if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) != null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) == null)
-                                        {
-                                            <div class="book-buttons">
-                                                <a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info" style="background:#5900ff;border-color:#5900ff"><i class="mr-1 fas fa-shopping-basket"></i>Səbətdə mövcuddur</a>
-                                                <a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
-                                            </div>
-                                        }
-                                        else if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) != null)
-                                        {
-                                            <div class="book-buttons">
-                                                <a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
-                                                <a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary" style="background:#5900ff;border-color:#5900ff;pointer-events:none"><i style="color:tomato" class="mr-1 fas fa-heart"></i>Favoritlərdə mövcuddur</a>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="book-buttons">
-                                                <a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info" style="background:#5900ff;border-color:#5900ff"><i class="mr-1 fas fa-shopping-basket"></i>Səbətdə mövcuddur</a>
-                                                <a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary" style="background:#5900ff;border-color:#5900ff;pointer-events:none"><i style="color:tomato" class="mr-1 fas fa-heart"></i>Favoritlərdə mövcuddur</a>
-                                            </div>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-        <nav aria-label="..." class="mt-3 d-flex justify-content-center">
-            <ul class="pagination">
-                @if (ViewBag.Page == 1 && ViewBag.PageCount > 1)
-                {
-                    <li class="page-item" style="pointer-events:none;">
-                        <a style="background-color:#236bdf;color:white" class="page-link" href="/BestSellers?page=1">Birinci</a>
-                    </li>
-                }
-                else if (ViewBag.PageCount > 1)
-                {
-                    <li class="page-item">
-                        <a class="page-link" href="/BestSellers?page=1">Birinci</a>
-                    </li>
-                }
-                @for (int i = 1; i <= ViewBag.PageCount; i++)
-                {
+										@if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) == null)
+										{
+											<div class="book-buttons">
+												<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+												<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+											</div>
+										}
+										else if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) != null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) == null)
+										{
+											<div class="book-buttons">
+												<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info" style="background:#5900ff;border-color:#5900ff"><i class="mr-1 fas fa-shopping-basket"></i>Səbətdə mövcuddur</a>
+												<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary"><i class="mr-1 fas fa-plus"></i>Favoritlərə əlavə et</a>
+											</div>
+										}
+										else if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == book.Id) != null)
+										{
+											<div class="book-buttons">
+												<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info"><i class="mr-1 fas fa-shopping-basket"></i>Səbətə əlavə et</a>
+												<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary" style="background:#5900ff;border-color:#5900ff;pointer-events:none"><i style="color:tomato" class="mr-1 fas fa-heart"></i>Favoritlərdə mövcuddur</a>
+											</div>
+										}
+										else
+										{
+											<div class="book-buttons">
+												<a asp-controller="NewBooks" asp-action="AddCart" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="btn mt-2 shopBtn btn-info" style="background:#5900ff;border-color:#5900ff"><i class="mr-1 fas fa-shopping-basket"></i>Səbətdə mövcuddur</a>
+												<a asp-controller="NewBooks" asp-action="AddFavorite" asp-route-id="@book.Id" asp-route-actionName="@Context.Request.Path" asp-route-queryString="@Context.Request.QueryString" class="mt-2 fBtn btn btn-secondary" style="background:#5900ff;border-color:#5900ff;pointer-events:none"><i style="color:tomato" class="mr-1 fas fa-heart"></i>Favoritlərdə mövcuddur</a>
+											</div>
+										}
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav aria-label="..." class="mt-3 d-flex justify-content-center">
+			<ul class="pagination">
+				@if (ViewBag.Page == 1 && ViewBag.PageCount > 1)
+				{
+					<li class="page-item" style="pointer-events:none;">
+						<a style="background-color:#236bdf;color:white" class="page-link" href="/BestSellers?page=1">Birinci</a>
+					</li>
+				}
+				else if (ViewBag.PageCount > 1)
+				{
+					<li class="page-item">
+						<a class="page-link" href="/BestSellers?page=1">Birinci</a>
+					</li>
+				}
+				@for (int i = 1; i <= ViewBag.PageCount; i++)
+				{
 
-                    if (i == ViewBag.Page)
-                    {
-                        <li class="page-item current" style="pointer-events:none;"><a class="page-link" style="background-color:#236bdf;color:white" href="/BestSellers?page=@i">@i </a></li>
-                    }
-                    else
-                    {
-                        <li class="page-item">
-                            <a class="page-link" href="/BestSellers?page=@i">@i</a>
-                        </li>
-                    }
-                }
-                @if (ViewBag.Page == ViewBag.PageCount && ViewBag.PageCount > 1)
-                {
-                    <li class="page-item" style="pointer-events:none;">
-                        <a style="background-color:#236bdf;color:white" class="page-link" href="/BestSellers?page=@ViewBag.PageCount">Sonuncu</a>
-                    </li>
-                }
-                else if (ViewBag.PageCount > 1)
-                {
-                    <li class="page-item">
-                        <a class="page-link" href="/BestSellers?page=@ViewBag.PageCount">Sonuncu</a>
-                    </li>
-                }
-            </ul>
-        </nav>
-    </div>
+					if (i == ViewBag.Page)
+					{
+						<li class="page-item current" style="pointer-events:none;"><a class="page-link" style="background-color:#236bdf;color:white" href="/BestSellers?page=@i">@i </a></li>
+					}
+					else
+					{
+						<li class="page-item">
+							<a class="page-link" href="/BestSellers?page=@i">@i</a>
+						</li>
+					}
+				}
+				@if (ViewBag.Page == ViewBag.PageCount && ViewBag.PageCount > 1)
+				{
+					<li class="page-item" style="pointer-events:none;">
+						<a style="background-color:#236bdf;color:white" class="page-link" href="/BestSellers?page=@ViewBag.PageCount">Sonuncu</a>
+					</li>
+				}
+				else if (ViewBag.PageCount > 1)
+				{
+					<li class="page-item">
+						<a class="page-link" href="/BestSellers?page=@ViewBag.PageCount">Sonuncu</a>
+					</li>
+				}
+			</ul>
+		</nav>
+	</div>
 </section>
 
 <!-- Best Seller End -->
 
 @section Scripts{
-    <script>
+	<script>
 		$(".pagination li").not($(".pagination li.current")).not($(".pagination li.current").prev()).not($(".pagination li.current").prev().prev()).not($(".pagination li.current").prev().prev().prev()).not($(".pagination li.current").next()).not($(".pagination li.current").next().next()).not($(".pagination li.current").next().next().next()).not($(".pagination li").first()).not($(".pagination li").last()).addClass("d-none")
-    </script>
+	</script>
 }

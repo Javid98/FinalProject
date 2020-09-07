@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using FinalProject.Data;
 using FinalProject.Extentions;
 using FinalProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 {
     [Area("BakumozAdminPanel")]
+    [Authorize(Roles ="Admin")]
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _db;

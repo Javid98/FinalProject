@@ -3605,6 +3605,7 @@ header .menu #sandwich {
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .Books .cardSection .bookCard .box .imgBox img {
@@ -3613,6 +3614,25 @@ header .menu #sandwich {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.Books .cardSection .bookCard .box .imgBox .discount {
+  color: white;
+  position: absolute;
+  top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  right: -23px;
+  background-color: turquoise;
+  width: 100px;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .Books .cardSection .bookCard .box .contentBox {
@@ -4062,11 +4082,31 @@ header .menu #sandwich {
   -webkit-box-shadow: 6px 10px 14px gray;
           box-shadow: 6px 10px 14px gray;
   padding: 0;
+  overflow: hidden;
 }
 
 #newBooks .book-section .books .book .image img {
   width: 100%;
   height: 100%;
+}
+
+#newBooks .book-section .books .book .image .discount {
+  color: white;
+  position: absolute;
+  top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  right: -23px;
+  background-color: turquoise;
+  width: 100px;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+  font-size: 16px;
+  font-weight: bold;
 }
 
 #newBooks .book-section .books .bestSellers {

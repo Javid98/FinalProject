@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinalProject.Data;
 using FinalProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 {
 	[Area("BakumozAdminPanel")]
+    [Authorize(Roles ="Admin")]
 	public class MessagesController : Controller
 	{
 		private readonly ApplicationDbContext _db;

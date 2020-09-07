@@ -20,12 +20,13 @@ namespace FinalProject.Controllers
 		}
 		public IActionResult Index()
 		{
-			List<Book> books = _db.Books.ToList();
-			Book book = _db.Books.OrderByDescending(b => b.SaleCount).FirstOrDefault();
+			List<Book> books = _db.Books.Include(b => b.Publisher).ToList();
+			Book book = _db.Books.Include(b=>b.Publisher).OrderByDescending(b => b.SaleCount).FirstOrDefault();
 			List<BookCategory> bookCategories = _db.BookCategories.Include(ba => ba.Category).Where(bc => bc.BookId == book.Id).ToList();
 			List<BookAuthor> bookAuthors = _db.BookAuthors.ToList();
 			List<Author> authors = _db.Authors.OrderBy(n => n.Fullname).ToList();
 			List<Category> categories = _db.Categories.OrderBy(n => n.Name).ToList();
+			ViewBag.Currency = _db.Bios.FirstOrDefault().Currency;
 
 			List<BookCategory> rBookCategories = new List<BookCategory>();
 

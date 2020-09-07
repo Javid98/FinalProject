@@ -9,7 +9,7 @@
 	<thead>
 		<tr>
 			<th scope="col">Müştəri</th>
-			<th scope="col">Səviyyə</th>
+			<th scope="col" class="role">Səviyyə</th>
 			<th scope="col">Detallar</th>
 		</tr>
 	</thead>
@@ -18,13 +18,16 @@
 		{
 			<tr>
 				<td>@user.Fullname</td>
-				<td>@user.Role</td>
+				<td class="role">@user.Role</td>
 				<td>
-					<a class="btn btn-info" asp-controller="Users" asp-action="Detail" asp-route-username="@user.Username">
+					<a class="btn btn-info" asp-area="" asp-controller="Profile" asp-action="Index" asp-route-username="@user.Username">
 						<i class="mdi mdi-clipboard"></i>
 					</a>
 					@if (User.Identity.Name.ToLower().Trim() != user.Username.ToLower().Trim())
 					{
+						<a class="btn btn-primary" asp-controller="Users" asp-action="Edit" asp-route-username="@user.Username">
+							<i class="mdi mdi-account-edit"></i>
+						</a>
 						<a class="ml-1 btn btn-danger" asp-controller="Users" asp-action="Block" asp-route-username="@user.Username">
 							<i class="mdi mdi-block-helper"></i>
 						</a>
