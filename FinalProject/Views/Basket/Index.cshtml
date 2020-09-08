@@ -51,8 +51,14 @@ else
 									}
 								</td>
 								<td>
-									<input style="width:60px" type="number" value="@book.Book.Price" class="d-none bPrice" />
-									<input style="width:60px" disabled type="text" name="Price" value="@book.Book.Price" class="bookPrice form-control" />
+									@if (book.Book.Publisher.Discount <= 0)
+									{
+										<input style="width:60px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency), 2))" class="bookPrice form-control" />
+									}
+									else
+									{
+										<input style="width:60px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency * ((decimal)(100 - book.Book.Publisher.Discount) / 100)), 2))" class="bookPrice form-control" />
+									}
 								</td>
 								<td>
 									<a asp-controller="Basket" asp-action="DeleteBook" asp-route-id="@book.BookId" class="delete">
@@ -114,42 +120,35 @@ else
 		let prevPrices = document.querySelectorAll(".bookPrice");
 		let prevCounts = document.querySelectorAll(".bookCount");
 		for (price of prevPrices) {
-			prevTotal += price.value * prevCounts[i].value;
+			prevTotal += parseFloat(price.value.replace(',','.')) * prevCounts[i].value;
 			i++
 		}
-		let prevTotalText = `Total: ${prevTotal} ₼`
+		let prevTotalText = `Total: ${prevTotal.toFixed(2)} ₼`
 		$("#Cart #Sale h5.total").text(prevTotalText);
 
 		$("#Cart tbody .bookCount").keyup(function () {
-			//let count = $(this).val();
-			//let price = $(this).parent().parent().next().next().find(".bPrice").val()
-			//price = count * price;
-			//$(this).parent().parent().next().next().find(".bookPrice").val(price);
 			let total = 0;
 			let prices = document.querySelectorAll(".bookPrice");
 			let j = 0;
 			let counts = document.querySelectorAll(".bookCount");
 			for (price of prices) {
-				total += price.value * counts[j].value;
+				total += parseFloat(price.value.replace(',','.')) * counts[j].value;
 				j++
+				console.log("asd")
 			}
-			let totalText = `Total: ${total} ₼`
+			let totalText = `Total: ${total.toFixed(2)} ₼`
 			$("#Cart #Sale h5.total").text(totalText);
 		})
 		$("#Cart tbody .bookCount").change(function () {
-			//let count = $(this).val();
-			//let price = $(this).parent().parent().next().next().find(".bPrice").val()
-			//price = count * price;
-			//$(this).parent().parent().next().next().find(".bookPrice").val(price)
 			let total = 0;
 			let prices = document.querySelectorAll(".bookPrice");
 			let j = 0;
 			let counts = document.querySelectorAll(".bookCount");
 			for (price of prices) {
-				total += price.value * counts[j].value;
+				total += parseFloat(price.value.replace(',','.')) * counts[j].value;
 				j++
 			}
-			let totalText = `Total: ${total} ₼`
+			let totalText = `Total: ${total.toFixed(2)} ₼`
 			$("#Cart #Sale h5.total").text(totalText);
 		})
 		$("#Cart #Sale").submit(function (e) {
@@ -161,7 +160,7 @@ else
 			let j = 0;
 			let counts = document.querySelectorAll(".bookCount");
 			for (price of prices) {
-				total += price.value * counts[j].value;
+				total += parseFloat(price.value.replace(',','.')) * counts[j].value;
 				j++
 			}
 
@@ -175,7 +174,7 @@ else
 			if (text.toString().trim() != "" && error.toString().trim() == "" && bookCount == false) {
 				swal({
 					title: "Sifariş",
-					text: `Cəmi məbləğ ${total} ₼ (Çatdırılma nəzərə alınmır)`,
+					text: `Cəmi məbləğ ${total.toFixed(2)} ₼ (Çatdırılma nəzərə alınmır)`,
 					icon: "info",
 					buttons: ["Ləğv et", "Sifarişi ver"],
 				})

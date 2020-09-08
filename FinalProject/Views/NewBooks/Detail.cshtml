@@ -10,11 +10,17 @@
 	<div class="container">
 		<div class="row book justify-content-center">
 			<div class="col-lg-3 col-sm-4 col-4 image">
-				<a href=""><img src="~/image/@Model.Book.ImagePath" alt=""></a>
+				<a><img src="~/image/@Model.Book.ImagePath" alt=""></a>
+				@if (Model.Book.Publisher.Discount != 0)
+				{
+					<div class="discount">
+						<span>@Model.Book.Publisher.Discount%</span>
+					</div>
+				}
 			</div>
 			<div class="col-lg-8 col-sm-12 col-12 content">
 				<h3>
-					<a href="">@Model.Book.Name</a>
+					<a>@Model.Book.Name</a>
 				</h3>
 				<div class="author-publisher">
 					@foreach (BookAuthor bookAuthor in Model.BookAuthors)
@@ -27,24 +33,31 @@
 						<a href="/NewBooks?pslug=@Model.Publisher.Slug">@Model.Publisher.Name</a>
 					</span>
 				</div>
-				<div class="mt-3 price">
-					<span>@Model.Book.Price ₼</span>
-					@*<div class="stock">
-				<p>Stokda @Model.Book.Count ədəd qalıb</p>
-			</div>*@
-				</div>
-				@if (Model.Book.Count != 0)
+				@if (Model.Book.Publisher.Discount <= 0)
 				{
-					<div style="display:flex;justify-content:flex-end; flex-wrap:wrap">
-						<h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda @Model.Book.Count ədəd qalıb</h6>
+					<div class="mt-3 price">
+						<span>@(decimal.Round((Model.Book.Price * ViewBag.Currency), 2)) ₼</span>
 					</div>
 				}
 				else
 				{
-			<div style="display:flex;justify-content:space-around; flex-wrap:wrap">
-				<h6 style="color:#569a4d;font-weight:bold;margin:0">Stokda qalmayıb</h6>
-				<h6 style="color:#569a4d;font-weight:bold;margin:0">7-10 iş günü ərzində çatdırılma</h6>
-			</div>
+					<div class="mt-3 price">
+						<span style="text-decoration-line:line-through">@(decimal.Round((Model.Book.Price * ViewBag.Currency), 2)) ₼</span>&nbsp;
+						<span>@(decimal.Round((Model.Book.Price * ViewBag.Currency * ((decimal)(100 - Model.Book.Publisher.Discount) / 100)), 2)) ₼</span>
+					</div>
+				}
+				@if (Model.Book.Count != 0)
+				{
+					<div class="stock">
+						<h6>Stokda @Model.Book.Count ədəd qalıb</h6>
+					</div>
+				}
+				else
+				{
+					<div class="stockEmpty">
+						<h6>Stokda qalmayıb</h6>
+						<h6>7-10 iş günü ərzində çatdırılma</h6>
+					</div>
 				}
 				@if (Model.BookInCarts.FirstOrDefault(bc => bc.BookId == Model.Book.Id) == null && Model.FavoriteBooks.FirstOrDefault(bc => bc.BookId == Model.Book.Id) == null)
 				{
@@ -130,7 +143,7 @@
 	<section id="OwlCarousel">
 		<div class="container">
 			<div class="title">
-					<h3>Bənzər Kitablar</h3>
+				<h3>Bənzər Kitablar</h3>
 			</div>
 			<div class="owl-carousel owl-theme">
 				@foreach (BookCategory rBookCategory in Model.rBookCategories.Take(12))
@@ -139,7 +152,7 @@
 						<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@rBookCategory.Book.Slug"><img src="~/image/@rBookCategory.Book.ImagePath" alt=""></a>
 						<div class="name">
 							<h6>@rBookCategory.Book.Name</h6>
-							@foreach (BookAuthor bookAuthor in Model.rBookAuthors.Where(rb=>rb.BookId==rBookCategory.Book.Id))
+							@foreach (BookAuthor bookAuthor in Model.rBookAuthors.Where(rb => rb.BookId == rBookCategory.Book.Id))
 							{
 								<p>@bookAuthor.Author.Fullname</p>
 							}

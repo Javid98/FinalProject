@@ -17,6 +17,12 @@
 							<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">
 								<img src="~/image/@book.ImagePath" alt="">
 							</a>
+							@if (book.Publisher.Discount != 0)
+							{
+								<div class="discount">
+									<span>@book.Publisher.Discount%</span>
+								</div>
+							}
 						</div>
 						<div class="content">
 							@if (book.Name.Length < 20)
@@ -38,15 +44,15 @@
 									<span>@bookAuthor.Author.Fullname.Substring(0, 20)...</span>
 								}
 							}
-							@if (book.Publisher.Discount == 0)
+							@if (book.Publisher.Discount <= 0)
 							{
-								<span>@((book.Price * ViewBag.Currency).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
+								<span>@(decimal.Round((book.Price * ViewBag.Currency), 2)) ₼</span>
 							}
 							else
 							{
 								<div>
-									<span style="text-decoration-line:line-through">@((book.Price * ViewBag.Currency).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>&nbsp;
-									<span>@((book.Price * ViewBag.Currency * ((decimal)(100 - book.Publisher.Discount) / 100)).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
+									<span style="text-decoration-line:line-through">@(decimal.Round((book.Price * ViewBag.Currency), 2)) ₼</span>&nbsp;
+									<span>@(decimal.Round((book.Price * ViewBag.Currency * ((decimal)(100 - book.Publisher.Discount) / 100)), 2)) ₼</span>
 								</div>
 							}
 						</div>
@@ -109,17 +115,16 @@
 										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">Ardını oxu</a>
 									</p>
 								}
-
-								@if (book.Publisher.Discount == 0)
+								@if (book.Publisher.Discount <= 0)
 								{
 									<div class="price">
-										<span>@((book.Price * ViewBag.Currency).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
+										<span>@(decimal.Round((book.Price * ViewBag.Currency), 2)) ₼</span>
 									</div>
 								}
 								else
 								{
 									<div class="price">
-										<span>@((book.Price * ViewBag.Currency * ((decimal)(100 - book.Publisher.Discount) / 100)).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
+										<span>@(decimal.Round((book.Price * ViewBag.Currency * ((decimal)(100 - book.Publisher.Discount) / 100)), 2)) ₼</span>
 									</div>
 								}
 							</div>
@@ -168,6 +173,12 @@
 					<div class="box">
 						<div class="imgBox">
 							<img src="~/image/@book.ImagePath" alt="">
+							@if (book.Publisher.Discount != 0)
+							{
+								<div class="discount">
+									<span>@book.Publisher.Discount%</span>
+								</div>
+							}
 						</div>
 						<div class="contentBox">
 							<div>
@@ -198,9 +209,18 @@
 									</p>
 								}
 
-								<div class="price">
-									<span>@((book.Price * ViewBag.Currency).ToString().Substring(0, (book.Price * ViewBag.Currency).ToString().Length - 2)) ₼</span>
-								</div>
+								@if (book.Publisher.Discount <= 0)
+								{
+									<div class="price">
+										<span>@(decimal.Round((book.Price * ViewBag.Currency), 2)) ₼</span>
+									</div>
+								}
+								else
+								{
+									<div class="price">
+										<span>@(decimal.Round((book.Price * ViewBag.Currency * ((decimal)(100 - book.Publisher.Discount) / 100)), 2)) ₼</span>
+									</div>
+								}
 							</div>
 						</div>
 					</div>

@@ -9,15 +9,15 @@ namespace FinalProject.Models
 	public class Contact
 	{
 		public int Id { get; set; }
-		[Required(ErrorMessage = "Ad daxil edin")]
+		[Required(ErrorMessage = "Ad yazın")]
 		public string Name { get; set; }
-		[Required(ErrorMessage = "Soyad daxil edin")]
+		[Required(ErrorMessage = "Soyad yazın")]
 		public string Surname { get; set; }
-		[Required(ErrorMessage = "Email daxil edin"), EmailAddress, DataType(DataType.EmailAddress)]
+		[Required(ErrorMessage = "Email yazın"), EmailAddress(ErrorMessage = "Düzgün email yazın"), DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
-		[Required(ErrorMessage = "Nömrə daxil edin")]
+		[Required(ErrorMessage = "Nömrə yazın")]
 		public string PhoneNumber { get; set; }
-		[Required(ErrorMessage = "Mesaj daxil edin")]
+		[Required(ErrorMessage = "Mesaj yazın")]
 		public string Message { get; set; }
 		public DateTime Date { get; set; }
 		public bool Read { get; set; } = false;

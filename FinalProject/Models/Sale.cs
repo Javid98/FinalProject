@@ -13,7 +13,6 @@ namespace FinalProject.Models
 		public DateTime Date { get; set; }
 		public string DeliveryType { get; set; }
 		public string DeliveryLocation { get; set; }
-		[Range(0, 9999.99)]
 		public decimal Total { get; set; }
 		public string PhoneNumber { get; set; }
 		public bool Completed { get; set; } = false;

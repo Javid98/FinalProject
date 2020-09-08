@@ -11,7 +11,7 @@ namespace FinalProject.Models
 {
 	public class AppUser:IdentityUser
 	{
-        [Required,StringLength(50)]
+        [Required(ErrorMessage ="Zəhmət olmasa ad və soyad daxil edin"),StringLength(50,ErrorMessage ="Uzunluq maksimum 50 simvol ola bilər")]
 		public string FullName { get; set; }
 		public bool IsBlocked { get; set; } = false;
 		public ICollection<Sale> Purchases { get; set; }

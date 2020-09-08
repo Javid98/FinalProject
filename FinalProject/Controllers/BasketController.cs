@@ -28,8 +28,9 @@ namespace FinalProject.Controllers
 			if (username.ToLower().Trim() != User.Identity.Name.ToLower().Trim()) return NotFound();
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 			if (user == null) return NotFound();
-			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
+			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).ThenInclude(b=>b.Publisher).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
 			List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Book).Include(ba => ba.Author).ToList();
+			ViewBag.Currency = _db.Bios.FirstOrDefault().Currency;
 			ViewBag.Total = 0;
 			foreach (BookInCart bookInCart in bookInCarts)
 			{
@@ -49,7 +50,8 @@ namespace FinalProject.Controllers
 		public async Task<IActionResult> Sale(BasketVM info)
 		{
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
+			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).ThenInclude(b=>b.Publisher).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
+			ViewBag.Currency = _db.Bios.FirstOrDefault().Currency;
 			Sale sale = new Sale();
 			decimal total = 0;
 			if (Request.Form["Type"].ToString().ToLower() == "metro")
@@ -86,15 +88,37 @@ namespace FinalProject.Controllers
 				if (int.TryParse(Request.Form["Count"][i], out a))
 				{
 
-					saleBooks.Add(new SaleBook
+					if (bookInCart.Book.Publisher.Discount<=0)
 					{
-						SaleId = sale.Id,
-						Count = int.Parse(Request.Form["Count"][i]),
-						Price = bookInCart.Book.Price,
-						BookId = bookInCart.Book.Id,
-						AppUserId = user.Id
-					});
-					total += bookInCart.Book.Price * int.Parse(Request.Form["Count"][i]);
+						saleBooks.Add(new SaleBook
+						{
+							SaleId = sale.Id,
+							Count = int.Parse(Request.Form["Count"][i]),
+							Price = decimal.Round((bookInCart.Book.Price * ViewBag.Currency),2),
+							BookId = bookInCart.Book.Id,
+							AppUserId = user.Id
+						});
+					}
+					else
+					{
+						saleBooks.Add(new SaleBook
+						{
+							SaleId = sale.Id,
+							Count = int.Parse(Request.Form["Count"][i]),
+							Price = decimal.Round((bookInCart.Book.Price * ViewBag.Currency * ((decimal)(100 - bookInCart.Book.Publisher.Discount) / 100)),2),
+							BookId = bookInCart.Book.Id,
+							AppUserId = user.Id
+						});
+					}
+					if (bookInCart.Book.Publisher.Discount <= 0)
+					{
+						total += decimal.Round((bookInCart.Book.Price * ViewBag.Currency),2) * int.Parse(Request.Form["Count"][i]);
+					}
+					else
+					{
+						total +=decimal.Round((bookInCart.Book.Price * ViewBag.Currency * ((decimal)(100 - bookInCart.Book.Publisher.Discount) / 100)),2) * int.Parse(Request.Form["Count"][i]);
+
+					}
 					Book bookCount = _db.Books.FirstOrDefault(b => b.Id == bookInCart.BookId);
 					if (bookCount.Count != 0)
 					{

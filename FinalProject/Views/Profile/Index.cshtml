@@ -128,7 +128,7 @@
 			</div>
 			<div class="modal-body">
 				<ul>
-					@foreach (Sale sale in Model.Sales.OrderByDescending(s=>s.Id))
+					@foreach (Sale sale in Model.Sales.OrderByDescending(s => s.Id))
 					{
 						<li class="saleDate">
 							<h6>@sale.Date.ToString("dd/MM/yyyy")</h6>
@@ -148,7 +148,7 @@
 											<p><a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a></p>
 										}
 										<span><a href="/NewBooks/?pslug=@saleBook.Book.Publisher.Slug">@saleBook.Book.Publisher.Name</a></span><br />
-																																			   <p style="margin:10px 0 0 0">@saleBook.Price ₼</p>
+										<p style="margin:10px 0 0 0">@saleBook.Price ₼</p>
 									</div>
 									<div style="display:flex;align-items:center;justify-content:center;text-align:center">
 										<span>
@@ -157,7 +157,7 @@
 									</div>
 								</div>
 							}
-						<h6 class="total">Total: @sale.Total ₼</h6>
+							<h6 class="total">Total: @sale.Total ₼</h6>
 						</li>
 					}
 				</ul>
@@ -379,7 +379,7 @@
 				title: "Favoritlər",
 				text: "Bu kitabı silmək istədiyinizdən əminsiniz?",
 				icon: "warning",
-				buttons: ["Bağla","Sil"],
+				buttons: ["Bağla", "Sil"],
 				dangerMode: true,
 			})
 				.then((willDelete) => {
@@ -401,7 +401,7 @@
 				title: "Favoritlər",
 				text: "Favoritlərdə bütün kitabları silmək istədiyinizdən əminsiniz?",
 				icon: "warning",
-				buttons: ["Bağla","Sil"],
+				buttons: ["Bağla", "Sil"],
 				dangerMode: true,
 			})
 				.then((willDelete) => {

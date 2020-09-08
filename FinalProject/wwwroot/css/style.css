@@ -13,6 +13,11 @@ body {
   font-family: 'Questrial', sans-serif;
 }
 
+.parallax-window {
+  min-height: 400px;
+  background: transparent;
+}
+
 #Search .search {
   position: fixed;
   top: 50%;
@@ -3507,6 +3512,7 @@ header .menu #sandwich {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow: hidden;
 }
 
 #Slider .sliderCard .sliderImage a {
@@ -3523,6 +3529,25 @@ header .menu #sandwich {
 #Slider .sliderCard .sliderImage a img {
   height: 100%;
   width: 100%;
+}
+
+#Slider .sliderCard .sliderImage .discount {
+  color: white;
+  position: absolute;
+  top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  right: -23px;
+  background-color: turquoise;
+  width: 100px;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+  font-size: 16px;
+  font-weight: bold;
 }
 
 #Slider .swiper-slide {
@@ -5291,6 +5316,7 @@ header .menu #sandwich {
   -webkit-box-shadow: 6px 10px 14px gray;
           box-shadow: 6px 10px 14px gray;
   padding: 0;
+  overflow: hidden;
 }
 
 #bookDetail .book .image a {
@@ -5299,6 +5325,25 @@ header .menu #sandwich {
 
 #bookDetail .book .image img {
   width: 100%;
+}
+
+#bookDetail .book .image .discount {
+  color: white;
+  position: absolute;
+  top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  right: -23px;
+  background-color: turquoise;
+  width: 100px;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+  font-size: 16px;
+  font-weight: bold;
 }
 
 #bookDetail .book .content {
@@ -5375,16 +5420,39 @@ header .menu #sandwich {
   font-size: 20px;
   font-weight: bold;
   color: gray;
+}
+
+#bookDetail .book .content .stock {
+  color: #569a4d;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-#bookDetail .book .content .price .stock {
+#bookDetail .book .content .stock h6 {
+  margin: 0;
+  font-weight: bold;
+}
+
+#bookDetail .book .content .stockEmpty {
   color: #569a4d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#bookDetail .book .content .stockEmpty h6 {
+  margin: 0;
+  font-weight: bold;
 }
 
 #bookDetail .book .content .book-buttons .shopBtn i {

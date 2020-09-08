@@ -12,7 +12,7 @@ namespace FinalProject.Models
 	{
 		public int Id { get; set; }
 		public string ImagePath { get; set; }
-		[DataType(DataType.Date)]
+		[DataType(DataType.Date,ErrorMessage ="Tarix qeyd edin")]
 		[DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime Birthday { get; set; }
 		public string Gender { get; set; }

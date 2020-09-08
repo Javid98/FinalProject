@@ -14,5 +14,6 @@ namespace FinalProject.ViewModels
 		public Bio Bio { get; set; }
 		public ICollection<AppUser> AppUsers { get; set; }
 		public ICollection<IdentityRole> Roles { get; set; }
+		public UserDetail UserDetail { get; set; }
 	}
 }

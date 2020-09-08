@@ -18,7 +18,7 @@ namespace FinalProject.ViewModels
 		public ICollection<FavoriteBook> FavoriteBooks { get; set; }
 		public ICollection<BookAuthor> BookAuthors { get; set; }
 		public ICollection<Publisher> Publishers { get; set; }
-		[DataType(DataType.Date)]
+		[DataType(DataType.Date, ErrorMessage = "Tarix qeyd edin")]
 		[DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime BirthDay { get; set; }
 		public IFormFile Photo { get; set; }

@@ -13,6 +13,7 @@ using FinalProject.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FinalProject.Models;
+using FinalProject.Helpers;
 
 namespace FinalProject
 {
@@ -50,7 +51,7 @@ namespace FinalProject
 				identityOptions.Lockout.MaxFailedAccessAttempts = 3;
 				identityOptions.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
 				identityOptions.Lockout.AllowedForNewUsers = true;
-			}).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+			}).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders().AddErrorDescriber<CustomIdentityErrorAzLang>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}

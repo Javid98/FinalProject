@@ -29,9 +29,19 @@
 			<p>
 				<strong>Facebook: </strong>@Model.FacebookLink
 			</p>
-			<p>
-				<strong>Doğum tarixi: </strong>@Model.Birthday.ToString("dd/MM/yyyy")
-			</p>
+			@if (Model.Birthday.Year != 1)
+			{
+				<p>
+					<strong>Doğum tarixi: </strong>@Model.Birthday.ToString("dd/MM/yyyy")
+				</p>
+			}
+			else
+			{
+				<p>
+					<strong>Doğum tarixi: </strong>
+				</p>
+			}
+
 		</div>
 		@if (Model.AppUser.IsBlocked)
 		{

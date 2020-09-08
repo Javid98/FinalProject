@@ -12,6 +12,11 @@ body {
     font-family: 'Questrial', sans-serif;
 }
 
+.parallax-window {
+    min-height: 400px;
+    background: transparent;
+}
+
 #Search {
     .search {
         position: fixed;
@@ -2815,6 +2820,7 @@ header {
             height: 250px;
             display: flex;
             justify-content: center;
+            overflow: hidden;
             // background: transparentize($color: white, $amount: 1);
             a {
                 display: flex;
@@ -2825,6 +2831,19 @@ header {
                     height: 100%;
                     width: 100%;
                 }
+            }
+            .discount {
+                color: white;
+                position: absolute;
+                top: 15px;
+                display: flex;
+                justify-content: center;
+                right: -23px;
+                background-color: turquoise;
+                width: 100px;
+                transform: rotateZ(45deg);
+                font-size: 16px;
+                font-weight: bold;
             }
         }
     }
@@ -4180,11 +4199,25 @@ header {
             height: 100%;
             box-shadow: 6px 10px 14px gray;
             padding: 0;
+            overflow: hidden;
             a {
                 width: 100%;
             }
             img {
                 width: 100%;
+            }
+            .discount {
+                color: white;
+                position: absolute;
+                top: 15px;
+                display: flex;
+                justify-content: center;
+                right: -23px;
+                background-color: turquoise;
+                width: 100px;
+                transform: rotateZ(45deg);
+                font-size: 16px;
+                font-weight: bold;
             }
         }
         .content {
@@ -4242,10 +4275,25 @@ header {
                 font-size: 20px;
                 font-weight: bold;
                 color: gray;
+            }
+            .stock {
+                color: #569a4d;
                 display: flex;
-                justify-content: space-between;
-                .stock {
-                    color: #569a4d;
+                justify-content: flex-end;
+                flex-wrap: wrap;
+                h6 {
+                    margin: 0;
+                    font-weight: bold;
+                }
+            }
+            .stockEmpty {
+                color: #569a4d;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                h6 {
+                    margin: 0;
+                    font-weight: bold;
                 }
             }
             .book-buttons {

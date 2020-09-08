@@ -14,18 +14,17 @@ namespace FinalProject.ViewModels
 		public string Slug { get; set; }
 		[Required]
 		public string ImagePath { get; set; }
-		[Required]
+		[Required(ErrorMessage ="Kitabın adını daxil edin")]
 		public string Name { get; set; }
-		[Required]
+		[Required(ErrorMessage = "Kitab haqqında məlumat daxil edin")]
 		public string Description { get; set; }
-		[Required]
-		[Range(0, 9999.99)]
+		[Required(ErrorMessage = "Qiymət daxil edin")]
 		public decimal Price { get; set; }
-		[Required]
+		[Required(ErrorMessage = "Say daxil edin")]
 		public int Count { get; set; }
 
 		public string PublishingPlace { get; set; }
-		[DataType(DataType.Date)]
+		[DataType(DataType.Date, ErrorMessage = "Tarix qeyd edin")]
 		[DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime PublishingDate { get; set; }
 		public string PublishingLanguage { get; set; }

@@ -69,7 +69,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\r\n\t<div class=\"container\">\r\n\t\t<div class=\"logo-edit mt-3 d-flex justify-content-between align-items-center\">\r\n\t\t\t<div class=\"logo\">\r\n\t\t\t\t");
             EndContext();
             BeginContext(185, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "25e8495ddd964f1285a3efb67ffe846b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0df796df41db42a7970d739457ad055e", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -95,7 +95,7 @@ AddHtmlAttributeValue("", 235, Model.Logo, 235, 11, false);
             WriteLiteral("\r\n\t\t\t</div>\r\n\t\t\t<div class=\"edit\">\r\n\t\t\t\t");
             EndContext();
             BeginContext(290, 119, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "267dd80642c94e8292ef93ee9886ce74", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d70402aadd774f659ad94a802727ac6a", async() => {
                 BeginContext(356, 49, true);
                 WriteLiteral("\r\n\t\t\t\t\t<i class=\"mdi mdi-pencil\"></i> Dəyiş\r\n\t\t\t\t");
                 EndContext();

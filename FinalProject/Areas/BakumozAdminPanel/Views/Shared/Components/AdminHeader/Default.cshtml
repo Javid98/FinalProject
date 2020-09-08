@@ -7,10 +7,17 @@
 		</div>
 		<div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
 			<div class="menu-button-container menu-profile d-none d-md-block">
-				<button class="mdc-button mdc-menu-button">
+				<button style="cursor: default" class="mdc-button mdc-menu-button">
 					<span class="d-flex align-items-center">
 						<span class="figure">
-							<img src="~/admin/images/faces/face1.jpg" alt="user" class="user">
+							@if (Model.UserDetail.ImagePath == null)
+							{
+								<img style="width:25px;height:25px;object-fit:cover" src="~/image/pp.jpg" alt="user" class="user">
+							}
+							else
+							{
+								<img style="width:25px;height:25px;object-fit:cover" src="~/image/usersphotos/@Model.UserDetail.ImagePath" alt="user" class="user">
+							}
 						</span>
 						<span class="user-name">@User.Identity.Name</span>
 					</span>
@@ -52,7 +59,7 @@
 					@if (Model.Sales.Count() < 9)
 					{
 						<span class="count-indicator">
-							<span class="count">@Model.Contacts.Count()</span>
+							<span class="count">@Model.Sales.Count()</span>
 						</span>
 					}
 					else
