@@ -121,8 +121,10 @@ header {
   width: 100vw;
   left: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 10px 0;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px 0;
+  -webkit-box-shadow: 0px 5px 30px 5px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 5px 30px 5px rgba(0, 0, 0, 0.4);
 }
 
 header .logo img {
@@ -544,7 +546,7 @@ header .menu #sandwich {
     font-size: 13px;
   }
   #Register .panels-container .panel .image {
-    width: 100%;
+    width: 85%;
     -webkit-transition: 1.1s 0.4s ease-in-out;
     transition: 1.1s 0.4s ease-in-out;
   }
@@ -777,7 +779,7 @@ header .menu #sandwich {
     font-size: 13px;
   }
   #Login .panels-container .panel .image {
-    width: 100%;
+    width: 85%;
     -webkit-transition: 1.1s 0.4s ease-in-out;
     transition: 1.1s 0.4s ease-in-out;
   }
@@ -3462,17 +3464,17 @@ header .menu #sandwich {
       -ms-flex-align: center;
           align-items: center;
   min-height: 100vh;
-  background: -webkit-gradient(linear, left top, right top, from(#1c92d2), to(#f2fcfe));
-  background: linear-gradient(to right, #1c92d2, #f2fcfe);
+  background: -webkit-gradient(linear, left top, right top, from(#236bdf), to(#ebfcff));
+  background: linear-gradient(to right, #236bdf, #ebfcff);
 }
 
 #Slider .sliderCard {
   position: relative;
-  background: -webkit-gradient(linear, left top, right top, from(#e0eafc), to(#cfdef3));
-  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  background-color: #dce9ff;
   width: 250px;
   min-height: 380px;
   margin: 0 auto;
+  border-radius: 8px;
 }
 
 #Slider .sliderCard .content {
@@ -3527,8 +3529,11 @@ header .menu #sandwich {
 }
 
 #Slider .sliderCard .sliderImage a img {
-  height: 100%;
+  height: 97%;
   width: 100%;
+  border-radius: 5px;
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
 }
 
 #Slider .sliderCard .sliderImage .discount {

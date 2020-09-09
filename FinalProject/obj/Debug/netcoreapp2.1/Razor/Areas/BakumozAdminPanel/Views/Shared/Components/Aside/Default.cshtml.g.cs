@@ -78,12 +78,12 @@ using FinalProject.ViewModels;
             WriteLiteral("\t<aside class=\"mdc-drawer mdc-drawer--dismissible mdc-drawer--open\">\r\n\t\t<div class=\"mdc-drawer__header d-flex justify-content-center\">\r\n\t\t\t");
             EndContext();
             BeginContext(151, 156, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6581a65a9b15478e90c5bdf0e5235010", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c67c0822b4ad41ab9e6da9de9aa295cc", async() => {
                 BeginContext(226, 6, true);
                 WriteLiteral("\r\n\t\t\t\t");
                 EndContext();
                 BeginContext(232, 66, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "710f011a82e147ebb414ae4ac88237c6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0c2bd93d8b154ddcbe843a270540c698", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -156,7 +156,7 @@ AddHtmlAttributeValue("", 274, Model.Logo, 274, 11, false);
 									");
             EndContext();
             BeginContext(1067, 112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b05ddb4eb1be42bdb32f563ab897eadd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "74701912a53c45798924a0e56c8416dd", async() => {
                 BeginContext(1145, 30, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t\t\t\tYenilər\r\n\t\t\t\t\t\t\t\t\t");
                 EndContext();
@@ -181,7 +181,7 @@ AddHtmlAttributeValue("", 274, Model.Logo, 274, 11, false);
             WriteLiteral("\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<div class=\"mdc-list-item mdc-drawer-item\">\r\n\t\t\t\t\t\t\t\t\t");
             EndContext();
             BeginContext(1259, 128, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "365956f567944906a49d7f60d2fdf7b0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8531671ead1745bfb627a730b07a56f7", async() => {
                 BeginContext(1346, 37, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t\t\t\tTamamlanmışlar\r\n\t\t\t\t\t\t\t\t\t");
                 EndContext();
@@ -206,7 +206,7 @@ AddHtmlAttributeValue("", 274, Model.Logo, 274, 11, false);
             WriteLiteral("\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</nav>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"mdc-list-item mdc-drawer-item\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(1503, 185, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b0bcc0383b7d4f4c813704057c50a194", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "76a1ece57d5d41ba96713f8b79bcb002", async() => {
                 BeginContext(1572, 112, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<i style=\"font-size:20px\" class=\"mr-1 mdi mdi-library\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t\tKitablar\r\n\t\t\t\t\t\t");
                 EndContext();
@@ -231,7 +231,7 @@ AddHtmlAttributeValue("", 274, Model.Logo, 274, 11, false);
             WriteLiteral("\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"mdc-list-item mdc-drawer-item\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(1759, 193, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ef04bdbfb5e0484a9e572fe9c490c72c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8541875e85064d6c95675b4ec87644ff", async() => {
                 BeginContext(1829, 119, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<i style=\"font-size:20px\" class=\"mr-1 mdi mdi-ticket-account\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t\tYazarlar\r\n\t\t\t\t\t\t");
                 EndContext();
@@ -256,7 +256,7 @@ AddHtmlAttributeValue("", 274, Model.Logo, 274, 11, false);
             WriteLiteral("\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"mdc-list-item mdc-drawer-item\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(2023, 199, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dc5b1114355a45d9a9a5b65028b38e67", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b6f2f583c44452b8e4c7765f401a1f7", async() => {
                 BeginContext(2097, 121, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<i style=\"font-size:20px\" class=\"mr-1 mdi mdi-table-large\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t\tKateqoriyalar\r\n\t\t\t\t\t\t");
                 EndContext();
@@ -281,7 +281,7 @@ AddHtmlAttributeValue("", 274, Model.Logo, 274, 11, false);
             WriteLiteral("\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"mdc-list-item mdc-drawer-item\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(2293, 194, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "37d2176f40584b209161237ca440aa7c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bcd4a89db49f4e55baaf99d0d78fbec5", async() => {
                 BeginContext(2367, 116, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<i style=\"font-size:20px\" class=\"mr-1 mdi mdi-sitemap\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t\tYayın evləri\r\n\t\t\t\t\t\t");
                 EndContext();
@@ -306,7 +306,7 @@ AddHtmlAttributeValue("", 274, Model.Logo, 274, 11, false);
             WriteLiteral("\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"mdc-list-item mdc-drawer-item\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(2558, 174, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b419002890384adba9ed14bd8ac3b5cb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6bc22d390f9b48dc9f7033529c3361a1", async() => {
                 BeginContext(2625, 103, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<i style=\"font-size:20px\" class=\"mr-1 mdi mdi-bio\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t\tBio\r\n\t\t\t\t\t\t");
                 EndContext();
@@ -331,7 +331,7 @@ AddHtmlAttributeValue("", 274, Model.Logo, 274, 11, false);
             WriteLiteral("\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"mdc-list-item mdc-drawer-item\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(2803, 188, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "647686420d7f45078baad6ca09e337a8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "990326eb5b2a4e9dbbff165ba54cfa42", async() => {
                 BeginContext(2875, 112, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<i style=\"font-size:20px\" class=\"mr-1 mdi mdi-message\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t\tMessages\r\n\t\t\t\t\t\t");
                 EndContext();
@@ -367,7 +367,7 @@ AddHtmlAttributeValue("", 274, Model.Logo, 274, 11, false);
 									");
             EndContext();
             BeginContext(3558, 106, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "afe2861a82fb4fd99c9216a40255c2e1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a8857d6e43cc465e9eb491c74378a6d4", async() => {
                 BeginContext(3627, 33, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t\t\t\tMüştərilər\r\n\t\t\t\t\t\t\t\t\t");
                 EndContext();
@@ -392,7 +392,7 @@ AddHtmlAttributeValue("", 274, Model.Logo, 274, 11, false);
             WriteLiteral("\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<div class=\"mdc-list-item mdc-drawer-item\">\r\n\t\t\t\t\t\t\t\t\t");
             EndContext();
             BeginContext(3744, 115, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "16f459835aa24e9696f84d441e21ba3e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8a261a3bc59b4f909ad4fbe708da7bb2", async() => {
                 BeginContext(3820, 35, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t\t\t\tBloklananlar\r\n\t\t\t\t\t\t\t\t\t");
                 EndContext();
