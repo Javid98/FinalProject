@@ -54,20 +54,27 @@
 						{
 							if (ViewBag.Page == 1)
 							{
-								<div class="col-12 col-sm-12">
-									<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan 1-16 arası göstərilir</p>
-								</div>
+						<div class="col-12 col-sm-12">
+							@if (Model.AllBooks.Count() > 5)
+							{
+								<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan 1-5 arası göstərilir</p>
+							}
+							else
+							{
+								<p class="col-12 text-center">@Model.AllBooks.Count() kitab</p>
+							}
+						</div>
 							}
 							else if (ViewBag.Page != 1 && ViewBag.Page != ViewBag.PageCount)
 							{
 								<div class="col-12 col-sm-12">
-									<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan @((ViewBag.Page - 1) * 16 + 1) -@(ViewBag.Page * 16) arası göstərilir</p>
+									<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan @((ViewBag.Page - 1) * 5 + 1) -@(ViewBag.Page * 5) arası göstərilir</p>
 								</div>
 							}
 							else
 							{
 								<div class="col-12 col-sm-12">
-									<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan @((ViewBag.Page - 1) * 16 + 1) - @Model.AllBooks.Count() arası göstərilir</p>
+									<p class="col-12 text-center">@Model.AllBooks.Count() kitabdan @((ViewBag.Page - 1) * 5 + 1) - @Model.AllBooks.Count() arası göstərilir</p>
 								</div>
 							}
 						}

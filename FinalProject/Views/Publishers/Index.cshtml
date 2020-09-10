@@ -16,27 +16,27 @@
 		<div class="container">
 			@foreach (char letter in alphabet)
 			{
-				if (Model.Where(p => p.Name.ToLower().StartsWith(letter)).Count()!=0)
+				if (Model.Where(p => p.Name.ToLower().StartsWith(letter)).Count() != 0)
 				{
 					<div class="publishers-letter">
-					<div class="letter">@letter.ToString().ToUpper()</div>
-					<div class="publisher-wrapper">
+						<div class="letter">@letter.ToString().ToUpper()</div>
+						<div class="publisher-wrapper">
 
-						@foreach (Publisher publisher in Model.Where(p => p.Name.ToLower().StartsWith(letter)))
-						{
-						<div class="col-lg-3 col-md-4 col-md-4 col-sm-6 col-10 publisher">
-							<a href="/NewBooks/?pslug=@publisher.Slug">@publisher.Name</a>
-							@if (publisher.Discount != 0)
+							@foreach (Publisher publisher in Model.Where(p => p.Name.ToLower().StartsWith(letter)))
 							{
-								<div class="icon">
-									<i class="fas fa-tags"></i>
-									<span>@publisher.Discount%</span>
+								<div class="col-lg-3 col-md-4 col-md-4 col-sm-6 col-10 publisher">
+									<a href="/NewBooks/?pslug=@publisher.Slug">@publisher.Name</a>
+									@if (publisher.Discount != 0)
+									{
+										<div class="icon">
+											<i class="fas fa-tags"></i>
+											<span>@publisher.Discount%</span>
+										</div>
+									}
 								</div>
 							}
 						</div>
-						}
 					</div>
-				</div>
 				}
 			}
 		</div>
@@ -44,3 +44,7 @@
 </section>
 
 <!-- Publisher End -->
+
+@section Scripts{
+	<script src="~/js/parallax.min.js"></script>
+}

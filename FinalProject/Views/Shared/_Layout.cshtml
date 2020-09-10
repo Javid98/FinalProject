@@ -5,13 +5,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@ViewData["Title"]</title>
-	@await  Component.InvokeAsync("HeadTag")
+	@await Component.InvokeAsync("HeadTag")
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
-	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
-	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 	<link rel="stylesheet" href="~/css/owl.carousel.min.css">
 	<link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+	@RenderSection("Css", false)
 	<link rel="stylesheet" href="~/css/style.css">
 </head>
 
@@ -29,10 +28,8 @@
 
 	<script src="https://kit.fontawesome.com/9a2a6d18cc.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="~/js/owl.carousel.min.js"></script>
-	<script src="~/js/parallax.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
 	@RenderSection("Scripts", required: false)
 	<script src="~/js/script.js"></script>

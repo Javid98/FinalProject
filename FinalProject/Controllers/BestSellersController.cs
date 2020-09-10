@@ -23,9 +23,9 @@ namespace FinalProject.Controllers
 		public async Task<IActionResult> Index(int page = 1)
 		{
 			ViewBag.Page = page;
-			ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.OrderByDescending(b => b.SaleCount).Take(100).Count() / 3);
+			ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.OrderByDescending(b => b.SaleCount).Take(100).Count() / 5);
 			List<Book> books = _db.Books.OrderByDescending(b => b.SaleCount).Take(100).ToList();
-			List<Book> bestSellers = books.Skip((page - 1) * 3).Take(3).ToList();
+			List<Book> bestSellers = books.Skip((page - 1) * 5).Take(5).ToList();
 			List<BookAuthor> bookAuthors = _db.BookAuthors.ToList();
 			List<Author> authors = _db.Authors.OrderBy(n => n.Fullname).ToList();
 			List<Publisher> publishers = _db.Publishers.OrderByDescending(n => n.BookCount).ToList();
