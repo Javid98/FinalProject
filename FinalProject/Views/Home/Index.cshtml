@@ -153,7 +153,7 @@
 			</div>
 			<div class="right mt-3 col-md-6 col-12">
 				<a>
-					<img src="~/image/sale.jpg" alt="">
+					<img src="~/image/publisherDiscount.jpg" alt="">
 				</a>
 			</div>
 		</div>
@@ -245,7 +245,7 @@
 			</a>
 		</div>
 		<div class="categories">
-			@foreach (Category category in Model.Categories.OrderBy(c => c.Id).Where(c => c.Id > 11).Take(6))
+			@foreach (Category category in Model.Categories.OrderBy(c => c.Id).Take(6))
 			{
 				<a class="category" href="/NewBooks/?cslug=@category.Slug" style="background:url(../image/@category.ImagePath)"></a>
 			}

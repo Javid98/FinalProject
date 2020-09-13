@@ -94,7 +94,22 @@ namespace FinalProject.Controllers
 			if (!change.Photo.IsImage())
 			{
 				ModelState.AddModelError("", "Sadəcə şəkil seçə bilərsiz");
-				return PartialView("_RegisterPartialView");
+				Bio bio = _db.Bios.FirstOrDefault();
+				AccountVM model = new AccountVM
+				{
+					Bio = bio
+				};
+				return PartialView("_RegisterPartialView", model);
+			}
+			if (!change.Photo.MaxLength(1024))
+			{
+				ModelState.AddModelError("", "Şəkilin ölçüsü 1 MB-dan az olmalıdır");
+				Bio bio = _db.Bios.FirstOrDefault();
+				AccountVM model = new AccountVM
+				{
+					Bio = bio
+				};
+				return PartialView("_RegisterPartialView", model);
 			}
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 			if (user == null) return NotFound();

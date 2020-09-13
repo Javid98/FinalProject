@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Click Menu Start
-    $(".menu span").click(function() {
+    $(".menu span").click(function () {
         $("body").css("overflow", "hidden")
         $(".activeMenu").show()
         $(".activeMenu").css("animation-name", "MenuEffect")
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
 
     // Click Sandwich
-    $("#sandwich").click(function() {
+    $("#sandwich").click(function () {
         $("body").css("overflow", "hidden")
         $(".activeMenu").show()
         $(".activeMenu").css("animation-name", "MenuEffect")
@@ -50,7 +50,7 @@ $(document).ready(function () {
     })
 
 
-    $("#close").click(function() {
+    $("#close").click(function () {
         $("body").css("overflow-y", "scroll")
         setTimeout(function leftSide() {
             $(".activeMenu .about").css("display", "none")
@@ -69,7 +69,7 @@ $(document).ready(function () {
     // Click Sandwich End
 
     // Search Start
-    $("#searchBtn").click(function() {
+    $("#searchBtn").click(function () {
         $(".search-box").css("transition", "0.6s ease-in")
         $(".search-box").css("border-radius", "40px")
         $(".search-box").css("background", "turquoise")
@@ -95,13 +95,13 @@ $(document).ready(function () {
         }, 1200)
         $(".search-box").css("transform", "rotateZ(360deg)")
     })
-    $("#closeBtn").click(function() {
+    $("#closeBtn").click(function () {
         // $(".search-box").css("transition", "0.6s ease-in")
         // $(".search-box").css("border-radius", "50px")
         // $(".search-box").css("background", "#236bdf")
         $("#closeBtn").css("opacity", "0")
         $("#Search #form").css("opacity", "0")
-            // $("#searchBtn").css("opacity", "1")
+        // $("#searchBtn").css("opacity", "1")
 
 
         setTimeout(function Width() {
@@ -127,7 +127,18 @@ $(document).ready(function () {
             $(".search-box").css("background", "#236bdf")
         }, 700)
     })
-    $("#Search #form .search-txt").keyup(function () {
+
+    function delay(callback, ms) {
+        var timer = 0;
+        return function () {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+    $("#Search #form .search-txt").keyup(delay(function (e) {
         let search = $(this).val();
         $("#Search #form ul li").not($("#Search #form ul li").first()).remove();
         if (search.length > 0 && search.trim() != "") {
@@ -139,8 +150,9 @@ $(document).ready(function () {
                 }
             })
         }
+    }, 600));
 
-    })
+
     // Search End
 
 
@@ -165,41 +177,41 @@ $(document).ready(function () {
 
     // Filter Start
     let Z = 0;
-    $("#newBooks .filter-section .filter-slide").click(function() {
+    $("#newBooks .filter-section .filter-slide").click(function () {
         $(".filter-wrapper").slideToggle()
-        $("#newBooks .filter-section .filter-slide i").css("transform", `rotateZ(${Z+=180}deg)`)
+        $("#newBooks .filter-section .filter-slide i").css("transform", `rotateZ(${Z += 180}deg)`)
     })
 
-    $("#newBooks .filter-section .filter-wrapper .viewMore").click(function() {
-            if ($(this).prev().attr("style").includes("hidden")) {
-                $(this).prev().css("overflow-y", "scroll")
-                $(this).css("color", "tomato")
-            } else {
-                $(this).prev().css("overflow-y", "hidden")
-                $(this).css("color", "dimgrey")
+    $("#newBooks .filter-section .filter-wrapper .viewMore").click(function () {
+        if ($(this).prev().attr("style").includes("hidden")) {
+            $(this).prev().css("overflow-y", "scroll")
+            $(this).css("color", "tomato")
+        } else {
+            $(this).prev().css("overflow-y", "hidden")
+            $(this).css("color", "dimgrey")
         }
     })
 
     if (window.location.href.includes("aslug=")) {
         $("#newBooks .filter-section .filter-wrapper .author").addClass("d-none")
-        $("#newBooks .filter-section .filter-wrapper .author").prev().addClass("d-none")
-        $("#newBooks .filter-section .filter-wrapper .author").next().addClass("d-none")
+        //$("#newBooks .filter-section .filter-wrapper .author").prev().addClass("d-none")
+        //$("#newBooks .filter-section .filter-wrapper .author").next().addClass("d-none")
     }
     if (window.location.href.includes("cslug=")) {
         $("#newBooks .filter-section .filter-wrapper .category").addClass("d-none")
-        $("#newBooks .filter-section .filter-wrapper .category").prev().addClass("d-none")
-        $("#newBooks .filter-section .filter-wrapper .category").next().addClass("d-none")
+        //$("#newBooks .filter-section .filter-wrapper .category").prev().addClass("d-none")
+        //$("#newBooks .filter-section .filter-wrapper .category").next().addClass("d-none")
     }
     if (window.location.href.includes("pslug=")) {
         $("#newBooks .filter-section .filter-wrapper .publisher").addClass("d-none")
-        $("#newBooks .filter-section .filter-wrapper .publisher").prev().addClass("d-none")
-        $("#newBooks .filter-section .filter-wrapper .publisher").next().addClass("d-none")
+        //$("#newBooks .filter-section .filter-wrapper .publisher").prev().addClass("d-none")
+        //$("#newBooks .filter-section .filter-wrapper .publisher").next().addClass("d-none")
     }
 
-        // Filter End
+    // Filter End
 
     // Contact Start
-    $("#Contact .contact-info .right").click(function() {
+    $("#Contact .contact-info .right").click(function () {
         $(".contact-info").css("width", "300px")
         $(".contact-info").css("padding", "40px")
         $(this).css("opacity", "0")
@@ -223,40 +235,40 @@ $(document).ready(function () {
             $("#Contact .contact-info .social").css("opacity", "1")
         }, 500)
     })
-    $("#Contact .contact-info .left").click(function() {
-            $(".contact-info").css("padding", "0px")
-            $(this).css("opacity", "0")
-            $("#Contact .contact-info h2").css("opacity", "0")
-            $("#Contact .contact-info .info").css("opacity", "0")
-            $("#Contact .contact-info .social").css("opacity", "0")
-            setTimeout(function Width() {
-                $(".contact-info").css("width", "40px")
+    $("#Contact .contact-info .left").click(function () {
+        $(".contact-info").css("padding", "0px")
+        $(this).css("opacity", "0")
+        $("#Contact .contact-info h2").css("opacity", "0")
+        $("#Contact .contact-info .info").css("opacity", "0")
+        $("#Contact .contact-info .social").css("opacity", "0")
+        setTimeout(function Width() {
+            $(".contact-info").css("width", "40px")
 
-            }, 100)
-            setTimeout(function Icon() {
-                $("#Contact .contact-info .left").css("display", "none")
-            }, 400)
-            setTimeout(function Icon() {
-                $("#Contact .contact-info .right").css("display", "block")
-            }, 400)
-            setTimeout(function Icon() {
-                $("#Contact .contact-info .right").css("opacity", "1")
-            }, 500)
-            setTimeout(function Info() {
-                $("#Contact .contact-info h2").css("display", "none")
-                $("#Contact .contact-info .info").css("display", "none")
-                $("#Contact .contact-info .social").css("display", "none")
-            }, 400)
+        }, 100)
+        setTimeout(function Icon() {
+            $("#Contact .contact-info .left").css("display", "none")
+        }, 400)
+        setTimeout(function Icon() {
+            $("#Contact .contact-info .right").css("display", "block")
+        }, 400)
+        setTimeout(function Icon() {
+            $("#Contact .contact-info .right").css("opacity", "1")
+        }, 500)
+        setTimeout(function Info() {
+            $("#Contact .contact-info h2").css("display", "none")
+            $("#Contact .contact-info .info").css("display", "none")
+            $("#Contact .contact-info .social").css("display", "none")
+        }, 400)
 
-        })
-        // Contact End
+    })
+    // Contact End
 
     // Register Start
 
-    $("#Register .left-panel #sign-up-btn").click(function() {
+    $("#Register .left-panel #sign-up-btn").click(function () {
         $("#Register").addClass("sign-up-mode")
     })
-    $("#Register .right-panel #sign-in-btn").click(function() {
+    $("#Register .right-panel #sign-in-btn").click(function () {
         $("#Register").removeClass("sign-up-mode")
     })
 
@@ -264,7 +276,7 @@ $(document).ready(function () {
 
     // Profile Start
 
-    $("#ProfilePhoto .photo-options .edit").click(function() {
+    $("#ProfilePhoto .photo-options .edit").click(function () {
         $("#ProfilePhoto .photo-options .photo").css("width", "60px")
         $("#ProfilePhoto .photo-options .name").css("display", "none")
         $("#ProfilePhoto .photo-options .photo").css("height", "60px")
@@ -285,7 +297,7 @@ $(document).ready(function () {
         }, 200);
     })
 
-    $("#ProfilePhoto .photo-options .close").click(function() {
+    $("#ProfilePhoto .photo-options .close").click(function () {
         $("#ProfilePhoto .photo-options .options").css("width", "100px")
         $("#ProfilePhoto .photo-options .name").css("display", "flex")
         $("#ProfilePhoto .photo-options .options").css("height", "100px")
@@ -303,17 +315,17 @@ $(document).ready(function () {
         }, 400);
     })
 
-    $("#ProfileAbout .card-sale").click(function() {
+    $("#ProfileAbout .card-sale").click(function () {
         $("#ProfileAbout .saleFace2").slideToggle()
         $("#ProfileAbout .saleFace2").css("display", "flex")
     })
 
-    $("#ProfileAbout .card-favorite").click(function() {
+    $("#ProfileAbout .card-favorite").click(function () {
         $("#ProfileAbout .favoriteFace2").slideToggle()
         $("#ProfileAbout .favoriteFace2").css("display", "flex")
     })
 
-    $("#ModalSales .modal-body li.saleDate").click(function() {
+    $("#ModalSales .modal-body li.saleDate").click(function () {
         $(this).next().slideToggle()
         $("#ModalSales .modal-body .books").not($(this).next()).slideUp()
         if ($("i", this).attr('class') == 'fas fa-angle-down') {
@@ -331,22 +343,22 @@ $(document).ready(function () {
     // Profile End
 
     //Book Details Start
-    $("#bookDetail .book .book-details .menu div").click(function() {
-            $("#bookDetail .book .book-details .menu div").not(this).removeClass("selected")
-            if ($(this).hasClass("selected") == false) {
-                $(this).addClass("selected")
+    $("#bookDetail .book .book-details .menu div").click(function () {
+        $("#bookDetail .book .book-details .menu div").not(this).removeClass("selected")
+        if ($(this).hasClass("selected") == false) {
+            $(this).addClass("selected")
+        }
+        let contents = document.querySelectorAll("#bookDetail .book .book-details .details div")
+        for (let content of contents) {
+            if ($(this).attr("data-id") === content.getAttribute("data-id")) {
+                content.classList.add("opened")
+            } else {
+                content.classList.remove("opened")
             }
-            let contents = document.querySelectorAll("#bookDetail .book .book-details .details div")
-            for (let content of contents) {
-                if ($(this).attr("data-id") === content.getAttribute("data-id")) {
-                    content.classList.add("opened")
-                } else {
-                    content.classList.remove("opened")
-                }
-            }
+        }
 
-        })
-        //Book Details End
+    })
+    //Book Details End
 
     // Owl Carousel Start
 
@@ -380,7 +392,7 @@ $(document).ready(function () {
 
     // Cart Start
 
-    $("#Cart .table .minus").click(function() {
+    $("#Cart .table .minus").click(function () {
         let count = $(this).next().val()
         if (count > 1) {
             count--
@@ -388,7 +400,7 @@ $(document).ready(function () {
         }
     })
 
-    $("#Cart .table .plus").click(function() {
+    $("#Cart .table .plus").click(function () {
         let count = $(this).prev().val()
         count++
         $(this).prev().val(count)
@@ -408,7 +420,7 @@ $(document).ready(function () {
         $("#Cart form .region").removeClass("d-none")
     }
 
-    $("#Cart form #delivery").change(function() {
+    $("#Cart form #delivery").change(function () {
         if ($(this).val().toString() == "Metro") {
             $("#Cart form .metros").removeClass("d-none")
             $("#Cart form .city").addClass("d-none")
@@ -430,7 +442,7 @@ $(document).ready(function () {
     // Waypoint Start
     $('.Books .bookCard')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInLeft")
             } else {
@@ -442,7 +454,7 @@ $(document).ready(function () {
 
     $('#Sale .left')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInLeft")
             } else {
@@ -454,7 +466,7 @@ $(document).ready(function () {
 
     $('#Sale .right')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInRight")
             } else {
@@ -466,7 +478,7 @@ $(document).ready(function () {
 
     $('#Category .category:eq(0)')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInRight")
             } else {
@@ -479,7 +491,7 @@ $(document).ready(function () {
 
     $('#Category .category:eq(1)')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             setTimeout(() => {
                 if (direction === 'down') {
                     $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInRight")
@@ -492,7 +504,7 @@ $(document).ready(function () {
         })
     $('#Category .category:eq(2)')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             setTimeout(() => {
                 if (direction === 'down') {
                     $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInRight")
@@ -505,7 +517,7 @@ $(document).ready(function () {
         })
     $('#Category .category:eq(3)')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             setTimeout(() => {
                 if (direction === 'down') {
                     $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInRight")
@@ -518,7 +530,7 @@ $(document).ready(function () {
         })
     $('#Category .category:eq(4)')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             setTimeout(() => {
                 if (direction === 'down') {
                     $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInRight")
@@ -531,7 +543,7 @@ $(document).ready(function () {
         })
     $('#Category .category:eq(5)')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             setTimeout(() => {
                 if (direction === 'down') {
                     $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInRight")
@@ -544,7 +556,7 @@ $(document).ready(function () {
         })
     $('#Category .category:eq(6)')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             setTimeout(() => {
                 if (direction === 'down') {
                     $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInRight")
@@ -558,7 +570,7 @@ $(document).ready(function () {
 
     $('#BookOfMonth .book')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
             } else {
@@ -569,7 +581,7 @@ $(document).ready(function () {
         })
     $('#BookOfMonth .description')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
             } else {
@@ -580,7 +592,7 @@ $(document).ready(function () {
         })
     $('#BookOfMonth .saleBook')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
             } else {
@@ -591,7 +603,7 @@ $(document).ready(function () {
         })
     $('#BookOfMonth .books h6')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
             } else {
@@ -602,7 +614,7 @@ $(document).ready(function () {
         })
     $('#BookOfMonth .cover:eq(0)')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             setTimeout(() => {
                 if (direction === 'down') {
                     $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
@@ -615,7 +627,7 @@ $(document).ready(function () {
         })
     $('#BookOfMonth .cover:eq(1)')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             setTimeout(() => {
                 if (direction === 'down') {
                     $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
@@ -628,7 +640,7 @@ $(document).ready(function () {
         })
     $('#BookOfMonth .cover:eq(2)')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             setTimeout(() => {
                 if (direction === 'down') {
                     $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
@@ -643,7 +655,7 @@ $(document).ready(function () {
 
     $('#newBooks .book-section .book')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
             } else {
@@ -655,7 +667,7 @@ $(document).ready(function () {
 
     $('#newBooks .book-section .books-count')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
             } else {
@@ -667,7 +679,7 @@ $(document).ready(function () {
 
     $('#newBooks .filter-section')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInLeft")
             } else {
@@ -679,7 +691,7 @@ $(document).ready(function () {
 
     $('.CategoriesPage .category')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInRight")
             } else {
@@ -691,7 +703,7 @@ $(document).ready(function () {
 
     $('#Publisher .publishers .publishers-letter')
         .css('opacity', 0)
-        .waypoint(function(direction) {
+        .waypoint(function (direction) {
             if (direction === 'down') {
                 $(this.element).animate({ opacity: 1 }).addClass("animate__animated animate__fadeInUp")
             } else {
@@ -700,7 +712,7 @@ $(document).ready(function () {
         }, {
             offset: '85%'
         })
-        // Waypoint End
+    // Waypoint End
 
 
 

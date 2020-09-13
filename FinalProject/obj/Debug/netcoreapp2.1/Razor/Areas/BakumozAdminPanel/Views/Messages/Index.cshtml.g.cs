@@ -81,7 +81,7 @@ using FinalProject.ViewModels;
             WriteLiteral("    <div class=\"mt-2 d-flex justify-content-between\">\r\n        ");
             EndContext();
             BeginContext(181, 183, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d128572e3710484db42ca6bce0320b72", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "08614e7256b84fae9ea39a13ccbd758a", async() => {
                 BeginContext(264, 96, true);
                 WriteLiteral("\r\n            <i class=\"mdi mdi-format-list-bulleted\"></i>\r\n            Bütün mesajlar\r\n        ");
                 EndContext();
@@ -119,7 +119,7 @@ else
             WriteLiteral("    <div class=\"mt-2 d-flex justify-content-between\">\r\n        ");
             EndContext();
             BeginContext(636, 183, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d45b47fa529a45b9bd92ae12fc34cc22", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f03c244120dd4e5782116ce33bc2e1a5", async() => {
                 BeginContext(719, 96, true);
                 WriteLiteral("\r\n            <i class=\"mdi mdi-format-list-bulleted\"></i>\r\n            Bütün mesajlar\r\n        ");
                 EndContext();
@@ -144,7 +144,7 @@ else
             WriteLiteral("\r\n        ");
             EndContext();
             BeginContext(829, 198, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39d77702fc7f42ea8d705fa66a37c373", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dba8b1cc064d486da125fe17ca3c59c2", async() => {
                 BeginContext(921, 102, true);
                 WriteLiteral("\r\n            <i class=\"mdi mdi-playlist-check\"></i>\r\n            Bütün mesajları oxundu say\r\n        ");
                 EndContext();
@@ -220,7 +220,7 @@ else
             WriteLiteral("</td>\r\n                    <td>\r\n                        ");
             EndContext();
             BeginContext(1588, 190, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6bac1cf13cd44692bddec12c7d3eb9bb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fb95eb878e8445eaa9f75c25c9b3ca91", async() => {
                 BeginContext(1685, 89, true);
                 WriteLiteral("\r\n                            <i class=\"mdi mdi-clipboard\"></i>\r\n                        ");
                 EndContext();
@@ -258,7 +258,7 @@ else
             WriteLiteral("\r\n                        ");
             EndContext();
             BeginContext(1804, 208, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1f1bdfcb29d64152b8c300c4e6cf2a0d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d144cb4e09ad45d7942ef15bdf5991eb", async() => {
                 BeginContext(1913, 95, true);
                 WriteLiteral("\r\n                            <i class=\"mdi mdi-clipboard-check\"></i>\r\n                        ");
                 EndContext();

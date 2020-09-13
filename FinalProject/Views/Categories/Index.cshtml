@@ -44,7 +44,7 @@
     <div class="mt-3 container">
         <div class="row justify-content-center">
             <div class="categories">
-                @foreach (Category category in Model.OrderBy(c => c.Id).Where(c => c.Id > 11).Take(3))
+                @foreach (Category category in Model.OrderBy(c => c.Id).Take(3))
                 {
                     <a class="category" href="/NewBooks/?cslug=@category.Slug" style="background:url(../image/@category.ImagePath)"></a>
                 }
@@ -56,7 +56,7 @@
     <div class="mt-3 container">
         <div class="row justify-content-center">
             <div class="categories">
-                @foreach (Category category in Model.OrderBy(c => c.Id).Where(c => c.Id > 11).Skip(3).Take(3))
+                @foreach (Category category in Model.OrderBy(c => c.Id).Skip(3).Take(3))
                 {
                     <a class="category" href="/NewBooks/?cslug=@category.Slug" style="background:url(../image/@category.ImagePath)"></a>
                 }
@@ -68,7 +68,7 @@
     <div class="mt-3 container">
         <div class="row justify-content-center">
             <div class="categories">
-                @foreach (Category category in Model.OrderBy(c => c.Id).Where(c => c.Id > 11).Skip(6).Take(3))
+                @foreach (Category category in Model.OrderBy(c => c.Id).Skip(6).Take(3))
                 {
                     <a class="category" href="/NewBooks/?cslug=@category.Slug" style="background:url(../image/@category.ImagePath)"></a>
                 }
@@ -80,7 +80,7 @@
     <div class="mt-3 container">
         <div class="row justify-content-center">
             <div class="categories">
-                @foreach (Category category in Model.OrderBy(c => c.Id).Where(c => c.Id > 11).Skip(9).Take(3))
+                @foreach (Category category in Model.OrderBy(c => c.Id).Skip(9).Take(3))
                 {
                     <a class="category" href="/NewBooks/?cslug=@category.Slug" style="background:url(../image/@category.ImagePath)"></a>
                 }

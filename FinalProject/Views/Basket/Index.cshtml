@@ -53,11 +53,11 @@ else
 								<td>
 									@if (book.Book.Publisher.Discount <= 0)
 									{
-										<input style="width:60px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency), 2))" class="bookPrice form-control" />
+										<input style="width:70px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency), 2))" class="bookPrice form-control" />
 									}
 									else
 									{
-										<input style="width:60px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency * ((decimal)(100 - book.Book.Publisher.Discount) / 100)), 2))" class="bookPrice form-control" />
+										<input style="width:70px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency * ((decimal)(100 - book.Book.Publisher.Discount) / 100)), 2))" class="bookPrice form-control" />
 									}
 								</td>
 								<td>
@@ -86,6 +86,27 @@ else
 						<option value="20 Yanvar">20 Yanvar</option>
 						<option value="28 May">28 May</option>
 						<option value="Xətai">Xətai</option>
+						<option value="İçərişəhər">İçərişəhər</option>
+						<option value="Sahil">Sahil</option>
+						<option value="Gənclik">Gənclik</option>
+						<option value="Nəriman Nərimanov">Nəriman Nərimanov</option>
+						<option value="Bakmil">Bakmil</option>
+						<option value="Ulduz">Ulduz</option>
+						<option value="Koroğlu">Koroğlu</option>
+						<option value="Qara Qarayev">Qara Qarayev</option>
+						<option value="Neftçilər">Neftçilər</option>
+						<option value="Xalqlar Dostluğu">Xalqlar Dostluğu</option>
+						<option value="Əhmədli">Əhmədli</option>
+						<option value="Həzi Aslanov">Həzi Aslanov</option>
+						<option value="Nizami">Nizami</option>
+						<option value="Elmlər Akademiyası">Elmlər Akademiyası</option>
+						<option value="İnşaatçılar">İnşaatçılar</option>
+						<option value="Memar Əcəmi">Memar Əcəmi</option>
+						<option value="Nəsimi">Nəsimi</option>
+						<option value="Azadlıq prospekti">Azadlıq prospekti</option>
+						<option value="Dərnəgül">Dərnəgül</option>
+						<option value="Cəfər Cabbarlı">Cəfər Cabbarlı</option>
+						<option value="Avtovağzal">Avtovağzal</option>
 					</select>
 				</div>
 				<div class="city mt-3 d-none">

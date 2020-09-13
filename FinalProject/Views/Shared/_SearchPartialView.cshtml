@@ -1,155 +1,162 @@
 ﻿@model HomeVM
 @if (Model.Books.Count() > Model.Authors.Count() && Model.Books.Count() > Model.Publishers.Count())
-{
-	@foreach (Book book in Model.Books.Take(5))
 	{
-		<li class="searchLi">
-			<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
-		</li>
+		@foreach (Book book in Model.Books.Take(5))
+		{
+			<li class="searchLi">
+				<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
+			</li>
+		}
 	}
-}
-else if (Model.Books.Count() > Model.Authors.Count() && Model.Books.Count() < Model.Publishers.Count())
-{
-	@foreach (Publisher publisher in Model.Publishers.Take(5))
+	else if (Model.Books.Count() > Model.Authors.Count() && Model.Books.Count() < Model.Publishers.Count())
 	{
-		<li class="searchLi">
-			<a href="/NewBooks?pslug=@publisher.Slug">@publisher.Name</a>
-		</li>
+		@foreach (Publisher publisher in Model.Publishers.Take(5))
+		{
+			<li class="searchLi">
+				<a href="/NewBooks?pslug=@publisher.Slug">@publisher.Name</a>
+			</li>
+		}
 	}
-}
-else if (Model.Books.Count() < Model.Authors.Count() && Model.Books.Count() > Model.Publishers.Count())
-{
-	@foreach (Author author in Model.Authors.Take(5))
+	else if (Model.Books.Count() < Model.Authors.Count() && Model.Books.Count() > Model.Publishers.Count())
 	{
-		<li class="searchLi">
-			<a href="/NewBooks?aslug=@author.Slug">@author.Fullname</a>
-		</li>
+		@foreach (Author author in Model.Authors.Take(5))
+		{
+			<li class="searchLi">
+				<a href="/NewBooks?aslug=@author.Slug">@author.Fullname</a>
+			</li>
+		}
+
+	}
+	else if (Model.Books.Count() < Model.Authors.Count() && Model.Books.Count() < Model.Publishers.Count())
+	{
+		if (Model.Authors.Count() > Model.Publishers.Count())
+		{
+			@foreach (Author author in Model.Authors.Take(5))
+			{
+				<li class="searchLi">
+					<a href="/NewBooks?aslug=@author.Slug">@author.Fullname</a>
+				</li>
+			}
+		}
+		else
+		{
+			@foreach (Publisher publisher in Model.Publishers.Take(5))
+			{
+				<li class="searchLi">
+					<a href="/NewBooks?pslug=@publisher.Slug">@publisher.Name</a>
+				</li>
+			}
+		}
+	}
+	else if (Model.Authors.Count() > Model.Books.Count() && Model.Authors.Count() > Model.Publishers.Count())
+	{
+		@foreach (Author author in Model.Authors.Take(5))
+		{
+			<li class="searchLi">
+				<a href="/NewBooks?aslug=@author.Slug">@author.Fullname</a>
+			</li>
+		}
+	}
+	else if (Model.Authors.Count() > Model.Books.Count() && Model.Authors.Count() < Model.Publishers.Count())
+	{
+		@foreach (Publisher publisher in Model.Publishers.Take(5))
+		{
+			<li class="searchLi">
+				<a href="/NewBooks?pslug=@publisher.Slug">@publisher.Name</a>
+			</li>
+		}
+	}
+	else if (Model.Authors.Count() < Model.Books.Count() && Model.Authors.Count() > Model.Publishers.Count())
+	{
+		@foreach (Book book in Model.Books.Take(5))
+		{
+			<li class="searchLi">
+				<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
+			</li>
+		}
+	}
+	else if (Model.Authors.Count() < Model.Books.Count() && Model.Authors.Count() < Model.Publishers.Count())
+	{
+		if (Model.Books.Count() > Model.Publishers.Count())
+		{
+			@foreach (Book book in Model.Books.Take(5))
+			{
+				<li class="searchLi">
+					<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
+				</li>
+			}
+		}
+		else
+		{
+			@foreach (Publisher publisher in Model.Publishers.Take(5))
+			{
+				<li class="searchLi">
+					<a href="/NewBooks?pslug=@publisher.Slug">@publisher.Name</a>
+				</li>
+			}
+		}
+	}
+	else if (Model.Publishers.Count() > Model.Books.Count() && Model.Publishers.Count() > Model.Authors.Count())
+	{
+		@foreach (Publisher publisher in Model.Publishers.Take(5))
+		{
+			<li class="searchLi">
+				<a href="/NewBooks?pslug=@publisher.Slug">@publisher.Name</a>
+			</li>
+		}
+	}
+	else if (Model.Publishers.Count() > Model.Books.Count() && Model.Publishers.Count() < Model.Authors.Count())
+	{
+		@foreach (Author author in Model.Authors.Take(5))
+		{
+			<li class="searchLi">
+				<a href="/NewBooks?aslug=@author.Slug">@author.Fullname</a>
+			</li>
+		}
+	}
+	else if (Model.Publishers.Count() < Model.Books.Count() && Model.Publishers.Count() > Model.Authors.Count())
+	{
+		@foreach (Book book in Model.Books.Take(5))
+		{
+			<li class="searchLi">
+				<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
+			</li>
+		}
+	}
+	else if (Model.Publishers.Count() < Model.Books.Count() && Model.Publishers.Count() < Model.Authors.Count())
+	{
+		if (Model.Books.Count() > Model.Authors.Count())
+		{
+			@foreach (Book book in Model.Books.Take(5))
+			{
+				<li class="searchLi">
+					<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
+				</li>
+			}
+		}
+		else
+		{
+			@foreach (Author author in Model.Authors.Take(5))
+			{
+				<li class="searchLi">
+					<a href="/NewBooks?aslug=@author.Slug">@author.Fullname</a>
+				</li>
+			}
+		}
+	}
+	else
+	{
+		@foreach (Book book in Model.Books.Take(5))
+		{
+			<li class="searchLi">
+				<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
+			</li>
+		}
 	}
 
-}
-else if (Model.Books.Count() < Model.Authors.Count() && Model.Books.Count() < Model.Publishers.Count())
+@*@foreach (Book book in Model.Books.Take(5))
 {
-	if (Model.Authors.Count() > Model.Publishers.Count())
-	{
-		@foreach (Author author in Model.Authors.Take(5))
-		{
-			<li class="searchLi">
-				<a href="/NewBooks?aslug=@author.Slug">@author.Fullname</a>
-			</li>
-		}
-	}
-	else
-	{
-		@foreach (Publisher publisher in Model.Publishers.Take(5))
-		{
-			<li class="searchLi">
-				<a href="/NewBooks?pslug=@publisher.Slug">@publisher.Name</a>
-			</li>
-		}
-	}
-}
-else if (Model.Authors.Count() > Model.Books.Count() && Model.Authors.Count() > Model.Publishers.Count())
-{
-	@foreach (Author author in Model.Authors.Take(5))
-	{
-		<li class="searchLi">
-			<a href="/NewBooks?aslug=@author.Slug">@author.Fullname</a>
-		</li>
-	}
-}
-else if (Model.Authors.Count() > Model.Books.Count() && Model.Authors.Count() < Model.Publishers.Count())
-{
-	@foreach (Publisher publisher in Model.Publishers.Take(5))
-	{
-		<li class="searchLi">
-			<a href="/NewBooks?pslug=@publisher.Slug">@publisher.Name</a>
-		</li>
-	}
-}
-else if (Model.Authors.Count() < Model.Books.Count() && Model.Authors.Count() > Model.Publishers.Count())
-{
-	@foreach (Book book in Model.Books.Take(5))
-	{
-		<li class="searchLi">
-			<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
-		</li>
-	}
-}
-else if (Model.Authors.Count() < Model.Books.Count() && Model.Authors.Count() < Model.Publishers.Count())
-{
-	if (Model.Books.Count() > Model.Publishers.Count())
-	{
-		@foreach (Book book in Model.Books.Take(5))
-		{
-			<li class="searchLi">
-				<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
-			</li>
-		}
-	}
-	else
-	{
-		@foreach (Publisher publisher in Model.Publishers.Take(5))
-		{
-			<li class="searchLi">
-				<a href="/NewBooks?pslug=@publisher.Slug">@publisher.Name</a>
-			</li>
-		}
-	}
-}
-else if (Model.Publishers.Count() > Model.Books.Count() && Model.Publishers.Count() > Model.Authors.Count())
-{
-	@foreach (Publisher publisher in Model.Publishers.Take(5))
-	{
-		<li class="searchLi">
-			<a href="/NewBooks?pslug=@publisher.Slug">@publisher.Name</a>
-		</li>
-	}
-}
-else if (Model.Publishers.Count() > Model.Books.Count() && Model.Publishers.Count() < Model.Authors.Count())
-{
-	@foreach (Author author in Model.Authors.Take(5))
-	{
-		<li class="searchLi">
-			<a href="/NewBooks?aslug=@author.Slug">@author.Fullname</a>
-		</li>
-	}
-}
-else if (Model.Publishers.Count() < Model.Books.Count() && Model.Publishers.Count() > Model.Authors.Count())
-{
-	@foreach (Book book in Model.Books.Take(5))
-	{
-		<li class="searchLi">
-			<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
-		</li>
-	}
-}
-else if (Model.Publishers.Count() < Model.Books.Count() && Model.Publishers.Count() < Model.Authors.Count())
-{
-	if (Model.Books.Count() > Model.Authors.Count())
-	{
-		@foreach (Book book in Model.Books.Take(5))
-		{
-			<li class="searchLi">
-				<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
-			</li>
-		}
-	}
-	else
-	{
-		@foreach (Author author in Model.Authors.Take(5))
-		{
-			<li class="searchLi">
-				<a href="/NewBooks?aslug=@author.Slug">@author.Fullname</a>
-			</li>
-		}
-	}
-}
-else
-{
-	@foreach (Book book in Model.Books.Take(5))
-	{
-		<li class="searchLi">
-			<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
-		</li>
-	}
-}
+	<li class="searchLi">
+		<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
+	</li>
+}*@
