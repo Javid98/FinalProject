@@ -56,7 +56,11 @@
 			<div class="menu-button-container">
 				<button class="mdc-button mdc-menu-button">
 					<i class="mdi mdi-bell"></i>
-					@if (Model.Sales.Count() < 9)
+					@if (Model.Sales.Count()==0)
+					{
+
+					}
+					else if (Model.Sales.Count() < 9)
 					{
 						<span class="count-indicator">
 							<span class="count">@Model.Sales.Count()</span>
@@ -92,7 +96,11 @@
 			<div class="menu-button-container">
 				<button class="mdc-button mdc-menu-button">
 					<i class="mdi mdi-email"></i>
-					@if (Model.Contacts.Count() < 9)
+					@if (Model.Contacts.Count()==0)
+					{
+
+					}
+					else if (Model.Contacts.Count() < 9)
 					{
 						<span class="count-indicator">
 							<span class="count">@Model.Contacts.Count()</span>

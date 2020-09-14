@@ -156,25 +156,6 @@ $(document).ready(function () {
     // Search End
 
 
-    // Slider start
-    var swiper = new Swiper('.swiper-container', {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 300,
-            modifier: 1,
-            slideShadows: true,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-        },
-    });
-    // Slider end
-
     // Filter Start
     let Z = 0;
     $("#newBooks .filter-section .filter-slide").click(function () {

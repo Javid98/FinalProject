@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<Publisher>
 @{
-	ViewData["Title"] = "Yayın evləri";
+	ViewData["Title"] = "Nəşriyyat evləri";
 }
 
 <div class="container">
 
-	<h2 style="text-align:center;font-weight:bold" class="mt-3">Yayın evləri</h2>
+	<h2 style="text-align:center;font-weight:bold" class="mt-3">Nəşriyyat evləri</h2>
 	<a class="mt-2 mb-2 btn btn-success" asp-controller="Publishers" asp-action="Create">
-		<i class="mr-1 mdi mdi-new-box"></i>Yeni yayın evi əlavə et
+		<i class="mr-1 mdi mdi-new-box"></i>Yeni nəşriyyat evi əlavə et
 	</a>
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th scope="col">Yazıçı</th>
+				<th scope="col">Nəşriyyat evi</th>
 				<th scope="col">Kitab sayı</th>
 				<th scope="col">Detallar</th>
 			</tr>

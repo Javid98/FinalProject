@@ -51,7 +51,7 @@
 						<li><a asp-controller="Home" asp-action="Index">Əsas səhifə</a></li>
 						<li><a asp-controller="NewBooks" asp-action="Index">Yenilər</a></li>
 						<li><a asp-controller="BestSellers" asp-action="Index">Çox satılanlar</a></li>
-						<li><a asp-controller="Categories" asp-action="Index">Kategoriyalar</a></li>
+						<li><a asp-controller="Categories" asp-action="Index">Kateqoriyalar</a></li>
 					</ul>
 
 				</div>
@@ -84,7 +84,7 @@
 					@if (User.Identity.IsAuthenticated)
 					{
 						<ul class="navRightUl">
-							<li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
+							<li><a asp-controller="Publishers" asp-action="Index">Nəşriyyat evləri</a></li>
 							@if (User.IsInRole(FinalProject.Helpers.Helper.Roles.Admin.ToString()))
 							{
 								<li><a asp-area="BakumozAdminPanel" asp-controller="Sales" asp-action="Index">Admin Panel</a></li>
@@ -96,7 +96,7 @@
 					else
 					{
 						<ul class="navRightUl">
-							<li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
+							<li><a asp-controller="Publishers" asp-action="Index">Nəşriyyat evləri</a></li>
 							<li><a asp-controller="Account" asp-action="Login">Qeydiyyat/Giriş</a></li>
 							<li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
 						</ul>
@@ -177,7 +177,7 @@ else
 						<li><a asp-controller="Home" asp-action="Index">Əsas səhifə</a></li>
 						<li><a asp-controller="NewBooks" asp-action="Index">Yenilər</a></li>
 						<li><a asp-controller="BestSellers" asp-action="Index">Çox satılanlar</a></li>
-						<li><a asp-controller="Categories" asp-action="Index">Kategoriyalar</a></li>
+						<li><a asp-controller="Categories" asp-action="Index">Kateqoriyalar</a></li>
 					</ul>
 
 				</div>
@@ -209,7 +209,7 @@ else
 					@if (User.Identity.IsAuthenticated)
 					{
 						<ul class="navRightUl">
-							<li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
+							<li><a asp-controller="Publishers" asp-action="Index">Nəşriyyat evləri</a></li>
 							@if (User.IsInRole(FinalProject.Helpers.Helper.Roles.Admin.ToString()))
 							{
 								<li><a asp-area="BakumozAdminPanel" asp-controller="Sales" asp-action="Index">Admin Panel</a></li>
@@ -221,7 +221,7 @@ else
 					else
 					{
 						<ul class="navRightUl">
-							<li><a asp-controller="Publishers" asp-action="Index">Yayın evləri</a></li>
+							<li><a asp-controller="Publishers" asp-action="Index">Nəşriyyat evləri</a></li>
 							<li><a asp-controller="Account" asp-action="Login">Qeydiyyat/Giriş</a></li>
 							<li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
 						</ul>

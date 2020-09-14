@@ -137,7 +137,19 @@
               $(".search-box").css("background", "#236bdf")
           }, 700)
       })
-      $("#Search #form .search-txt.books").keyup(function () {
+
+      function delay(callback, ms) {
+          var timer = 0;
+          return function () {
+              var context = this, args = arguments;
+              clearTimeout(timer);
+              timer = setTimeout(function () {
+                  callback.apply(context, args);
+              }, ms || 0);
+          };
+      }
+
+      $('#Search #form .search-txt.books').keyup(delay(function (e) {
           let search = $(this).val();
           $("#Search #form ul li").not($("#Search #form ul li").first()).remove();
           if (search.length > 0 && search.trim() != "") {
@@ -149,9 +161,8 @@
                   }
               })
           }
-
-      })
-      $("#Search #form .search-txt.publishers").keyup(function () {
+      }, 600));
+      $('#Search #form .search-txt.publishers').keyup(delay(function (e) {
           let search = $(this).val();
           $("#Search #form ul li").not($("#Search #form ul li").first()).remove();
           if (search.length > 0 && search.trim() != "") {
@@ -163,8 +174,7 @@
                   }
               })
           }
-
-      })
+      }, 600));
     // Search End
   });
 })(jQuery);

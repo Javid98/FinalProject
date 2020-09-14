@@ -1,10 +1,10 @@
 ﻿@model Publisher
 @{
-    ViewData["Title"] = "Yayın evini sil";
+    ViewData["Title"] = "Nəşriyyat evini sil";
 }
 
 <div class="container">
-    <h2 style="text-align:center;font-weight:bold" class="mt-3">Yayın evini sil</h2>
+    <h2 style="text-align:center;font-weight:bold" class="mt-3">Nəşriyyat evini sil</h2>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -33,21 +33,21 @@
 		$("#deletePublisher").submit(function (e) {
 			e.preventDefault();
 			swal({
-				title: "Yayın evi",
-				text: "Bu yayın evini silmək istədiyinizdən əminsiniz?",
+				title: "Nəşriyyat evi",
+				text: "Bu nəşriyyat evini silmək istədiyinizdən əminsiniz?",
 				icon: "warning",
 				buttons: ["Bağla", "Sil"],
 				dangerMode: true,
 			})
 				.then((willDelete) => {
 					if (willDelete) {
-						swal("Yayın evi silindi", {
+						swal("Nəşriyyat evi silindi", {
 							icon: "success",
 						}).then(function () {
 							setTimeout(() => document.querySelector("#deletePublisher").submit(), 100);
 						})
 					} else {
-						swal("Yayın evi silinmədi");
+						swal("Nəşriyyat evi silinmədi");
 						button: "Bağla"
 					}
 				});

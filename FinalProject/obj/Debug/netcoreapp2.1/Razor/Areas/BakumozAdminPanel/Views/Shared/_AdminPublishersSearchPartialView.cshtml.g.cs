@@ -70,7 +70,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\t<li class=\"searchLi\">\r\n\t\t");
             EndContext();
             BeginContext(111, 126, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0da3a3a4f3b24cd0aeed205c65f76731", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9fec91c280f74a07a64e4fae2aa7db8c", async() => {
                 BeginContext(219, 14, false);
 #line 6 "C:\Users\nijat\source\repos\FinalProject\FinalProject\Areas\BakumozAdminPanel\Views\Shared\_AdminPublishersSearchPartialView.cshtml"
                                                                                                               Write(publisher.Name);

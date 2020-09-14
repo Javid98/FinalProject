@@ -15,7 +15,7 @@
     <tbody>
         <tr>
             <td class="imageAll">
-                @if (Model.ImagePath != "")
+                @if (Model.ImagePath != null)
                 {
                     <img style="width:70px;height:100px" src="~/image/@Model.ImagePath" />
                 }

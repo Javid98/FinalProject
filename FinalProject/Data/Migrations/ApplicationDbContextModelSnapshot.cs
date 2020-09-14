@@ -244,8 +244,7 @@ namespace FinalProject.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ImagePath")
-                        .IsRequired();
+                    b.Property<string>("ImagePath");
 
                     b.Property<string>("Name")
                         .IsRequired();

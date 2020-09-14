@@ -18,7 +18,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (Book book in Model)
+		@foreach (Book book in Model.OrderByDescending(b=>b.Id))
 		{
 			<tr>
 				<td>

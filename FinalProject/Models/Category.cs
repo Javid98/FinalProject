@@ -12,7 +12,6 @@ namespace FinalProject.Models
 	{
 		public int Id { get; set; }
 		public string Slug { get; set; }
-		[Required]
 		public string ImagePath { get; set; }
 		[Required(ErrorMessage = "Zəhmət olmasa kateqoriyanın adını daxil edin")]
 		public string Name { get; set; }

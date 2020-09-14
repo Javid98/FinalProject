@@ -13,7 +13,7 @@
 <section id="Slider">
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
-			@foreach (Book book in Model.Books.OrderByDescending(b => b.Id).Where(b => b.Price * ViewBag.Currency >= 2 && b.Price * ViewBag.Currency <= 4).Take(12))
+			@foreach (Book book in Model.Books.OrderByDescending(b => b.Id).Where(b => b.Price * ViewBag.Currency <= 10).Take(12))
 			{
 				<div class="swiper-slide">
 					<div class="sliderCard">
@@ -286,12 +286,19 @@
 			<div class="books col-lg-4 col-sm-12 col-12">
 				<h6>Bənzər kitablar</h6>
 				<div class="similar">
-					@foreach (BookCategory bookCategory in Model.rBookCategories.Take(3))
+					@if (Model.rBookCategories.Count() < 1)
 					{
-						<div class="cover col-3 col-lg-4 col-sm-3">
-							<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@bookCategory.Book.Slug"><img src="~/image/@bookCategory.Book.ImagePath" alt=""></a>
-							<span>@bookCategory.Book.Name</span>
-						</div>
+						<p>Bənzər kitab yoxdur</p>
+					}
+					else
+					{
+						@foreach (BookCategory bookCategory in Model.rBookCategories.Take(3))
+						{
+							<div class="cover col-3 col-lg-4 col-sm-3">
+								<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@bookCategory.Book.Slug"><img src="~/image/@bookCategory.Book.ImagePath" alt=""></a>
+								<span>@bookCategory.Book.Name</span>
+							</div>
+						}
 					}
 				</div>
 			</div>
@@ -303,3 +310,8 @@
 		</div>
 	</div>
 </section>
+
+@section Scripts{
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script src="~/js/swiper.js"></script>
+}

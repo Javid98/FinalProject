@@ -51,14 +51,14 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <ul class="navUl">
-                            <li><a asp-controller="Categories" asp-action="Index">Kategoriyalar</a></li>
+                            <li><a asp-controller="Categories" asp-action="Index">Kateqoriyalar</a></li>
                             <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
                         </ul>
                     }
                     else
                     {
                         <ul class="navUl">
-                            <li><a asp-controller="Categories" asp-action="Index">Kategoriyalar</a></li>
+                            <li><a asp-controller="Categories" asp-action="Index">Kateqoriyalar</a></li>
                             <li><a asp-controller="Account" asp-action="Login">Qeydiyyat/Giriş</a></li>
                             <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
                         </ul>

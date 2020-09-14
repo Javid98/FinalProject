@@ -30,42 +30,58 @@ else
 					<tbody>
 						@foreach (BookInCart book in Model.BookInCarts)
 						{
-							<tr>
-								<td class="bookImg">
-									<div class="image">
-										<img src="~/image/@book.Book.ImagePath" alt="">
-									</div>
-								</td>
+						<tr>
+							<td class="bookImg">
+								<div class="image">
+									<img src="~/image/@book.Book.ImagePath" alt="">
+								</div>
+							</td>
+							@if (book.Book.Name.Length < 25)
+							{
 								<td>@book.Book.Name</td>
-								<td>
-									<div class="count">
-										<input type="number" min="1" name="Count" required value="@book.Count" class="bookCount form-control" />
-									</div>
-								</td>
-								<td class="author">
-									@foreach (BookAuthor author in Model.BookAuthors.Where(ba => ba.BookId == book.BookId))
+							}
+							else
+							{
+								<td>@book.Book.Name.Substring(0,25)...</td>
+							}
+							<td>
+								<div class="count">
+									<input type="number" min="1" name="Count" required value="@book.Count" class="bookCount form-control" />
+								</div>
+							</td>
+							<td class="author">
+								@foreach (BookAuthor author in Model.BookAuthors.Where(ba => ba.BookId == book.BookId))
+								{
+									@if (author.Author.Fullname.Length < 25)
 									{
 										<p style="margin:0">
 											@author.Author.Fullname
 										</p>
 									}
-								</td>
-								<td>
-									@if (book.Book.Publisher.Discount <= 0)
-									{
-										<input style="width:70px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency), 2))" class="bookPrice form-control" />
-									}
 									else
 									{
-										<input style="width:70px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency * ((decimal)(100 - book.Book.Publisher.Discount) / 100)), 2))" class="bookPrice form-control" />
+										<p style="margin:0">
+											@author.Author.Fullname.Substring(0,25)...
+										</p>
 									}
-								</td>
-								<td>
-									<a asp-controller="Basket" asp-action="DeleteBook" asp-route-id="@book.BookId" class="delete">
-										<i class="fas fa-minus-circle"></i>
-									</a>
-								</td>
-							</tr>
+								}
+							</td>
+							<td>
+								@if (book.Book.Publisher.Discount <= 0)
+								{
+									<input style="width:70px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency), 2))" class="bookPrice form-control" />
+								}
+								else
+								{
+									<input style="width:70px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency * ((decimal)(100 - book.Book.Publisher.Discount) / 100)), 2))" class="bookPrice form-control" />
+								}
+							</td>
+							<td>
+								<a asp-controller="Basket" asp-action="DeleteBook" asp-route-id="@book.BookId" class="delete">
+									<i class="fas fa-minus-circle"></i>
+								</a>
+							</td>
+						</tr>
 						}
 					</tbody>
 				</table>

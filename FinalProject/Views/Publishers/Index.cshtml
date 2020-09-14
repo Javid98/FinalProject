@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<Publisher>
 @{
-	ViewData["Title"] = "Yayın evləri";
+	ViewData["Title"] = "Nəşriyyat evləri";
 
-	char[] alphabet = { 'a', 'b', 'c', 'ç', 'd', 'e', 'ə', 'f', 'g', 'h', 'x', 'i', 'j', 'k', 'q', 'l', 'm', 'n', 'o', 'ö', 'p', 'r', 's', 'ş', 't', 'u', 'ü', 'v', 'y', 'z' };
+	char[] alphabet = { 'a', 'b', 'c', 'ç', 'd', 'e', 'ə', 'f', 'g', 'h', 'x', 'İ', 'j', 'k', 'q', 'l', 'm', 'n', 'o', 'ö', 'p', 'r', 's', 'ş', 't', 'u', 'ü', 'v', 'y', 'z' };
 }
 
 
@@ -10,19 +10,19 @@
 
 <section id="Publisher">
 	<div class="cover-photo parallax-window" data-parallax="scroll" data-image-src="image/parallaxBooks.jpg">
-		<h1>Yayın evləri</h1>
+		<h1>Nəşriyyat evləri</h1>
 	</div>
 	<div class="publishers">
 		<div class="container">
 			@foreach (char letter in alphabet)
 			{
-				if (Model.Where(p => p.Name.ToLower().StartsWith(letter)).Count() != 0)
+				if (Model.Where(p => p.Name.ToLower().StartsWith(letter.ToString().ToLower())).Count() != 0)
 				{
 					<div class="publishers-letter">
 						<div class="letter">@letter.ToString().ToUpper()</div>
 						<div class="publisher-wrapper">
 
-							@foreach (Publisher publisher in Model.Where(p => p.Name.ToLower().StartsWith(letter)))
+							@foreach (Publisher publisher in Model.Where(p => p.Name.ToLower().StartsWith(letter.ToString().ToLower())))
 							{
 								<div class="col-lg-3 col-md-4 col-md-4 col-sm-6 col-10 publisher">
 									<a href="/NewBooks/?pslug=@publisher.Slug">@publisher.Name</a>
