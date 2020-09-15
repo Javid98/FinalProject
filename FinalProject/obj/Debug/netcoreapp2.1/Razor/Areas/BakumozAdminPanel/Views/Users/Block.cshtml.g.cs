@@ -84,7 +84,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\t\t\t\t");
             EndContext();
             BeginContext(274, 74, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8b13637987e94b9fbef13b436c6a87b6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "45595a84a2ba42d795d73b15a035d25f", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -225,7 +225,7 @@ AddHtmlAttributeValue("", 328, Model.ImagePath, 328, 16, false);
             WriteLiteral("\t\t\t<div>\r\n\t\t\t\t<div style=\"font-weight:bold;color:red\">\r\n\t\t\t\t\t<i class=\"mdi mdi-block-helper\"></i>\r\n\t\t\t\t\t<span class=\"text-danger\">Bloklanıb</span>\r\n\t\t\t\t</div>\r\n\t\t\t\t");
             EndContext();
             BeginContext(1224, 160, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f010600e2704a309624e36b270d1107", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6d58f7031acc4cc8a637db0d5ae4d80e", async() => {
                 BeginContext(1354, 26, true);
                 WriteLiteral("\r\n\t\t\t\t\tBlokdan çıxar\r\n\t\t\t\t");
                 EndContext();
@@ -273,7 +273,7 @@ AddHtmlAttributeValue("", 328, Model.ImagePath, 328, 16, false);
             WriteLiteral("\t\t\t<div>\r\n\t\t\t\t");
             EndContext();
             BeginContext(1429, 243, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5ce68f4968284b4d8003d34412bd5673", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7a71474abad5459b963e86a9a84acfa0", async() => {
                 BeginContext(1533, 132, true);
                 WriteLiteral("\r\n\t\t\t\t\t<button type=\"submit\" class=\"btn btn-danger\">\r\n\t\t\t\t\t\t<i class=\"mdi mdi-block-helper\"></i>\r\n\t\t\t\t\t\tBlokla\r\n\t\t\t\t\t</button>\r\n\t\t\t\t");
                 EndContext();

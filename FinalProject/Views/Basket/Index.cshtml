@@ -36,23 +36,23 @@ else
 									<img src="~/image/@book.Book.ImagePath" alt="">
 								</div>
 							</td>
-							@if (book.Book.Name.Length < 25)
+							@if (book.Book.Name.Length < 20)
 							{
 								<td>@book.Book.Name</td>
 							}
 							else
 							{
-								<td>@book.Book.Name.Substring(0,25)...</td>
+								<td>@book.Book.Name.Substring(0,20)...</td>
 							}
 							<td>
 								<div class="count">
-									<input type="number" min="1" name="Count" required value="@book.Count" class="bookCount form-control" />
+									<input style="width:50px !important;padding:5px !important" type="number" min="1" name="Count" required value="@book.Count" class="bookCount form-control" />
 								</div>
 							</td>
 							<td class="author">
 								@foreach (BookAuthor author in Model.BookAuthors.Where(ba => ba.BookId == book.BookId))
 								{
-									@if (author.Author.Fullname.Length < 25)
+									@if (author.Author.Fullname.Length < 20)
 									{
 										<p style="margin:0">
 											@author.Author.Fullname
@@ -61,7 +61,7 @@ else
 									else
 									{
 										<p style="margin:0">
-											@author.Author.Fullname.Substring(0,25)...
+											@author.Author.Fullname.Substring(0,20)...
 										</p>
 									}
 								}
@@ -69,11 +69,11 @@ else
 							<td>
 								@if (book.Book.Publisher.Discount <= 0)
 								{
-									<input style="width:70px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency), 2))" class="bookPrice form-control" />
+									<input style="width:60px; padding:5px !important" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency), 2))" class="bookPrice form-control" />
 								}
 								else
 								{
-									<input style="width:70px" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency * ((decimal)(100 - book.Book.Publisher.Discount) / 100)), 2))" class="bookPrice form-control" />
+									<input style="width:60px;padding:5px !important" disabled type="text" name="Price" value="@(decimal.Round((book.Book.Price * ViewBag.Currency * ((decimal)(100 - book.Book.Publisher.Discount) / 100)), 2))" class="bookPrice form-control" />
 								}
 							</td>
 							<td>

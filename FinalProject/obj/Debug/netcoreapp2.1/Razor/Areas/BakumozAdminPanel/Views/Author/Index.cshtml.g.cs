@@ -71,7 +71,7 @@ using FinalProject.ViewModels;
             WriteLiteral("<div class=\"container\">\r\n\r\n\t<h2 style=\"text-align:center;font-weight:bold\" class=\"mt-3\">Yazıçılar</h2>\r\n\t");
             EndContext();
             BeginContext(175, 148, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "18d4f832b65c4fac85a5dd7c816ce3a6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3c2bc87afc6491ca4e2a543f3ba1cd1", async() => {
                 BeginContext(256, 63, true);
                 WriteLiteral("\r\n\t\t<i class=\"mr-1 mdi mdi-new-box\"></i>Yeni yazıçı daxil et\r\n\t");
                 EndContext();
@@ -115,7 +115,7 @@ using FinalProject.ViewModels;
             WriteLiteral("</td>\r\n\t\t\t\t\t<td>\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(587, 143, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b9a3fc8c16194c4681177fa812de243d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b504efe208e40ed9b4ea85ac8574fc8", async() => {
                 BeginContext(679, 47, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<i class=\"mdi mdi-pencil\"></i>\r\n\t\t\t\t\t\t");
                 EndContext();
@@ -153,7 +153,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(738, 160, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "64e3e0f8ef45496eaaec5dcb0cc72fcc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "025f33e49f10408897996905777c5709", async() => {
                 BeginContext(839, 55, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<i class=\"mdi mdi-delete-forever\"></i>\r\n\t\t\t\t\t\t");
                 EndContext();

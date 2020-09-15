@@ -70,7 +70,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\r\n<div class=\"container\">\r\n\t<div class=\"mt-3 d-flex justify-content-between align-items-center\">\r\n\t\t");
             EndContext();
             BeginContext(156, 80, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "65138c5b7fa04dc28efaba14129debf9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "83191bf6baa84a79ac148b22704d809b", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -97,7 +97,7 @@ AddHtmlAttributeValue("", 216, Model.ImagePath, 216, 16, false);
             WriteLiteral("\r\n\t\t");
             EndContext();
             BeginContext(240, 147, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b7c5c2e86fe4e84bb09807bf11718b4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f0f2dbcfe5a4f4ea5ae20c2ea9aaed3", async() => {
                 BeginContext(276, 104, true);
                 WriteLiteral("\r\n\t\t\t<button type=\"submit\" class=\"btn btn-danger\"><i class=\"mdi mdi-delete-forever\"></i>Sil</button>\r\n\t\t");
                 EndContext();

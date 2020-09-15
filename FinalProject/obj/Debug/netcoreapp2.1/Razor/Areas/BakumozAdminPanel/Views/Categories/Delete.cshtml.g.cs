@@ -91,7 +91,7 @@ using FinalProject.ViewModels;
             WriteLiteral("                    ");
             EndContext();
             BeginContext(548, 70, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7619962b5fad4be48bf43882c0c06324", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "635cc339a1df4343a49a18f6fc1fe97a", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -135,7 +135,7 @@ AddHtmlAttributeValue("", 598, Model.ImagePath, 598, 16, false);
             WriteLiteral("</td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(726, 182, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c1f9c7a86c474ee6a2313120708f1959", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a587a72241154ae69b0f22443baf29fc", async() => {
                 BeginContext(766, 135, true);
                 WriteLiteral("\r\n                    <button type=\"submit\" class=\"btn btn-danger\"><i class=\"mdi mdi-delete-forever\"></i>Sil</button>\r\n                ");
                 EndContext();

@@ -328,11 +328,12 @@ namespace FinalProject.Controllers
 				});
 			}else if (actionName.Contains("BestSellers"))
 			{
-				return Redirect(@"https://localhost:44343/BestSellers" + queryString);
+				return Redirect("https://" + Request.Host.Value + "/BestSellers/Index" + queryString);
+
 			}
 			else
 			{
-				return Redirect(@"https://localhost:44343/NewBooks/Index" + queryString);
+				return Redirect("https://" + Request.Host.Value + "/NewBooks/Index" + queryString);
 
 			}
 		}
@@ -363,11 +364,11 @@ namespace FinalProject.Controllers
 				});
 			}else if (actionName.Contains("BestSellers"))
 			{
-				return Redirect(@"https://localhost:44343/BestSellers" + queryString);
+				return Redirect("https://" + Request.Host.Value + "/BestSellers/Index" + queryString);
 			}
 			else
 			{
-				return Redirect(@"https://localhost:44343/NewBooks/Index" + queryString);
+				return Redirect("https://" + Request.Host.Value + "/NewBooks/Index" + queryString);
 
 			}
 		}
