@@ -58,7 +58,7 @@ namespace FinalProject.Controllers
 				{
 					ViewBag.Pslug = publisher.Name;
 				}
-				List<Book> pBooks = _db.Books.Include(b=>b.Publisher).Include(b=>b.BookAuthors).ThenInclude(ba => ba.Author).Where(b => b.PublisherId == publisher.Id).ToList();
+				List<Book> pBooks = _db.Books.Include(b => b.Publisher).Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).Where(b => b.PublisherId == publisher.Id).ToList();
 				foreach (Book book in pBooks)
 				{
 					if (books.FirstOrDefault(b => b.Id == book.Id) == null)
@@ -73,7 +73,7 @@ namespace FinalProject.Controllers
 			else if (pslug == null && aslug != null && cslug == null)
 			{
 				List<BookAuthor> aBooks = _db.BookAuthors.Include(ba => ba.Author).Where(ba => ba.Author.Slug == aslug).ToList();
-				if (authors.FirstOrDefault(a => a.Slug == aslug)!=null)
+				if (authors.FirstOrDefault(a => a.Slug == aslug) != null)
 				{
 					ViewBag.Aslug = authors.FirstOrDefault(a => a.Slug == aslug).Fullname;
 				}
@@ -92,7 +92,7 @@ namespace FinalProject.Controllers
 			else if (pslug == null && aslug == null && cslug != null)
 			{
 				bookCategories = _db.BookCategories.Include(bc => bc.Category).Include(bc => bc.Book).Where(bc => bc.Category.Slug == cslug).ToList();
-				if (categories.FirstOrDefault(c => c.Slug == cslug) !=null)
+				if (categories.FirstOrDefault(c => c.Slug == cslug) != null)
 				{
 					ViewBag.Cslug = categories.FirstOrDefault(c => c.Slug == cslug).Name;
 				}
@@ -244,7 +244,7 @@ namespace FinalProject.Controllers
 		public async Task<IActionResult> Detail(string slug)
 		{
 			if (slug == null) return NotFound();
-			Book book = _db.Books.Include(b=>b.Publisher).Include(b=>b.BookFeature).Include(b=>b.BookCategories).ThenInclude(b=>b.Category).Include(b=>b.BookAuthors).ThenInclude(ba=>ba.Author).FirstOrDefault(b => b.Slug == slug);
+			Book book = _db.Books.Include(b => b.Publisher).Include(b => b.BookFeature).Include(b => b.BookCategories).ThenInclude(b => b.Category).Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).FirstOrDefault(b => b.Slug == slug);
 			if (book == null) return NotFound();
 			//List<BookCategory> bookCategories = _db.BookCategories.Include(ba => ba.Category).Where(bc => bc.BookId == book.Id).ToList();
 			List<BookAuthor> rBookAuthors = _db.BookAuthors.Include(ba => ba.Author).ToList();
@@ -326,15 +326,14 @@ namespace FinalProject.Controllers
 					controller = "kitab",
 					action = book.Slug
 				});
-			}else if (actionName.Contains("BestSellers"))
+			}
+			else if (actionName.Contains("BestSellers"))
 			{
-				return Redirect("https://" + Request.Host.Value + "/BestSellers/Index" + queryString);
-
+				return Redirect("/BestSellers/Index" + queryString);
 			}
 			else
 			{
-				return Redirect("https://" + Request.Host.Value + "/NewBooks/Index" + queryString);
-
+				return Redirect("/NewBooks/Index" + queryString);
 			}
 		}
 
@@ -362,14 +361,14 @@ namespace FinalProject.Controllers
 					controller = "kitab",
 					action = book.Slug
 				});
-			}else if (actionName.Contains("BestSellers"))
+			}
+			else if (actionName.Contains("BestSellers"))
 			{
-				return Redirect("https://" + Request.Host.Value + "/BestSellers/Index" + queryString);
+				return Redirect("/BestSellers/Index" + queryString);
 			}
 			else
 			{
-				return Redirect("https://" + Request.Host.Value + "/NewBooks/Index" + queryString);
-
+				return Redirect("/NewBooks/Index" + queryString);
 			}
 		}
 	}

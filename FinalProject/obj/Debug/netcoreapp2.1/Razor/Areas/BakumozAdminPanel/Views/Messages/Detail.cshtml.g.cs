@@ -119,7 +119,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t\t<div>\r\n\t\t\t");
             EndContext();
             BeginContext(475, 166, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8077c0b3f8f461e970795c42a0e5134", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e2b1ad2a04a4955a0ad7047cab8b8c7", async() => {
                 BeginContext(572, 65, true);
                 WriteLiteral("\r\n\t\t\t\t<i class=\"mdi mdi-delete-forever\"></i>\r\n\t\t\t\tMesajı sil\r\n\t\t\t");
                 EndContext();
@@ -167,7 +167,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\r\n\t\t</p>\r\n\t</div>\r\n\t");
             EndContext();
             BeginContext(771, 96, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "82927ef88b864e75a7cd7008aa872aa5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a58c77609d3943c68b04188ca54c500c", async() => {
                 BeginContext(850, 13, true);
                 WriteLiteral("\r\n\t\tGeriyə\r\n\t");
                 EndContext();
