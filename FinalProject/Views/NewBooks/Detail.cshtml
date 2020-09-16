@@ -3,6 +3,9 @@
 	ViewData["Title"] = "Kitab haqqında";
 }
 
+@section Css{
+	<link rel="stylesheet" href="~/css/owlcarousel.min.css">
+}
 
 <!-- Book Detail Start -->
 
@@ -23,14 +26,14 @@
 					<a>@Model.Book.Name</a>
 				</h3>
 				<div class="author-publisher">
-					@foreach (BookAuthor bookAuthor in Model.BookAuthors)
+					@foreach (BookAuthor bookAuthor in Model.Book.BookAuthors)
 					{
 						<p>
 							<a href="/NewBooks?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a>
 						</p>
 					}
 					<span>
-						<a href="/NewBooks?pslug=@Model.Publisher.Slug">@Model.Publisher.Name</a>
+						<a href="/NewBooks?pslug=@Model.Book.Publisher.Slug">@Model.Book.Publisher.Name</a>
 					</span>
 				</div>
 				@if (Model.Book.Publisher.Discount <= 0)
@@ -104,17 +107,26 @@
 									<div class="properties">
 										<h6>Kitabın özəllikləri</h6>
 										<ul>
-											<li>Nəşriyyat tarixi : @Model.BookFeature.PublishingDate.ToString("dd/MM/yyyy")</li>
-											<li>Nəşriyyat yeri : @Model.BookFeature.PublishingPlace</li>
-											<li>Nəşriyyat dili : @Model.BookFeature.PublishingLanguage</li>
-											<li>Original dili : @Model.BookFeature.OriginalLanguage</li>
+											<li>Nəşriyyat tarixi : @Model.Book.BookFeature.PublishingDate.Year</li>
+											@if (Model.Book.BookFeature.PublishingPlace != null)
+											{
+												<li>Nəşriyyat yeri : @Model.Book.BookFeature.PublishingPlace</li>
+											}
+											@if (Model.Book.BookFeature.PublishingLanguage != null)
+											{
+												<li>Nəşriyyat dili : @Model.Book.BookFeature.PublishingLanguage</li>
+											}
+											@if (Model.Book.BookFeature.OriginalLanguage != null)
+											{
+												<li>Original dili : @Model.Book.BookFeature.OriginalLanguage</li>
+											}
 										</ul>
 									</div>
 								</div>
 								<div class="col-sm-4 col-4">
 									<div class="categories">
 										<h6>Kitabın kateqoriyaları</h6>
-										@foreach (BookCategory bookCategory in Model.BookCategories)
+										@foreach (BookCategory bookCategory in Model.Book.BookCategories)
 										{
 											<span>@bookCategory.Category.Name</span><br />
 										}
@@ -123,7 +135,7 @@
 								<div class="col-sm-4 col-4">
 									<div class="support">
 										<p>Tərcüməçi</p>
-										<span>@Model.BookFeature.Translator</span>
+										<span>@Model.Book.BookFeature.Translator</span>
 									</div>
 								</div>
 							</div>
@@ -138,7 +150,7 @@
 <!-- Book Detail End -->
 <!-- Owl Carousel Start -->
 
-@if (Model.rBookCategories.Count != 0)
+@if (Model.rBookCategories.Count() != 0)
 {
 	<section id="OwlCarousel">
 		<div class="container">
@@ -151,10 +163,24 @@
 					<div class="item">
 						<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@rBookCategory.Book.Slug"><img src="~/image/@rBookCategory.Book.ImagePath" alt=""></a>
 						<div class="name">
-							<h6>@rBookCategory.Book.Name</h6>
+							@if (rBookCategory.Book.Name.Length < 15)
+							{
+								<h6>@rBookCategory.Book.Name</h6>
+							}
+							else
+							{
+								<h6>@rBookCategory.Book.Name.Substring(0, 15)...</h6>
+							}
 							@foreach (BookAuthor bookAuthor in Model.rBookAuthors.Where(rb => rb.BookId == rBookCategory.Book.Id))
 							{
-								<p>@bookAuthor.Author.Fullname</p>
+								@if (bookAuthor.Author.Fullname.Length < 15)
+								{
+									<p>@bookAuthor.Author.Fullname</p>
+								}
+								else
+								{
+									<p>@bookAuthor.Author.Fullname.Substring(0, 15)...</p>
+								}
 							}
 						</div>
 					</div>

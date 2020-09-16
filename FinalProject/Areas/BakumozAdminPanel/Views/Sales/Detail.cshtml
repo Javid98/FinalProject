@@ -14,10 +14,11 @@
 		{
 			<img style="width:100px;height:120px" src="~/image/usersphotos/@Model.AppUser.UserDetail.ImagePath" />
 		}
-		<a>
-			<p>
-				<strong>Adı: </strong> @Model.AppUser.FullName
-			</p>
+		<strong>Adı: </strong>
+		<a style="text-decoration:none" asp-area="" asp-controller="Profile" asp-action="Index" asp-route-username="@User.Identity.Name">
+			<span>
+				@Model.AppUser.FullName
+			</span>
 		</a>
 		<p>
 			<strong>Mobil nömrəsi:</strong> @Model.PhoneNumber

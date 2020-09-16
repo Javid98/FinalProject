@@ -174,19 +174,19 @@ $(document).ready(function () {
     })
 
     if (window.location.href.includes("aslug=")) {
-        $("#newBooks .filter-section .filter-wrapper .author").addClass("d-none")
-        //$("#newBooks .filter-section .filter-wrapper .author").prev().addClass("d-none")
-        //$("#newBooks .filter-section .filter-wrapper .author").next().addClass("d-none")
+        $("#newBooks .filter-section .filter-wrapper .author").prev().remove()
+        $("#newBooks .filter-section .filter-wrapper .author").next().remove()
+        $("#newBooks .filter-section .filter-wrapper .author").remove()
     }
     if (window.location.href.includes("cslug=")) {
-        $("#newBooks .filter-section .filter-wrapper .category").addClass("d-none")
-        //$("#newBooks .filter-section .filter-wrapper .category").prev().addClass("d-none")
-        //$("#newBooks .filter-section .filter-wrapper .category").next().addClass("d-none")
+        $("#newBooks .filter-section .filter-wrapper .category").prev().remove()
+        $("#newBooks .filter-section .filter-wrapper .category").next().remove()
+        $("#newBooks .filter-section .filter-wrapper .category").remove()
     }
     if (window.location.href.includes("pslug=")) {
-        $("#newBooks .filter-section .filter-wrapper .publisher").addClass("d-none")
-        //$("#newBooks .filter-section .filter-wrapper .publisher").prev().addClass("d-none")
-        //$("#newBooks .filter-section .filter-wrapper .publisher").next().addClass("d-none")
+        $("#newBooks .filter-section .filter-wrapper .publisher").prev().remove()
+        $("#newBooks .filter-section .filter-wrapper .publisher").next().remove()
+        $("#newBooks .filter-section .filter-wrapper .publisher").remove()
     }
 
     // Filter End

@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
@@ -23,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="bundleconfig.json" />
     <None Include="wwwroot\admin\css\maps\demo\style.css.map" />
     <None Include="wwwroot\admin\css\maps\demo_1\style.css.map" />
     <None Include="wwwroot\admin\fonts\roboto\Roboto-Bold.svg" />
@@ -568,9 +573,6 @@
     <None Include="wwwroot\admin\vendors\material-design-icons\iconfont\MaterialIcons-Regular.woff2" />
     <None Include="wwwroot\admin\vendors\material-design-icons\iconfont\README.md" />
     <None Include="wwwroot\admin\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
-    <None Include="wwwroot\css\style.css.map" />
-    <None Include="wwwroot\css\style.scss" />
-    <None Include="wwwroot\css\variables\_variables.scss" />
     <None Include="wwwroot\webfonts\fa-brands-400.svg" />
     <None Include="wwwroot\webfonts\fa-brands-400.woff2" />
     <None Include="wwwroot\webfonts\fa-regular-400.svg" />

@@ -541,7 +541,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 		}
 		public IActionResult Search(string search)
 		{
-			List<Book> books = _db.Books.Where(b => b.Name.Contains(search)).ToList();
+			List<Book> books = _db.Books.Where(b => b.Name.ToLower().Contains(search.ToLower())).ToList();
 
 			return PartialView("_AdminSearchPartialView", books);
 		}

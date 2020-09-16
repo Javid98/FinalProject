@@ -1,0 +1,9 @@
+[
+  {
+    "outputFileName": "wwwroot/css/owlcarousel.min.css",
+    "inputFiles": [
+      "wwwroot/css/owl.carousel.min.css",
+      "wwwroot/css/owl.theme.default.min.css"
+    ]
+  }
+]

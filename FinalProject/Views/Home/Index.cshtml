@@ -37,7 +37,7 @@
 							{
 								<h6>@book.Name.Substring(0, 20)...</h6>
 							}
-							@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == book.Id))
+							@foreach (BookAuthor bookAuthor in Model.Book.BookAuthors)
 							{
 								@if (bookAuthor.Author.Fullname.Length < 20)
 								{
@@ -105,7 +105,7 @@
 										@book.Name.Substring(0, 15)...
 									</h2>
 								}
-								@if (@book.Description.Length < 200)
+								@if (@book.Description.Length < 185)
 								{
 									<p>
 										@book.Description
@@ -115,7 +115,7 @@
 								else
 								{
 									<p>
-										@book.Description.Substring(0, 200)...
+										@book.Description.Substring(0, 185)...
 										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">Ardını oxu</a>
 									</p>
 								}
@@ -198,7 +198,7 @@
 										@book.Name.Substring(0, 15)...
 									</h2>
 								}
-								@if (@book.Description.Length < 200)
+								@if (@book.Description.Length < 185)
 								{
 									<p>
 										@book.Description
@@ -208,7 +208,7 @@
 								else
 								{
 									<p>
-										@book.Description.Substring(0, 200)...
+										@book.Description.Substring(0, 185)...
 										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">Ardını oxu</a>
 									</p>
 								}

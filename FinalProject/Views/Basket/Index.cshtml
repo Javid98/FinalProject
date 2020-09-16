@@ -15,6 +15,9 @@ else
 {
 	<section id="Cart">
 		<div class="container">
+			<form id="deleteBooks" asp-controller="Basket" asp-action="DeleteBooks">
+				<button type="submit" class="mt-2 btn btn-danger">Səbətdəki kitabları sil</button>
+			</form>
 			<form id="Sale" method="post">
 				<table class="table table-striped">
 					<thead>
@@ -50,7 +53,7 @@ else
 								</div>
 							</td>
 							<td class="author">
-								@foreach (BookAuthor author in Model.BookAuthors.Where(ba => ba.BookId == book.BookId))
+								@foreach (BookAuthor author in book.Book.BookAuthors)
 								{
 									@if (author.Author.Fullname.Length < 20)
 									{
@@ -231,6 +234,28 @@ else
 						}
 					});
 			}
+		});
+		$("#deleteBooks").submit(function (e) {
+			e.preventDefault();
+			swal({
+				title: "Səbət",
+				text: "Səbətdəki bütün kitabları silmək istədiyinizdən əminsiniz?",
+				icon: "warning",
+				buttons: ["Bağla", "Sil"],
+				dangerMode: true,
+			})
+				.then((willDelete) => {
+					if (willDelete) {
+						swal("Kitablar silindi", {
+							icon: "success",
+						}).then(function () {
+							setTimeout(() => document.querySelector("#deleteBooks").submit(), 100);
+						})
+					} else {
+						swal("Kitablar silinmədi");
+						button: "Bağla"
+					}
+				});
 		});
 	</script>
 }

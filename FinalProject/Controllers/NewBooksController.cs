@@ -47,18 +47,18 @@ namespace FinalProject.Controllers
 			ViewBag.Cslug = "";
 			List<Book> allBooks = new List<Book>();
 
-			List<BookAuthor> bookAuthors = _db.BookAuthors.ToList();
+			//List<BookAuthor> bookAuthors = _db.BookAuthors.ToList();
 			List<Author> authors = _db.Authors.OrderBy(n => n.Fullname).ToList();
 			List<Publisher> publishers = _db.Publishers.OrderByDescending(n => n.BookCount).ToList();
 			List<Category> categories = _db.Categories.OrderBy(n => n.Name).ToList();
 			if (pslug != null && aslug == null && cslug == null)
 			{
-				Publisher publisher = _db.Publishers.FirstOrDefault(p => p.Slug == pslug);
+				Publisher publisher = publishers.FirstOrDefault(p => p.Slug == pslug);
 				if (publisher != null)
 				{
 					ViewBag.Pslug = publisher.Name;
 				}
-				List<Book> pBooks = _db.Books.Include(b=>b.Publisher).Where(b => b.PublisherId == publisher.Id).ToList();
+				List<Book> pBooks = _db.Books.Include(b=>b.Publisher).Include(b=>b.BookAuthors).ThenInclude(ba => ba.Author).Where(b => b.PublisherId == publisher.Id).ToList();
 				foreach (Book book in pBooks)
 				{
 					if (books.FirstOrDefault(b => b.Id == book.Id) == null)
@@ -73,13 +73,13 @@ namespace FinalProject.Controllers
 			else if (pslug == null && aslug != null && cslug == null)
 			{
 				List<BookAuthor> aBooks = _db.BookAuthors.Include(ba => ba.Author).Where(ba => ba.Author.Slug == aslug).ToList();
-				if (_db.Authors.FirstOrDefault(a => a.Slug == aslug)!=null)
+				if (authors.FirstOrDefault(a => a.Slug == aslug)!=null)
 				{
-					ViewBag.Aslug = _db.Authors.FirstOrDefault(a => a.Slug == aslug).Fullname;
+					ViewBag.Aslug = authors.FirstOrDefault(a => a.Slug == aslug).Fullname;
 				}
 				foreach (BookAuthor ba in aBooks)
 				{
-					Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == ba.BookId);
+					Book newBook = _db.Books.Include(b => b.Publisher).Include(b => b.BookAuthors).ThenInclude(b => b.Author).FirstOrDefault(b => b.Id == ba.BookId);
 					if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 					{
 						books.Add(newBook);
@@ -92,13 +92,13 @@ namespace FinalProject.Controllers
 			else if (pslug == null && aslug == null && cslug != null)
 			{
 				bookCategories = _db.BookCategories.Include(bc => bc.Category).Include(bc => bc.Book).Where(bc => bc.Category.Slug == cslug).ToList();
-				if (_db.Categories.FirstOrDefault(c => c.Slug == cslug) !=null)
+				if (categories.FirstOrDefault(c => c.Slug == cslug) !=null)
 				{
-					ViewBag.Cslug = _db.Categories.FirstOrDefault(c => c.Slug == cslug).Name;
+					ViewBag.Cslug = categories.FirstOrDefault(c => c.Slug == cslug).Name;
 				}
 				foreach (BookCategory bc in bookCategories)
 				{
-					Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == bc.BookId);
+					Book newBook = _db.Books.Include(b => b.Publisher).Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).FirstOrDefault(b => b.Id == bc.BookId);
 					if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 					{
 						books.Add(newBook);
@@ -110,17 +110,17 @@ namespace FinalProject.Controllers
 			}
 			else if (pslug != null && aslug != null && cslug == null)
 			{
-				Publisher publisher = _db.Publishers.FirstOrDefault(p => p.Slug == pslug);
+				Publisher publisher = publishers.FirstOrDefault(p => p.Slug == pslug);
 				List<BookAuthor> aBooks = _db.BookAuthors.Include(ba => ba.Author).Include(ba => ba.Book).Where(ba => ba.Author.Slug == aslug).ToList();
-				if (_db.Authors.FirstOrDefault(a => a.Slug == aslug) != null && publisher != null)
+				if (authors.FirstOrDefault(a => a.Slug == aslug) != null && publisher != null)
 				{
-					ViewBag.Aslug = _db.Authors.FirstOrDefault(a => a.Slug == aslug).Fullname;
+					ViewBag.Aslug = authors.FirstOrDefault(a => a.Slug == aslug).Fullname;
 					ViewBag.Pslug = publisher.Name;
 				}
 				List<BookAuthor> paBooks = aBooks.Where(ba => ba.Book.PublisherId == publisher.Id).ToList();
 				foreach (BookAuthor ba in paBooks)
 				{
-					Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == ba.BookId);
+					Book newBook = _db.Books.Include(b => b.Publisher).Include(b => b.BookAuthors).ThenInclude(b => b.Author).FirstOrDefault(b => b.Id == ba.BookId);
 					if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 					{
 						books.Add(newBook);
@@ -132,17 +132,17 @@ namespace FinalProject.Controllers
 			}
 			else if (pslug != null && aslug == null && cslug != null)
 			{
-				Publisher publisher = _db.Publishers.FirstOrDefault(p => p.Slug == pslug);
+				Publisher publisher = publishers.FirstOrDefault(p => p.Slug == pslug);
 				bookCategories = _db.BookCategories.Include(bc => bc.Category).Include(bc => bc.Book).Where(bc => bc.Category.Slug == cslug).ToList();
 				List<BookCategory> pcBooks = bookCategories.Where(bc => bc.Book.PublisherId == publisher.Id).ToList();
-				if (_db.Categories.FirstOrDefault(c => c.Slug == cslug) != null && publisher != null)
+				if (categories.FirstOrDefault(c => c.Slug == cslug) != null && publisher != null)
 				{
 					ViewBag.Pslug = publisher.Name;
-					ViewBag.Cslug = _db.Categories.FirstOrDefault(c => c.Slug == cslug).Name;
+					ViewBag.Cslug = categories.FirstOrDefault(c => c.Slug == cslug).Name;
 				}
 				foreach (BookCategory bc in pcBooks)
 				{
-					Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == bc.BookId);
+					Book newBook = _db.Books.Include(b => b.Publisher).Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).FirstOrDefault(b => b.Id == bc.BookId);
 					if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 					{
 						books.Add(newBook);
@@ -157,10 +157,10 @@ namespace FinalProject.Controllers
 				bookCategories = _db.BookCategories.Include(bc => bc.Category).Include(bc => bc.Book).Where(bc => bc.Category.Slug == cslug).ToList();
 				List<BookAuthor> aBooks = _db.BookAuthors.Include(ba => ba.Author).Where(ba => ba.Author.Slug == aslug).ToList();
 				List<BookCategory> acBooks = new List<BookCategory>();
-				if (_db.Authors.FirstOrDefault(a => a.Slug == aslug) != null && _db.Categories.FirstOrDefault(c => c.Slug == cslug) != null)
+				if (authors.FirstOrDefault(a => a.Slug == aslug) != null && categories.FirstOrDefault(c => c.Slug == cslug) != null)
 				{
-					ViewBag.Aslug = _db.Authors.FirstOrDefault(a => a.Slug == aslug).Fullname;
-					ViewBag.Cslug = _db.Categories.FirstOrDefault(c => c.Slug == cslug).Name;
+					ViewBag.Aslug = authors.FirstOrDefault(a => a.Slug == aslug).Fullname;
+					ViewBag.Cslug = categories.FirstOrDefault(c => c.Slug == cslug).Name;
 				}
 				foreach (BookAuthor abook in aBooks)
 				{
@@ -172,7 +172,7 @@ namespace FinalProject.Controllers
 
 					if (acBook != null)
 					{
-						Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == acBook.BookId);
+						Book newBook = _db.Books.Include(b => b.Publisher).Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).FirstOrDefault(b => b.Id == acBook.BookId);
 						if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 						{
 							books.Add(newBook);
@@ -186,15 +186,15 @@ namespace FinalProject.Controllers
 			}
 			else if (pslug != null && aslug != null && cslug != null)
 			{
-				Publisher publisher = _db.Publishers.FirstOrDefault(p => p.Slug == pslug);
+				Publisher publisher = publishers.FirstOrDefault(p => p.Slug == pslug);
 				bookCategories = _db.BookCategories.Include(bc => bc.Category).Include(bc => bc.Book).Where(bc => bc.Category.Slug == cslug).ToList();
 				List<BookAuthor> aBooks = _db.BookAuthors.Include(ba => ba.Author).Where(ba => ba.Author.Slug == aslug).ToList();
 				List<BookCategory> acBooks = new List<BookCategory>();
-				if (_db.Authors.FirstOrDefault(a => a.Slug == aslug) != null && publisher != null && _db.Categories.FirstOrDefault(c => c.Slug == cslug) != null)
+				if (authors.FirstOrDefault(a => a.Slug == aslug) != null && publisher != null && categories.FirstOrDefault(c => c.Slug == cslug) != null)
 				{
-					ViewBag.Aslug = _db.Authors.FirstOrDefault(a => a.Slug == aslug).Fullname;
+					ViewBag.Aslug = authors.FirstOrDefault(a => a.Slug == aslug).Fullname;
 					ViewBag.Pslug = publisher.Name;
-					ViewBag.Cslug = _db.Categories.FirstOrDefault(c => c.Slug == cslug).Name;
+					ViewBag.Cslug = categories.FirstOrDefault(c => c.Slug == cslug).Name;
 				}
 				foreach (BookAuthor abook in aBooks)
 				{
@@ -209,7 +209,7 @@ namespace FinalProject.Controllers
 
 					if (acBook != null)
 					{
-						Book newBook = _db.Books.Include(b => b.Publisher).FirstOrDefault(b => b.Id == acBook.BookId);
+						Book newBook = _db.Books.Include(b => b.Publisher).Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).FirstOrDefault(b => b.Id == acBook.BookId);
 						if (books.FirstOrDefault(b => b.Id == newBook.Id) == null)
 						{
 							books.Add(newBook);
@@ -223,14 +223,14 @@ namespace FinalProject.Controllers
 			}
 			else
 			{
-				allBooks = _db.Books.Include(b => b.Publisher).ToList();
-				books = _db.Books.Include(b => b.Publisher).Skip((page - 1) * 10).Take(10).ToList();
+				allBooks = _db.Books.Include(b => b.Publisher).Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).ToList();
+				books = allBooks.Skip((page - 1) * 10).Take(10).ToList();
 			}
 			NewBooksVM model = new NewBooksVM
 			{
 				Books = books,
 				AllBooks = allBooks,
-				BookAuthors = bookAuthors,
+				//BookAuthors = bookAuthors,
 				Authors = authors,
 				Publishers = publishers,
 				Categories = categories,
@@ -244,15 +244,15 @@ namespace FinalProject.Controllers
 		public async Task<IActionResult> Detail(string slug)
 		{
 			if (slug == null) return NotFound();
-			Book book = _db.Books.Include(b=>b.Publisher).FirstOrDefault(b => b.Slug == slug);
+			Book book = _db.Books.Include(b=>b.Publisher).Include(b=>b.BookFeature).Include(b=>b.BookCategories).ThenInclude(b=>b.Category).Include(b=>b.BookAuthors).ThenInclude(ba=>ba.Author).FirstOrDefault(b => b.Slug == slug);
 			if (book == null) return NotFound();
-			List<BookCategory> bookCategories = _db.BookCategories.Include(ba => ba.Category).Where(bc => bc.BookId == book.Id).ToList();
+			//List<BookCategory> bookCategories = _db.BookCategories.Include(ba => ba.Category).Where(bc => bc.BookId == book.Id).ToList();
 			List<BookAuthor> rBookAuthors = _db.BookAuthors.Include(ba => ba.Author).ToList();
-			List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Author).Where(ba => ba.BookId == book.Id).ToList();
-			Publisher publisher = _db.Publishers.FirstOrDefault(p => p.Id == book.PublisherId);
-			BookFeature bookFeature = _db.BookFeatures.FirstOrDefault(bf => bf.BookId == book.Id);
+			//List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Author).Where(ba => ba.BookId == book.Id).ToList();
+			//Publisher publisher = _db.Publishers.FirstOrDefault(p => p.Id == book.PublisherId);
+			//BookFeature bookFeature = _db.BookFeatures.FirstOrDefault(bf => bf.BookId == book.Id);
 			ViewBag.Currency = _db.Bios.FirstOrDefault().Currency;
-			
+
 			AppUser user = new AppUser();
 			if (User.Identity.IsAuthenticated)
 			{
@@ -268,7 +268,7 @@ namespace FinalProject.Controllers
 
 			List<BookCategory> rBookCategories = new List<BookCategory>();
 
-			foreach (BookCategory bookCategory in bookCategories)
+			foreach (BookCategory bookCategory in book.BookCategories)
 			{
 				List<BookCategory> NewrBookCategories = _db.BookCategories.Include(bc => bc.Category).Include(bc => bc.Book).OrderByDescending(nrbc => nrbc.Id).Where(bc => bc.CategoryId == bookCategory.CategoryId).ToList();
 				foreach (BookCategory newR in NewrBookCategories)
@@ -283,10 +283,10 @@ namespace FinalProject.Controllers
 			NewBooksVM model = new NewBooksVM
 			{
 				Book = book,
-				BookCategories = bookCategories,
-				BookAuthors = bookAuthors,
-				Publisher = publisher,
-				BookFeature = bookFeature,
+				//BookCategories = bookCategories,
+				//BookAuthors = bookAuthors,
+				//Publisher = publisher,
+				//BookFeature = bookFeature,
 				rBookCategories = rBookCategories,
 				rBookAuthors = rBookAuthors,
 				BookInCarts = bookInCarts,

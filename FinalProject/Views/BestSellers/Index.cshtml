@@ -9,8 +9,7 @@
 		<div class="row justify-content-center">
 			<div class="content animate__animated animate__fadeInLeft col-lg-7 col-xs-12 col-12">
 				<div class="title">
-					<h3>Endless Possibilities in a Single Theme!</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos esse, ex, natus nesciunt reiciendis fugit numquam velit quod </p>
+					<h3 class="mb-5">Bakumoz - Türkiyədən kitab sifarişi</h3>
 				</div>
 				<div class="options">
 					<div class="option">
@@ -97,14 +96,14 @@
 										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@book.Slug">@book.Name</a>
 									</h4>
 									<div class="author-publisher">
-										@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == book.Id))
+										@foreach (BookAuthor bookAuthor in book.BookAuthors)
 										{
 											<p>
 												<a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a>
 											</p>
 										}
 										<span>
-											<a href="/NewBooks/?pslug=@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Slug">@Model.Publishers.FirstOrDefault(p => p.Id == book.PublisherId).Name</a>
+											<a href="/NewBooks/?pslug=@book.Publisher.Slug">@book.Publisher.Name</a>
 										</span>
 									</div>
 									@if (book.Publisher.Discount <= 0)

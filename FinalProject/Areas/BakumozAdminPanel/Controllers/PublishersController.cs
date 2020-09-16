@@ -103,7 +103,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
         
             public IActionResult Search(string search)
 		{
-			List<Publisher> publishers = _db.Publishers.Where(b => b.Name.Contains(search)).ToList();
+			List<Publisher> publishers = _db.Publishers.Where(b => b.Name.ToLower().Contains(search.ToLower())).ToList();
 
 			return PartialView("_AdminPublishersSearchPartialView", publishers);
 		}

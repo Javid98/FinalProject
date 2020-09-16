@@ -275,6 +275,12 @@ header .menu #sandwich {
 }
 
 @media screen and (max-width: 992px) {
+  #Sale .left {
+    height: 150px !important;
+  }
+  #Sale .right {
+    height: 150px !important;
+  }
   #newBooks .filter-section .filter-slide {
     margin: 10px 0;
     height: 40px;
@@ -3687,6 +3693,7 @@ header .menu #sandwich {
           align-items: center;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+  text-align: center;
 }
 
 .Books .cardSection .bookCard .box .contentBox div {

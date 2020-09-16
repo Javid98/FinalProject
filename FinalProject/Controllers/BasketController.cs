@@ -28,8 +28,8 @@ namespace FinalProject.Controllers
 			if (username.ToLower().Trim() != User.Identity.Name.ToLower().Trim()) return NotFound();
 			AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 			if (user == null) return NotFound();
-			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).ThenInclude(b=>b.Publisher).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
-			List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Book).Include(ba => ba.Author).ToList();
+			List<BookInCart> bookInCarts = _db.BookInCarts.Include(bc => bc.Book).ThenInclude(b=>b.BookAuthors).ThenInclude(ba=>ba.Author).Include(bc=>bc.Book).ThenInclude(b=>b.Publisher).Include(bc => bc.AppUser).OrderBy(bc => bc.Id).Where(bc => bc.AppUserId == user.Id).ToList();
+			//List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Book).Include(ba => ba.Author).ToList();
 			ViewBag.Currency = _db.Bios.FirstOrDefault().Currency;
 			ViewBag.Total = 0;
 			foreach (BookInCart bookInCart in bookInCarts)
@@ -38,8 +38,8 @@ namespace FinalProject.Controllers
 			}
 			BasketVM model = new BasketVM
 			{
-				BookInCarts = bookInCarts,
-				BookAuthors = bookAuthors
+				BookInCarts = bookInCarts
+				//BookAuthors = bookAuthors
 			};
 			return View(model);
 		}
@@ -148,6 +148,22 @@ namespace FinalProject.Controllers
 			if (id == null) return NotFound();
 			BookInCart bookInCart = _db.BookInCarts.FirstOrDefault(bc => bc.BookId == id);
 			_db.BookInCarts.Remove(bookInCart);
+			await _db.SaveChangesAsync();
+			return RedirectToRoute(new
+			{
+				controller = "Basket",
+				action = "Index",
+				username = User.Identity.Name
+			});
+		}
+		[Authorize]
+		public async Task<IActionResult> DeleteBooks()
+		{
+			List<BookInCart> booksInCart = _db.BookInCarts.Include(bc=>bc.AppUser).Where(bc => bc.AppUser.UserName.ToLower() == User.Identity.Name.ToLower()).ToList();
+			foreach (BookInCart book in booksInCart)
+			{
+				_db.BookInCarts.Remove(book);
+			}
 			await _db.SaveChangesAsync();
 			return RedirectToRoute(new
 			{

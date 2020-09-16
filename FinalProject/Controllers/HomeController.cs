@@ -21,16 +21,13 @@ namespace FinalProject.Controllers
 		public IActionResult Index()
 		{
 			List<Book> books = _db.Books.Include(b => b.Publisher).ToList();
-			Book book = _db.Books.Include(b=>b.Publisher).OrderByDescending(b => b.SaleCount).FirstOrDefault();
-			List<BookCategory> bookCategories = _db.BookCategories.Include(ba => ba.Category).Where(bc => bc.BookId == book.Id).ToList();
-			List<BookAuthor> bookAuthors = _db.BookAuthors.ToList();
-			List<Author> authors = _db.Authors.OrderBy(n => n.Fullname).ToList();
+			Book book = _db.Books.Include(b=>b.Publisher).Include(b=>b.BookAuthors).ThenInclude(ba=>ba.Author).Include(b=>b.BookCategories).ThenInclude(b=>b.Category).OrderByDescending(b => b.SaleCount).FirstOrDefault();
 			List<Category> categories = _db.Categories.OrderBy(n => n.Name).ToList();
 			ViewBag.Currency = _db.Bios.FirstOrDefault().Currency;
 
 			List<BookCategory> rBookCategories = new List<BookCategory>();
 
-			foreach (BookCategory bookCategory in bookCategories)
+			foreach (BookCategory bookCategory in book.BookCategories)
 			{
 				List<BookCategory> NewrBookCategories = _db.BookCategories.Include(bc => bc.Category).Include(bc => bc.Book).OrderByDescending(nrbc => nrbc.Id).Where(bc => bc.CategoryId == bookCategory.CategoryId).ToList();
 				foreach (BookCategory newR in NewrBookCategories)
@@ -45,8 +42,6 @@ namespace FinalProject.Controllers
 			{
 				Books = books,
 				Book = book,
-				BookAuthors = bookAuthors,
-				Authors = authors,
 				Categories = categories,
 				rBookCategories = rBookCategories
 			};
@@ -54,9 +49,9 @@ namespace FinalProject.Controllers
 		}
 		public IActionResult Search(string search)
 		{
-			List<Book> books = _db.Books.Where(b => b.Name.Contains(search)).ToList();
-			List<Author> authors = _db.Authors.Where(b => b.Fullname.Contains(search)).ToList();
-			List<Publisher> publishers = _db.Publishers.Where(b => b.Name.Contains(search)).ToList();
+			List<Book> books = _db.Books.Where(b => b.Name.ToLower().Contains(search.ToLower())).ToList();
+			List<Author> authors = _db.Authors.Where(b => b.Fullname.ToLower().Contains(search.ToLower())).ToList();
+			List<Publisher> publishers = _db.Publishers.Where(b => b.Name.ToLower().Contains(search.ToLower())).ToList();
 			HomeVM model = new HomeVM
 			{
 				Books = books,
