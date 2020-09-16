@@ -42,6 +42,42 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
             if (bio == null) return NotFound();
             if (editedBio.Photo == null)
             {
+                if (editedBio.FirstPublisherPhoto != null)
+                {
+                    if (!editedBio.FirstPublisherPhoto.IsImage())
+                    {
+                        ModelState.AddModelError("", "Zəhmət olmasa şəkil seçin");
+                        return View(bio);
+                    }
+                    if (!editedBio.FirstPublisherPhoto.MaxLength(1024))
+                    {
+                        ModelState.AddModelError("", "Şəkilin ölçüsü maksimum 1 MB ola bilər");
+                        return View(bio);
+                    }
+                    if (bio.FirstPublisherImage != null)
+                    {
+                        Helpers.Helper.DeleteImg(_env.WebRootPath, "image", bio.FirstPublisherImage);
+                    }
+                    bio.FirstPublisherImage = await editedBio.FirstPublisherPhoto.SaveImg(_env.WebRootPath, "image");
+                }
+                if (editedBio.SecondPublisherPhoto != null)
+                {
+                    if (!editedBio.SecondPublisherPhoto.IsImage())
+                    {
+                        ModelState.AddModelError("", "Zəhmət olmasa şəkil seçin");
+                        return View(bio);
+                    }
+                    if (!editedBio.SecondPublisherPhoto.MaxLength(1024))
+                    {
+                        ModelState.AddModelError("", "Şəkilin ölçüsü maksimum 1 MB ola bilər");
+                        return View(bio);
+                    }
+                    if (bio.SecondPublisherImage != null)
+                    {
+                        Helpers.Helper.DeleteImg(_env.WebRootPath, "image", bio.SecondPublisherImage);
+                    }
+                    bio.SecondPublisherImage = await editedBio.SecondPublisherPhoto.SaveImg(_env.WebRootPath, "image");
+                }
                 bio.PhoneNumber = editedBio.PhoneNumber;
                 bio.FacebookLink = editedBio.FacebookLink;
                 bio.InstagramLink = editedBio.InstagramLink;
@@ -67,7 +103,46 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
                     ModelState.AddModelError("", "Şəkilin ölçüsü maksimum 1 MB ola bilər");
                     return View(bio);
                 }
-                Helpers.Helper.DeleteImg(_env.WebRootPath, "image", bio.Logo);
+                if (editedBio.FirstPublisherPhoto != null)
+                {
+                    if (!editedBio.FirstPublisherPhoto.IsImage())
+                    {
+                        ModelState.AddModelError("", "Zəhmət olmasa şəkil seçin");
+                        return View(bio);
+                    }
+                    if (!editedBio.FirstPublisherPhoto.MaxLength(1024))
+                    {
+                        ModelState.AddModelError("", "Şəkilin ölçüsü maksimum 1 MB ola bilər");
+                        return View(bio);
+                    }
+                    if (bio.FirstPublisherImage != null)
+                    {
+                        Helpers.Helper.DeleteImg(_env.WebRootPath, "image", bio.FirstPublisherImage);
+                    }
+                    bio.FirstPublisherImage = await editedBio.FirstPublisherPhoto.SaveImg(_env.WebRootPath, "image");
+                }
+                if (editedBio.SecondPublisherPhoto != null)
+                {
+                    if (!editedBio.SecondPublisherPhoto.IsImage())
+                    {
+                        ModelState.AddModelError("", "Zəhmət olmasa şəkil seçin");
+                        return View(bio);
+                    }
+                    if (!editedBio.SecondPublisherPhoto.MaxLength(1024))
+                    {
+                        ModelState.AddModelError("", "Şəkilin ölçüsü maksimum 1 MB ola bilər");
+                        return View(bio);
+                    }
+                    if (bio.SecondPublisherImage != null)
+                    {
+                        Helpers.Helper.DeleteImg(_env.WebRootPath, "image", bio.SecondPublisherImage);
+                    }
+                    bio.SecondPublisherImage = await editedBio.SecondPublisherPhoto.SaveImg(_env.WebRootPath, "image");
+                }
+                if (bio.Logo != null)
+                {
+                    Helpers.Helper.DeleteImg(_env.WebRootPath, "image", bio.Logo);
+                }
                 bio.Logo = await editedBio.Photo.SaveImg(_env.WebRootPath,"image");
                 bio.PhoneNumber = editedBio.PhoneNumber;
                 bio.FacebookLink = editedBio.FacebookLink;
@@ -82,6 +157,23 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+        }
+        public async Task<IActionResult> DeleteFirstPublisherImage()
+        {
+            Bio bio = _db.Bios.FirstOrDefault();
+            Helpers.Helper.DeleteImg(_env.WebRootPath, "image", bio.FirstPublisherImage);
+            bio.FirstPublisherImage = null;
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> DeleteSecondPublisherImage()
+        {
+            Bio bio = _db.Bios.FirstOrDefault();
+            Helpers.Helper.DeleteImg(_env.WebRootPath, "image", bio.SecondPublisherImage);
+            bio.SecondPublisherImage = null;
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Index");
+
         }
     }
 }

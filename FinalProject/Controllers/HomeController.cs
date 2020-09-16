@@ -23,7 +23,8 @@ namespace FinalProject.Controllers
 			List<Book> books = _db.Books.Include(b => b.Publisher).ToList();
 			Book book = _db.Books.Include(b=>b.Publisher).Include(b=>b.BookAuthors).ThenInclude(ba=>ba.Author).Include(b=>b.BookCategories).ThenInclude(b=>b.Category).OrderByDescending(b => b.SaleCount).FirstOrDefault();
 			List<Category> categories = _db.Categories.OrderBy(n => n.Name).ToList();
-			ViewBag.Currency = _db.Bios.FirstOrDefault().Currency;
+			Bio bio = _db.Bios.FirstOrDefault();
+			ViewBag.Currency = bio.Currency;
 
 			List<BookCategory> rBookCategories = new List<BookCategory>();
 
@@ -43,7 +44,8 @@ namespace FinalProject.Controllers
 				Books = books,
 				Book = book,
 				Categories = categories,
-				rBookCategories = rBookCategories
+				rBookCategories = rBookCategories,
+				Bio = bio
 			};
 			return View(model);
 		}

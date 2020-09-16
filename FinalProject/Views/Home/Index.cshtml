@@ -143,22 +143,30 @@
 <!-- Book End -->
 <!-- Sale Start -->
 
-<section id="Sale">
-	<div class="container">
-		<div class="row">
-			<div class="left mt-3 col-md-6 col-12">
-				<a>
-					<img src="~/image/sale.jpg" alt="">
-				</a>
-			</div>
-			<div class="right mt-3 col-md-6 col-12">
-				<a>
-					<img src="~/image/publisherDiscount.jpg" alt="">
-				</a>
+@if (Model.Bio.FirstPublisherImage != null || Model.Bio.SecondPublisherImage != null)
+{
+	<section id="Sale">
+		<div class="container">
+			<div class="row justify-content-around">
+				@if (Model.Bio.FirstPublisherImage != null)
+				{
+					<div class="left mt-3 col-md-6 col-12">
+						<a>
+							<img src="~/image/@Model.Bio.FirstPublisherImage" alt="">
+						</a>
+					</div>
+				}
+				@if (Model.Bio.SecondPublisherImage != null)
+				{
+					<div class="right mt-3 col-md-6 col-12">
+						<a>
+							<img src="~/image/@Model.Bio.SecondPublisherImage" alt="">
+						</a>
+					</div>}
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+}
 
 <!-- Sale End -->
 <!-- Book Start -->

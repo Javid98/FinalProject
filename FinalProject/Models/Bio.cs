@@ -13,6 +13,8 @@ namespace FinalProject.Models
 		public int Id { get; set; }
 		public string PhoneNumber { get; set; }
 		public string Logo { get; set; }
+		public string FirstPublisherImage { get; set; }
+		public string SecondPublisherImage { get; set; }
 		public string InstagramLink { get; set; }
 		public string FacebookLink { get; set; }
 		public string Gmail { get; set; }
@@ -22,5 +24,9 @@ namespace FinalProject.Models
 		public decimal Currency { get; set; }
 		[NotMapped]
 		public IFormFile Photo { get; set; }
+		[NotMapped]
+		public IFormFile FirstPublisherPhoto { get; set; }
+		[NotMapped]
+		public IFormFile SecondPublisherPhoto { get; set; }
 	}
 }

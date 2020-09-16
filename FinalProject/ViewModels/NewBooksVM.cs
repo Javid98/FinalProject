@@ -22,5 +22,6 @@ namespace FinalProject.ViewModels
 		public ICollection<BookInCart> BookInCarts { get; set; }
 		public ICollection<FavoriteBook> FavoriteBooks { get; set; }
 		public BookFeature BookFeature { get; set; }
+		public Bio Bio { get; set; }
 	}
 }
