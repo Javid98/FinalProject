@@ -114,7 +114,7 @@ using FinalProject.ViewModels;
             WriteLiteral("</td>\r\n\t\t\t\t<td>\r\n\t\t\t\t\t");
             EndContext();
             BeginContext(486, 168, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d67f12db57874632a83c06c659830af4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4526a9d287a14a1385a4d823436a9059", async() => {
                 BeginContext(602, 48, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t<i class=\"mdi mdi-clipboard\"></i>\r\n\t\t\t\t\t");
                 EndContext();
@@ -163,7 +163,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\t\t\t\t\t\t");
             EndContext();
             BeginContext(752, 161, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf56f2fdb44a467b9edf7bde802c63a3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6bdca9ac2d241f6acc19cd8eec3ebfb", async() => {
                 BeginContext(856, 53, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<i class=\"mdi mdi-account-edit\"></i>\r\n\t\t\t\t\t\t");
                 EndContext();
@@ -201,7 +201,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(921, 166, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5cf057966dc84e98b06b078a88e466a2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c021ba0a1c1e43d89275977b063033ac", async() => {
                 BeginContext(1030, 53, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<i class=\"mdi mdi-block-helper\"></i>\r\n\t\t\t\t\t\t");
                 EndContext();

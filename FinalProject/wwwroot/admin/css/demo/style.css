@@ -23981,10 +23981,16 @@ footer {
 		display: none
 	}
 
+	.table tr .bookCount{
+		display:none
+	}
+
 	.table tbody tr i {
 		font-size: 16px
 	}
-
+	.table .authorAll{
+		display:none;
+	}
 	.table .imageAll {
 		display: none;
 	}

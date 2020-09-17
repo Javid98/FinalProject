@@ -85,6 +85,7 @@
 					{
 						<ul class="navRightUl">
 							<li><a asp-controller="Publishers" asp-action="Index">Nəşriyyat evləri</a></li>
+							<li><a asp-controller="Profile" asp-action="Index" asp-route-username="@User.Identity.Name">@User.Identity.Name</a></li>
 							@if (User.IsInRole(FinalProject.Helpers.Helper.Roles.Admin.ToString()))
 							{
 								<li><a asp-area="BakumozAdminPanel" asp-controller="Sales" asp-action="Index">Admin Panel</a></li>
@@ -210,6 +211,7 @@ else
 					{
 						<ul class="navRightUl">
 							<li><a asp-controller="Publishers" asp-action="Index">Nəşriyyat evləri</a></li>
+							<li><a asp-controller="Profile" asp-action="Index" asp-route-username="@User.Identity.Name">@User.Identity.Name</a></li>
 							@if (User.IsInRole(FinalProject.Helpers.Helper.Roles.Admin.ToString()))
 							{
 								<li><a asp-area="BakumozAdminPanel" asp-controller="Sales" asp-action="Index">Admin Panel</a></li>

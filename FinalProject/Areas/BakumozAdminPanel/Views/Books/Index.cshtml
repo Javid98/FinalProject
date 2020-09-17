@@ -11,41 +11,41 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th scope="col">Kitab</th>
+			<th scope="col" class="imageAll">Kitab</th>
 			<th scope="col">Adı</th>
-			<th scope="col">Yazar</th>
+			<th scope="col" class="authorAll">Yazar</th>
 			<th scope="col">Detallar</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (Book book in Model.OrderByDescending(b=>b.Id))
+		@foreach (Book book in Model.OrderByDescending(b => b.Id))
 		{
 			<tr>
-				<td>
+				<td class="imageAll">
 					<img style="width:60px;height:100px" src="~/image/@book.ImagePath" />
 				</td>
-				@if (book.Name.Length > 20)
+				@if (book.Name.Length > 15)
 				{
-					<td>@book.Name.ToString().Substring(0, 20)...</td>
+					<td>@book.Name.ToString().Substring(0, 15)...</td>
 				}
 				else
 				{
 					<td>@book.Name</td>
 				}
 
-			<td>
-				@foreach (BookAuthor bookAuthor in book.BookAuthors)
-				{
-					if (bookAuthor.Author.Fullname.Length > 20)
+				<td class="authorAll">
+					@foreach (BookAuthor bookAuthor in book.BookAuthors)
 					{
-						<span>@bookAuthor.Author.Fullname.Substring(0, 20)...</span><br />
+						if (bookAuthor.Author.Fullname.Length > 15)
+						{
+							<span>@bookAuthor.Author.Fullname.Substring(0, 15)...</span><br />
+						}
+						else
+						{
+							<span>@bookAuthor.Author.Fullname</span><br />
+						}
 					}
-					else
-					{
-						<span>@bookAuthor.Author.Fullname</span><br />
-					}
-				}
-			</td>
+				</td>
 				<td>
 					<a class="btn btn-info" asp-controller="Books" asp-action="Detail" asp-route-id="@book.Id">
 						<i class="mdi mdi-clipboard"></i>

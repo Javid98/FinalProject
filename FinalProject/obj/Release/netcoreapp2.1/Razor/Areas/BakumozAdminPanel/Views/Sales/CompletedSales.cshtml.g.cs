@@ -118,7 +118,7 @@ using FinalProject.ViewModels;
             WriteLiteral(" ₼</td>\r\n\t\t\t\t<td>\r\n\t\t\t\t\t");
             EndContext();
             BeginContext(574, 179, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c28909bc1b0c42fdae5015c3fee14911", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe3224d5ccea4ba3806bd7cf6bcbd4d6", async() => {
                 BeginContext(665, 84, true);
                 WriteLiteral("\r\n\t\t\t\t\t\t<i style=\"color:white; font-size:22px\" class=\"mdi mdi-clipboard\"></i>\r\n\t\t\t\t\t");
                 EndContext();

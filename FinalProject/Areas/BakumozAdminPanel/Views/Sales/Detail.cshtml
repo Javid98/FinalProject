@@ -79,22 +79,31 @@
 					<td class="image">
 						<img style="width:60px;height:100px" src="~/image/@saleBook.Book.ImagePath" />
 					</td>
-					@if (saleBook.Book.Name.Length >= 30)
+					@if (saleBook.Book.Name.Length > 22)
 					{
-						<td>@saleBook.Book.Name.ToString().Substring(0, 30)...</td>
+						<td>@saleBook.Book.Name.ToString().Substring(0, 22)...</td>
 					}
 					else
 					{
 						<td>@saleBook.Book.Name</td>
 					}
-					<td class="author">
-						@foreach (BookAuthor bookAuthor in saleBook.Book.BookAuthors)
+				<td class="author">
+					@foreach (BookAuthor bookAuthor in saleBook.Book.BookAuthors)
+					{
+						@if (bookAuthor.Author.Fullname.Length < 20)
 						{
 							<p>
 								@bookAuthor.Author.Fullname
 							</p>
 						}
-					</td>
+						else
+						{
+							<p>
+								@bookAuthor.Author.Fullname.Substring(0,20)...
+							</p>
+						}
+					}
+				</td>
 					<td>@saleBook.Count</td>
 					<td>@saleBook.Price ₼</td>
 				</tr>

@@ -13,25 +13,32 @@
 		<thead>
 			<tr>
 				<th scope="col">Nəşriyyat evi</th>
-				<th scope="col">Kitab sayı</th>
+				<th scope="col" class="bookCount">Kitab sayı</th>
 				<th scope="col">Detallar</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach (Publisher publisher in Model)
 			{
-				<tr>
+			<tr>
+				@if (publisher.Name.Length < 25)
+				{
 					<td>@publisher.Name</td>
-					<td>@publisher.BookCount</td>
-					<td>
-						<a class="btn btn-info" asp-controller="Publishers" asp-action="Edit" asp-route-id="@publisher.Id">
-							<i class="mdi mdi-pencil"></i>
-						</a>
-						<a class="ml-1 btn btn-danger" asp-controller="Publishers" asp-action="Delete" asp-route-id="@publisher.Id">
-							<i class="mdi mdi-delete-forever"></i>
-						</a>
-					</td>
-				</tr>
+				}
+				else
+				{
+					<td>@publisher.Name.Substring(0,25)...</td>
+				}
+				<td class="bookCount">@publisher.BookCount</td>
+				<td>
+					<a class="btn btn-info" asp-controller="Publishers" asp-action="Edit" asp-route-id="@publisher.Id">
+						<i class="mdi mdi-pencil"></i>
+					</a>
+					<a class="ml-1 btn btn-danger" asp-controller="Publishers" asp-action="Delete" asp-route-id="@publisher.Id">
+						<i class="mdi mdi-delete-forever"></i>
+					</a>
+				</td>
+			</tr>
 			}
 		</tbody>
 	</table>

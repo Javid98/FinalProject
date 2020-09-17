@@ -98,12 +98,33 @@
 								<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@favoriteBook.Book.Slug"><img src="~/image/@favoriteBook.Book.ImagePath" alt=""></a>
 							</div>
 							<div class="title">
-								<h6>@favoriteBook.Book.Name</h6>
+								@if (favoriteBook.Book.Name.Length < 25)
+								{
+									<h6>@favoriteBook.Book.Name</h6>
+								}
+								else
+								{
+									<h6>@favoriteBook.Book.Name.Substring(0, 25)...</h6>
+								}
 								@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == favoriteBook.BookId))
 								{
-									<p><a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a></p>
+									@if (bookAuthor.Author.Fullname.Length < 20)
+									{
+										<p><a href="/NewBooks/Index?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a></p>
+									}
+									else
+									{
+										<p><a href="/NewBooks/Index?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname.Substring(0, 20)...</a></p>
+									}
 								}
-								<span><a href="/NewBooks/?pslug=@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Slug">@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Name</a></span>
+								@if (favoriteBook.Book.Publisher.Name.Length < 25)
+								{
+									<span style="line-height:20px"><a href="/NewBooks/Index?pslug=@favoriteBook.Book.Publisher.Slug">@favoriteBook.Book.Publisher.Name</a></span>
+								}
+								else
+								{
+									<span style="line-height:20px"><a href="/NewBooks/Index?pslug=@favoriteBook.Book.Publisher.Slug">@favoriteBook.Book.Publisher.Name.Substring(0, 25)</a></span>
+								}
 							</div>
 							<form class="favoriteForm delete" asp-controller="Profile" asp-action="DeleteFavorite" asp-route-id="@favoriteBook.BookId">
 								<button style="background:none;border:none" type="submit"><i class="fas fa-minus-circle"></i></button>
@@ -132,6 +153,7 @@
 					{
 						<li class="saleDate">
 							<h6>@sale.Date.ToString("dd/MM/yyyy")</h6>
+							<span>@sale.Total₼</span>
 							<i class="fas fa-angle-down"></i>
 						</li>
 						<li class="books">
@@ -142,12 +164,33 @@
 										<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@saleBook.Book.Slug"><img src="~/image/@saleBook.Book.ImagePath" alt=""></a>
 									</div>
 									<div class="title">
-										<h6>@saleBook.Book.Name</h6>
+										@if (saleBook.Book.Name.Length < 25)
+										{
+											<h6>@saleBook.Book.Name</h6>
+										}
+										else
+										{
+											<h6>@saleBook.Book.Name.Substring(0, 25)...</h6>
+										}
 										@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == saleBook.BookId))
 										{
-											<p><a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a></p>
+											@if (bookAuthor.Author.Fullname.Length < 20)
+											{
+												<p><a href="/NewBooks/Index?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a></p>
+											}
+											else
+											{
+												<p><a href="/NewBooks/Index?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname.Substring(0, 20)...</a></p>
+											}
 										}
-										<span><a href="/NewBooks/?pslug=@saleBook.Book.Publisher.Slug">@saleBook.Book.Publisher.Name</a></span><br />
+										@if (saleBook.Book.Publisher.Name.Length < 25)
+										{
+											<span style="line-height:20px"><a href="/NewBooks/Index?pslug=@saleBook.Book.Publisher.Slug">@saleBook.Book.Publisher.Name</a></span><br />
+										}
+										else
+										{
+											<span style="line-height:20px"><a href="/NewBooks/Index?pslug=@saleBook.Book.Publisher.Slug">@saleBook.Book.Publisher.Name.Substring(0, 25)...</a></span><br />
+										}
 										<p style="margin:10px 0 0 0">@saleBook.Price ₼</p>
 									</div>
 									<div style="display:flex;align-items:center;justify-content:center;text-align:center">
@@ -266,8 +309,9 @@
 								<ul>
 									@foreach (Sale sale in Model.Sales.OrderByDescending(s => s.Id).Take(5))
 									{
-										<li>
+										<li class="d-flex justify-content-between">
 											<h6>@sale.Date.ToString("dd/MM/yyyy")</h6>
+											<span>@sale.Total₼</span>
 										</li>
 									}
 								</ul>
@@ -294,12 +338,33 @@
 											<a asp-controller="NewBooks" asp-action="Detail" asp-route-slug="@favoriteBook.Book.Slug"><img src="~/image/@favoriteBook.Book.ImagePath" alt=""></a>
 										</div>
 										<div class="title">
-											<h6>@favoriteBook.Book.Name</h6>
+											@if (favoriteBook.Book.Name.Length < 25)
+											{
+												<h6>@favoriteBook.Book.Name</h6>
+											}
+											else
+											{
+												<h6>@favoriteBook.Book.Name.Substring(0, 25)...</h6>
+											}
 											@foreach (BookAuthor bookAuthor in Model.BookAuthors.Where(ba => ba.BookId == favoriteBook.BookId))
 											{
-												<p><a href="/NewBooks/?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a></p>
+												@if (bookAuthor.Author.Fullname.Length < 20)
+												{
+													<p><a href="/NewBooks/Index?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname</a></p>
+												}
+												else
+												{
+													<p><a href="/NewBooks/Index?aslug=@bookAuthor.Author.Slug">@bookAuthor.Author.Fullname.Substring(0, 20)...</a></p>
+												}
 											}
-											<span><a href="/NewBooks/?pslug=@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Slug">@Model.Publishers.FirstOrDefault(p => p.Id == favoriteBook.Book.PublisherId).Name</a></span>
+											@if (favoriteBook.Book.Publisher.Name.Length < 25)
+											{
+												<span style="line-height:20px"><a href="/NewBooks/Index?pslug=@favoriteBook.Book.Publisher.Slug">@favoriteBook.Book.Publisher.Name</a></span>
+											}
+											else
+											{
+												<span style="line-height:20px"><a href="/NewBooks/Index?pslug=@favoriteBook.Book.Publisher.Slug">@favoriteBook.Book.Publisher.Name.Substring(0, 25)</a></span>
+											}
 										</div>
 									</div>
 								}

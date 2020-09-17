@@ -87,7 +87,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\t\t\t");
             EndContext();
             BeginContext(300, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7a42691abed3433fa596149addc0f10a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8b9ec6362cc048ab968daf6daa87d744", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -121,7 +121,7 @@ AddHtmlAttributeValue("", 363, Model.AppUser.UserDetail.ImagePath, 363, 35, fals
             WriteLiteral("\t\t<strong>Adı: </strong>\r\n\t\t");
             EndContext();
             BeginContext(437, 189, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6d1f138d69604952b1e2fc8d5301d180", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c0ef5a0f7aa244498d9e0e933c335c7d", async() => {
                 BeginContext(566, 17, true);
                 WriteLiteral("\r\n\t\t\t<span>\r\n\t\t\t\t");
                 EndContext();
@@ -240,7 +240,7 @@ AddHtmlAttributeValue("", 363, Model.AppUser.UserDetail.ImagePath, 363, 35, fals
             WriteLiteral("\t\t\t<div>\r\n\t\t\t\t");
             EndContext();
             BeginContext(1384, 177, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4ccb5833d6ea4414b7baf2726fb2469d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ef5728fe326c46dc923dc5ba2e773c7d", async() => {
                 BeginContext(1490, 67, true);
                 WriteLiteral("\r\n\t\t\t\t\t<i class=\"mdi mdi-clipboard-check\"></i> Satışı tamamla\r\n\t\t\t\t");
                 EndContext();
@@ -295,7 +295,7 @@ AddHtmlAttributeValue("", 363, Model.AppUser.UserDetail.ImagePath, 363, 35, fals
             WriteLiteral("\t\t\t\t<tr>\r\n\t\t\t\t\t<td class=\"image\">\r\n\t\t\t\t\t\t");
             EndContext();
             BeginContext(1908, 78, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e37f334446cb447e914411b35aa1eed6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ddc1d2ec743b4dc982390e592bf3c456", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -423,7 +423,7 @@ AddHtmlAttributeValue("", 1958, saleBook.Book.ImagePath, 1958, 24, false);
             WriteLiteral("\t\t</tbody>\r\n\t</table>\r\n\r\n\t");
             EndContext();
             BeginContext(2484, 222, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "28544a804eb1449fad184171f7b22077", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1035ed50039a47c7ab4e3f74593cc447", async() => {
                 BeginContext(2582, 117, true);
                 WriteLiteral("\r\n\t\t<button type=\"submit\" class=\"ml-1 btn btn-danger\"><i class=\"mdi mdi-delete-forever\"></i> Sifarişi sil</button>\r\n\t");
                 EndContext();

@@ -46,7 +46,7 @@ namespace FinalProject.Controllers
 			List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Author).Include(ba => ba.Book).ToList();
 			List<Publisher> publishers = _db.Publishers.ToList();
 			List<Sale> sales = _db.Sales.Include(s => s.SaleBooks).Where(s => s.AppUserId == user.Id).ToList();
-			List<SaleBook> saleBooks = _db.SaleBooks.Include(sb => sb.Book).ThenInclude(b=>b.Publisher).Where(s => s.AppUserId == user.Id).ToList();
+			List<SaleBook> saleBooks = _db.SaleBooks.Include(sb => sb.Book).ThenInclude(b => b.Publisher).Where(s => s.AppUserId == user.Id).ToList();
 			ProfileVM model = new ProfileVM
 			{
 				UserDetail = userDetail,

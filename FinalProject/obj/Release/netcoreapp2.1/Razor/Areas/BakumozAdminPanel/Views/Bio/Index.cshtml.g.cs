@@ -74,7 +74,7 @@ using FinalProject.ViewModels;
             WriteLiteral("\r\n<div class=\"container\">\r\n\t<div class=\"logo-edit mt-3 d-flex justify-content-between align-items-center\">\r\n\t\t<div class=\"logo\">\r\n\t\t\t");
             EndContext();
             BeginContext(181, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "98df0868bc6c4190ae743b3393ca4168", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1a163fc6b55c4a94a126269655f2fa88", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -100,7 +100,7 @@ AddHtmlAttributeValue("", 231, Model.Logo, 231, 11, false);
             WriteLiteral("\r\n\t\t</div>\r\n\t\t<div class=\"edit\">\r\n\t\t\t");
             EndContext();
             BeginContext(283, 117, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09c79c0e18de4b189bd9db22d08e0100", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97d3d6e7db134430a09a019f9bd35719", async() => {
                 BeginContext(349, 47, true);
                 WriteLiteral("\r\n\t\t\t\t<i class=\"mdi mdi-pencil\"></i> Dəyiş\r\n\t\t\t");
                 EndContext();
@@ -134,7 +134,7 @@ AddHtmlAttributeValue("", 231, Model.Logo, 231, 11, false);
             WriteLiteral("\t\t<h6 class=\"mt-3\">Endirimli nəşriyyat evi</h6>\r\n\t\t");
             EndContext();
             BeginContext(518, 81, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7a56339b71fa4dba90f832e02053393d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b86b97b1cb88449eaca81b516c95604b", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -160,7 +160,7 @@ AddHtmlAttributeValue("", 569, Model.FirstPublisherImage, 569, 26, false);
             WriteLiteral("<br />\r\n\t\t");
             EndContext();
             BeginContext(609, 143, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a428f9f8d7a04e7b879ea0cc4f94a7e5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84051eb5dc89488da9a624814a067fa3", async() => {
                 BeginContext(729, 19, true);
                 WriteLiteral("Endirimli şəkli sil");
                 EndContext();
@@ -204,7 +204,7 @@ AddHtmlAttributeValue("", 569, Model.FirstPublisherImage, 569, 26, false);
             WriteLiteral("\t\t<h6 class=\"mt-3\">Endirimli nəşriyyat evi-2</h6>\r\n\t\t");
             EndContext();
             BeginContext(858, 82, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "657ddf181dce4beb8c583d996eca3008", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "36ebd79815ba469293cf4c1cbbe6c0e0", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -230,7 +230,7 @@ AddHtmlAttributeValue("", 909, Model.SecondPublisherImage, 909, 27, false);
             WriteLiteral("<br />\r\n\t\t");
             EndContext();
             BeginContext(950, 144, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36c2a9985e0c42d5aa9e5531e2ed6c1d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c03650d2e1af44178c9d0778028f45b8", async() => {
                 BeginContext(1071, 19, true);
                 WriteLiteral("Endirimli şəkli sil");
                 EndContext();
