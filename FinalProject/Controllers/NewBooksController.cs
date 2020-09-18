@@ -47,7 +47,6 @@ namespace FinalProject.Controllers
 			ViewBag.Cslug = "";
 			List<Book> allBooks = new List<Book>();
 
-			//List<BookAuthor> bookAuthors = _db.BookAuthors.ToList();
 			List<Author> authors = _db.Authors.OrderBy(n => n.Fullname).ToList();
 			List<Publisher> publishers = _db.Publishers.OrderByDescending(n => n.BookCount).ToList();
 			List<Category> categories = _db.Categories.OrderBy(n => n.Name).ToList();
@@ -246,11 +245,7 @@ namespace FinalProject.Controllers
 			if (slug == null) return NotFound();
 			Book book = _db.Books.Include(b => b.Publisher).Include(b => b.BookFeature).Include(b => b.BookCategories).ThenInclude(b => b.Category).Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).FirstOrDefault(b => b.Slug == slug);
 			if (book == null) return NotFound();
-			//List<BookCategory> bookCategories = _db.BookCategories.Include(ba => ba.Category).Where(bc => bc.BookId == book.Id).ToList();
 			List<BookAuthor> rBookAuthors = _db.BookAuthors.Include(ba => ba.Author).ToList();
-			//List<BookAuthor> bookAuthors = _db.BookAuthors.Include(ba => ba.Author).Where(ba => ba.BookId == book.Id).ToList();
-			//Publisher publisher = _db.Publishers.FirstOrDefault(p => p.Id == book.PublisherId);
-			//BookFeature bookFeature = _db.BookFeatures.FirstOrDefault(bf => bf.BookId == book.Id);
 			ViewBag.Currency = _db.Bios.FirstOrDefault().Currency;
 
 			AppUser user = new AppUser();
@@ -283,10 +278,6 @@ namespace FinalProject.Controllers
 			NewBooksVM model = new NewBooksVM
 			{
 				Book = book,
-				//BookCategories = bookCategories,
-				//BookAuthors = bookAuthors,
-				//Publisher = publisher,
-				//BookFeature = bookFeature,
 				rBookCategories = rBookCategories,
 				rBookAuthors = rBookAuthors,
 				BookInCarts = bookInCarts,

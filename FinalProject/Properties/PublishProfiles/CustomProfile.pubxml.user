@@ -20,22 +20,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2019 19:57:52</publishTime>
     </File>
     <File Include="FinalProject.deps.json">
-      <publishTime>09/17/2020 03:49:38</publishTime>
+      <publishTime>09/17/2020 20:01:19</publishTime>
     </File>
     <File Include="FinalProject.dll">
-      <publishTime>09/17/2020 03:49:32</publishTime>
+      <publishTime>09/17/2020 20:00:58</publishTime>
     </File>
     <File Include="FinalProject.pdb">
-      <publishTime>09/17/2020 03:49:32</publishTime>
+      <publishTime>09/17/2020 20:00:58</publishTime>
     </File>
     <File Include="FinalProject.runtimeconfig.json">
       <publishTime>09/17/2020 00:23:17</publishTime>
     </File>
     <File Include="FinalProject.Views.dll">
-      <publishTime>09/17/2020 03:49:37</publishTime>
+      <publishTime>09/17/2020 20:01:01</publishTime>
     </File>
     <File Include="FinalProject.Views.pdb">
-      <publishTime>09/17/2020 03:49:37</publishTime>
+      <publishTime>09/17/2020 20:01:01</publishTime>
     </File>
     <File Include="Microsoft.CodeAnalysis.CSharp.Workspaces.dll">
       <publishTime>04/30/2018 16:29:02</publishTime>
@@ -83,10 +83,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 04:55:46</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>09/17/2020 03:49:38</publishTime>
+      <publishTime>09/17/2020 20:01:19</publishTime>
     </File>
     <File Include="wwwroot/admin/css/demo/style.css">
-      <publishTime>09/07/2020 21:13:14</publishTime>
+      <publishTime>09/17/2020 07:00:06</publishTime>
     </File>
     <File Include="wwwroot/admin/css/maps/demo/style.css.map">
       <publishTime>11/01/2019 16:04:25</publishTime>
@@ -158,7 +158,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2019 16:04:25</publishTime>
     </File>
     <File Include="wwwroot/admin/fonts/roboto/Roboto-Thin.svg">
-      <publishTime>11/01/2019 16:04:25</publishTime>
+      <publishTime>01/11/2019 16:04:25</publishTime>
     </File>
     <File Include="wwwroot/admin/fonts/roboto/Roboto-Thin.ttf">
       <publishTime>11/01/2019 16:04:25</publishTime>
@@ -1911,6 +1911,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="wwwroot/image/2ff7f61f-9c69-42d7-b6ba-f6b8838beecemecburiyyet.jpg">
       <publishTime>09/15/2020 19:57:49</publishTime>
+    </File>
+    <File Include="wwwroot/image/328072e8-152f-4571-86ad-a714e7ad5570american.jpg">
+      <publishTime>09/17/2020 10:15:11</publishTime>
     </File>
     <File Include="wwwroot/image/3576ce08-e257-4538-b2ba-de147a18b203biridammahkumununsongunu.jpg">
       <publishTime>09/15/2020 19:59:57</publishTime>

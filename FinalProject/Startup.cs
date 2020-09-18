@@ -70,6 +70,8 @@ namespace FinalProject
 				app.UseHsts();
 			}
 
+			SeedData.Initial(app);
+
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseCookiePolicy();

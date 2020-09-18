@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 {
 	[Area("BakumozAdminPanel")]
-    [Authorize(Roles ="Admin")]
+	[Authorize(Roles = "Admin")]
 	public class BooksController : Controller
 	{
 		private readonly ApplicationDbContext _db;
@@ -99,12 +99,14 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 			}
 			string price = Request.Form["Price"];
 			price = price.Replace('.', ',');
+			decimal originalPrice = 0;
+			originalPrice = decimal.Round(Convert.ToDecimal(price) * 1,2);
 			Book newBook = new Book
 			{
 				Name = book.Name,
-				Slug=book.Slug,
+				Slug = book.Slug,
 				Description = book.Description,
-				Price = Convert.ToDecimal(price),
+				Price = originalPrice,
 				Count = book.Count
 			};
 			Book existBook = _db.Books.FirstOrDefault(b => b.Name.ToLower().Trim() == book.Name.ToLower().Trim());
@@ -190,7 +192,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 			}
 			BookFeature bookFeature = new BookFeature
 			{
-				PublishingPlace=book.PublishingPlace,
+				PublishingPlace = book.PublishingPlace,
 				PublishingDate = book.PublishingDate,
 				PublishingLanguage = book.PublishingLanguage,
 				OriginalLanguage = book.OriginalLanguage,
@@ -268,10 +270,12 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 				}
 				string price = Request.Form["Book.Price"];
 				price = price.Replace('.', ',');
+				decimal originalPrice = 0;
+				originalPrice = decimal.Round(Convert.ToDecimal(price) * 1,2);
 				book.Name = editedBook.Book.Name;
 				book.Slug = editedBook.Book.Slug;
 				book.Count = editedBook.Book.Count;
-				book.Price = Convert.ToDecimal(price);
+				book.Price = originalPrice;
 				book.Description = editedBook.Book.Description;
 				string authorsList = Request.Form["authors"];
 				if (authorsList == null)
@@ -342,7 +346,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 				}
 				BookFeature bookFeature = new BookFeature
 				{
-					PublishingPlace=editedBook.Book.BookFeature.PublishingPlace,
+					PublishingPlace = editedBook.Book.BookFeature.PublishingPlace,
 					PublishingDate = editedBook.Book.BookFeature.PublishingDate,
 					PublishingLanguage = editedBook.Book.BookFeature.PublishingLanguage,
 					OriginalLanguage = editedBook.Book.BookFeature.OriginalLanguage,
@@ -416,14 +420,16 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 						return View(model);
 					}
 				}
-				Helpers.Helper.DeleteImg(_env.WebRootPath,"image",book.ImagePath);
-				book.ImagePath = await editedBook.Photo.SaveImg(_env.WebRootPath,"image");
+				Helpers.Helper.DeleteImg(_env.WebRootPath, "image", book.ImagePath);
+				book.ImagePath = await editedBook.Photo.SaveImg(_env.WebRootPath, "image");
 				string price = Request.Form["Book.Price"];
 				price = price.Replace('.', ',');
+				decimal originalPrice = 0;
+				originalPrice = decimal.Round(Convert.ToDecimal(price) * 1,2);
 				book.Name = editedBook.Book.Name;
 				book.Slug = editedBook.Book.Slug;
 				book.Count = editedBook.Book.Count;
-				book.Price = Convert.ToDecimal(price);
+				book.Price = originalPrice;
 				book.Description = editedBook.Book.Description;
 				string authorsList = Request.Form["authors"];
 				if (authorsList == null)
@@ -494,7 +500,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 				}
 				BookFeature bookFeature = new BookFeature
 				{
-					PublishingPlace=editedBook.Book.BookFeature.PublishingPlace,
+					PublishingPlace = editedBook.Book.BookFeature.PublishingPlace,
 					PublishingDate = editedBook.Book.BookFeature.PublishingDate,
 					PublishingLanguage = editedBook.Book.BookFeature.PublishingLanguage,
 					OriginalLanguage = editedBook.Book.BookFeature.OriginalLanguage,
@@ -535,6 +541,7 @@ namespace FinalProject.Areas.BakumozAdminPanel.Controllers
 			if (book == null) return NotFound();
 			Publisher publisher = _db.Publishers.FirstOrDefault(p => p.Id == book.PublisherId);
 			publisher.BookCount--;
+			Helpers.Helper.DeleteImg(_env.WebRootPath, "image", book.ImagePath);
 			_db.Books.Remove(book);
 			await _db.SaveChangesAsync();
 			return RedirectToAction("Index");
